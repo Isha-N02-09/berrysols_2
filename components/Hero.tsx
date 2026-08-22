@@ -25,17 +25,19 @@ export default function Hero() {
 
       {/* copy */}
       <div className="relative z-10 flex h-full max-w-3xl flex-col items-start justify-center px-6 md:px-16">
-        <h1 className="text-5xl font-extrabold leading-[1.05] text-white md:text-7xl">
-          Meet{" "}
-          <span className="bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent">
-            Engineering clarity. 
+        <h1 className="font-poppins text-left text-[2.1rem] font-bold uppercase leading-[1.05] max-[359px]:text-[1.4rem] min-[640px]:max-[1279px]:text-[2.75rem] min-[1280px]:text-[3.3rem]">
+          <span className="block text-white">From Chaos</span>
+          <span className="block text-white">
+            To{" "}
+            <span className="bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent">
+              Clarity
+            </span>
           </span>
-          Powering what's next.
         </h1>
-        <p className="mt-6 max-w-xl text-lg text-white/70">
-          BerrySols is a technology company delivering intelligent digital solutions through AI automation, custom software, web development, SEO, and digital marketing. 
+        <p className="mt-6 max-w-md text-left text-lg font-medium uppercase leading-relaxed text-white/70">
+          BerrySols is a technology company delivering intelligent digital solutions through AI automation, custom software, web development, SEO, and digital marketing.
         </p>
-        <a
+          <a
           href="#sevices"
           className="mt-8 rounded-full bg-gradient-to-r from-orange-400 to-yellow-400 px-7 py-3 text-sm font-bold uppercase tracking-wide text-black"
         >
