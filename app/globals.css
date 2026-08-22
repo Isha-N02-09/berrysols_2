@@ -231,7 +231,7 @@ body {
 }
 /* ====================== TRUST BAND ============================= */
 .trust-band {
-  background: var(--paper-deep);
+  background: white;
   padding: 58px 32px 85px;
   text-align: center;
   overflow: hidden;
@@ -337,7 +337,7 @@ body {
   position: relative;
   overflow: hidden;
   padding: 90px max(5vw, 24px) 80px;
-  background: var(--paper);
+  background: --white;
 }
 .cta::before {
   content: "";
