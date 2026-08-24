@@ -1,0 +1,202 @@
+.servicesHero {
+  position: relative;
+  min-height: 700vh;
+  overflow: clip;
+  background: #fff;
+  color: #171410;
+  font-family: "Poppins", sans-serif;
+}
+
+.stickyStage {
+  position: sticky;
+  top: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 72px 24px 56px;
+  overflow: hidden;
+}
+
+.bgRow {
+  position: absolute;
+  left: -2%;
+  z-index: 0;
+  white-space: nowrap;
+  color: transparent;
+  font-size: clamp(56px, 10vw, 138px);
+  font-weight: 800;
+  line-height: .9;
+  letter-spacing: .02em;
+  -webkit-text-stroke: 1px rgba(244, 94, 43, .2);
+  user-select: none;
+  pointer-events: none;
+}
+
+.bgRowTop { top: 9vh; }
+.bgRowBottom { bottom: 7vh; left: -14%; }
+
+.featureTrack {
+  position: relative;
+  z-index: 1;
+  width: min(440px, 70vw);
+  height: min(540px, 78vh);
+  perspective: 1100px;
+}
+
+.featureCard {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(340px, 64vw);
+  aspect-ratio: 1;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, .32);
+  border-radius: 20px;
+  background: linear-gradient(145deg, #ff9c6b 0%, #f45e2b 52%, #c83e12 100%);
+  box-shadow: 0 30px 70px rgba(200, 62, 18, .24);
+  opacity: max(.2, calc(1 - abs(var(--offset)) * .38));
+  transform: translate3d(calc(-50% + var(--offset) * 132%), calc(-50% + abs(var(--offset)) * 30px), 0) rotateZ(calc(var(--offset) * 24deg)) scale(calc(1 - abs(var(--offset)) * .16));
+  transform-origin: 50% 100%;
+  transition: transform .7s cubic-bezier(.2, .75, .25, 1), opacity .7s ease, filter .7s ease;
+  filter: blur(calc(abs(var(--offset)) * 1.4px)) saturate(calc(1 - abs(var(--offset)) * .18));
+  pointer-events: none;
+  color: inherit;
+  text-decoration: none;
+}
+
+.featureCard[data-active="true"] { z-index: 3; pointer-events: auto; }
+.featureCard[data-active="false"] { z-index: 2; }
+
+.cardChrome,
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgba(255, 255, 255, .78);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.cardSignal { display: flex; align-items: center; gap: 7px; }
+.cardSignal i { width: 7px; height: 7px; border-radius: 50%; background: #fff; }
+
+.cardVisual {
+  min-height: min(210px, 35vh);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+  padding: 26px;
+  border: 1px solid rgba(255, 255, 255, .27);
+  border-radius: 18px;
+  background: rgba(92, 24, 5, .2);
+}
+
+.visualPrompt {
+  max-width: 88%;
+  color: #fff;
+  font-size: clamp(19px, 3vw, 29px);
+  font-weight: 600;
+  line-height: 1.16;
+}
+
+.cardVisual strong {
+  max-width: 90%;
+  color: rgba(255, 255, 255, .73);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.cardCopy {
+  position: absolute;
+  top: calc(min(340px, 64vw) + 18px);
+  transform: translateX(calc(var(--offset) * -20%));
+  left: 0;
+  width: 100%;
+  color: #171410;
+  text-align: center;
+}
+
+.cardCopy h3 {
+  margin: 0 0 8px;
+  font-size: clamp(22px, 2.5vw, 34px);
+  line-height: 1.1;
+}
+
+.cardCopy h3::after {
+  content: "";
+  display: block;
+  width: 5px;
+  height: 5px;
+  margin: 14px auto 0;
+  border-radius: 50%;
+  background: #f45e2b;
+}
+
+.cardCopy p {
+  max-width: 440px;
+  margin: 16px auto 0;
+  color: #756f65;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.visualLines { display: flex; gap: 5px; margin-top: 6px; }
+.visualLines i { width: 34px; height: 4px; border-radius: 4px; background: rgba(255, 255, 255, .42); }
+.visualLines i:first-child { width: 70px; background: #fff; }
+.cardFooter svg { width: 22px; height: 22px; color: #fff; }
+
+.copy {
+  position: absolute;
+  z-index: 4;
+  bottom: 4vh;
+  width: min(570px, calc(100vw - 48px));
+  text-align: center;
+}
+
+.copyKicker {
+  margin: 0 0 12px;
+  color: #f45e2b;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .18em;
+}
+
+.copyTitle { margin: 0 0 10px; color: #171410; font-size: clamp(26px, 3vw, 38px); font-weight: 700; line-height: 1.1; }
+.copyDesc { margin: 0 auto; max-width: 520px; color: #756f65; font-size: 15px; line-height: 1.6; }
+
+.progress {
+  position: fixed;
+  top: 50%;
+  right: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  transform: translateY(-50%);
+}
+
+.progress span { width: 7px; height: 3px; background: #eadfd8; transition: height .35s ease, background .35s ease; }
+.progress span[data-active="true"] { height: 22px; background: #f45e2b; }
+
+@media (max-width: 600px) {
+  .stickyStage { padding: 38px 16px 48px; }
+  .featureTrack { width: 92vw; height: 460px; }
+  .featureCard { width: min(270px, 70vw); aspect-ratio: 1; padding: 16px; border-radius: 18px; transform: translate3d(calc(-50% + var(--offset) * 122%), calc(-50% + abs(var(--offset)) * 24px), 0) rotateZ(calc(var(--offset) * 20deg)) scale(calc(1 - abs(var(--offset)) * .14)); }
+  .cardVisual { min-height: 160px; padding: 20px; }
+  .cardCopy { top: calc(min(270px, 70vw) + 14px); }
+  .copy { bottom: 5vh; }
+  .progress { right: 10px; }
+  .progress span { width: 5px; }
+  .progress span[data-active="true"] { width: 5px; height: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .featureCard, .progress span { transition: none; }
+}

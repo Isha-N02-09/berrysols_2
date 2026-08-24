@@ -86,6 +86,19 @@
   text-align: right;
 }
 
+
+.item:hover {
+  transform: translateY(-4px);
+} 
+.item {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 @keyframes strip {
   from { transform: translateY(0); }
   to { transform: translateY(-50%); }

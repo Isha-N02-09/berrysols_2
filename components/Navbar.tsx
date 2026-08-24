@@ -14,7 +14,7 @@ export default function Navbar() {
     {/* Logo */}
     <a href="/" className="flex items-center">
      <img
-        src="/assets/logo.png"
+        src="/assets/logo 2.png"
         alt="Berry logo"
         className="h-auto w-[135px] translate-y-[3px] object-contain"
         onError={(e) => {
@@ -27,7 +27,7 @@ export default function Navbar() {
     <div className="flex items-center gap-6">
       <button
         onClick={() => setOpen(true)}
-        className="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-white transition-colors hover:text-orange-400"
+        className="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-black transition-colors hover:text-orange-400"
         aria-haspopup="true"
         aria-expanded={open}
       >
