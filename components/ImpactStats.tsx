@@ -18,17 +18,6 @@ const locations = [
   { name: "Germany", left: "56%", top: "36%" },
 ];
 
-const cityNames = [
-  "LHR",
-  "Karachi",
-  "Sialkot",
-  "New York",
-  "Chicago",
-  "Toronto",
-  "Vancouver",
-  "London",
-  "Manchester",
-];
 
 export default function ImpactStats() {
   const statsRef = useRef<HTMLDivElement>(null);
@@ -99,15 +88,6 @@ export default function ImpactStats() {
           </div>
         </div>
 
-        <div className="impact-city-strip" aria-label="Cities served">
-          <div className="impact-city-track">
-            {[...cityNames, ...cityNames].map((city, index) => (
-              <span className="impact-city" key={`${city}-${index}`}>
-                {city}
-              </span>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
