@@ -9,8 +9,8 @@ type LinkItem = {
 };
 
 const links: LinkItem[] = [
-  { label: "Solutions", href: "#solutions" },
-  { label: "AI Products", href: "#products" },
+  { label: "Services", href: "#portfolio" },
+  { label: "Portfolio", href: "#services" },
   {
     label: "Industries",
     href: "#industries",
@@ -27,7 +27,6 @@ const links: LinkItem[] = [
   },
   { label: "About Us", href: "#about" },
   { label: "Blog", href: "#blog" },
-  { label: "Pricing", href: "#pricing" },
 ];
 
 export default function MobileMenu({

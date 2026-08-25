@@ -2,8 +2,8 @@
   position: absolute;
   z-index: 4;
   right: 0;
-  top: 72px;    /* height of your fixed navbar — starts right below it */
-  bottom: 0;    /* stretches to the bottom edge of the hero section */
+  top: 72px;
+  bottom: 0;
   width: min(350px, 25vw);
   color: #000;
 
@@ -14,6 +14,34 @@
 
   display: flex;
   flex-direction: column;
+}
+
+@media (max-width: 767px) {
+  .serviceStrip {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    padding: 18px 16px 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    margin-top: 12px;
+  }
+
+  .heading {
+    margin-bottom: 10px;
+  }
+
+  .heading h2 {
+    font-size: 16px;
+  }
+
+  .viewport {
+    max-height: 220px;
+  }
 }
 
 .heading {

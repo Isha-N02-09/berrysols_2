@@ -87,18 +87,7 @@ export default function Services() {
   }, []);
 
   return (
-    <section ref={sectionRef} className={styles.servicesHero}>
-      <div className={`${styles.bgRow} ${styles.bgRowTop}`}>
-        {Array.from({ length: 5 }).map((_, index) => (
-          <span key={index}>OUR Portfolio&nbsp;✦&nbsp;</span>
-        ))}
-      </div>
-      <div className={`${styles.bgRow} ${styles.bgRowBottom}`}>
-        {Array.from({ length: 5 }).map((_, index) => (
-          <span key={index}>&nbsp;✦&nbsp;</span>
-        ))}
-      </div>
-
+    <section id="services" ref={sectionRef} className={styles.servicesHero}>
       <div className={styles.stickyStage}>
         <div className={styles.featureTrack}>
           {features.map((feature, index) => {
@@ -128,7 +117,7 @@ export default function Services() {
                 </div>
                 <div className={styles.cardFooter}>
                   <span>0{index + 1} / 0{features.length}</span>
-                  <ChatIcon />
+                  {/* <ChatIcon /> */}
                 </div>
               </a>
             );
@@ -145,16 +134,3 @@ export default function Services() {
   );
 }
 
-function ChatIcon() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-      <path
-        d="M4 12a8 8 0 1 1 3.2 6.4L4 20l1.3-3.6A7.96 7.96 0 0 1 4 12Z"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
