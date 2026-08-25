@@ -1,9 +1,43 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import BlogStrip from "./BlogStrip";
 
 export default function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const mobileQuery = window.matchMedia("(max-width: 767px)");
+    const startMobileVideo = () => {
+      if (mobileQuery.matches) {
+        video.currentTime = 4;
+      }
+    };
+    const keepMobileVideoCropped = () => {
+      if (mobileQuery.matches && video.duration && video.currentTime < 0.1) {
+        video.currentTime = 4;
+      }
+    };
+
+    video.addEventListener("loadedmetadata", startMobileVideo);
+    video.addEventListener("timeupdate", keepMobileVideoCropped);
+    if (video.readyState >= 1) {
+      startMobileVideo();
+    }
+
+    return () => {
+      video.removeEventListener("loadedmetadata", startMobileVideo);
+      video.removeEventListener("timeupdate", keepMobileVideoCropped);
+    };
+  }, []);
+
   return (
     <section className="relative h-screen min-h-[520px] w-full overflow-hidden bg-black max-[767px]:h-auto max-[767px]:overflow-visible">
       <video
+        ref={videoRef}
         className="hero-video-flip absolute inset-0 h-full w-full object-cover"
         autoPlay
         muted
