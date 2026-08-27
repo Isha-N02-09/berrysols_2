@@ -9,8 +9,13 @@ type LinkItem = {
 };
 
 const links: LinkItem[] = [
-  { label: "Services", href: "#portfolio" },
-  { label: "Portfolio", href: "#services" },
+  { label: "Home", href: "#top" },
+  {
+    label: "Services",
+    href: "#services",
+    children: ["Strategy", "Design", "Development", "Digital Marketing"],
+  },
+  { label: "Portfolio", href: "#portfolio" },
   {
     label: "Industries",
     href: "#industries",
@@ -25,8 +30,8 @@ const links: LinkItem[] = [
       "Cruise Lines",
     ],
   },
-  { label: "About Us", href: "#about" },
   { label: "Blog", href: "#blog" },
+  { label: "About Us", href: "#about" },
 ];
 
 export default function MobileMenu({
@@ -37,6 +42,10 @@ export default function MobileMenu({
   onClose: () => void;
 }) {
   const [expanded, setExpanded] = useState(false);
+  const handleClose = () => {
+    setExpanded(false);
+    onClose();
+  };
 
   return (
     <div
@@ -45,7 +54,7 @@ export default function MobileMenu({
     >
       {/* backdrop */}
       <div
-        onClick={onClose}
+        onClick={handleClose}
         className={`absolute inset-0 bg-black/40 transition-opacity duration-300 ${
           open ? "opacity-100" : "opacity-0"
         }`}
@@ -60,7 +69,7 @@ export default function MobileMenu({
         {/* top bar inside panel */}
         <div className="flex h-[72px] items-center justify-between px-6 md:px-10">
           <button
-            onClick={onClose}
+            onClick={handleClose}
             className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-black transition-colors hover:text-orange-500"
           >
             Close
@@ -69,6 +78,7 @@ export default function MobileMenu({
 
           <a
             href="#contact"
+            onClick={handleClose}
             className="rounded-full bg-gradient-to-r from-orange-400 to-yellow-400 px-5 py-2.5 text-xs font-bold uppercase tracking-[0.15em] text-white"
           >
             Get in touch
@@ -85,7 +95,13 @@ export default function MobileMenu({
               >
                 <a
                   href={link.href}
-                  onClick={(e) => link.children && e.preventDefault()}
+                  onClick={(event) => {
+                    if (link.children) {
+                      event.preventDefault();
+                      return;
+                    }
+                    handleClose();
+                  }}
                   className="text-4xl font-extrabold uppercase leading-tight text-black transition-colors duration-200 group-hover:text-orange-500 sm:text-5xl"
                 >
                   {link.label}

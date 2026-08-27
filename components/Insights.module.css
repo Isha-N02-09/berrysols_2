@@ -1,0 +1,332 @@
+.insightSection {
+  position: relative;
+  display: grid;
+  grid-template-columns: 41% 59%;
+  min-height: 555px;
+  overflow: hidden;
+
+  background: #fffaf6;
+}
+
+.insightSection::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(244, 94, 43, 0.55) 0%,
+    rgba(244, 94, 43, 0.35) 38%,
+    rgba(244, 94, 43, 0.16) 62%,
+    rgba(244, 94, 43, 0.06) 78%,
+    rgba(244, 94, 43, 0) 100%
+  );
+
+  width: 900px;
+  height: 900px;
+
+  border-radius: 50%;
+
+  right: -450px;
+  bottom: -450px;
+
+  filter: blur(24px);
+}
+
+
+/* ================= LEFT ================= */
+
+.leftContent {
+  position: relative;
+  z-index: 2;
+
+  padding: 18px 8px;
+  animation: insights-intro-in .8s cubic-bezier(.22, 1, .36, 1) both;
+}
+
+.eyebrow {
+  display: block;
+
+  margin-bottom: 6px;
+
+  font-size: 11px;
+  letter-spacing: 3px;
+
+  color: #f45e2b;
+}
+
+.leftContent h2 {
+  margin: 0;
+
+  font-size: clamp(38px, 3.7vw, 62px);
+  line-height: 1.1;
+
+  font-weight: 500;
+  letter-spacing: -1.5px;
+
+  color: #ce4111;
+}
+
+.leftContent p {
+  margin: 8px 0 16px;
+
+  font-size: clamp(22px, 2vw, 30px);
+
+  color: #282828;
+}
+
+.leftContent button {
+  border: none;
+
+  padding: 9px 18px;
+
+  border-radius: 30px;
+
+  background: #f45e2b;
+  color: white;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+/* ================= RIGHT SIDE ================= */
+
+.insightsArea {
+  position: relative;
+  z-index: 1;
+
+  height: 555px;
+  width: min(100%, 555px);
+  justify-self: center;
+  overflow: hidden;
+
+  padding-top: 0;
+}
+
+.columns {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+
+  gap: 10px;
+  padding-right: 0;
+  box-sizing: border-box;
+}
+
+
+/* ================= COLUMN ================= */
+
+.column {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+
+  width: 170px;
+  flex-shrink: 0;
+}
+
+
+/* Different vertical positions */
+
+.column1 {
+  margin-top: 45px;
+}
+
+.column2 {
+  margin-top: 8px;
+}
+
+.column3 {
+  margin-top: 0;
+}
+
+
+/* ================= INSIGHT CARD ================= */
+
+.insightCard {
+  position: relative;
+
+  width: 100%;
+  height: 165px;
+
+  overflow: hidden;
+
+  border-radius: 4px;
+
+  background: #111;
+
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.22);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+  animation: insight-card-in .7s cubic-bezier(.22, 1, .36, 1) both;
+}
+
+.column1 .insightCard:nth-child(1) { animation-delay: 100ms; }
+.column1 .insightCard:nth-child(2) { animation-delay: 220ms; }
+.column2 .insightCard:nth-child(1) { animation-delay: 180ms; }
+.column2 .insightCard:nth-child(2) { animation-delay: 300ms; }
+.column2 .insightCard:nth-child(3) { animation-delay: 420ms; }
+.column3 .insightCard:nth-child(1) { animation-delay: 80ms; }
+.column3 .insightCard:nth-child(2) { animation-delay: 200ms; }
+.column3 .insightCard:nth-child(3) { animation-delay: 320ms; }
+
+.insightCard:hover {
+  transform: translateY(-5px) scale(1.02);
+
+  box-shadow:
+    0 12px 25px rgba(0, 0, 0, 0.28);
+}
+
+
+/* Make some boxes taller like screenshot */
+
+.column1 .insightCard:nth-child(2) {
+  height: 195px;
+}
+
+.column2 .insightCard:nth-child(2) {
+  height: 155px;
+}
+
+.column3 .insightCard:nth-child(1) {
+  height: 175px;
+}
+
+.column3 .insightCard:nth-child(2) {
+  height: 165px;
+}
+
+.column3 .insightCard:nth-child(3) {
+  height: 195px;
+}
+
+
+/* ================= IMAGE ================= */
+
+.image {
+  object-fit: cover;
+
+  transition: transform 0.6s ease;
+}
+
+.insightCard:hover .image {
+  transform: scale(1.08);
+}
+
+@keyframes insights-intro-in {
+  from { opacity: 0; transform: translate3d(-24px, 0, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes insight-card-in {
+  from { opacity: 0; transform: translate3d(0, 28px, 0) scale(.96); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+
+/* ================= OVERLAY ================= */
+
+.overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.05) 0%,
+      rgba(0, 0, 0, 0.75) 100%
+    );
+}
+
+
+/* ================= TEXT ================= */
+
+.cardContent {
+  position: absolute;
+  z-index: 2;
+
+  inset: 0;
+
+  padding: 14px;
+
+  color: white;
+}
+
+.cardContent span {
+  display: block;
+
+  margin-bottom: 4px;
+
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.cardContent h3 {
+  margin: 0;
+
+  font-size: 12px;
+  line-height: 1.2;
+
+  font-weight: 400;
+
+  color: rgba(255, 255, 255, 0.9);
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+  .insightSection {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .leftContent {
+    padding: 60px 25px 40px;
+  }
+
+  .insightsArea {
+    height: auto;
+    width: 100%;
+    justify-self: stretch;
+
+    overflow-x: auto;
+
+    padding: 20px 25px 60px;
+  }
+
+  .columns {
+    min-width: max-content;
+    width: max-content;
+    justify-content: flex-start;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .leftContent h2 {
+    font-size: 40px;
+  }
+
+  .column {
+    width: 180px;
+  }
+
+  .insightCard {
+    height: 190px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .leftContent,
+  .insightCard {
+    animation: none;
+  }
+}

@@ -87,8 +87,12 @@ export default function Services() {
   }, []);
 
   return (
-    <section id="services" ref={sectionRef} className={styles.servicesHero}>
+    <section id="portfolio" ref={sectionRef} className={styles.servicesHero}>
       <div className={styles.stickyStage}>
+        <h2 className={styles.portfolioTitle}>
+          <span className={styles.portfolioTitleOur}>Our</span>{" "}
+          <span className={styles.portfolioTitleWord}>Portfolio</span>
+        </h2>
         <div className={styles.featureTrack}>
           {features.map((feature, index) => {
             const offset = index - activeIndex;
@@ -117,14 +121,12 @@ export default function Services() {
                 </div>
                 <div className={styles.cardFooter}>
                   <span>0{index + 1} / 0{features.length}</span>
-                  {/* <ChatIcon /> */}
                 </div>
               </a>
             );
           })}
         </div>
         <div className={styles.copy}>
-          <p className={styles.copyKicker}>OUR Portfolio</p>
           <div className={styles.progress} aria-label={`Feature ${activeIndex + 1} of ${features.length}`}>
             {features.map((feature, index) => <span key={feature.title} data-active={index === activeIndex} />)}
           </div>
@@ -133,4 +135,3 @@ export default function Services() {
     </section>
   );
 }
-
