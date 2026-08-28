@@ -26,6 +26,7 @@ export default function SimpleFooter() {
         <div className="simple-footer-bottom">
           <nav aria-label="Footer navigation">
             <Link href="/about">About</Link>
+            <Link href="/careers">Careers</Link>
             <Link href="/#services">Services</Link>
             <Link href="/#portfolio">Works</Link>
             <Link href="/#contact">Contact</Link>

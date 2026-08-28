@@ -126,11 +126,6 @@ export default function Services() {
             );
           })}
         </div>
-        <div className={styles.copy}>
-          <div className={styles.progress} aria-label={`Feature ${activeIndex + 1} of ${features.length}`}>
-            {features.map((feature, index) => <span key={feature.title} data-active={index === activeIndex} />)}
-          </div>
-        </div>
       </div>
     </section>
   );

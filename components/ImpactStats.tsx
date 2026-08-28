@@ -14,8 +14,16 @@ const locations = [
   { name: "Canada", left: "39%", top: "20%" },
   { name: "Mexico", left: "40%", top: "44%" },
   { name: "Brazil", left: "45%", top: "63%" },
+  { name: "Argentina", left: "43%", top: "76%" },
   { name: "UK", left: "53%", top: "28%" },
   { name: "Germany", left: "56%", top: "36%" },
+  { name: "France", left: "54%", top: "40%" },
+  { name: "Spain", left: "53%", top: "46%" },
+  { name: "Nigeria", left: "57%", top: "55%" },
+  { name: "South Africa", left: "57%", top: "74%" },
+  { name: "United Arab Emirates", left: "66%", top: "48%" },
+  { name: "India", left: "70%", top: "52%" },
+  { name: "Singapore", left: "74%", top: "65%" },
 ];
 
 

@@ -57,54 +57,56 @@ const insightColumns = [
 export default function Insight() {
   return (
     <section className={styles.insightSection}>
-      <div className={styles.leftContent}>
-        <span className={styles.eyebrow}>
-          FEATURED INSIGHTS
-        </span>
+      <div className={styles.inner}>
+        <div className={styles.leftContent}>
+          <span className={styles.eyebrow}>
+            FEATURED INSIGHTS
+          </span>
 
-        <h2>
-          Stories of our transformations across
-          <br />
-          Services and Industries
-        </h2>
+          <h2>
+            Stories of our transformations across
+            <br />
+            Services and Industries
+          </h2>
 
-        <p>From Concept to Completion</p>
+          <p>From Concept to Completion</p>
 
-        <button>Explore More</button>
-      </div>
+          <button>Explore More</button>
+        </div>
 
-      <div className={styles.insightsArea}>
-        <div className={styles.columns}>
-          {insightColumns.map((column, columnIndex) => (
-            <div
-              className={`${styles.column} ${
-                styles[`column${columnIndex + 1}`]
-              }`}
-              key={columnIndex}
-            >
-              {column.map((insight, index) => (
-                <article
-                  className={styles.insightCard}
-                  key={index}
-                >
-                  <Image
-                    src={insight.image}
-                    alt={insight.title}
-                    fill
-                    className={styles.image}
-                  />
+        <div className={styles.insightsArea}>
+          <div className={styles.columns}>
+            {insightColumns.map((column, columnIndex) => (
+              <div
+                className={`${styles.column} ${
+                  styles[`column${columnIndex + 1}`]
+                }`}
+                key={columnIndex}
+              >
+                {column.map((insight, index) => (
+                  <article
+                    className={styles.insightCard}
+                    key={index}
+                  >
+                    <Image
+                      src={insight.image}
+                      alt={insight.title}
+                      fill
+                      className={styles.image}
+                    />
 
-                  <div className={styles.overlay} />
+                    <div className={styles.overlay} />
 
-                  <div className={styles.cardContent}>
-                    <span>{insight.category}</span>
+                    <div className={styles.cardContent}>
+                      <span>{insight.category}</span>
 
-                    <h3>{insight.title}</h3>
-                  </div>
-                </article>
-              ))}
-            </div>
-          ))}
+                      <h3>{insight.title}</h3>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

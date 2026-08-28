@@ -14,6 +14,25 @@
   --line: rgba(23, 20, 16, .14);
   --orange: #f45e2b;
   --gutter: max(6vw, 32px);
+  --surface-white: #ffffff;
+  --surface-strip: #f7f8fa;
+  --surface-warm: #fffaf6;
+  --surface-footer: #fffaf5;
+  --section-blend: 120px;
+}
+
+/* Smooth vertical blends between section background colors. */
+.section-surface {
+  --section-bg: var(--surface-white);
+  --blend-from: var(--section-bg);
+  --blend-to: var(--section-bg);
+  background: linear-gradient(
+    180deg,
+    var(--blend-from) 0%,
+    var(--section-bg) var(--section-blend),
+    var(--section-bg) calc(100% - var(--section-blend)),
+    var(--blend-to) 100%
+  );
 }
 
 * { font-family: poppins; }
@@ -149,9 +168,18 @@ body {
 
 /* ====================== FOOTER ============================= */
 .simple-footer {
+  --section-bg: var(--surface-footer);
+  --blend-from: var(--surface-white);
+  --blend-to: var(--surface-footer);
   position: relative;
   overflow: hidden;
-  background: #fffaf5;
+  background: linear-gradient(
+    180deg,
+    var(--blend-from) 0%,
+    var(--section-bg) var(--section-blend),
+    var(--section-bg) calc(100% - var(--section-blend)),
+    var(--blend-to) 100%
+  );
   padding: 74px 24px 24px;
   color: #171410;
   font-family: inherit;
@@ -197,62 +225,31 @@ body {
 
 /* ====================== TRUST BAND ============================= */
 .trust-band {
-  background: white;
-  padding: 46px 32px;
+  --section-bg: var(--surface-white);
+  --blend-from: var(--surface-white);
+  --blend-to: var(--surface-white);
+  background: linear-gradient(
+    180deg,
+    var(--blend-from) 0%,
+    var(--section-bg) var(--section-blend),
+    var(--section-bg) calc(100% - var(--section-blend)),
+    var(--blend-to) 100%
+  );
+  padding: 48px 0;
   overflow: hidden;
 }
 
-/* LOGO MARQUEE */
 .logo-strip {
-  display: flex;
   position: relative;
   overflow: hidden;
   width: 100%;
-  max-width: none;
-  min-height: 204px;
-  margin: 0 auto;
-  border: 1px solid #d7dadd;
-  background-color: #ffffff;
-  opacity: 1;
-}
-
-.trust-strip-label {
-  position: sticky;
-  left: 0;
-  z-index: 3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 220px;
-  height: 202px;
-  flex: none;
-  padding: 18px 20px;
-  border-right: 1px solid #d7dadd;
-  background: #ffffff;
-  box-shadow: 8px 0 14px rgba(23, 20, 16, .04);
-  color: #ef4f24;
-  font-family: var(--font-poppins);
-  font-size: 17px;
-  font-weight: 700;
-  letter-spacing: -.03em;
-  line-height: 1.35;
 }
 
 .logo-track {
   display: flex;
   align-items: center;
   width: max-content;
-  animation: logo-slide 30s linear infinite;
-}
-
-.trust-band:hover .logo-track {
-  animation-play-state: paused;
-}
-
-@media (hover: none) {
-  .trust-band:hover .logo-track {
-    animation-play-state: running;
-  }
+  animation: logo-slide 35s linear infinite;
 }
 
 .logo-item {
@@ -260,22 +257,14 @@ body {
   align-items: center;
   justify-content: center;
   flex: none;
-  width: 220px;
-  height: 202px;
-  border-left: 1px solid #d7dadd;
-  background-color: #ffffff;
+  padding: 0 48px;
 }
 
 .logo-track-img {
-  height: 108px;
+  height: 56px;
   width: auto;
-  max-width: 220px;
+  max-width: 180px;
   object-fit: contain;
-  transition: transform .25s ease;
-}
-
-.logo-item:hover .logo-track-img {
-  transform: scale(1.06);
 }
 
 @keyframes logo-slide {
@@ -286,34 +275,31 @@ body {
 
 @media (max-width: 640px) {
   .trust-band {
-    padding: 28px 12px;
-  }
-
-  .logo-strip {
-    min-height: 112px;
-  }
-
-  .trust-strip-label {
-    width: 112px;
-    height: 110px;
-    padding: 12px 10px;
-    font-size: 11px;
+    padding: 32px 0;
   }
 
   .logo-item {
-    width: 118px;
-    height: 110px;
+    padding: 0 28px;
   }
 
   .logo-track-img {
-    height: 54px;
-    max-width: 96px;
+    height: 40px;
+    max-width: 120px;
   }
 }
 
 /* ====================== IMPACT STATS ============================= */
 .impact-stats {
-  background: #ffffff;
+  --section-bg: var(--surface-white);
+  --blend-from: var(--surface-white);
+  --blend-to: var(--surface-white);
+  background: linear-gradient(
+    180deg,
+    var(--blend-from) 0%,
+    var(--section-bg) var(--section-blend),
+    var(--section-bg) calc(100% - var(--section-blend)),
+    var(--blend-to) 100%
+  );
   color: #171410;
   overflow: hidden;
   padding: 72px 32px 78px;
@@ -360,9 +346,9 @@ body {
   position: absolute;
   inset: 0;
   width: 100%;
-  height: 100%;
+  height: 112%;
   object-fit: fill;
-  filter: grayscale(1) opacity(.38);
+  filter: grayscale(1) brightness(0) opacity(.38);
   mix-blend-mode: multiply;
 }
 
@@ -395,6 +381,15 @@ body {
 .impact-flag:nth-child(7) { animation-delay: .72s; }
 .impact-flag:nth-child(8) { animation-delay: .84s; }
 .impact-flag:nth-child(9) { animation-delay: .96s; }
+.impact-flag:nth-child(10) { animation-delay: 1.08s; }
+.impact-flag:nth-child(11) { animation-delay: 1.2s; }
+.impact-flag:nth-child(12) { animation-delay: 1.32s; }
+.impact-flag:nth-child(13) { animation-delay: 1.44s; }
+.impact-flag:nth-child(14) { animation-delay: 1.56s; }
+.impact-flag:nth-child(15) { animation-delay: 1.68s; }
+.impact-flag:nth-child(16) { animation-delay: 1.8s; }
+.impact-flag:nth-child(17) { animation-delay: 1.92s; }
+.impact-flag:nth-child(18) { animation-delay: 2.04s; }
 
 @keyframes impact-flag-plant {
   from {
@@ -562,10 +557,19 @@ body {
 
 /* ====================== PROJECT STRIP ============================= */
 .project-strip {
+  --section-bg: var(--surface-strip);
+  --blend-from: var(--surface-white);
+  --blend-to: var(--surface-white);
+  background: linear-gradient(
+    180deg,
+    var(--blend-from) 0%,
+    var(--section-bg) var(--section-blend),
+    var(--section-bg) calc(100% - var(--section-blend)),
+    var(--blend-to) 100%
+  );
   overflow: hidden;
-  border-top: 1px solid #d9dadd;
-  border-bottom: 1px solid #d9dadd;
-  background: #f7f8fa;
+  border-top: 1px solid rgba(217, 218, 221, .45);
+  border-bottom: 1px solid rgba(217, 218, 221, .45);
   color: #080b17;
   padding: 18px 0 22px;
 }
@@ -609,7 +613,16 @@ body {
 
 /* ====================== BERRY CONCEPT ============================= */
 .berry-concept {
-  background: #ffffff;
+  --section-bg: var(--surface-white);
+  --blend-from: var(--surface-white);
+  --blend-to: var(--surface-warm);
+  background: linear-gradient(
+    180deg,
+    var(--blend-from) 0%,
+    var(--section-bg) var(--section-blend),
+    var(--section-bg) calc(100% - var(--section-blend)),
+    var(--blend-to) 100%
+  );
   color: var(--ink);
   padding: 128px 32px 144px;
 }
@@ -887,10 +900,19 @@ body {
 /* $########################################## CONTACT $######################################################3 */
 
 .cta {
+  --section-bg: var(--surface-white);
+  --blend-from: var(--surface-white);
+  --blend-to: var(--surface-footer);
   position: relative;
   overflow: hidden;
   padding: 90px max(5vw, 24px) 80px;
-  background: white;
+  background: linear-gradient(
+    180deg,
+    var(--blend-from) 0%,
+    var(--section-bg) var(--section-blend),
+    var(--section-bg) calc(100% - var(--section-blend)),
+    var(--blend-to) 100%
+  );
 }
 .cta::before {
   content: "";
@@ -1028,21 +1050,30 @@ body {
 /* ############################# REVIEWS ################################# */
 
 .reviews {
+  --section-bg: var(--surface-white);
+  --blend-from: var(--surface-warm);
+  --blend-to: var(--surface-white);
   overflow: hidden;
-  background: var(--void);
-  color: var(--fg);
-  padding: 110px 0 90px;
+  background: linear-gradient(
+    180deg,
+    var(--blend-from) 0%,
+    var(--section-bg) var(--section-blend),
+    var(--section-bg) calc(100% - var(--section-blend)),
+    var(--blend-to) 100%
+  );
+  color: #171410;
+  padding: 72px max(5vw, 28px);
 }
 
 .reviews-head {
   max-width: 640px;
   margin: 0 auto 54px;
-  padding: 0 24px;
+  padding: 0;
   text-align: center;
 }
 
 .reviews-head h2 {
-  font-family: var(--font-geist-sans), Arial, sans-serif;
+  font-family: var(--font-poppins), Poppins, sans-serif;
   font-size: clamp(32px, 4.2vw, 52px);
   font-weight: 700;
   letter-spacing: -0.04em;
@@ -1052,47 +1083,25 @@ body {
 .reviews-head p {
   margin: 16px auto 0;
   max-width: 460px;
-  color: var(--fg-muted);
+  color: #5f5a53;
   font-size: 15px;
   line-height: 1.7;
 }
 
 .reviews-viewport {
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(
-    90deg,
-    transparent,
-    #000 8%,
-    #000 92%,
-    transparent
-  );
-  mask-image: linear-gradient(
-    90deg,
-    transparent,
-    #000 8%,
-    #000 92%,
-    transparent
-  );
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
 }
 
 .reviews-track {
   display: flex;
+  align-items: stretch;
   width: max-content;
   gap: 22px;
-  padding-left: 6vw;
-  animation: reviews-slide 42s linear infinite;
-}
-
-/* Pause animation when mouse is over the reviews section */
-.reviews:hover .reviews-track {
-  animation-play-state: paused;
-}
-
-/* Keep animation running on touch devices */
-@media (hover: none) {
-  .reviews:hover .reviews-track {
-    animation-play-state: running;
-  }
+  animation: reviews-slide 40s linear infinite;
+  will-change: transform;
 }
 
 .review-card {
@@ -1101,9 +1110,9 @@ body {
   padding: 28px 28px 0;
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  border: 1px solid rgba(23, 20, 16, .18);
   border-radius: 14px;
-  background: rgb(251, 251, 251);
+  background: #fbfbfb;
 }
 
 .review-quote {
@@ -1111,7 +1120,7 @@ body {
   flex: 1;
   font-size: 16px;
   line-height: 1.65;
-  color: var(--fg);
+  color: #171410;
 }
 
 .review-card footer {
@@ -1121,7 +1130,7 @@ body {
   gap: 12px;
   margin-top: 22px;
   padding: 16px 0;
-  border-top: 1px solid var(--hair);
+  border-top: 1px solid rgba(23, 20, 16, .12);
 }
 
 .review-avatar {
@@ -1150,7 +1159,7 @@ body {
 .review-card footer small {
   margin-top: 4px;
   font-weight: 400;
-  color: var(--fg-muted);
+  color: #5f5a53;
   font-size: 12px;
 }
 
@@ -1159,15 +1168,10 @@ body {
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.04em;
-  color: var(--fg-soft);
+  color: #3d3934;
 }
 
-/* Infinite horizontal animation */
 @keyframes reviews-slide {
-  from {
-    transform: translateX(0);
-  }
-
   to {
     transform: translateX(-50%);
   }
@@ -1199,7 +1203,7 @@ body {
 /* Mobile */
 @media (max-width: 760px) {
   .reviews {
-    padding: 80px 0 70px;
+    padding: 56px max(5vw, 20px);
   }
 
   .reviews-head {

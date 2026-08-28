@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { ChevronDown, Menu } from "lucide-react";
 import MobileMenu from "./MobileMenu";
@@ -26,12 +27,14 @@ const desktopLinks = [
       "Cruise Lines",
     ],
   },
-  { label: "Blog", href: "#blog" },
-  { label: "About Us", href: "#about" },
+  { label: "Blog", href: "/blog" },
+  { label: "About Us", href: "/about" },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const homeHref = pathname === "/" ? "#top" : "/";
 
   return (
     <>
@@ -50,19 +53,26 @@ export default function Navbar() {
               />
             </span>
             <span className="max-w-0 overflow-hidden whitespace-nowrap text-left font-[Poppins,sans-serif] text-[14px] font-extrabold uppercase leading-[1.05] tracking-[0.08em] text-black opacity-0 transition-all duration-300 group-hover:max-w-[92px] group-hover:whitespace-normal group-hover:opacity-100">
-              Berry<br />Solutions
+              Berry
+              <br />
+              Solutions
             </span>
           </a>
 
-          <nav className="absolute left-[49%] hidden w-max -translate-x-1/2 items-center justify-center gap-7 lg:flex" aria-label="Main navigation">
+          <nav
+            className="absolute left-[49%] hidden w-max -translate-x-1/2 items-center justify-center gap-7 lg:flex"
+            aria-label="Main navigation"
+          >
             {desktopLinks.map((link) => (
               <div key={link.label} className="group relative py-7">
                 <a
-                  href={link.href}
+                  href={link.label === "Home" ? homeHref : link.href}
                   className="flex items-center gap-2 whitespace-nowrap text-[13px] font-medium text-[#111] transition-colors hover:text-[#f45e2b]"
                 >
                   {link.label}
-                  {link.children && <ChevronDown size={15} strokeWidth={2} aria-hidden="true" />}
+                  {link.children && (
+                    <ChevronDown size={15} strokeWidth={2} aria-hidden="true" />
+                  )}
                 </a>
 
                 {link.children && (
@@ -84,7 +94,7 @@ export default function Navbar() {
 
           <div className="flex items-center gap-4">
             <a
-              href="#careers"
+              href="/careers"
               className="hidden rounded-full bg-[#f45e2b] px-5 py-3 text-[13px] font-medium text-white transition-colors hover:bg-[#ce4111] md:inline-flex"
             >
               Explore Careers
@@ -93,7 +103,7 @@ export default function Navbar() {
               href="#contact"
               className="hidden rounded-full border border-[#f45e2b] px-5 py-[11px] text-[13px] font-medium text-[#ce4111] transition-colors hover:bg-[#f45e2b] hover:text-white md:inline-flex"
             >
-              Let&apos;s Talk Business
+              Get In Touch
             </a>
             <button
               onClick={() => setOpen(true)}

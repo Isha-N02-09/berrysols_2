@@ -1,11 +1,29 @@
 .insightSection {
+  --section-bg: var(--surface-warm);
+  --blend-from: var(--surface-white);
+  --blend-to: var(--surface-white);
   position: relative;
-  display: grid;
-  grid-template-columns: 41% 59%;
-  min-height: 555px;
   overflow: hidden;
+  padding: 72px max(5vw, 28px);
+  background: linear-gradient(
+    180deg,
+    var(--blend-from) 0%,
+    var(--section-bg) var(--section-blend),
+    var(--section-bg) calc(100% - var(--section-blend)),
+    var(--blend-to) 100%
+  );
+}
 
-  background: #fffaf6;
+.inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(320px, 1fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
 }
 
 .insightSection::before {
@@ -20,16 +38,13 @@
     rgba(244, 94, 43, 0.06) 78%,
     rgba(244, 94, 43, 0) 100%
   );
-
-  width: 900px;
-  height: 900px;
-
+  width: min(900px, 70vw);
+  height: min(900px, 70vw);
   border-radius: 50%;
-
-  right: -450px;
-  bottom: -450px;
-
+  right: max(-220px, -12vw);
+  bottom: max(-320px, -18vw);
   filter: blur(24px);
+  pointer-events: none;
 }
 
 
@@ -38,8 +53,7 @@
 .leftContent {
   position: relative;
   z-index: 2;
-
-  padding: 18px 8px;
+  padding: 0;
   animation: insights-intro-in .8s cubic-bezier(.22, 1, .36, 1) both;
 }
 
@@ -96,23 +110,17 @@
 .insightsArea {
   position: relative;
   z-index: 1;
-
-  height: 555px;
-  width: min(100%, 555px);
-  justify-self: center;
+  width: 100%;
+  min-height: 555px;
   overflow: hidden;
-
-  padding-top: 0;
 }
 
 .columns {
   display: flex;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-end;
   width: 100%;
-
   gap: 10px;
-  padding-right: 0;
   box-sizing: border-box;
 }
 
@@ -284,29 +292,28 @@
 
 @media (max-width: 900px) {
   .insightSection {
+    padding: 56px max(5vw, 20px);
+  }
+
+  .inner {
     grid-template-columns: 1fr;
-    min-height: 0;
+    gap: 34px;
   }
 
   .leftContent {
-    padding: 60px 25px 40px;
+    padding: 0;
   }
 
   .insightsArea {
-    height: auto;
+    min-height: 0;
     width: 100%;
-    justify-self: stretch;
-
     overflow-x: auto;
-
-    padding: 20px 25px 60px;
   }
 
   .columns {
     min-width: max-content;
     width: max-content;
     justify-content: flex-start;
-    padding-right: 0;
   }
 }
 

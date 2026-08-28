@@ -30,16 +30,14 @@ const clientLogos = [
 ];
 
 export default function TrustBrand() {
+  const logos = [...clientLogos, ...clientLogos];
+
   return (
     <section className="trust-band">
       <div className="logo-strip" aria-label="Trusted brands">
-        <div className="trust-strip-label">// WE&apos;VE<br />TRUSTED BY</div>
         <div className="logo-track">
-          {[...clientLogos, ...clientLogos].map((logo, i) => (
-            <div
-              className="logo-item"
-              key={logo.name + i}
-            >
+          {logos.map((logo, i) => (
+            <div className="logo-item" key={logo.name + i}>
               <img
                 src={logo.src}
                 alt={logo.name}

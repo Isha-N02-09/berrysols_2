@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 type LinkItem = {
@@ -32,6 +33,7 @@ const links: LinkItem[] = [
   },
   { label: "Blog", href: "#blog" },
   { label: "About Us", href: "#about" },
+  { label: "Careers", href: "/careers" },
 ];
 
 export default function MobileMenu({
@@ -42,6 +44,8 @@ export default function MobileMenu({
   onClose: () => void;
 }) {
   const [expanded, setExpanded] = useState(false);
+  const pathname = usePathname();
+  const homeHref = pathname === "/" ? "#top" : "/";
   const handleClose = () => {
     setExpanded(false);
     onClose();
@@ -94,7 +98,7 @@ export default function MobileMenu({
                 onClick={() => link.children && setExpanded((v) => !v)}
               >
                 <a
-                  href={link.href}
+                  href={link.label === "Home" ? homeHref : link.href}
                   onClick={(event) => {
                     if (link.children) {
                       event.preventDefault();

@@ -1,7 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 .root {
-  background: #ffffff;
+  --section-bg: var(--surface-white);
+  --blend-from: var(--surface-white);
+  --blend-to: var(--surface-white);
+  background: linear-gradient(
+    180deg,
+    var(--blend-from) 0%,
+    var(--section-bg) var(--section-blend),
+    var(--section-bg) calc(100% - var(--section-blend)),
+    var(--blend-to) 100%
+  );
   color: #171410;
   font-family: "Poppins", sans-serif;
   padding: 48px max(5vw, 28px) 72px;
@@ -23,12 +32,6 @@
   margin: 0;
 }
 
-.header span {
-  font-size: .8rem;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
 .carousel {
   position: relative;
   max-width: 1320px;
@@ -37,8 +40,7 @@
 
 .cardsViewport {
   overflow: hidden;
-  padding: 0 40px;
-  perspective: 1000px;
+  padding: 28px 40px;
 }
 
 .cardsGrid {
@@ -53,41 +55,39 @@
 
 .card {
   position: relative;
-  min-height: 440px;
+  z-index: 1;
+  min-height: 410px;
   overflow: hidden;
   background: #fff;
+  border: 1px solid rgba(23, 20, 16, .2);
   border-radius: 14px;
-  box-shadow: 0 18px 42px rgba(54, 26, 55, .1);
   transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
   transform-style: preserve-3d;
-  transition: transform .15s ease, box-shadow .25s ease;
+  transition: transform .28s cubic-bezier(.22, 1, .36, 1), box-shadow .28s ease;
   will-change: transform;
   cursor: pointer;
 }
 
 .card:hover {
-  transform: perspective(900px) translateY(-8px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
-  box-shadow: 0 24px 48px rgba(244, 94, 43, .2);
+  z-index: 3;
+  transform: perspective(900px) scale(1.045) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
 }
 
-.activeCard {
-  transform: perspective(900px) translateY(-4px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
-  box-shadow: 0 18px 42px rgba(54, 26, 55, .1);
-}
+
 
 .cardCopy {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   min-height: 300px;
-  padding: 106px 34px 34px;
+  padding: 154px 34px 34px;
 }
 
 .cardCenterIcon {
   position: absolute;
-  top: 24px;
+  top: 36px;
   left: 50%;
   z-index: 2;
   display: flex;
@@ -118,10 +118,13 @@
 }
 
 .cardIndex {
-  align-self: flex-end;
+  align-self: center;
+  width: 100%;
+  margin-bottom: 8px;
   color: #f45e2b;
   font-size: .75rem;
   font-weight: 700;
+  text-align: center;
 }
 
 .card h3 {
@@ -158,18 +161,15 @@
 
 .cardVisual {
   position: absolute;
-  right: -12%;
-  bottom: -18%;
-  left: -12%;
-  height: 48%;
-  width: 124%;
+  right: 0;
+  bottom: -2%;
+  left: 0;
+  z-index: 1;
+  height: 38%;
+  width: 100%;
   object-fit: cover;
-  transform: rotate(-5deg);
 }
 
-.coral .cardVisual { transform: rotate(7deg) scale(1.1); }
-.amber .cardVisual { transform: rotate(-8deg) scale(1.12); }
-.orangeLight .cardVisual { transform: rotate(5deg) scale(1.08); }
 
 .navButton {
   position: absolute;
@@ -210,14 +210,13 @@
     transform: translateX(calc(var(--active-index) * -1 * (50% + 10px)));
   }
   .header { margin-bottom: 28px; }
-  .header span { display: none; }
-  .card { min-height: 400px; }
-  .cardCopy { padding: 94px 28px 28px; }
+  .card { min-height: 380px; }
+  .cardCopy { padding: 136px 28px 28px; }
 }
 
 @media (max-width: 560px) {
   .root { padding: 36px 18px 54px; }
-  .cardsViewport { padding: 0 30px; }
+  .cardsViewport { padding: 24px 30px; }
   .cardsGrid {
     grid-auto-columns: 100%;
     transform: translateX(calc(var(--active-index) * -1 * (100% + 20px)));
@@ -225,6 +224,6 @@
   .navButton { width: 38px; height: 38px; }
   .navButton:first-child { left: -10px; }
   .navButton:last-child { right: -10px; }
-  .card { min-height: 370px; }
-  .cardCopy { padding: 86px 24px 24px; }
+  .card { min-height: 350px; }
+  .cardCopy { padding: 126px 24px 24px; }
 }

@@ -1,8 +1,17 @@
 .servicesHero {
+  --section-bg: var(--surface-white);
+  --blend-from: var(--surface-strip);
+  --blend-to: var(--surface-white);
   position: relative;
   min-height: 700vh;
   overflow: clip;
-  background: #fff;
+  background: linear-gradient(
+    180deg,
+    var(--blend-from) 0%,
+    var(--section-bg) var(--section-blend),
+    var(--section-bg) calc(100% - var(--section-blend)),
+    var(--blend-to) 100%
+  );
   color: #171410;
   font-family: "Poppins", sans-serif;
 }
@@ -147,27 +156,6 @@
 .visualLines i:first-child { width: 70px; background: #fff; }
 .cardFooter svg { width: 22px; height: 22px; color: #fff; }
 
-.copy {
-  position: absolute;
-  z-index: 4;
-  bottom: 4vh;
-  width: min(570px, calc(100vw - 48px));
-  text-align: center;
-}
-
-.progress {
-  position: fixed;
-  top: 50%;
-  right: 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-  transform: translateY(-50%);
-}
-
-.progress span { width: 7px; height: 3px; background: #eadfd8; transition: height .35s ease, background .35s ease; }
-.progress span[data-active="true"] { height: 22px; background: #f45e2b; }
-
 @media (max-width: 600px) {
   .stickyStage { padding: 38px 16px 48px; }
   .portfolioTitle { top: 76px; font-size: 30px; }
@@ -175,12 +163,8 @@
   .featureCard { width: min(230px, 62vw); aspect-ratio: 1; padding: 16px; border-radius: 18px; transform: translate3d(calc(-50% + var(--offset) * 122%), calc(-50% + abs(var(--offset)) * 24px), 0) rotateZ(calc(var(--offset) * 20deg)) scale(calc(1 - abs(var(--offset)) * .14)); }
   .cardVisual { min-height: 160px; padding: 20px; }
   .cardCopy { top: calc(min(230px, 62vw) + 12px); }
-  .copy { bottom: 5vh; }
-  .progress { right: 10px; }
-  .progress span { width: 5px; }
-  .progress span[data-active="true"] { width: 5px; height: 18px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .featureCard, .progress span { transition: none; }
+  .featureCard { transition: none; }
 }

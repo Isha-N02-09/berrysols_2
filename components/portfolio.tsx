@@ -63,7 +63,6 @@ export default function ServicesShowcase() {
     <section id="portfolio" className={styles.root}>
       <div className={styles.header}>
         <h2>Our services</h2>
-        <span>Explore our capabilities</span>
       </div>
 
       <div className={styles.carousel}>
