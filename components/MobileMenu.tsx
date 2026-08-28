@@ -66,7 +66,7 @@ export default function MobileMenu({
 
       {/* panel — one side, white bg */}
       <div
-        className={`absolute right-0 top-0 h-full w-full overflow-y-auto bg-white shadow-2xl transition-transform duration-500 ease-out sm:w-[440px] ${
+        className={`navbar-font absolute right-0 top-0 h-full w-full overflow-y-auto bg-white leading-[1.5] shadow-2xl transition-transform duration-500 ease-out sm:w-[440px] ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >

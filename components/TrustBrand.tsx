@@ -43,6 +43,7 @@ export default function TrustBrand() {
                 alt={logo.name}
                 className="logo-track-img"
               />
+              <span className="logo-name">{logo.name}</span>
             </div>
           ))}
         </div>

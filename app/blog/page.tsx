@@ -3,6 +3,7 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import SimpleFooter from "@/components/Footer";
 import { blogPosts } from "@/lib/blog";
+import BlogHero from "./BlogHero";
 
 export const metadata: Metadata = {
   title: "Blog | Berry Solutions",
@@ -13,11 +14,13 @@ export default function BlogPage() {
   return (
     <main className="min-h-screen bg-[#fffaf5] text-[#171410]">
       <Navbar />
-      <header className="px-6 pb-16 pt-36 lg:px-[8vw] lg:pb-24 lg:pt-48">
-        <p className="mb-5 text-xs font-semibold uppercase tracking-[0.28em] text-[#f45e2b]">Berry Solutions / Journal</p>
-        <h1 className="max-w-4xl text-5xl font-medium leading-[0.98] tracking-[-0.04em] text-[#ce4111] md:text-7xl lg:text-8xl">Ideas that move businesses forward.</h1>
-        <p className="mt-8 max-w-xl text-lg leading-8 text-[#756f65]">Perspectives on technology, digital growth, and the decisions that turn a good idea into useful work.</p>
-      </header>
+      <BlogHero>
+        <header className="px-6 pb-16 pt-36 lg:px-[8vw] lg:pb-24 lg:pt-48">
+          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.28em] text-[#f45e2b]">Berry Solutions / Journal</p>
+          <h1 className="max-w-4xl text-5xl font-medium leading-[0.98] tracking-[-0.04em] text-[#ce4111] md:text-7xl lg:text-8xl">Ideas that move businesses forward.</h1>
+          <p className="mt-8 max-w-xl text-lg leading-8 text-[#756f65]">Perspectives on technology, digital growth, and the decisions that turn a good idea into useful work.</p>
+        </header>
+      </BlogHero>
 
       <section className="border-t border-black/10 px-6 py-14 lg:px-[8vw] lg:py-20" aria-label="Blog posts">
         <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-3">

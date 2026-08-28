@@ -38,7 +38,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="fixed left-0 top-0 z-50 w-full border-b border-black/5 bg-white">
+      <header className="navbar-font fixed left-0 top-0 z-50 w-full border-b border-black/5 bg-white text-[13px] leading-[1.5]">
         <div className="flex h-[74px] w-full items-center justify-between px-[26px] lg:px-[48px]">
           <a
             href="/"
