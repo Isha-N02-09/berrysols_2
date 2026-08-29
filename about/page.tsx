@@ -7,6 +7,8 @@ import { BarChart3, Bot, MessageCircle, Zap } from "lucide-react";
 import SimpleFooter from "../components/Footer";
 import Navbar from "../components/Navbar";
 import ContactFlow from "../components/ContactFlow";
+import RoadReveal from "./components/RoadReveal";
+import HeroCoach from "./components/HeroCoach";
 const TEAM = [
   {
     name: "Ahmed Mehmood",
@@ -172,6 +174,7 @@ export default function AboutPage() {
       if (!stepsWrap || !fillLine) return;
 
       const rect = stepsWrap.getBoundingClientRect();
+      const steps = stepsWrap.querySelectorAll<HTMLElement>(".step");
 
       const progressed = Math.min(
         Math.max(
@@ -182,6 +185,24 @@ export default function AboutPage() {
       );
 
       fillLine.style.height = progressed * 100 + "%";
+
+      steps.forEach((step, idx) => {
+        const stepRect = step.getBoundingClientRect();
+        const center = stepRect.top + stepRect.height / 2;
+        const travel = window.innerHeight * 0.72 - center;
+        const distance = Math.abs(travel) / (window.innerHeight * 0.65);
+
+        step.classList.toggle("active", distance < 0.9);
+        step.style.setProperty("--pulse", String(1 - Math.min(distance, 1)));
+
+        if (idx < steps.length - 1) {
+          const next = steps[idx + 1];
+          const nextRect = next.getBoundingClientRect();
+          const nextCenter = nextRect.top + nextRect.height / 2;
+          const linkGlow = Math.max(0, 1 - Math.abs((center + nextCenter) / 2 - window.innerHeight * 0.62) / (window.innerHeight * 0.42));
+          next.style.setProperty("--link-glow", String(linkGlow));
+        }
+      });
     }
 
     document.addEventListener("scroll", onScrollSteps, {
@@ -369,6 +390,7 @@ export default function AboutPage() {
 
       <main>
         <Navbar />
+       
         <div id="clarity-bar" ref={barRef} />
 
         <div className="bg-layer" />
@@ -439,18 +461,10 @@ export default function AboutPage() {
             </div>
 
             <div className="story-copy">
-              <div className="milestones reveal-stagger">
-                <svg className="milestone-road" viewBox="10 0 500 1100" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-                  <path className="road-shadow" d="M 120 1030 L 120 940 Q 120 870 190 870 L 350 870 Q 420 870 420 800 L 420 710 Q 420 640 350 640 L 170 640 Q 100 640 100 570 L 100 480 Q 100 410 170 410 L 330 410 Q 400 410 400 340 L 400 250 Q 400 180 330 180 L 180 180 Q 110 180 110 110 L 110 40" />
-                  <path className="road-main" d="M 120 1030 L 120 940 Q 120 870 190 870 L 350 870 Q 420 870 420 800 L 420 710 Q 420 640 350 640 L 170 640 Q 100 640 100 570 L 100 480 Q 100 410 170 410 L 330 410 Q 400 410 400 340 L 400 250 Q 400 180 330 180 L 180 180 Q 110 180 110 110 L 110 40" />
-                  <path className="road-dashes" d="M 120 1030 L 120 940 Q 120 870 190 870 L 350 870 Q 420 870 420 800 L 420 710 Q 420 640 350 640 L 170 640 Q 100 640 100 570 L 100 480 Q 100 410 170 410 L 330 410 Q 400 410 400 340 L 400 250 Q 400 180 330 180 L 180 180 Q 110 180 110 110 L 110 40" />
-                  <g className="road-pin pin-1" transform="translate(120 950)"><circle cx="0" cy="-8" r="16" /><path d="M0 30 C-12 15 -20 5 -20 -8 A20 20 0 1 1 20 -8 C20 5 12 15 0 30Z" /><circle className="pin-hole" cx="0" cy="-8" r="6" /></g>
-                  <g className="road-pin pin-2" transform="translate(420 760)"><circle cx="0" cy="-8" r="16" /><path d="M0 30 C-12 15 -20 5 -20 -8 A20 20 0 1 1 20 -8 C20 5 12 15 0 30Z" /><circle className="pin-hole" cx="0" cy="-8" r="6" /></g>
-                  <g className="road-pin pin-3" transform="translate(110 550)"><circle cx="0" cy="-8" r="16" /><path d="M0 30 C-12 15 -20 5 -20 -8 A20 20 0 1 1 20 -8 C20 5 12 15 0 30Z" /><circle className="pin-hole" cx="0" cy="-8" r="6" /></g>
-                  <g className="road-pin pin-4" transform="translate(400 320)"><circle cx="0" cy="-8" r="16" /><path d="M0 30 C-12 15 -20 5 -20 -8 A20 20 0 1 1 20 -8 C20 5 12 15 0 30Z" /><circle className="pin-hole" cx="0" cy="-8" r="6" /></g>
-                  <g className="road-pin pin-5" transform="translate(180 180)"><circle cx="0" cy="-8" r="16" /><path d="M0 30 C-12 15 -20 5 -20 -8 A20 20 0 1 1 20 -8 C20 5 12 15 0 30Z" /><circle className="pin-hole" cx="0" cy="-8" r="6" /></g>
-                  <g className="road-pin pin-6" transform="translate(110 70)"><circle cx="0" cy="-8" r="16" /><path d="M0 30 C-12 15 -20 5 -20 -8 A20 20 0 1 1 20 -8 C20 5 12 15 0 30Z" /><circle className="pin-hole" cx="0" cy="-8" r="6" /></g>
-                </svg>
+              <RoadReveal
+                className="milestones-road"
+                contentClassName="milestones reveal-stagger"
+              >
                 <article className="milestone">
                   <div className="milestone-year">2021</div>
                   <div className="milestone-card">
@@ -493,60 +507,120 @@ export default function AboutPage() {
                     <p>We are still asking the same question: how can this work better?</p>
                   </div>
                 </article>
-              </div>
+              </RoadReveal>
             </div>
           </div>
         </section>
 
-        {/* ===================== CEO ===================== */}
-        <section className="section ceo-section">
-          <div className="wrap">
-
-            <div className="section-head reveal">
-              <span className="eyebrow">
-                The person behind the question
+        {/* ===================== APPROACH ===================== */}
+        <section className="section workflow-section">
+          <div className="wrap workflow-grid">
+            <div className="workflow-copy reveal">
+              <span className="eyebrow workflow-eyebrow">
+                OUR WORKFLOW
               </span>
 
-              <h2>Founder &amp; CEO</h2>
+              <h2>
+                THIS IS HOW WE APPROACH
+                <span>EVERY SINGLE PROJECT</span>
+              </h2>
+
+              <p>
+                At Berry Solutions, we believe successful projects start with clarity and end with measurable impact. With over 10 years of experience in IT services, our process ensures efficiency, transparency, and results that exceed expectations for businesses worldwide.
+              </p>
+
+              <a href="/portfolio" className="workflow-cta">
+                VIEW ALL PORTFOLIO
+              </a>
             </div>
 
-            <div className="ceo-panel reveal">
-              <div className="ceo-photo-slot">
-                <span className="placeholder-txt">
-                  Photo
-                  <br />
-                  coming soon
-                </span>
-              </div>
-
-              <div className="ceo-text">
-                <h2>Ahsan Mehmood</h2>
-
-                <div className="role">
-                  Founder &amp; CEO, BerrySols
+            <div className="workflow-column">
+              <div className="workflow-list">
+                <div className="workflow-item reveal">
+                  <div className="workflow-icon" aria-hidden="true">
+                    <span className="workflow-mark">◼</span>
+                  </div>
+                  <div className="workflow-content">
+                    <h3>
+                      <a href="https://berrysols.com/services/technology-services-introduction/">
+                        Introduction
+                      </a>
+                    </h3>
+                    <p>
+                      Berry Solutions helps businesses grow with innovative technology services tailored to their unique needs. From IT support to digital transformation, we keep you ahead in the digital world.
+                    </p>
+                  </div>
                 </div>
 
-                <p className="quote">
-                  &quot;I&apos;ve never been interested in
-                  technology for its own sake. I&apos;m
-                  interested in the moment a business owner
-                  stops firefighting and starts
-                  building.&quot;
-                </p>
+                <div className="workflow-item reveal">
+                  <div className="workflow-icon" aria-hidden="true">
+                    <span className="workflow-mark">◫</span>
+                  </div>
+                  <div className="workflow-content">
+                    <h3>
+                      <a href="https://berrysols.com/services/it-strategy-consulting/">
+                        IT Strategy Consulting
+                      </a>
+                    </h3>
+                    <p>
+                      IT strategy consulting helps businesses align technology with long-term goals, driving growth and efficiency.
+                    </p>
+                  </div>
+                </div>
 
-                <p className="bio">
-                  Started BerrySols after watching too many
-                  good businesses get held together by sheer
-                  effort instead of good systems — and still
-                  runs every project on the same instinct:
-                  understand the real problem first.
-                </p>
+                <div className="workflow-item reveal">
+                  <div className="workflow-icon" aria-hidden="true">
+                    <span className="workflow-mark">◌</span>
+                  </div>
+                  <div className="workflow-content">
+                    <h3>
+                      <a href="https://berrysols.com/services/meeting/">
+                        Meeting
+                      </a>
+                    </h3>
+                    <p>
+                      It’s not just a discussion, it’s the starting point for creating strategies that drive real business growth.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="workflow-item reveal">
+                  <div className="workflow-icon" aria-hidden="true">
+                    <span className="workflow-mark">▣</span>
+                  </div>
+                  <div className="workflow-content">
+                    <h3>
+                      <a href="https://berrysols.com/services/business-goals-and-kpis/">
+                        Business Goals and KPIs
+                      </a>
+                    </h3>
+                    <p>
+                      Business Goals and KPIs help organizations set clear objectives and measure progress effectively. Goals define where you want to go, while KPIs track how well you’re getting there.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="workflow-item reveal">
+                  <div className="workflow-icon" aria-hidden="true">
+                    <span className="workflow-mark">◍</span>
+                  </div>
+                  <div className="workflow-content">
+                    <h3>
+                      <a href="https://berrysols.com/services/scope-of-work/">
+                        Scope of work
+                      </a>
+                    </h3>
+                    <p>
+                      Berry Solutions creates clear, detailed Scope of Work (SOW) documents that align vision, define deliverables, and ensure flawless project execution from start to finish.
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
 
+            </div>
           </div>
         </section>
-
+ <HeroCoach />
         {/* ===================== TEAM ===================== */}
         <section className="section family-section">
           <div className="wrap">
@@ -606,98 +680,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* ===================== APPROACH ===================== */}
-        <section className="section">
-          <div className="wrap">
-
-            <div className="section-head reveal">
-              <span className="eyebrow">
-                How we approach a project
-              </span>
-
-              <h2>
-                Every engagement follows the same instinct
-              </h2>
-
-              <p>
-                No two clients need the same system. But
-                every project moves through the same four
-                stages, in the same order, for the same
-                reason: understanding has to come before
-                building.
-              </p>
-            </div>
-
-            <div className="steps" ref={stepsWrapRef}>
-              <div
-                className="fill-line"
-                ref={fillLineRef}
-              />
-
-              <div className="step">
-                <div className="num">01</div>
-
-                <div>
-                  <h3>Listen</h3>
-
-                  <p>
-                    Before any proposal, we sit with how the
-                    work actually happens today — the
-                    workarounds, the spreadsheets, the steps
-                    nobody wrote down. Not the org chart
-                    version. The real one.
-                  </p>
-                </div>
-              </div>
-
-              <div className="step">
-                <div className="num">02</div>
-
-                <div>
-                  <h3>Understand</h3>
-
-                  <p>
-                    We map where time and information get
-                    lost, and separate what&apos;s genuinely
-                    complex from what&apos;s just been
-                    complicated for years out of habit.
-                  </p>
-                </div>
-              </div>
-
-              <div className="step">
-                <div className="num">03</div>
-
-                <div>
-                  <h3>Build</h3>
-
-                  <p>
-                    We design the system around the people
-                    who&apos;ll use it, not the other way
-                    around — website, operations platform,
-                    or AI workflow.
-                  </p>
-                </div>
-              </div>
-
-              <div className="step">
-                <div className="num">04</div>
-
-                <div>
-                  <h3>Grow</h3>
-
-                  <p>
-                    We build for what comes next, not just
-                    what&apos;s needed today, so the system
-                    can scale with the business.
-                  </p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </section>
-
+       
         {/* ===================== CONTACT ===================== */}
         <ContactFlow />
 

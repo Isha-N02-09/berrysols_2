@@ -2,39 +2,15 @@
 
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { services } from "@/data/services";
+
+type DropdownItem = { label: string; href: string };
 
 type LinkItem = {
   label: string;
   href: string;
-  children?: string[];
+  children?: Array<DropdownItem | string>;
 };
-
-const links: LinkItem[] = [
-  { label: "Home", href: "#top" },
-  {
-    label: "Services",
-    href: "#services",
-    children: ["Strategy", "Design", "Development", "Digital Marketing"],
-  },
-  { label: "Portfolio", href: "#portfolio" },
-  {
-    label: "Industries",
-    href: "#industries",
-    children: [
-      "Fintech",
-      "Real Estate",
-      "Education",
-      "Retail",
-      "Hotels & Restaurants",
-      "Healthcare",
-      "Airlines",
-      "Cruise Lines",
-    ],
-  },
-  { label: "Blog", href: "#blog" },
-  { label: "About Us", href: "#about" },
-  { label: "Careers", href: "/careers" },
-];
 
 export default function MobileMenu({
   open,
@@ -46,6 +22,38 @@ export default function MobileMenu({
   const [expanded, setExpanded] = useState(false);
   const pathname = usePathname();
   const homeHref = pathname === "/" ? "#top" : "/";
+
+  const serviceDropdownItems: DropdownItem[] = services.map((service) => ({
+    label: service.eyebrow.charAt(0) + service.eyebrow.slice(1).toLowerCase(),
+    href: `/services/${service.slug}`,
+  }));
+
+  const links: LinkItem[] = [
+    { label: "Home", href: homeHref },
+    {
+      label: "Services",
+      href: "/services",
+      children: serviceDropdownItems,
+    },
+    { label: "Portfolio", href: "/#portfolio" },
+    {
+      label: "Industries",
+      href: "#industries",
+      children: [
+        "Fintech",
+        "Real Estate",
+        "Education",
+        "Retail",
+        "Hotels & Restaurants",
+        "Healthcare",
+        "Airlines",
+        "Cruise Lines",
+      ],
+    },
+    { label: "Blog", href: "/blog" },
+    { label: "About Us", href: "/about" },
+    { label: "Careers", href: "/careers" },
+  ];
   const handleClose = () => {
     setExpanded(false);
     onClose();
@@ -128,16 +136,20 @@ export default function MobileMenu({
                   }`}
                 >
                   <ul className="flex flex-col gap-3 overflow-hidden pl-1">
-                    {link.children.map((child) => (
-                      <li key={child}>
-                        <a
-                          href="#"
-                          className="text-base font-medium text-black/60 transition-colors hover:text-orange-500"
-                        >
-                          {child}
-                        </a>
-                      </li>
-                    ))}
+                    {link.children.map((child) => {
+                      const item = typeof child === "string" ? { label: child, href: link.href } : child;
+
+                      return (
+                        <li key={item.href + item.label}>
+                          <a
+                            href={item.href}
+                            className="text-base font-medium text-black/60 transition-colors hover:text-orange-500"
+                          >
+                            {item.label}
+                          </a>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               )}

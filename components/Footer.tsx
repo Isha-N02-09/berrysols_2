@@ -27,7 +27,7 @@ export default function SimpleFooter() {
           <nav aria-label="Footer navigation">
             <Link href="/about">About</Link>
             <Link href="/careers">Careers</Link>
-            <Link href="/#services">Services</Link>
+            <Link href="/services">Services</Link>
             <Link href="/#portfolio">Works</Link>
             <Link href="/#contact">Contact</Link>
           </nav>

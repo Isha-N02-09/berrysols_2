@@ -1,13 +1,22 @@
+import {
+  Building2,
+  BriefcaseBusiness,
+  GraduationCap,
+  Landmark,
+  ShoppingBag,
+  Smartphone,
+  UtensilsCrossed,
+} from "lucide-react";
 import styles from "./Industries.module.css";
 
 const industries = [
-  "Hospitality",
-  "Communications",
-  "Banking & Financial Services",
-  "Fintech",
-  "Real Estate",
-  "Education",
-  "Retail",
+  { name: "Hospitality", icon: UtensilsCrossed },
+  { name: "Communications", icon: Smartphone },
+  { name: "Banking & Financial Services", icon: Landmark },
+  { name: "Fintech", icon: BriefcaseBusiness },
+  { name: "Real Estate", icon: Building2 },
+  { name: "Education", icon: GraduationCap },
+  { name: "Retail", icon: ShoppingBag },
 ];
 
 const rollingIndustries = [...industries, ...industries];
@@ -24,14 +33,21 @@ export default function Industries() {
           <div className={styles.industryDisplay}>
             <div className={styles.industryWindow} aria-label="Industries we serve">
               <div className={styles.industryTrack}>
-                {rollingIndustries.map((industry, index) => (
-                  <span
-                    className={styles.industryName}
-                    key={`${industry}-${index}`}
-                  >
-                    {industry}
-                  </span>
-                ))}
+                {rollingIndustries.map((industry, index) => {
+                  const Icon = industry.icon;
+
+                  return (
+                    <span
+                      className={styles.industryName}
+                      key={`${industry.name}-${index}`}
+                    >
+                      <span className={styles.industryIcon} aria-hidden="true">
+                        <Icon size={12} strokeWidth={1.9} />
+                      </span>
+                      {industry.name}
+                    </span>
+                  );
+                })}
               </div>
             </div>
           </div>
