@@ -1,0 +1,116 @@
+.roadReveal {
+  position: relative;
+}
+
+.roadReveal__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.roadReveal__base {
+  fill: none;
+  stroke: #0a0a0a; /* the road itself — black */
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.roadReveal__dash {
+  fill: none;
+  stroke: #f2ecdd; /* center line — light, so it reads against the black */
+  stroke-linecap: round;
+  opacity: 0.9;
+}
+
+.roadReveal__content {
+  position: relative;
+  z-index: 1;
+}
+.milestones-road {
+  position: relative;
+}
+
+.milestones {
+  display: flex;
+  flex-direction: column;
+  gap: 110px;
+  padding: 20px 0 100px;
+}
+
+.milestone {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  max-width: 520px;
+  width: 100%;
+}
+
+.milestone:nth-child(odd) {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.milestone:nth-child(even) {
+  margin-left: auto;
+  margin-right: 0;
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.milestone-year {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFB020;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.milestone-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px 28px;
+  box-shadow: 0 16px 40px rgba(10, 10, 10, 0.1);
+}
+
+.milestone-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.3rem;
+}
+
+.milestone-card p {
+  margin: 0;
+  color: #4a463d;
+  line-height: 1.5;
+}
+
+.milestones.reveal-stagger .milestone {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.milestones.reveal-stagger.in .milestone {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.milestones.reveal-stagger .milestone:nth-child(2) { transition-delay: 0.08s; }
+.milestones.reveal-stagger .milestone:nth-child(3) { transition-delay: 0.16s; }
+.milestones.reveal-stagger .milestone:nth-child(4) { transition-delay: 0.24s; }
+.milestones.reveal-stagger .milestone:nth-child(5) { transition-delay: 0.32s; }
+.milestones.reveal-stagger .milestone:nth-child(6) { transition-delay: 0.4s; }
+
+@media (max-width: 640px) {
+  .milestone,
+  .milestone:nth-child(even) {
+    flex-direction: column;
+    text-align: left;
+    max-width: 100%;
+  }
+  .milestones { gap: 60px; }
+}

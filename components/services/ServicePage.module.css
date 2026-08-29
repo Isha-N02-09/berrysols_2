@@ -1,0 +1,312 @@
+.section {
+  padding: 96px 0;
+  font-family: var(--font-display), "Poppins", sans-serif;
+}
+
+.section + .section {
+  border-top: 1px solid var(--line);
+}
+
+.hero,
+.heroTitle,
+.heroDesc,
+.sectionHead,
+.flowRow,
+.flowStep,
+.flowLabel,
+.capCard,
+.capCard h3,
+.capCard p,
+.industryPill,
+.techGroup,
+.techItem,
+.caseCard,
+.caseCard h3,
+.caseCard p,
+.ctaSection,
+.ctaSection h2 {
+  font-family: var(--font-display), "Poppins", sans-serif;
+}
+
+/* Hero */
+.hero {
+  padding: 64px 0 80px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.heroTitle {
+  font-size: clamp(40px, 5.4vw, 72px);
+  margin-top: 18px;
+}
+
+.heroDesc {
+  margin-top: 24px;
+  font-size: 18px;
+  line-height: 1.55;
+  max-width: 46ch;
+}
+
+.heroActions {
+  margin-top: 36px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.heroVisual {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+  }
+  .heroVisual {
+    order: -1;
+  }
+}
+
+/* Approach */
+.approach {
+  background: var(--soft);
+}
+
+.sectionHead {
+  max-width: 640px;
+  margin-bottom: 56px;
+}
+
+.sectionHead h2 {
+  font-size: clamp(28px, 3.4vw, 42px);
+  margin-top: 14px;
+}
+
+.flowRow {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+.flowStep {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.flowNum {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--orange);
+  font-weight: 700;
+}
+
+.flowLabel {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(18px, 2.4vw, 26px);
+  letter-spacing: -0.01em;
+}
+
+.flowArrow {
+  margin: 0 28px;
+  color: var(--line);
+  font-size: 22px;
+}
+
+@media (max-width: 700px) {
+  .flowRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .flowArrow {
+    display: none;
+  }
+}
+
+/* Capabilities */
+.capGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.capCard {
+  background: var(--paper);
+  padding: 40px;
+  transition: background 0.2s ease;
+}
+
+.capCard:hover {
+  background: var(--soft);
+}
+
+.capNum {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--orange);
+  font-weight: 700;
+}
+
+.capCard h3 {
+  font-size: 21px;
+  margin-top: 18px;
+  font-weight: 700;
+}
+
+.capCard p {
+  margin-top: 12px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+@media (max-width: 700px) {
+  .capGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Industries */
+.industryRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.industryPill {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 12px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.industryPill:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+/* Tech stack */
+.techGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.techGroup h4 {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.techItem {
+  font-size: 17px;
+  font-weight: 600;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+@media (max-width: 700px) {
+  .techGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+/* Case studies */
+.caseGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.caseCard {
+  border: 1px solid var(--line);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  min-height: 220px;
+}
+
+.caseTag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--orange);
+  font-weight: 700;
+}
+
+.caseCard h3 {
+  font-size: 19px;
+  margin-top: 16px;
+  font-weight: 700;
+}
+
+.caseCard p {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.caseLink {
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .caseGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* CTA */
+.ctaSection {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 120px 0;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.ctaSection h2 {
+  color: var(--paper);
+  font-size: clamp(34px, 5.6vw, 64px);
+  max-width: 16ch;
+  margin: 0 auto;
+}
+
+.ctaSection .btn {
+  margin-top: 40px;
+}
+
+.ctaGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 640px;
+  height: 640px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(255, 90, 31, 0.25) 0%, rgba(255, 90, 31, 0) 70%);
+  pointer-events: none;
+}

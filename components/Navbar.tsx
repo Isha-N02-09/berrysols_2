@@ -4,37 +4,45 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { ChevronDown, Menu } from "lucide-react";
 import MobileMenu from "./MobileMenu";
+import { services } from "@/data/services";
 
-const desktopLinks = [
-  { label: "Home", href: "#top" },
-  {
-    label: "Services",
-    href: "#services",
-    children: ["Strategy", "Design", "Development", "Digital Marketing"],
-  },
-  { label: "Portfolio", href: "#portfolio" },
-  {
-    label: "Industries",
-    href: "#industries",
-    children: [
-      "Fintech",
-      "Real Estate",
-      "Education",
-      "Retail",
-      "Hotels & Restaurants",
-      "Healthcare",
-      "Airlines",
-      "Cruise Lines",
-    ],
-  },
-  { label: "Blog", href: "/blog" },
-  { label: "About Us", href: "/about" },
-];
+type DropdownItem = { label: string; href: string };
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const homeHref = pathname === "/" ? "#top" : "/";
+
+  const serviceDropdownItems: DropdownItem[] = services.map((service) => ({
+    label: service.eyebrow.charAt(0) + service.eyebrow.slice(1).toLowerCase(),
+    href: `/services/${service.slug}`,
+  }));
+
+  const desktopLinks = [
+    { label: "Home", href: homeHref },
+    {
+      label: "Services",
+      href: "/services",
+      children: serviceDropdownItems,
+    },
+    { label: "Portfolio", href: "#portfolio" },
+    {
+      label: "Industries",
+      href: "#industries",
+      children: [
+        "Fintech",
+        "Real Estate",
+        "Education",
+        "Retail",
+        "Hotels & Restaurants",
+        "Healthcare",
+        "Airlines",
+        "Cruise Lines",
+      ],
+    },
+    { label: "Blog", href: "/blog" },
+    { label: "About Us", href: "/about" },
+  ];
 
   return (
     <>
@@ -76,16 +84,20 @@ export default function Navbar() {
                 </a>
 
                 {link.children && (
-                  <div className="pointer-events-none absolute left-1/2 top-full z-10 w-56 -translate-x-1/2 translate-y-2 rounded-xl border border-black/10 bg-white p-2 opacity-0 shadow-xl transition-all duration-200 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
-                    {link.children.map((child) => (
-                      <a
-                        key={child}
-                        href={link.href}
-                        className="block rounded-lg px-3 py-2 text-[13px] text-[#111] transition-colors hover:bg-[#fff1eb] hover:text-[#ce4111]"
-                      >
-                        {child}
-                      </a>
-                    ))}
+                  <div className="pointer-events-none absolute left-1/2 top-full z-10 w-64 -translate-x-1/2 translate-y-2 rounded-xl border border-black/10 bg-white p-2 opacity-0 shadow-xl transition-all duration-200 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
+                    {link.children.map((child) => {
+                      const item = typeof child === "string" ? { label: child, href: link.href } : child;
+
+                      return (
+                        <a
+                          key={item.href + item.label}
+                          href={item.href}
+                          className="block rounded-lg px-3 py-2 text-[13px] text-[#111] transition-colors hover:bg-[#fff1eb] hover:text-[#ce4111]"
+                        >
+                          {item.label}
+                        </a>
+                      );
+                    })}
                   </div>
                 )}
               </div>

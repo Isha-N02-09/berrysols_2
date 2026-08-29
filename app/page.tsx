@@ -12,18 +12,20 @@ import ProjectStrip from "@/components/ProjectStrip";
 import ScrollReveal from "@/components/ScrollReveal";
 import Industries from "@/components/Industries";
 import Insights from "@/components/Insights";
+import AboutUsSection from "@/components/AboutUsSection";
+import Loader from "@/components/Loader";
 export default function Home() {
   return (
     <>
-      {/* <Loader />  */}
+      <Loader /> 
       <main id="top" className="min-h-screen w-full bg-white">
         <Navbar />
         <Hero />
         <ScrollReveal className="scroll-reveal--trust">
           <TrustBrand />
         </ScrollReveal>
-        <ScrollReveal className="scroll-reveal--stats">
-          <ImpactStats />
+        <ScrollReveal className="scroll-reveal--about-us">
+          <AboutUsSection />
         </ScrollReveal>
         <ScrollReveal className="scroll-reveal--portfolio">
           <Portfolio />
@@ -45,6 +47,9 @@ export default function Home() {
         </ScrollReveal>
         <ScrollReveal className="scroll-reveal--clients">
           <Clients />
+        </ScrollReveal>
+        <ScrollReveal className="scroll-reveal--stats">
+          <ImpactStats />
         </ScrollReveal>
         <ScrollReveal className="scroll-reveal--contact">
           <ContactFlow />
