@@ -11,7 +11,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   const service = getService(params.slug);
   if (!service) return {};
   return {
-    title: `${service.eyebrow.charAt(0)}${service.eyebrow.slice(1).toLowerCase()} — Berry`,
+    title: `${service.eyebrow} — Berry`,
     description: service.description,
   };
 }

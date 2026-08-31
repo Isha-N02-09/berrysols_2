@@ -22,9 +22,7 @@ export default function ServicesOverviewPage() {
               <div className={styles.row}>
                 <div className={styles.rowLeft}>
                   <span className={styles.rowNum}>{String(i + 1).padStart(2, "0")}</span>
-                  <span className={styles.rowTitle}>
-                    {service.eyebrow.charAt(0) + service.eyebrow.slice(1).toLowerCase()}
-                  </span>
+                  <span className={styles.rowTitle}>{service.eyebrow}</span>
                   <span className={styles.rowSub}>{service.flow.join(" → ")}</span>
                 </div>
                 <span className={styles.rowArrow}>→</span>

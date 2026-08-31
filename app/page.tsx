@@ -2,7 +2,6 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import SimpleFooter from "@/components/Footer";
 import TrustBrand from "@/components/TrustBrand";
-import ImpactStats from "@/components/ImpactStats";
 import ContactFlow from "@/components/ContactFlow";
 import Clients from "@/components/Clients";
 import Portfolio from "@/components/portfolio";
@@ -47,9 +46,6 @@ export default function Home() {
         </ScrollReveal>
         <ScrollReveal className="scroll-reveal--clients">
           <Clients />
-        </ScrollReveal>
-        <ScrollReveal className="scroll-reveal--stats">
-          <ImpactStats />
         </ScrollReveal>
         <ScrollReveal className="scroll-reveal--contact">
           <ContactFlow />
