@@ -41,7 +41,7 @@
   );
 }
 
-* { font-family: poppins; }
+* { font-family: "Poppins", "Segoe UI", sans-serif; }
 .navbar-font,
 .navbar-font * {
   font-family: var(--font-poppins), sans-serif !important;

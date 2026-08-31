@@ -1,16 +1,26 @@
+import Image from "next/image";
 import Link from "next/link";
-import NodeFlow from "./NodeFlow";
 import styles from "./ServicePage.module.css";
 import type { Service } from "@/data/services";
 
+const IMAGE_BY_SERVICE: Record<string, string> = {
+  "web-development": "/assets/services/webdevbg.png",
+  "ai-automation": "/assets/services/aiautomationbg.png",
+  "digital-marketing": "/assets/services/digitalmarketingbg.png",
+  "enterprise-resource-planning-erp": "/assets/services/erpbg.png",
+};
+
 export default function ServiceHero({ service }: { service: Service }) {
+  const imageSrc = IMAGE_BY_SERVICE[service.slug] ?? "/assets/services/webdevbg.png";
+
   return (
-    <section className={styles.hero}>
-      <div className={`wrap ${styles.heroGrid}`}>
-        <div>
-          <span className="eyebrow">{service.eyebrow}</span>
+    <section className={`${styles.hero} ${styles.webDevHero}`}>
+      <div className={`wrap ${styles.heroGrid} ${styles.webDevGrid}`}>
+        <div className={`${styles.heroIntro} ${styles.webDevIntro}`}>
+          <span className={styles.heroEyebrow}>{service.eyebrow}</span>
           <h1 className={styles.heroTitle}>{service.title}</h1>
           <p className={styles.heroDesc}>{service.description}</p>
+
           <div className={styles.heroActions}>
             <Link href="/#contact" className="btn">
               Let&rsquo;s talk →
@@ -20,8 +30,18 @@ export default function ServiceHero({ service }: { service: Service }) {
             </Link>
           </div>
         </div>
-        <div className={styles.heroVisual}>
-          <NodeFlow steps={service.flow} />
+
+        <div className={styles.heroVisualWrap}>
+          <div className={styles.heroVisualFrame}>
+            <Image
+              src={imageSrc}
+              alt={`${service.eyebrow} illustration`}
+              width={920}
+              height={620}
+              priority
+              className={styles.heroVisual}
+            />
+          </div>
         </div>
       </div>
     </section>

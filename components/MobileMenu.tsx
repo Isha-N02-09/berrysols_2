@@ -24,7 +24,7 @@ export default function MobileMenu({
   const homeHref = pathname === "/" ? "#top" : "/";
 
   const serviceDropdownItems: DropdownItem[] = services.map((service) => ({
-    label: service.eyebrow.charAt(0) + service.eyebrow.slice(1).toLowerCase(),
+    label: service.eyebrow,
     href: `/services/${service.slug}`,
   }));
 

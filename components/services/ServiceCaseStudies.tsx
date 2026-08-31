@@ -2,6 +2,8 @@ import styles from "./ServicePage.module.css";
 import type { Service } from "@/data/services";
 
 export default function ServiceCaseStudies({ service }: { service: Service }) {
+  const featuredCaseStudies = service.caseStudies.slice(0, 1);
+
   return (
     <section className={styles.section}>
       <div className="wrap">
@@ -10,8 +12,9 @@ export default function ServiceCaseStudies({ service }: { service: Service }) {
           <h2>Built. Deployed. Proven.</h2>
         </div>
         <div className={styles.caseGrid}>
-          {service.caseStudies.map((cs) => (
+          {featuredCaseStudies.map((cs) => (
             <div key={cs.client} className={styles.caseCard}>
+              <div className={styles.caseTab} />
               <span className={styles.caseTag}>{cs.tag}</span>
               <h3>{cs.client}</h3>
               <p>{cs.summary}</p>
