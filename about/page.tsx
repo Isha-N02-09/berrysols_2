@@ -8,7 +8,7 @@ import SimpleFooter from "../components/Footer";
 import Navbar from "../components/Navbar";
 import ContactFlow from "../components/ContactFlow";
 import RoadReveal from "./components/RoadReveal";
-import HeroCoach from "./components/HeroCoach";
+
 const TEAM = [
   {
     name: "Ahmed Mehmood",
@@ -620,7 +620,7 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
- <HeroCoach />
+
         {/* ===================== TEAM ===================== */}
         <section className="section family-section">
           <div className="wrap">

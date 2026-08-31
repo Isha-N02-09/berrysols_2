@@ -31,6 +31,34 @@ export type Service = {
 
 export const services: Service[] = [
   {
+    slug: "ai-automation",
+    eyebrow: "AI Automation",
+    title: "Turn intelligence into something useful.",
+    description:
+      "We design and ship AI systems that eliminate manual work, reduce operational waste, and give your team smarter workflows at scale.",
+    flow: ["Discover", "Automate", "Measure", "Improve"],
+    capabilities: [
+      { title: "Process Mapping", description: "Document what your team does today and find the bottlenecks costing time and money." },
+      { title: "Workflow Automation", description: "Replace repetitive tasks with reliable systems that run without manual follow-up." },
+      { title: "Decision Support", description: "Surface the right information when teams need it to act quickly and confidently." },
+      { title: "Operational Insights", description: "Track process performance and keep improving the work behind your business." },
+      { title: "AI Assistants", description: "Bring AI to the tasks people do every day without adding complexity to your stack." },
+      { title: "Integration", description: "Connect the tools, apps, and systems already powering the business into one workflow." },
+    ],
+    industries: ["Startups", "Healthcare", "Finance", "E-Commerce", "Manufacturing"],
+    tech: [
+      { label: "AI / ML", items: ["Python", "OpenAI", "Azure AI"] },
+      { label: "Backend", items: ["Node.js", "Python", "FastAPI"] },
+      { label: "Cloud", items: ["AWS", "Azure", "Docker"] },
+    ],
+    caseStudies: [
+      { tag: "AI", client: "Support automation", summary: "Deployed an agent that resolves first-line support tickets end to end." },
+      { tag: "AI", client: "Document intelligence", summary: "Built an NLP pipeline that extracts structured data from unstructured files." },
+      { tag: "AI", client: "Forecasting model", summary: "Shipped a demand-forecasting model that cut overstock by double digits." },
+    ],
+    ctaLine: "Have a process worth automating?",
+  },
+  {
     slug: "web-development",
     eyebrow: "Web Development",
     title: "We build the web around your business.",
@@ -71,34 +99,6 @@ export const services: Service[] = [
       { tag: "Marketing", client: "High-conversion site", summary: "Redesigned a marketing site around a single, clear conversion path." },
     ],
     ctaLine: "Have a website worth rebuilding?",
-  },
-  {
-    slug: "ai-automation",
-    eyebrow: "AI Automation",
-    title: "Turn intelligence into something useful.",
-    description:
-      "We design and ship AI systems that eliminate manual work, reduce operational waste, and give your team smarter workflows at scale.",
-    flow: ["Discover", "Automate", "Measure", "Improve"],
-    capabilities: [
-      { title: "Process Mapping", description: "Document what your team does today and find the bottlenecks costing time and money." },
-      { title: "Workflow Automation", description: "Replace repetitive tasks with reliable systems that run without manual follow-up." },
-      { title: "Decision Support", description: "Surface the right information when teams need it to act quickly and confidently." },
-      { title: "Operational Insights", description: "Track process performance and keep improving the work behind your business." },
-      { title: "AI Assistants", description: "Bring AI to the tasks people do every day without adding complexity to your stack." },
-      { title: "Integration", description: "Connect the tools, apps, and systems already powering the business into one workflow." },
-    ],
-    industries: ["Startups", "Healthcare", "Finance", "E-Commerce", "Manufacturing"],
-    tech: [
-      { label: "AI / ML", items: ["Python", "OpenAI", "Azure AI"] },
-      { label: "Backend", items: ["Node.js", "Python", "FastAPI"] },
-      { label: "Cloud", items: ["AWS", "Azure", "Docker"] },
-    ],
-    caseStudies: [
-      { tag: "AI", client: "Support automation", summary: "Deployed an agent that resolves first-line support tickets end to end." },
-      { tag: "AI", client: "Document intelligence", summary: "Built an NLP pipeline that extracts structured data from unstructured files." },
-      { tag: "AI", client: "Forecasting model", summary: "Shipped a demand-forecasting model that cut overstock by double digits." },
-    ],
-    ctaLine: "Have a process worth automating?",
   },
   {
     slug: "desktop-app-development",
