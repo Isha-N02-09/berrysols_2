@@ -8,7 +8,7 @@ import SimpleFooter from "../components/Footer";
 import Navbar from "../components/Navbar";
 import ContactFlow from "../components/ContactFlow";
 import RoadReveal from "./components/RoadReveal";
-import HeroCoach from "./components/HeroCoach";
+
 const TEAM = [
   {
     name: "Ahmed Mehmood",
@@ -620,7 +620,125 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
- <HeroCoach />
+
+        <section className="section month-section">
+          <div className="wrap month-wrap">
+            <h2 className="month-heading">
+              This was your month.
+              <span>Until Meerkads.</span>
+            </h2>
+
+            <div className="month-board" aria-label="Monthly activity calendar">
+              <div className="month-toolbar">
+                <div className="traffic-lights" aria-hidden="true">
+                  <span className="light red" />
+                  <span className="light yellow" />
+                  <span className="light green" />
+                </div>
+
+                <div className="toolbar-icons" aria-hidden="true">
+                  <span className="tool-button is-active">☰</span>
+                  <span className="tool-button">☐</span>
+                  <span className="tool-button plus">＋</span>
+                </div>
+
+                <div className="calendar-switch" aria-label="view switch">
+                  <button type="button" className="switch-button active">Day</button>
+                  <button type="button" className="switch-button">Week</button>
+                </div>
+              </div>
+
+              <div className="month-grid" aria-hidden="true">
+                <div className="month-header">Sun</div>
+                <div className="month-header">Mon</div>
+                <div className="month-header">Tue</div>
+                <div className="month-header">Wed</div>
+                <div className="month-header">Thu</div>
+                <div className="month-header">Fri</div>
+                <div className="month-header">Sat</div>
+
+                <div className="day-cell muted">30</div>
+                <div className="day-cell">1</div>
+                <div className="day-cell">2</div>
+                <div className="day-cell">3</div>
+                <div className="day-cell">4</div>
+                <div className="day-cell">5</div>
+                <div className="day-cell">6</div>
+
+                <div className="day-cell muted">7</div>
+                <div className="day-cell">8</div>
+                <div className="day-cell">9</div>
+                <div className="day-cell">10</div>
+                <div className="day-cell">11</div>
+                <div className="day-cell">12</div>
+                <div className="day-cell">13</div>
+
+                <div className="day-cell muted">14</div>
+                <div className="day-cell">15</div>
+                <div className="day-cell">16</div>
+                <div className="day-cell">17</div>
+                <div className="day-cell">18</div>
+                <div className="day-cell">19</div>
+                <div className="day-cell">20</div>
+
+                <div className="day-cell muted">21</div>
+                <div className="day-cell">22</div>
+                <div className="day-cell">23</div>
+                <div className="day-cell">24</div>
+                <div className="day-cell">25</div>
+                <div className="day-cell">26</div>
+                <div className="day-cell">27</div>
+
+                <div className="day-cell muted">28</div>
+                <div className="day-cell">29</div>
+                <div className="day-cell">30</div>
+                <div className="day-cell">31</div>
+                <div className="day-cell muted">1</div>
+                <div className="day-cell muted">2</div>
+                <div className="day-cell muted">3</div>
+              </div>
+
+              <div className="note-stack" aria-hidden="true">
+                <div className="sticky-note note-1">
+                  <span>Meta says 7x ROAS.</span>
+                  <span>Shopify says 2x.</span>
+                </div>
+
+                <div className="sticky-note note-2">
+                  <span>Spent $4k on a</span>
+                  <span>campaign with</span>
+                  <span>zero real sales.</span>
+                </div>
+
+                <div className="sticky-note note-3">
+                  <span>Report sent</span>
+                  <span>to client.</span>
+                  <span>Prayed they</span>
+                  <span>don&apos;t check</span>
+                  <span>Shopify.</span>
+                </div>
+
+                <div className="sticky-note note-4">
+                  <span>Attribution gave</span>
+                  <span>every channel full</span>
+                  <span>credit. Math broke.</span>
+                </div>
+
+                <div className="sticky-note note-5">
+                  <span>Top ad died</span>
+                  <span>Tuesday.</span>
+                  <span>Found out</span>
+                  <span>Friday.</span>
+                </div>
+
+                <div className="calendar-highlight">
+                  <span>15</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ===================== TEAM ===================== */}
         <section className="section family-section">
           <div className="wrap">
