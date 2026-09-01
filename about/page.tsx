@@ -7,6 +7,7 @@ import { BarChart3, Bot, MessageCircle, Zap } from "lucide-react";
 import SimpleFooter from "../components/Footer";
 import Navbar from "../components/Navbar";
 import ContactFlow from "../components/ContactFlow";
+import AboutUsSection from "../components/AboutUsSection";
 import RoadReveal from "./components/RoadReveal";
 
 const TEAM = [
@@ -390,7 +391,7 @@ export default function AboutPage() {
 
       <main>
         <Navbar />
-       
+
         <div id="clarity-bar" ref={barRef} />
 
         <div className="bg-layer" />
@@ -446,6 +447,8 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
+
+        <AboutUsSection />
 
         {/* ===================== ORIGIN STORY ===================== */}
         <section className="section">

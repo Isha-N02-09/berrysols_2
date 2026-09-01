@@ -15,12 +15,12 @@ import { CSSProperties, MouseEvent, useEffect, useState } from "react";
 import styles from "./Servicesshowcase.module.css";
 
 const SERVICES = [
-  { title: "Custom Software", description: "Bespoke systems built around how your business actually works.", tone: "orange", icon: "code", visual: "/assets/vector1.png" },
-  { title: "Data and Analytics", description: "Organise, analyse, and activate your data to uncover insights faster.", tone: "coral", icon: "analytics", visual: "/assets/vector2.png" },
-  { title: "Cloud", description: "Secure, scalable environments that improve agility and reduce complexity.", tone: "amber", icon: "cloud", visual: "/assets/vector1.png" },
-  { title: "Digital", description: "Strategy, design, and technology brought together into one connected approach.", tone: "orangeLight", icon: "digital", visual: "/assets/vector2.png" },
-  { title: "Digital Marketing", description: "Reach the right audience with focused campaigns that turn attention into growth.", tone: "coral", icon: "marketing", visual: "/assets/vector1.png" },
-  { title: "SEO", description: "Improve your visibility in search and make it easier for customers to find you.", tone: "amber", icon: "seo", visual: "/assets/vector2.png" },
+  { title: "AI Automation", description: "Automate repetitive work and turn intelligence into practical business outcomes.", tone: "orange", icon: "code", visual: "/assets/vector1.png" },
+  { title: "Web Development", description: "Build websites and web apps engineered around how your business actually operates.", tone: "coral", icon: "analytics", visual: "/assets/vector2.png" },
+  { title: "Desktop App Development", description: "Design reliable desktop experiences that fit seamlessly into your team’s workflow.", tone: "amber", icon: "cloud", visual: "/assets/vector1.png" },
+  { title: "Enterprise Resource Planning", description: "Connect operations, reporting, and workflows into a single system built for scale.", tone: "orangeLight", icon: "digital", visual: "/assets/vector2.png" },
+  { title: "Legacy Software", description: "Modernize aging systems without disrupting the business-critical work they support.", tone: "coral", icon: "marketing", visual: "/assets/vector1.png" },
+  { title: "Digital Marketing", description: "Turn attention into growth with strategy, content, and performance campaigns that convert.", tone: "amber", icon: "seo", visual: "/assets/vector2.png" },
 ];
 
 export default function ServicesShowcase() {

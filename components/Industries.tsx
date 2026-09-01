@@ -10,13 +10,15 @@ import {
 import styles from "./Industries.module.css";
 
 const industries = [
-  { name: "Hospitality", icon: UtensilsCrossed },
-  { name: "Communications", icon: Smartphone },
-  { name: "Banking & Financial Services", icon: Landmark },
-  { name: "Fintech", icon: BriefcaseBusiness },
+  { name: "Government Agencies", icon: Landmark },
+  { name: "Vigilance & Recognition", icon: BriefcaseBusiness },
+  { name: "Telehealth", icon: Smartphone },
+  { name: "Maritime & Logistics", icon: UtensilsCrossed },
   { name: "Real Estate", icon: Building2 },
-  { name: "Education", icon: GraduationCap },
-  { name: "Retail", icon: ShoppingBag },
+  { name: "Manufacturing", icon: ShoppingBag },
+  { name: "Travel & Tourism", icon: GraduationCap },
+  { name: "FinTech", icon: BriefcaseBusiness },
+  { name: "EdTech", icon: GraduationCap },
 ];
 
 const rollingIndustries = [...industries, ...industries];
