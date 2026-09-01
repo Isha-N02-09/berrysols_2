@@ -28,6 +28,11 @@ export default function MobileMenu({
     href: `/services/${service.slug}`,
   }));
 
+  const insightDropdownItems: DropdownItem[] = [
+    { label: "Blog", href: "/blog" },
+    { label: "FAQ", href: "/faq" },
+  ];
+
   const links: LinkItem[] = [
     { label: "Home", href: homeHref },
     {
@@ -51,7 +56,11 @@ export default function MobileMenu({
         "EdTech",
       ],
     },
-    { label: "Blog", href: "/blog" },
+    {
+      label: "Resources",
+      href: "/blog",
+      children: insightDropdownItems,
+    },
     { label: "About Us", href: "/about" },
     { label: "Careers", href: "/careers" },
   ];

@@ -132,6 +132,7 @@ export default function ContactFlow() {
     const trimmedName = name.trim() || "there";
     const body = `Name: ${trimmedName}\nEmail: ${email.trim()}\nProject: ${project || "Not specified"}\n\n${message.trim()}`;
     window.location.href = `mailto:hello@berrysols.com?subject=${encodeURIComponent(`Project enquiry from ${trimmedName}`)}&body=${encodeURIComponent(body)}`;
+      window.location.href = `mailto:hello@berrysolutions.com?subject=${encodeURIComponent(`Project enquiry from ${trimmedName}`)}&body=${encodeURIComponent(body)}`;
     goTo(5);
   };
 

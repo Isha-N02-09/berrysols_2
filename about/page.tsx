@@ -412,6 +412,7 @@ export default function AboutPage() {
               ref={whoEyebrowRef}
             >
               About BerrySols
+               About Berry Solutions
             </div>
 
             <h1 className="who-title">
@@ -473,6 +474,7 @@ export default function AboutPage() {
                   <div className="milestone-card">
                     <h3>First steps</h3>
                     <p>BerrySols begins with a simple belief: technology should make work clearer.</p>
+                     <p>Berry Solutions begins with a simple belief: technology should make work clearer.</p>
                   </div>
                 </article>
                 <article className="milestone">
@@ -683,7 +685,44 @@ export default function AboutPage() {
           </div>
         </section>
 
-       
+        <section className="section find-us-section">
+          <div className="wrap">
+            <div className="find-us-card">
+              <div className="find-us-header">HOW TO FIND US</div>
+
+              <div className="map-surface" aria-label="Map showing Berry Solutions location">
+                <div className="road road-a" />
+                <div className="road road-b" />
+                <div className="road road-c" />
+                <div className="road road-d" />
+                <div className="road road-e" />
+
+                <span className="map-label label-one">Sapphire Road</span>
+                <span className="map-label label-two">Harbor View</span>
+                <span className="map-label label-three">CE Highway</span>
+                <span className="map-label label-four">Roses D</span>
+                <span className="map-label label-five">Bahria Town</span>
+
+                <div className="map-pin" aria-hidden="true">
+                  <span />
+                </div>
+              </div>
+
+              <div className="map-action-row">
+                <a
+                  href="https://maps.google.com/?q=Al+Falak+Apartments,+Maitla+Chowk,+Ghazipur,+Sialkot,+51310,+Pakistan"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="map-action-link"
+                >
+                  Open in google map
+                </a>
+                <span className="map-arrow" aria-hidden="true">→</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ===================== CONTACT ===================== */}
         <ContactFlow />
 
