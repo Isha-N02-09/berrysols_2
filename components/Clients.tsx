@@ -2,14 +2,14 @@
 
 const reviews = [
   {
-    quote: "With successful integration of Berrysols with our core systems like inventory, reservation and ticketing, passengers get a completely rich experience.",
+    quote: "With successful integration of Berry Solutions with our core systems like inventory, reservation and ticketing, passengers get a completely rich experience.",
     name: "Chamara Perera",
     title: "Group Head of IT",
     company: "Skyway",
     initials: "CP",
   },
   {
-    quote: "Since partnering with Berrysols, we have seen an increase in direct bookings, add-ons and overall guest engagement through our website.",
+    quote: "Since partnering with Berry Solutions, we have seen an increase in direct bookings, add-ons and overall guest engagement through our website.",
     name: "Suresh Abbas",
     title: "General Manager",
     company: "Horizon",
@@ -23,7 +23,7 @@ const reviews = [
     initials: "SJ",
   },
   {
-    quote: "Berrysols connected booking and service into one effortless customer experience. Our team now has more time for the moments that matter.",
+    quote: "Berry Solutions connected booking and service into one effortless customer experience. Our team now has more time for the moments that matter.",
     name: "Amina Rahman",
     title: "Director of Digital",
     company: "Alto",
@@ -58,7 +58,7 @@ export default function Testimonials() {
     <section className="reviews" id="reviews">
       <div className="reviews-head">
         <h2>What clients say</h2>
-        <p>Real feedback from the people, companies and industries running Berrysols in production.</p>
+        <p>Real feedback from the people, companies and industries running Berry Solutions in production.</p>
       </div>
       <div className="reviews-viewport">
         <div className="reviews-track">

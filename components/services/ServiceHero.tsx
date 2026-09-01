@@ -8,6 +8,10 @@ const IMAGE_BY_SERVICE: Record<string, string> = {
   "ai-automation": "/assets/services/aiautomationbg.png",
   "digital-marketing": "/assets/services/digitalmarketingbg.png",
   "enterprise-resource-planning-erp": "/assets/services/erpbg.png",
+  "legacy-software": "/assets/services/legacysoftwarebg.png",
+  "startup-support": "/assets/services/startupbg.png",
+  "desktop-app-development": "/assets/services/webdevbg.png",
+  "staff-augmentation": "/assets/services/webdevbg.png",
 };
 
 export default function ServiceHero({ service }: { service: Service }) {

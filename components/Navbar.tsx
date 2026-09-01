@@ -18,6 +18,11 @@ export default function Navbar() {
     href: `/services/${service.slug}`,
   }));
 
+  const insightDropdownItems: DropdownItem[] = [
+    { label: "Blog", href: "/blog" },
+    { label: "FAQ", href: "/faq" },
+  ];
+
   const desktopLinks = [
     { label: "Home", href: homeHref },
     {
@@ -41,7 +46,11 @@ export default function Navbar() {
         "EdTech",
       ],
     },
-    { label: "Blog", href: "/blog" },
+    {
+      label: "Resources",
+      href: "/blog",
+      children: insightDropdownItems,
+    },
     { label: "About Us", href: "/about" },
   ];
 

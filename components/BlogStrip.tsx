@@ -35,7 +35,7 @@ const blogs = [
   {
     title: "Standard",
     description:
-      "Explore more insights, articles, and resources from BerrySols.",
+      "Explore more insights, articles, and resources from Berry Solutions.",
     link: "https://berrysols.com/blog/category/standard/",
   },
   {

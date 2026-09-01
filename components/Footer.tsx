@@ -32,6 +32,7 @@ export default function SimpleFooter() {
             <Link href="/#contact">Contact</Link>
           </nav>
           <span>© 2026 Berrysols. All rights reserved.</span>
+            <span>© 2026 Berry Solutions. All rights reserved.</span>
           <a href="#top" className="footer-back-top">Back to top ↑</a>
         </div>
       </div>

@@ -109,7 +109,7 @@ export default function SimpleFooter() {
 
         {/* Footer Bottom */}
         <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
-          <span>© 2026 Berrysols. All rights reserved.</span>
+          <span>© 2026 Berry Solutions. All rights reserved.</span>
           <span>Effortless AI across every channel</span>
         </div>
       </div>
