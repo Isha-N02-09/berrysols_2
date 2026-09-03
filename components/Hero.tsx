@@ -54,7 +54,7 @@ export default function Hero() {
       <div className="hero-content relative z-10 flex h-full max-w-3xl flex-col items-start justify-center px-4 pb-6 pt-[100px] sm:px-8 md:px-16">
         <h1 className="hero-title font-poppins text-left text-[2rem] font-bold uppercase leading-[0.96] max-[359px]:text-[1.5rem] sm:text-[2.6rem] md:text-[3rem] lg:text-[3.3rem]">
           <span className="block text-black">From Chaos  To{" "}</span>
-            <span className="hero-clarity text-black drop-shadow-[0_0_10px_rgba(244,94,43,0.45)]">
+            <span className="hero-clarity text-[#f45e2b] drop-shadow-[0_0_10px_rgba(244,94,43,0.45)]">
               Clarity
             </span>
         </h1>
