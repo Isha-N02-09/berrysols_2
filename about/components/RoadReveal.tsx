@@ -36,8 +36,8 @@ function smoothPath(points: { x: number; y: number }[]) {
 function buildRoadPath(width: number, height: number) {
   if (!width || !height) return "";
 
-  const bends = Math.max(3, Math.round(height / 480));
-  const points = [{ x: width * 0.08, y: 0 }];
+  const bends = Math.max(5, Math.round(height / 240));
+  const points = [{ x: width * 0.22, y: 0 }];
 
   for (let index = 1; index <= bends; index += 1) {
     points.push({
@@ -46,7 +46,7 @@ function buildRoadPath(width: number, height: number) {
     });
   }
 
-  points.push({ x: width * 0.92, y: height });
+  points.push({ x: width * 0.78, y: height });
   return smoothPath(points);
 }
 
@@ -57,14 +57,19 @@ export default function RoadReveal({
 }: RoadRevealProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const maskId = useId();
+  const gradientId = useId();
   const [box, setBox] = useState({ width: 0, height: 0 });
   const [reveal, setReveal] = useState(0);
+
+  const targetRevealRef = useRef(0);
+  const displayRevealRef = useRef(0);
+  const animFrameRef = useRef(0);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    let frame = 0;
+    let scrollFrame = 0;
     const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     const content = container.querySelector<HTMLElement>(".roadReveal__content");
     if (!content) return;
@@ -77,42 +82,55 @@ export default function RoadReveal({
     });
     resizeObserver.observe(content);
 
-    function updateReveal() {
+    function updateTarget() {
       if (!content) return;
 
-      frame = 0;
+      scrollFrame = 0;
       if (motionQuery.matches) {
-        setReveal(1);
+        targetRevealRef.current = 1;
         return;
       }
 
       const rect = content.getBoundingClientRect();
       const progress = (window.innerHeight * 0.5 - rect.top) / rect.height;
-      setReveal(Math.min(Math.max(progress, 0), 1));
+      targetRevealRef.current = Math.min(Math.max(progress, 0), 1);
     }
 
     function onScroll() {
-      if (!frame) frame = requestAnimationFrame(updateReveal);
+      if (!scrollFrame) scrollFrame = requestAnimationFrame(updateTarget);
     }
 
-    updateReveal();
+    function tick() {
+      const target = motionQuery.matches ? 1 : targetRevealRef.current;
+      const current = displayRevealRef.current;
+      const next = current + (target - current) * 0.12;
+      const settled = Math.abs(target - next) < 0.001;
+      displayRevealRef.current = settled ? target : next;
+      setReveal(displayRevealRef.current);
+      animFrameRef.current = requestAnimationFrame(tick);
+    }
+
+    updateTarget();
+    animFrameRef.current = requestAnimationFrame(tick);
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
-    motionQuery.addEventListener("change", updateReveal);
+    motionQuery.addEventListener("change", updateTarget);
 
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
-      motionQuery.removeEventListener("change", updateReveal);
+      motionQuery.removeEventListener("change", updateTarget);
       resizeObserver.disconnect();
-      if (frame) cancelAnimationFrame(frame);
+      if (scrollFrame) cancelAnimationFrame(scrollFrame);
+      if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
     };
   }, []);
 
   const path = buildRoadPath(box.width, box.height);
-  const roadWidth = Math.max(32, box.width * 0.085);
+  const roadWidth = Math.max(28, box.width * 0.06);
   const dashWidth = Math.max(2, roadWidth * 0.05);
   const dashGap = Math.max(10, roadWidth * 0.16);
+  const fadeHeight = Math.max(40, box.height * 0.05);
 
   return (
     <div ref={containerRef} className={`roadReveal ${className}`}>
@@ -123,22 +141,33 @@ export default function RoadReveal({
           preserveAspectRatio="none"
           aria-hidden="true"
         >
-          <mask
-            id={maskId}
-            maskUnits="userSpaceOnUse"
-            x="0"
-            y="0"
-            width={box.width}
-            height={box.height}
-          >
-            <rect
+          <defs>
+            <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stopColor="white" stopOpacity="1" />
+              <stop
+                offset={`${Math.max(0, 1 - fadeHeight / box.height) * 100}%`}
+                stopColor="white"
+                stopOpacity="1"
+              />
+              <stop offset="100%" stopColor="white" stopOpacity="0" />
+            </linearGradient>
+            <mask
+              id={maskId}
+              maskUnits="userSpaceOnUse"
               x="0"
               y="0"
               width={box.width}
-              height={reveal * box.height}
-              fill="white"
-            />
-          </mask>
+              height={box.height}
+            >
+              <rect
+                x="0"
+                y="0"
+                width={box.width}
+                height={reveal * box.height}
+                fill={`url(#${gradientId})`}
+              />
+            </mask>
+          </defs>
           <g mask={`url(#${maskId})`}>
             <path
               className="roadReveal__base"

@@ -49,7 +49,7 @@ const insightColumns = [
     {
       category: "Case Study",
       title: "US Fintech's AI Financial Modeling Secures $2M+ Funding",
-      image: "/assets/inslights/7.jpg",
+      image: "/assets/inslights/8.jpg",
     },
   ],
 ];

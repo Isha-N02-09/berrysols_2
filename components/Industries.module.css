@@ -79,15 +79,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 22px;
-  height: 22px;
-  border-radius: 7px;
-  background: rgba(17, 17, 17, 0.04);
-  border: 1px solid rgba(17, 17, 17, 0.08);
-  color: #171410;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.38);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  color: #000;
   flex-shrink: 0;
 }
 
@@ -128,52 +123,42 @@
 
 .imageFrame {
   position: relative;
-  min-height: 390px;
+  min-height: 440px;
   overflow: hidden;
   isolation: isolate;
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(5px, .8vw, 10px);
+  justify-content: center;
   padding: 0 clamp(12px, 2.5vw, 28px);
   animation: industries-image-in 1s .18s cubic-bezier(.22, 1, .36, 1) both;
 }
 
-.imageFrame::before,
-.imageFrame::after {
-  position: absolute;
-  z-index: -1;
-  content: "";
-  pointer-events: none;
-  background: #f45e2b;
-}
-
 .imageFrame::before {
-  top: 22%;
-  left: 8%;
-  width: 84%;
-  height: 18px;
-  transform: rotate(-14deg);
-  box-shadow: 0 34px 0 -1px #f45e2b, 0 68px 0 -2px #f45e2b;
-}
-
-.imageFrame::after {
-  top: 14%;
-  right: 12%;
-  width: 74px;
-  height: 74px;
-  opacity: .25;
-  transform: rotate(18deg);
+  display: none;
 }
 
 .image {
   position: relative;
   z-index: 1;
   display: block;
-  width: 100%;
-  height: 100%;
-  min-height: 390px;
-  object-fit: contain;
+  flex: 1 1 0;
+  width: 0;
+  height: 82%;
+  min-height: 0;
+  object-fit: cover;
   object-position: center;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(23, 20, 16, .2);
   filter: saturate(.9);
   transition: transform .7s cubic-bezier(.22, 1, .36, 1), filter .7s ease;
 }
+
+.image:nth-child(1) { height: 390px; transform: translateY(22px); }
+.image:nth-child(2) { height: 335px; transform: translateY(58px); }
+.image:nth-child(3) { height: 420px; transform: translateY(10px); }
+.image:nth-child(4) { height: 360px; transform: translateY(42px); }
+.image:nth-child(5) { height: 400px; transform: translateY(0); }
 
 .imageFrame:hover .image {
   transform: scale(1.04);
@@ -206,10 +191,9 @@
   .inner { grid-template-columns: 1fr; gap: 34px; }
   .copy { max-width: none; }
   .description { font-size: 14px; }
-  .imageFrame, .image { min-height: 280px; }
+  .imageFrame { min-height: 300px; }
   .imageFrame { padding: 0; }
-  .imageFrame::before { left: 4%; width: 92%; }
-  .imageFrame::after { right: 6%; }
+  .image { height: 280px; min-height: 0; transform: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
