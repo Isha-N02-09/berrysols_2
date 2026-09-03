@@ -11,11 +11,9 @@ import ProjectStrip from "@/components/ProjectStrip";
 import ScrollReveal from "@/components/ScrollReveal";
 import Industries from "@/components/Industries";
 import Insights from "@/components/Insights";
-import Loader from "@/components/Loader";
 export default function Home() {
   return (
     <>
-      <Loader /> 
       <main id="top" className="min-h-screen w-full bg-white">
         <Navbar />
         <Hero />

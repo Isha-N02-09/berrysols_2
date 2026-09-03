@@ -12,39 +12,34 @@ import RoadReveal from "./components/RoadReveal";
 
 const TEAM = [
   {
-    name: "Ahmed Mehmood",
-    role: "Full-Stack Engineer",
-    img: "/male.png",
-    initials: "AM",
-    gradient: "linear-gradient(135deg,#FF5A1F,#FFB020)",
-  },
-  {
     name: "Isha",
     role: "AI & Automation",
-    img: "/female.jpg",
-    initials: "SR",
-    gradient: "linear-gradient(135deg,#FFB020,#FF5A1F)",
+    img: "/assets/team/isha.png",
+    initials: "IS",
   },
   {
-    name: "[Name]",
-    role: "Product & Systems Design",
-    img: "/male2.jpg",
-    initials: "MH",
-    gradient: "linear-gradient(135deg,#F4F2EE,#FF5A1F)",
+    name: "Ahmed mehmood",
+    role: "Chief Technology Officer",
+    img: "/assets/team/ahmed.png",
+    initials: "AM",
   },
   {
-    name: "[Name]",
-    role: "Client Strategy",
-    img: "/male3.jpg",
-    initials: "JW",
-    gradient: "linear-gradient(135deg,#E0470B,#FFB020)",
+    name: "Ahsan Mehmood",
+    role: "Chief Executive Officer",
+    img: "/assets/team/ahsan.jpg",
+    initials: "AH",
   },
   {
-    name: "[Name]",
-    role: "Creative Technology",
-    img: "/female2.jpg",
-    initials: "KT",
-    gradient: "linear-gradient(135deg,#FF8A3D,#F4F2EE)",
+    name: "Safi Ahmed",
+    role: "Project Manager",
+    img: "/assets/team/safi.jpg",
+    initials: "SA",
+  },
+  {
+    name: "Fahad Yaseen",
+    role: "Software Developer",
+    img: "/assets/team/fahad.jpg",
+    initials: "FY",
   },
 ];
 
@@ -656,7 +651,8 @@ export default function AboutPage() {
                   }`}
                   onClick={() => setActiveTeam(i)}
                 >
-                  <div className="fallback">{member.initials}</div>
+                  {member.img && <img src={member.img} alt={`${member.name} portrait`} />}
+                  {!member.img && <div className="fallback">{member.initials}</div>}
                 </div>
               ))}
             </div>
@@ -695,10 +691,24 @@ export default function AboutPage() {
               <div className="map-surface">
                 <iframe
                   title="Berry Solutions location map"
-                  src="https://www.google.com/maps?q=Al+Falak+Apartments,+Maitla+Chowk,+Ghazipur,+Sialkot,+51310,+Pakistan&output=embed"
+                  width="600"
+                  height="450"
+                  style={{ border: 0 }}
+                  src="https://www.openstreetmap.org/export/embed.html?bbox=74.15%2C32.15%2C74.24%2C32.22&layer=mapnik&marker=32.1877%2C74.1945"
                   loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                  referrerPolicy="strict-origin-when-cross-origin"
                 />
+              </div>
+              <div className="map-action-row">
+                <a
+                  className="map-action-link"
+                  href="https://www.google.com/maps/search/?api=1&query=Al+Falak+Apartments%2C+Gujranwala%2C+Pakistan"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Open in Google Maps
+                </a>
               </div>
             </div>
           </div>

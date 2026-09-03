@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import { HeartPulse, Network, Stethoscope, Timer, Truck } from "lucide-react";
 import styles from "./Services.module.css";
 
 const features = [
@@ -9,8 +10,9 @@ const features = [
     description:
       "A focused tracker application designed to make everyday logging simple and clear.",
     eyebrow: "PROJECTS · PRODUCT DESIGN",
-    visual: "Clock Log",
+    visual: "/assets/vector1.png",
     detail: "Tracker application · Case study",
+    icon: Timer,
     href: "https://berrysols.com/portfolio/clock-log-is-a-tracker-application/",
   },
   {
@@ -18,8 +20,9 @@ const features = [
     description:
       "A digital experience built to help a moving business present its services and reach customers.",
     eyebrow: "PROJECTS · DIGITAL EXPERIENCE",
-    visual: "ATF Movers",
+    visual: "/assets/vector2.png",
     detail: "Moving services · Case study",
+    icon: Truck,
     href: "https://berrysols.com/portfolio/atf-movers/",
   },
   {
@@ -27,8 +30,9 @@ const features = [
     description:
       "A healthcare-focused digital solution for dental implants and specialized dentistry.",
     eyebrow: "PROJECTS · HEALTHCARE",
-    visual: "Same Day Me",
+    visual: "/assets/vector1.png",
     detail: "Dental care · Case study",
+    icon: Stethoscope,
     href: "https://berrysols.com/portfolio/same-day-me/",
   },
   {
@@ -36,8 +40,9 @@ const features = [
     description:
       "A polished creative network experience shaped around a clear, modern digital presence.",
     eyebrow: "PROJECTS · ENGINEERING",
-    visual: "ibuild.co",
+    visual: "/assets/vector2.png",
     detail: "Creative network · Case study",
+    icon: Network,
     href: "https://berrysols.com/portfolio/ibuild-co/",
   },
   {
@@ -45,44 +50,51 @@ const features = [
     description:
       "A responsive, SEO-ready healthcare website that improves access, trust, and patient experience.",
     eyebrow: "PROJECTS · HEALTHCARE",
-    visual: "Telehealth NP",
+    visual: "/assets/vector1.png",
     detail: "Healthcare platform · Case study",
+    icon: HeartPulse,
     href: "https://berrysols.com/portfolio/telehealth/",
   },
 ];
 
 export default function Services() {
   const sectionRef = useRef<HTMLElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [carouselCenter, setCarouselCenter] = useState(0);
 
   useEffect(() => {
+    const targetCenter = { current: 0 };
+    const currentCenter = { current: 0 };
+    let lastTime: number | null = null;
+    let animationFrame = 0;
+
     const handleScroll = () => {
       if (!sectionRef.current) return;
       const rect = sectionRef.current.getBoundingClientRect();
       const scrollable = sectionRef.current.offsetHeight - window.innerHeight;
       const progress = Math.max(0, Math.min(1, -rect.top / scrollable));
-      setActiveIndex(Math.min(features.length - 1, Math.floor(progress * features.length)));
+      targetCenter.current = progress * features.length * 2;
     };
 
-    let ticking = false;
-
-    const onScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          handleScroll();
-          ticking = false;
-        });
-
-        ticking = true;
-      }
+    const animate = (now: number) => {
+      if (lastTime === null) lastTime = now;
+      const delta = now - lastTime;
+      lastTime = now;
+      const smoothing = 1 - Math.exp(-delta / 160);
+      currentCenter.current += (targetCenter.current - currentCenter.current) * smoothing;
+      setCarouselCenter(currentCenter.current);
+      animationFrame = window.requestAnimationFrame(animate);
     };
 
-    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
 
     handleScroll();
+    animationFrame = window.requestAnimationFrame(animate);
 
     return () => {
-      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+      window.cancelAnimationFrame(animationFrame);
     };
   }, []);
 
@@ -95,33 +107,47 @@ export default function Services() {
         </h2>
         <div className={styles.featureTrack}>
           {features.map((feature, index) => {
-            const offset = index - activeIndex;
+            const Icon = feature.icon;
+            let offset = (index - carouselCenter) % features.length;
+            if (offset > features.length / 2) offset -= features.length;
+            if (offset < -features.length / 2) offset += features.length;
+            const distance = Math.abs(offset);
+            const angle = offset * 15;
+            const angleRadians = angle * Math.PI / 180;
+            const radius = 900;
+            const x = radius * Math.sin(angleRadians);
+            const y = radius * (1 - Math.cos(angleRadians));
+            const scale = Math.max(.62, 1 - distance * .09);
+            const opacity = distance > 3.4 ? 0 : Math.max(0, 1 - Math.pow(distance / 3.4, 1.5));
             return (
               <a
                 key={feature.title}
-                href={feature.href}
-                target="_blank"
-                rel="noreferrer"
                 className={styles.featureCard}
-                data-active={index === activeIndex}
-                style={{ "--offset": offset } as React.CSSProperties}
+                style={{
+                  "--x": `${x}px`,
+                  "--y": `${y}px`,
+                  "--angle": `${angle}deg`,
+                  "--scale": scale,
+                  "--opacity": opacity,
+                  "--z": Math.round(200 - distance * 10),
+                } as React.CSSProperties}
               >
-                <div className={styles.cardChrome}>
-                  <span>{feature.eyebrow}</span>
-                  <span className={styles.cardSignal}><i /> LIVE</span>
-                </div>
-                <div className={styles.cardVisual}>
-                  <span className={styles.visualPrompt}>{feature.visual}</span>
-                  <strong>{feature.detail}</strong>
-                  <div className={styles.visualLines}><i /><i /><i /></div>
-                </div>
-                <div className={styles.cardCopy}>
-                  <h3>{feature.title}</h3>
+                <span className={styles.cardIcon} aria-hidden="true">
+                  <Icon size={30} strokeWidth={1.8} />
+                </span>
+                <h3 className={styles.cardTitle}>{feature.title}</h3>
+                <span className={styles.cardDetails}>
+                  <span className={styles.cardEyebrow}>{feature.eyebrow}</span>
                   <p>{feature.description}</p>
-                </div>
-                <div className={styles.cardFooter}>
-                  <span>0{index + 1} / 0{features.length}</span>
-                </div>
+                </span>
+                <span className={styles.cardSpacer} />
+                <span className={styles.cardButton}>CASE STUDY</span>
+                <img
+                  src={feature.visual}
+                  alt=""
+                  className={styles.cardVisual}
+                  aria-hidden="true"
+                />
               </a>
             );
           })}

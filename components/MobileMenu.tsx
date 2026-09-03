@@ -29,6 +29,7 @@ export default function MobileMenu({
   }));
 
   const insightDropdownItems: DropdownItem[] = [
+    { label: "Team", href: "/team" },
     { label: "Blog", href: "/blog" },
     { label: "FAQ", href: "/faq" },
   ];
@@ -57,11 +58,10 @@ export default function MobileMenu({
       ],
     },
     {
-      label: "Resources",
-      href: "/blog",
+      label: "About Us",
+      href: "/about",
       children: insightDropdownItems,
     },
-    { label: "About Us", href: "/about" },
     { label: "Careers", href: "/careers" },
   ];
   const handleClose = () => {

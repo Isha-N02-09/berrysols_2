@@ -22,6 +22,13 @@ const industries = [
 ];
 
 const rollingIndustries = [...industries, ...industries];
+const industryImages = [
+  { number: 1, extension: "jpg" },
+  { number: 2, extension: "jpg" },
+  { number: 3, extension: "jpg" },
+  { number: 4, extension: "jpg" },
+  { number: 5, extension: "png" },
+];
 
 export default function Industries() {
   return (
@@ -44,7 +51,7 @@ export default function Industries() {
                       key={`${industry.name}-${index}`}
                     >
                       <span className={styles.industryIcon} aria-hidden="true">
-                        <Icon size={12} strokeWidth={1.9} />
+                        <Icon size={16} strokeWidth={2} />
                       </span>
                       {industry.name}
                     </span>
@@ -57,11 +64,14 @@ export default function Industries() {
         </div>
 
         <div className={styles.imageFrame}>
-          <img
-            className={styles.image}
-            src="/assets/office.png"
-            alt="Business leaders collaborating around an office table"
-          />
+          {industryImages.map(({ number, extension }) => (
+            <img
+              className={styles.image}
+              key={number}
+              src={`/assets/industry/${number}.${extension}`}
+              alt={`Modern architecture panel ${number}`}
+            />
+          ))}
         </div>
       </div>
     </section>

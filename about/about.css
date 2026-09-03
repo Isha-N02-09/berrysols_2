@@ -228,32 +228,39 @@ section{position:relative;}
 .milestone:nth-of-type(5){grid-row:1;align-self:end;}
 .milestone:nth-of-type(6){grid-row:1;align-self:start;}
 .milestone-year{
-  color:var(--accent);font-family:'Brush Script MT','Segoe Script',cursive;font-size:2.35rem;
-  font-weight:700;font-style:italic;line-height:1;
+  color:#111;font-family:'JetBrains Mono',monospace;font-size:1.45rem;
+  font-weight:800;font-style:normal;letter-spacing:.08em;line-height:1;
+  font-variant-numeric:tabular-nums;
 }
 .milestone-card{
-  position:relative;min-height:132px;padding:22px 20px 20px;background:var(--surface-2);
-  border:1px solid var(--border);border-radius:var(--radius);
-  box-shadow:0 12px 28px rgba(17,17,17,.08);
+  position:relative;min-height:132px;padding:24px 22px 22px 28px;
+  overflow:hidden;background:linear-gradient(135deg,rgba(248,249,249,.56),rgba(218,223,223,.2));
+  border:1px solid rgba(255,255,255,.86);border-radius:var(--radius);
+  backdrop-filter:blur(20px) saturate(145%);-webkit-backdrop-filter:blur(20px) saturate(145%);
+  box-shadow:0 16px 34px rgba(17,17,17,.1),inset 0 1px 0 rgba(255,255,255,.9),inset 0 -1px 0 rgba(125,135,130,.16);
   transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;
 }
 .milestone-card::before{
-  content:"";position:absolute;top:-1px;left:18px;width:42px;height:4px;
-  border-radius:0 0 4px 4px;background:var(--accent);transition:width .35s ease;
+  content:"";position:absolute;top:18px;left:-1px;width:4px;height:42px;
+  z-index:2;border-radius:0 4px 4px 0;background:rgba(120,128,128,.55);transition:height .35s ease;
+}
+.milestone-card::after{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(118deg,rgba(255,255,255,.78) 0%,rgba(255,255,255,.42) 18%,rgba(255,255,255,0) 44%,rgba(160,168,168,.1) 70%,rgba(255,255,255,.3) 100%);
 }
 .milestone-card:hover,.milestone-card:focus-within{
-  transform:translateY(-7px);border-color:rgba(255,90,31,.42);
-  box-shadow:0 20px 36px rgba(17,17,17,.13);
+  transform:translateY(-7px);border-color:#fff;
+  box-shadow:0 22px 42px rgba(17,17,17,.16),inset 0 1px 0 #fff,inset 0 -1px 0 rgba(125,135,130,.2);
 }
-.milestone-card:hover::before,.milestone-card:focus-within::before{width:72px;}
-.milestone-card h3{font-size:1rem;text-transform:uppercase;margin-bottom:8px;letter-spacing:.04em;color:var(--text);}
-.milestone-card p{font-size:.9rem!important;line-height:1.45;margin:0!important;color:var(--text-muted);}
+.milestone-card:hover::before,.milestone-card:focus-within::before{height:72px;}
+.milestone-card h3{position:relative;z-index:1;font-family:var(--font-poppins),sans-serif;font-size:1.05rem;line-height:1.25;text-transform:none;margin:0 0 10px;letter-spacing:0;color:var(--text);}
+.milestone-card p{position:relative;z-index:1;font-family:var(--font-poppins),sans-serif;font-size:.88rem!important;line-height:1.6;margin:0!important;color:var(--text-muted);text-wrap:pretty;}
 @media(max-width:760px){
   .milestones{display:flex;flex-direction:column;gap:28px;min-height:0;padding:22px 0 10px;margin-left:0;}
   .milestones::before{display:none;}
   .milestone,.milestone:nth-of-type(odd),.milestone:nth-of-type(even){grid-row:auto;grid-column:auto;transform:none;align-self:stretch;}
-  .milestone-year{font-size:1.35rem;padding-top:0;}
-  .milestone-card{min-height:0;padding:18px 18px 16px;}
+  .milestone-year{font-size:1.2rem;padding-top:0;}
+  .milestone-card{min-height:0;padding:20px 18px 18px 22px;}
 }
 
 /* ===================== MISSION / VISION ===================== */
@@ -427,6 +434,8 @@ section{position:relative;}
   font-family:var(--font-poppins),sans-serif;font-weight:700;font-size:2rem;color:#111111;
   background:transparent;
 }
+.team-card img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1);}
+.team-card.active img{filter:grayscale(0);}
 .team-info{text-align:center;margin-top:26px;color:#111;}
 .team-info h3{font-size:1.1rem;margin-bottom:10px;position:relative;display:inline-block;padding-bottom:10px;color:#111;}
 .team-info h3::after{content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:46px;height:1px;background:var(--accent);}
