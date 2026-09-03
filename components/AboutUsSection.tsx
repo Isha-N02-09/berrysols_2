@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import styles from "./AboutUsSection.module.css";
 
 /* Simple line icons (no external icon library required) */
@@ -36,7 +37,12 @@ const icons = {
   ),
 };
 
-const nodes = [
+const nodes: Array<{
+  key: keyof typeof icons;
+  title: string;
+  text: string;
+  angle: number;
+}> = [
   {
     key: "quality",
     title: "Quality",
@@ -104,14 +110,17 @@ export default function AboutUs() {
         {nodes.map((node) => (
           <div
             className={styles.node}
-            style={{ "--angle": `${node.angle}deg` }}
+            style={{ "--angle": `${node.angle}deg` } as CSSProperties}
             key={node.key}
           >
             <span className={styles.spoke} aria-hidden="true">
               <span className={styles.spokeDot} />
             </span>
 
-            <div className={styles.content} style={{ "--counter-angle": `${-node.angle}deg` }}>
+            <div
+              className={styles.content}
+              style={{ "--counter-angle": `${-node.angle}deg` } as CSSProperties}
+            >
               <button
                 type="button"
                 className={styles.bubble}
