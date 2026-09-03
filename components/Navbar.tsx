@@ -21,7 +21,6 @@ export default function Navbar() {
   }));
 
   const insightDropdownItems: DropdownItem[] = [
-    { label: "Team", href: "/team" },
     { label: "Blog", href: "/blog" },
     { label: "FAQ", href: "/faq" },
   ];

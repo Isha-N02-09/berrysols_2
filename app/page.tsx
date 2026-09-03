@@ -11,6 +11,7 @@ import ProjectStrip from "@/components/ProjectStrip";
 import ScrollReveal from "@/components/ScrollReveal";
 import Industries from "@/components/Industries";
 import Insights from "@/components/Insights";
+import AboutUs from "@/components/AboutUsSection";
 export default function Home() {
   return (
     <>
@@ -41,6 +42,7 @@ export default function Home() {
         <ScrollReveal className="scroll-reveal--clients">
           <Clients />
         </ScrollReveal>
+        <AboutUs />
         <ScrollReveal className="scroll-reveal--contact">
           <ContactFlow />
         </ScrollReveal>

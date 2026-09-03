@@ -112,7 +112,7 @@ export default function Services() {
             if (offset > features.length / 2) offset -= features.length;
             if (offset < -features.length / 2) offset += features.length;
             const distance = Math.abs(offset);
-            const angle = offset * 15;
+            const angle = offset * 25;
             const angleRadians = angle * Math.PI / 180;
             const radius = 900;
             const x = radius * Math.sin(angleRadians);
