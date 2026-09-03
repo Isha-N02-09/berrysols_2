@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import {
   ArrowRight,
   BarChart3,
@@ -15,12 +16,12 @@ import { CSSProperties, MouseEvent, useEffect, useState } from "react";
 import styles from "./Servicesshowcase.module.css";
 
 const SERVICES = [
-  { title: "AI Automation", description: "Automate repetitive work and turn intelligence into practical business outcomes.", tone: "orange", icon: "code", visual: "/assets/vector1.png" },
-  { title: "Web Development", description: "Build websites and web apps engineered around how your business actually operates.", tone: "coral", icon: "analytics", visual: "/assets/vector2.png" },
-  { title: "Desktop App Development", description: "Design reliable desktop experiences that fit seamlessly into your team’s workflow.", tone: "amber", icon: "cloud", visual: "/assets/vector1.png" },
-  { title: "Enterprise Resource Planning", description: "Connect operations, reporting, and workflows into a single system built for scale.", tone: "orangeLight", icon: "digital", visual: "/assets/vector2.png" },
-  { title: "Legacy Software", description: "Modernize aging systems without disrupting the business-critical work they support.", tone: "coral", icon: "marketing", visual: "/assets/vector1.png" },
-  { title: "Digital Marketing", description: "Turn attention into growth with strategy, content, and performance campaigns that convert.", tone: "amber", icon: "seo", visual: "/assets/vector2.png" },
+  { slug: "ai-automation", title: "AI Automation", description: "Automate repetitive work and turn intelligence into practical business outcomes.", tone: "orange", icon: "code", visual: "/assets/vector1.png" },
+  { slug: "web-development", title: "Web Development", description: "Build websites and web apps engineered around how your business actually operates.", tone: "coral", icon: "analytics", visual: "/assets/vector2.png" },
+  { slug: "desktop-app-development", title: "Desktop App Development", description: "Design reliable desktop experiences that fit seamlessly into your team’s workflow.", tone: "amber", icon: "cloud", visual: "/assets/vector1.png" },
+  { slug: "enterprise-resource-planning-erp", title: "Enterprise Resource Planning", description: "Connect operations, reporting, and workflows into a single system built for scale.", tone: "orangeLight", icon: "digital", visual: "/assets/vector2.png" },
+  { slug: "legacy-software", title: "Legacy Software", description: "Modernize aging systems without disrupting the business-critical work they support.", tone: "coral", icon: "marketing", visual: "/assets/vector1.png" },
+  { slug: "digital-marketing", title: "Digital Marketing", description: "Turn attention into growth with strategy, content, and performance campaigns that convert.", tone: "amber", icon: "seo", visual: "/assets/vector2.png" },
 ];
 
 export default function ServicesShowcase() {
@@ -90,9 +91,9 @@ export default function ServicesShowcase() {
                   <span className={styles.cardIndex}>{String(index + 1).padStart(2, "0")}</span>
                   <h3>{service.title}</h3>
                   <p>{service.description}</p>
-                  <button className={styles.learnMore}>
+                  <Link href={`/services/${service.slug}`} className={styles.learnMore}>
                     Learn more <ArrowRight size={17} />
-                  </button>
+                  </Link>
                 </div>
                 <img
                   src={service.visual}
