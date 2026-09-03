@@ -5,32 +5,42 @@
 
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: clamp(560px, 76vh, 820px);
   width: 100%;
   overflow: hidden;
-  background:
-    radial-gradient(ellipse 60% 55% at 8% 50%, rgba(244, 94, 43, 0.08), transparent 62%),
-    linear-gradient(160deg, #ffffff 0%, #f9f7f3 55%, #f3ede5 100%);
+  background: #fff;
+  color: #111;
 }
 
 @media (max-width: 860px) {
   .hero {
-    min-height: 36vh;
-    padding: 40px 0 12px;
+    min-height: 360px;
+    padding: 28px 0 12px;
   }
+}
+
+.hero::before {
+  position: absolute;
+  top: 0;
+  left: clamp(24px, 4vw, 54px);
+  right: clamp(24px, 4vw, 54px);
+  height: 1px;
+  background: #111;
+  content: "";
+  opacity: 0.55;
 }
 
 .heroWord {
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 35%;
   transform: translate(-50%, -50%);
-  z-index: 0;
-  font-size: clamp(10rem, 15vw, 40rem);
-  font-weight: 900;
-  line-height: 0.75;
+  z-index: 1;
+  font-size: clamp(4.8rem, 15.5vw, 12.8rem);
+  font-weight: 800;
+  line-height: 0.78;
   letter-spacing: -0.08em;
-  color: rgba(244, 94, 43, 0.15);
+  color: #111;
   text-transform: uppercase;
   user-select: none;
   pointer-events: none;
@@ -40,28 +50,28 @@
 .heroLabel {
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 25%;
   transform: translate(-50%, -50%);
-  z-index: 1;
+  z-index: 2;
   display: inline-block;
-  font-family: "Brush Script MT", "Segoe Script", cursive;
-  font-size: clamp(3rem, 8vw, 6rem);
-  font-weight: 700;
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.26em;
   line-height: 1;
-  color: #171410;
+  color: #111;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 @media (max-width: 860px) {
   .heroWord {
-    font-size: clamp(2.8rem, 15vw, 4.8rem);
-    letter-spacing: -0.04em;
-    top: 38%;
+    font-size: clamp(4.25rem, 22vw, 8rem);
+    top: 42%;
   }
 
   .heroLabel {
-    font-size: clamp(1.5rem, 6.5vw, 2.6rem);
-    top: 38%;
-    white-space: nowrap;
+    top: 24%;
   }
 }
 
@@ -155,7 +165,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  min-height: 100vh;
+  min-height: clamp(560px, 76vh, 820px);
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 clamp(24px, 8vw, 120px);
@@ -265,6 +275,74 @@
   transform: translateY(-2px);
 }
 
+.categoryBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  padding: 16px clamp(24px, 4vw, 54px);
+  border-top: 1px solid #111;
+  border-bottom: 1px solid #111;
+  background: #fff;
+}
+
+.categoryLabel {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.categoryLinks {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.categoryLink,
+.categoryLinkActive {
+  border: 1px solid #777;
+  border-radius: 999px;
+  padding: 9px 14px;
+  color: #111;
+  font-size: 9px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.categoryLink span,
+.categoryLinkActive span {
+  margin-left: 4px;
+  color: #888;
+}
+
+.categoryLinkActive,
+.categoryLink:hover {
+  background: #111;
+  color: #fff;
+}
+
+.categoryLinkActive span,
+.categoryLink:hover span {
+  color: inherit;
+}
+
+.categorySection {
+  scroll-margin-top: 24px;
+}
+
+.categoryHeading {
+  padding-top: 48px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
 .list {
   padding: 64px 0 96px;
 }
@@ -307,8 +385,8 @@
 
 .rowTitle {
   font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(22px, 3.2vw, 36px);
+  font-weight: 700;
+  font-size: clamp(20px, 2.8vw, 32px);
   letter-spacing: -0.01em;
   color: #171410;
 }
@@ -339,7 +417,7 @@
 
 @media (max-width: 860px) {
   .hero {
-    min-height: 720px;
+    min-height: 360px;
   }
 
   .orbitStage {
@@ -391,5 +469,19 @@
 
   .highlight {
     font-size: 11.5px;
+  }
+}
+
+@media (max-width: 640px) {
+  .categoryBar {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+
+  .categoryLinks {
+    justify-content: flex-start;
   }
 }

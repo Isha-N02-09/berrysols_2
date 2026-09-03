@@ -1,9 +1,11 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { services } from "../data/services";
 
 const steps = 6;
-const projectTypes = ["Web App", "Mobile App", "AI & Cloud", "Not sure yet"];
+const projectTypes = [...services.map((service) => service.eyebrow), "Other"];
+const whatsappNumber = "92339456789";
 
 const Arrow = () => (
   <svg viewBox="0 0 20 20" aria-hidden="true">
@@ -128,11 +130,19 @@ export default function ContactFlow() {
     goTo(3);
   };
 
-  const send = () => {
+  const enquiryBody = () => {
     const trimmedName = name.trim() || "there";
-    const body = `Name: ${trimmedName}\nEmail: ${email.trim()}\nProject: ${project || "Not specified"}\n\n${message.trim()}`;
-    window.location.href = `mailto:hello@berrysols.com?subject=${encodeURIComponent(`Project enquiry from ${trimmedName}`)}&body=${encodeURIComponent(body)}`;
-      window.location.href = `mailto:hello@berrysols.com?subject=${encodeURIComponent(`Project enquiry from ${trimmedName}`)}&body=${encodeURIComponent(body)}`;
+    return `Name: ${trimmedName}\nEmail: ${email.trim()}\nService: ${project || "Not specified"}\nMessage: ${message.trim() || "Not specified"}`;
+  };
+
+  const emailHref = () => {
+    const trimmedName = name.trim() || "there";
+    return `mailto:hello@berrysols.com?subject=${encodeURIComponent(`Project enquiry from ${trimmedName}`)}&body=${encodeURIComponent(enquiryBody())}`;
+  };
+
+  const whatsappHref = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(enquiryBody())}`;
+
+  const review = () => {
     goTo(5);
   };
 
@@ -203,21 +213,24 @@ export default function ContactFlow() {
           </div>
 
           <div className={`flow-step ${step === 4 ? "active" : ""}`}>
-            <h2>Tell us a bit more</h2>
+            <h2>{project === "Other" ? "Which service do you need?" : "Tell us a bit more"}</h2>
             <textarea
               className="flow-input flow-textarea"
               value={message}
               onChange={(event) => setMessage(event.target.value)}
-              placeholder="A few lines about your idea, timeline or budget…"
+              placeholder={project === "Other" ? "Write the service you need..." : "A few lines about your idea, timeline or budget..."}
             />
-            <button type="button" className="button light" onClick={send}>Send it over <Arrow /></button>
+            <button type="button" className="button light" onClick={review}>Review enquiry <Arrow /></button>
           </div>
 
           <div className={`flow-step ${step === 5 ? "active" : ""}`}>
-            <div className="flow-check"><Icon name="check" /></div>
-            <h2>Thanks, {name.trim() || "there"}!</h2>
-            <p>We&apos;ll get back to you within a day. Feel free to email us directly in the meantime.</p>
-            <a className="button ghost flow-mail" href="mailto:hello@berrysols.com">hello@berrysols.com</a>
+            <h2>Here&apos;s what we&apos;ll receive</h2>
+            <pre className="flow-summary">{enquiryBody()}</pre>
+            <p>Choose where you&apos;d like to send your enquiry.</p>
+            <div className="flow-actions">
+              <a className="button light" href={whatsappHref} target="_blank" rel="noreferrer">WhatsApp us</a>
+              <a className="button ghost flow-mail" href={emailHref()}>Email us</a>
+            </div>
           </div>
         </div>
 

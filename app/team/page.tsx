@@ -17,7 +17,7 @@ export default function TeamPage() {
             <p className={styles.intro}>
               The people behind the work, bringing strategy, design, engineering, and curiosity to the same table.
             </p>
-            <Link className={styles.heroLink} href="/about">Back to About <span aria-hidden="true">-&gt;</span></Link>
+            <Link className={styles.heroLink} href="/about">Back to About</Link>
           </div>
         </section>
 

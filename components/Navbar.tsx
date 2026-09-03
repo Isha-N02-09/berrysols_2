@@ -12,6 +12,8 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const homeHref = pathname === "/" ? "#top" : "/";
+  const sectionHref = (section: string) => (pathname === "/" ? `#${section}` : `/#${section}`);
+  const portfolioHref = pathname === "/" ? "#portfolio" : "/portfolio";
 
   const serviceDropdownItems: DropdownItem[] = services.map((service) => ({
     label: service.eyebrow,
@@ -31,10 +33,10 @@ export default function Navbar() {
       href: "/services",
       children: serviceDropdownItems,
     },
-    { label: "Portfolio", href: "#portfolio" },
+    { label: "Portfolio", href: portfolioHref },
     {
       label: "Industries",
-      href: "#industries",
+      href: sectionHref("industries"),
       children: [
         "Government Agencies",
         "Vigilance & Recognition",
@@ -122,7 +124,7 @@ export default function Navbar() {
               Explore Careers
             </a>
             <a
-              href="#contact"
+              href={sectionHref("contact")}
               className="hidden rounded-full border border-[#f45e2b] px-5 py-[11px] text-[13px] font-medium text-[#ce4111] transition-colors hover:bg-[#f45e2b] hover:text-white md:inline-flex"
             >
               Get In Touch
