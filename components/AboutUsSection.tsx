@@ -32,7 +32,7 @@ function TypingLine({ text, align }: { text: string; align: "left" | "right" }) 
 
   return (
     <p
-      className={`m-0 max-w-[1100px] font-[var(--font-poppins)] font-semibold uppercase leading-[1.12] tracking-[-0.04em] text-black text-[clamp(1rem,1.8vw,2rem)] md:text-[clamp(1.2rem,1.8vw,2.2rem)] not-italic ${
+      className={`m-0 max-w-[38ch] font-[var(--font-poppins)] font-semibold uppercase leading-[1.3] tracking-[-0.02em] text-black text-[clamp(.82rem,1.25vw,1.2rem)] not-italic ${
         align === "right" ? "text-right" : "text-left"
       }`}
     >
@@ -53,45 +53,24 @@ function MissionVisionRow({
   text: string;
   align: "left" | "right";
 }) {
-  const [firstWord, secondWord] = title.split(" ");
-
   return (
-    <div className="w-full">
-      <div
-        className={`flex w-full items-start gap-3 md:gap-6 ${
-          align === "right" ? "justify-end" : "justify-start"
-        }`}
-      >
-        {align === "left" && (
-          <span className="pt-1 text-[clamp(3rem,6vw,7rem)] leading-none text-neutral-900 select-none">
-            “
-          </span>
-        )}
-
-        <div
-          className={`w-full max-w-[1100px] ${
-            align === "right" ? "ml-auto text-right" : "mr-auto text-left"
-          }`}
+    <div className="relative flex aspect-square w-full max-w-[420px] justify-self-center flex-col justify-center overflow-hidden border border-neutral-200 bg-neutral-50 p-6 sm:p-8 md:p-10">
+      <span className="absolute left-4 top-2 select-none font-serif text-6xl leading-none text-neutral-900 md:left-6 md:top-3 md:text-7xl">
+        “
+      </span>
+      <div className={`relative z-10 ${align === "right" ? "text-right" : "text-left"}`}>
+        <h3
+          className="m-0 mb-5 text-[clamp(1.8rem,3.8vw,4rem)] font-black uppercase leading-none tracking-[-0.05em]"
+          style={{ fontFamily: '"Brush Script MT", "Segoe Script", cursive' }}
         >
-          <h3
-            className={`m-0 mb-3 md:mb-5 text-[clamp(2.2rem,4.5vw,5.6rem)] font-black uppercase leading-none tracking-[-0.06em] ${
-              align === "right" ? "text-right" : "text-left"
-            }`}
-            style={{ fontFamily: '"Brush Script MT", "Segoe Script", cursive' }}
-          >
-            <span className="text-neutral-900">{firstWord}</span>{" "}
-            <span className="text-orange-500">{secondWord}</span>
-          </h3>
+          <span className="text-neutral-900">{title}</span>
+        </h3>
 
-          <TypingLine text={text} align={align} />
-        </div>
-
-        {align === "right" && (
-          <span className="pt-1 text-[clamp(3rem,6vw,7rem)] leading-none text-neutral-900 select-none">
-            ”
-          </span>
-        )}
+        <TypingLine text={text} align={align} />
       </div>
+      <span className="absolute bottom-0 right-4 select-none font-serif text-6xl leading-none text-neutral-900 md:right-6 md:text-7xl">
+        ”
+      </span>
     </div>
   );
 }
@@ -100,9 +79,12 @@ export default function AboutUs() {
   return (
     <section className="w-full bg-white px-4 py-16 text-neutral-900 md:px-8 md:py-20 lg:px-10">
       <div className="mx-auto max-w-[1500px]">
-        <div className="flex flex-col gap-10 md:gap-16">
-          <MissionVisionRow title="OUR MISSION" text={missionText} align="left" />
-          <MissionVisionRow title="OUR VISION" text={visionText} align="right" />
+        <h2 className="mb-10 text-center text-[clamp(2rem,4.5vw,4.5rem)] font-black uppercase leading-none tracking-[-0.06em] md:mb-14">
+          Our Mission <span className="text-orange-500">&amp; Vision</span>
+        </h2>
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-10">
+          <MissionVisionRow title="MISSION" text={missionText} align="left" />
+          <MissionVisionRow title="VISION" text={visionText} align="right" />
         </div>
       </div>
     </section>

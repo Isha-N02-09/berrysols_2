@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import styles from "./team.module.css";
 
 const teamMembers = [
@@ -37,8 +37,7 @@ export default function TeamScrollIntro() {
     };
   }, []);
 
-  const active = Math.min(Math.floor(progress * teamMembers.length), teamMembers.length - 1);
-  const imageOffset = progress * (teamMembers.length - 1) * 172;
+  const active = Math.min(Math.round(progress * (teamMembers.length - 1)), teamMembers.length - 1);
 
   const goToMember = (index: number) => {
     const section = sectionRef.current;
@@ -67,7 +66,7 @@ export default function TeamScrollIntro() {
         </div>
         <div className={styles.memberVisual}>
           <div className={styles.imageRail}>
-            <div className={styles.imageTrack} style={{ transform: `translateY(-${imageOffset}px)` }}>
+            <div className={styles.imageTrack} style={{ "--scroll-progress": progress } as CSSProperties}>
               {teamMembers.map(([, name, , image], index) => (
                 <div className={`${styles.imageTile} ${index === active ? styles.imageTileActive : ""}`} key={name}>
                   {index === active && <><span className={styles.imageTopBox} /><span className={styles.imageBottomBox} /></>}

@@ -18,6 +18,7 @@ export type CaseStudy = {
 
 export type Service = {
   slug: string;
+  category: "Digital" | "Growth" | "Technology";
   eyebrow: string;
   title: string;
   description: string;
@@ -32,6 +33,7 @@ export type Service = {
 export const services: Service[] = [
   {
     slug: "ai-automation",
+    category: "Technology",
     eyebrow: "AI Automation",
     title: "Turn intelligence into something useful.",
     description:
@@ -60,6 +62,7 @@ export const services: Service[] = [
   },
   {
     slug: "web-development",
+    category: "Digital",
     eyebrow: "Web Development",
     title: "We build the web around your business.",
     description:
@@ -102,6 +105,7 @@ export const services: Service[] = [
   },
   {
     slug: "desktop-app-development",
+    category: "Technology",
     eyebrow: "Desktop App Development",
     title: "Ideas that belong in your users' hands.",
     description:
@@ -130,6 +134,7 @@ export const services: Service[] = [
   },
   {
     slug: "enterprise-resource-planning-erp",
+    category: "Technology",
     eyebrow: "Enterprise Resource Planning (ERP)",
     title: "Software built around the way you work.",
     description:
@@ -158,6 +163,7 @@ export const services: Service[] = [
   },
   {
     slug: "legacy-software",
+    category: "Technology",
     eyebrow: "Legacy Software",
     title: "Keep the business running without being tied to old technology.",
     description:
@@ -186,6 +192,7 @@ export const services: Service[] = [
   },
   {
     slug: "startup-support",
+    category: "Growth",
     eyebrow: "Startup Support",
     title: "Your startup needs momentum. Not IT headaches.",
     description:
@@ -214,6 +221,7 @@ export const services: Service[] = [
   },
   {
     slug: "staff-augmentation",
+    category: "Growth",
     eyebrow: "Staff Augmentation",
     title: "Extend your team with specialists that plug in fast.",
     description:
@@ -242,6 +250,7 @@ export const services: Service[] = [
   },
   {
     slug: "digital-marketing",
+    category: "Digital",
     eyebrow: "Digital Marketing",
     title: "Turn attention into growth.",
     description:
