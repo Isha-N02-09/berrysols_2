@@ -52,7 +52,7 @@ export const blogPosts: BlogPost[] = [
     slug: "how-to-start-an-ecommerce-business-in-2025",
     title: "How to Start an E-Commerce Business in 2025 and Actually Make It Profitable",
     date: "September 12, 2025",
-    category: "Digital",
+    category: "Growth",
     image: "/assets/blog/ecommerce.jpg",
     excerpt: "A grounded guide to choosing a market, validating demand, launching the storefront, and keeping the economics of an online shop healthy.",
     sections: [
@@ -65,7 +65,7 @@ export const blogPosts: BlogPost[] = [
     slug: "what-is-cybersecurity",
     title: "What Is Cybersecurity? Online Safety and Data Protection in 2025",
     date: "September 11, 2025",
-    category: "Digital",
+    category: "Technology",
     image: "/assets/blog/cybersecurity.jpg",
     excerpt: "An accessible introduction to protecting devices, accounts, networks, and data against the risks that come with an increasingly connected world.",
     sections: [
@@ -78,7 +78,7 @@ export const blogPosts: BlogPost[] = [
     slug: "agile-software-development",
     title: "What Is Agile Software Development? A Clear and Simple Explanation",
     date: "August 12, 2025",
-    category: "Digital",
+    category: "Technology",
     image: "/assets/blog/agile.jpg",
     excerpt: "A plain-language explanation of agile delivery, iterative planning, feedback loops, and the collaboration that keeps software moving forward.",
     sections: [
@@ -91,7 +91,7 @@ export const blogPosts: BlogPost[] = [
     slug: "adaptive-software-development",
     title: "Adaptive Software Development (ASD): A Complete Guide",
     date: "August 8, 2025",
-    category: "Digital",
+    category: "Technology",
     image: "/assets/blog/adaptive.jpg",
     excerpt: "How adaptive development responds to uncertainty by using learning, collaboration, and change as part of the product-building process.",
     sections: [
@@ -104,7 +104,7 @@ export const blogPosts: BlogPost[] = [
     slug: "use-chatgpt-to-write-seo-content",
     title: "How to Use ChatGPT to Write SEO Content in 7 Steps",
     date: "August 2, 2025",
-    category: "Digital",
+    category: "Growth",
     image: "/assets/blog/chatgpt-content.jpg",
     excerpt: "A responsible workflow for using AI during content research and drafting while keeping strategy, accuracy, originality, and human editing in charge.",
     sections: [

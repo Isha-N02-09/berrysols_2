@@ -15,7 +15,7 @@ import Loader from "@/components/Loader";
 export default function Home() {
   return (
     <>
-      {/* <Loader />  */}
+      <Loader /> 
       <main id="top" className="min-h-screen w-full bg-white">
         <Navbar />
         <Hero />

@@ -688,36 +688,17 @@ export default function AboutPage() {
         <section className="section find-us-section">
           <div className="wrap">
             <div className="find-us-card">
-              <div className="find-us-header">HOW TO FIND US</div>
-
-              <div className="map-surface" aria-label="Map showing Berry Solutions location">
-                <div className="road road-a" />
-                <div className="road road-b" />
-                <div className="road road-c" />
-                <div className="road road-d" />
-                <div className="road road-e" />
-
-                <span className="map-label label-one">Sapphire Road</span>
-                <span className="map-label label-two">Harbor View</span>
-                <span className="map-label label-three">CE Highway</span>
-                <span className="map-label label-four">Roses D</span>
-                <span className="map-label label-five">Bahria Town</span>
-
-                <div className="map-pin" aria-hidden="true">
-                  <span />
-                </div>
+              <div className="find-us-header">
+                HOW TO <span>FIND</span> US
               </div>
 
-              <div className="map-action-row">
-                <a
-                  href="https://maps.google.com/?q=Al+Falak+Apartments,+Maitla+Chowk,+Ghazipur,+Sialkot,+51310,+Pakistan"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="map-action-link"
-                >
-                  Open in google map
-                </a>
-                <span className="map-arrow" aria-hidden="true">→</span>
+              <div className="map-surface">
+                <iframe
+                  title="Berry Solutions location map"
+                  src="https://www.google.com/maps?q=Al+Falak+Apartments,+Maitla+Chowk,+Ghazipur,+Sialkot,+51310,+Pakistan&output=embed"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
               </div>
             </div>
           </div>

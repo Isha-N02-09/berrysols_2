@@ -110,9 +110,9 @@ export default function RoadReveal({
   }, []);
 
   const path = buildRoadPath(box.width, box.height);
-  const roadWidth = Math.max(56, box.width * 0.085);
-  const dashWidth = Math.max(3, roadWidth * 0.05);
-  const dashGap = Math.max(14, roadWidth * 0.16);
+  const roadWidth = Math.max(32, box.width * 0.085);
+  const dashWidth = Math.max(2, roadWidth * 0.05);
+  const dashGap = Math.max(10, roadWidth * 0.16);
 
   return (
     <div ref={containerRef} className={`roadReveal ${className}`}>

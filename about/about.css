@@ -18,12 +18,12 @@ html{scroll-behavior:smooth;}
 body{
   background:var(--bg);
   color:var(--text);
-  font-family:'Inter',sans-serif;
+  font-family:var(--font-poppins),sans-serif;
   line-height:1.6;
   overflow-x:hidden;
 }
 ::selection{background:var(--accent);color:#fff;}
-h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;font-weight:600;letter-spacing:-0.01em;color:var(--text);}
+h1,h2,h3,h4{font-family:var(--font-poppins),sans-serif;font-weight:600;letter-spacing:-0.01em;color:var(--text);}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
 @media(max-width:640px){ .wrap{padding:0 22px;} }
 a{color:inherit;text-decoration:none;}
@@ -116,7 +116,7 @@ section{position:relative;}
   will-change:opacity,transform;
 }
 .who-story p{
-  font-family:'Space Grotesk',sans-serif;
+  font-family:var(--font-poppins),sans-serif;
   font-size:clamp(1.05rem,2.2vw,1.4rem);
   color:var(--text-muted);
   font-weight:500;
@@ -169,13 +169,13 @@ section{position:relative;}
 .story-copy{max-width:none;}
 .story-copy p{font-size:1.02rem;color:var(--text-muted);margin-bottom:1.3rem;max-width:62ch;}
 .story-copy p.lede{
-  font-family:'Space Grotesk',sans-serif;
+  font-family:var(--font-poppins),sans-serif;
   font-size:1.4rem;font-weight:500;color:var(--text);
   max-width:34ch;margin-bottom:2rem;
 }
 .story-copy p.tight{margin-bottom:0.3rem;}
 .story-copy .question{
-  font-family:'Space Grotesk',sans-serif;
+  font-family:var(--font-poppins),sans-serif;
   font-weight:600;font-size:1.6rem;color:var(--accent);
   margin:2.2rem 0;
 }
@@ -190,7 +190,7 @@ section{position:relative;}
   border:1px solid var(--border);
   border-radius:var(--radius);
   padding:32px 34px;
-  font-family:'Space Grotesk',sans-serif;
+  font-family:var(--font-poppins),sans-serif;
   font-size:1.3rem;font-weight:500;line-height:1.4;
   max-width:44ch;margin-top:1rem;
 }
@@ -249,7 +249,7 @@ section{position:relative;}
 .milestone-card h3{font-size:1rem;text-transform:uppercase;margin-bottom:8px;letter-spacing:.04em;color:var(--text);}
 .milestone-card p{font-size:.9rem!important;line-height:1.45;margin:0!important;color:var(--text-muted);}
 @media(max-width:760px){
-  .milestones{display:flex;flex-direction:column;gap:28px;min-height:0;padding:22px 0 10px;margin-left:70px;}
+  .milestones{display:flex;flex-direction:column;gap:28px;min-height:0;padding:22px 0 10px;margin-left:0;}
   .milestones::before{display:none;}
   .milestone,.milestone:nth-of-type(odd),.milestone:nth-of-type(even){grid-row:auto;grid-column:auto;transform:none;align-self:stretch;}
   .milestone-year{font-size:1.35rem;padding-top:0;}
@@ -277,7 +277,7 @@ section{position:relative;}
 .mv-panel::after{content:"\201D";right:26px;bottom:-2px;}
 .mv-panel p{
   margin:0 auto;max-width:72ch;text-align:center;
-  font-family:Arial,sans-serif;font-size:clamp(.95rem,1.5vw,1.15rem);
+  font-family:var(--font-poppins),sans-serif;font-size:clamp(.95rem,1.5vw,1.15rem);
   font-weight:600;color:var(--text);line-height:1.45;text-transform:uppercase;
 }
 .mv-panel p::after{
@@ -350,7 +350,7 @@ section{position:relative;}
 }
 
 .ceo-text .quote{
-  font-family:'Space Grotesk',sans-serif;
+  font-family:var(--font-poppins),sans-serif;
   font-size:1rem;
   font-weight:400;
   line-height:1.7;
@@ -400,7 +400,7 @@ section{position:relative;}
 /* ===================== TEAM CAROUSEL ===================== */
 .family-section{min-height:620px;background:#fff;color:#111;overflow:hidden;}
 .family-section .section-head{position:relative;z-index:4;margin-bottom:20px;}
-.family-section .section-head .eyebrow{font-size:clamp(1.7rem,3vw,2.5rem);font-family:Arial,sans-serif;letter-spacing:0;text-transform:uppercase;color:#111;margin-bottom:0;}
+.family-section .section-head .eyebrow{font-size:clamp(1.7rem,3vw,2.5rem);font-family:var(--font-poppins),sans-serif;letter-spacing:0;text-transform:uppercase;color:#111;margin-bottom:0;}
 .family-section .section-head .eyebrow::before{display:none;}
 .family-section .section-head .eyebrow{display:flex;align-items:center;gap:14px;}
 .family-section .section-head .eyebrow::after{
@@ -424,7 +424,7 @@ section{position:relative;}
 }
 .team-card .fallback{
   width:100%;height:100%;display:flex;align-items:center;justify-content:center;
-  font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:2rem;color:#111111;
+  font-family:var(--font-poppins),sans-serif;font-weight:700;font-size:2rem;color:#111111;
   background:transparent;
 }
 .team-info{text-align:center;margin-top:26px;color:#111;}
@@ -440,12 +440,21 @@ section{position:relative;}
   max-width:1120px;margin:0 auto;background:#f2f2f0;border:1px solid rgba(17,17,17,.12);border-radius:18px;padding:18px 18px 14px;box-shadow:0 8px 28px rgba(17,17,17,.04);
 }
 .find-us-header{
-  font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,5vw,4rem);font-weight:700;letter-spacing:-0.06em;line-height:1;color:#111;padding:8px 8px 16px;
+  font-family:var(--font-poppins),sans-serif;font-size:clamp(2rem,5vw,4rem);font-weight:700;letter-spacing:-0.06em;line-height:1;color:#111;padding:8px 8px 16px;
+}
+.find-us-header span{
+  font-family:var(--font-poppins),sans-serif;font-weight:700;letter-spacing:0;
 }
 .map-surface{
-  position:relative;height:290px;border-radius:12px;overflow:hidden;background:#f9f9f7;border:1px solid rgba(17,17,17,.08);
-  background-image:linear-gradient(90deg, rgba(17,17,17,.04) 1px, transparent 1px), linear-gradient(rgba(17,17,17,.04) 1px, transparent 1px);
-  background-size:36px 36px;
+  position:relative;height:290px;min-height:220px;border-radius:12px;overflow:hidden;background:#f9f9f7;border:1px solid rgba(17,17,17,.08);
+  opacity:1;transform:none;pointer-events:auto;
+}
+.map-surface iframe{
+  display:block;width:100%;height:100%;border:0;filter:grayscale(1);transition:filter .35s ease;
+}
+.map-surface:hover iframe,
+.map-surface:focus-within iframe{
+  filter:grayscale(0);
 }
 .road{
   position:absolute;background:#efefee;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(17,17,17,.04);
@@ -477,11 +486,11 @@ section{position:relative;}
 @media(max-width:640px){
   .family-section{min-height:520px;}
   .family-section .section-head{margin-bottom:12px;}
-  .team-card{width:110px;height:150px;}
-  .team-card.active{transform:scale(1.15) translateY(-8px);}
+  .team-card{width:clamp(58px,17vw,92px);height:clamp(96px,32vw,150px);margin:0 -5px;}
+  .team-card.active{transform:scale(1.12) translateY(-8px);margin:0 3px;}
   .find-us-card{padding:14px 12px 10px;}
   .find-us-header{padding-left:4px;}
-  .map-surface{height:220px;}
+  .map-surface{height:220px;opacity:1;transform:none;border-color:rgba(17,17,17,.08);pointer-events:auto;}
   .map-action-row{justify-content:center;}
 }
 
@@ -931,6 +940,7 @@ section{position:relative;}
 
 @media (max-width: 900px) {
   .workflow-grid { grid-template-columns: 1fr; gap: 36px; }
+  .workflow-copy { position: static; }
   .workflow-content p { max-width: 100%; }
 }
 

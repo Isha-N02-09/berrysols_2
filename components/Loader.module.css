@@ -12,12 +12,15 @@
   transition:
     opacity 0.7s ease,
     visibility 0.7s ease;
+  animation: loaderExit 0.7s ease 3s forwards;
 }
 
-.exiting {
+@keyframes loaderExit {
+  to {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  }
 }
 
 .loaderContent {
