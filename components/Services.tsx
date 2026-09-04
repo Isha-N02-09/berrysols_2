@@ -99,7 +99,7 @@ export default function Services() {
   }, []);
 
   return (
-    <section id="portfolio" ref={sectionRef} className={styles.servicesHero}>
+    <section id="services" ref={sectionRef} className={styles.servicesHero}>
       <div className={styles.stickyStage}>
         <h2 className={styles.portfolioTitle}>
           <span className={styles.portfolioTitleOur}>Our</span>{" "}

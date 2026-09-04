@@ -6,8 +6,10 @@ import { useEffect, useRef, useState } from "react";
 import { BarChart3, Bot, MessageCircle, Zap } from "lucide-react";
 import SimpleFooter from "../components/Footer";
 import Navbar from "../components/Navbar";
-import ContactFlow from "../components/ContactFlow";
-import AboutUsSection from "../components/AboutUsSection";
+import CapabilityWave from "../components/CapabilityWave";
+import ImpactStats from "../components/ImpactStats";
+import AboutContact from "../components/AboutContact";
+import "../components/AboutContact.css";
 import RoadReveal from "./components/RoadReveal";
 
 const TEAM = [
@@ -395,19 +397,11 @@ export default function AboutPage() {
         {/* ===================== WHO WE ARE ===================== */}
         <section className="who-hero" ref={whoHeroRef}>
           <div className="who-sticky">
-            <div className="hero-bubbles" aria-hidden="true">
-              <span className="hero-bubble"><Bot /></span>
-              <span className="hero-bubble"><Zap /></span>
-              <span className="hero-bubble"><MessageCircle /></span>
-              <span className="hero-bubble"><BarChart3 /></span>
-            </div>
-
             <div
               className="eyebrow who-eyebrow"
               ref={whoEyebrowRef}
             >
-              About BerrySols
-               About Berry Solutions
+            About Berry Solutions
             </div>
 
             <h1 className="who-title">
@@ -431,10 +425,7 @@ export default function AboutPage() {
               ref={whoStoryRef}
             >
               <p>
-                A team that started with one question — how
-                can this work better — and never stopped
-                asking it. From one client&apos;s chaos to a
-                studio that still listens before it builds.
+                A team that came together around one belief — technology works best when it starts with people. From early ideas to complex challenges, we’ve grown into a studio of thinkers and builders who listen, question, and create with purpose.
               </p>
             </div>
 
@@ -444,7 +435,34 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <AboutUsSection />
+        <section className="section mission-vision-section" aria-labelledby="mission-vision-heading">
+          <div className="wrap">
+            <div className="section-head reveal">
+              <span className="eyebrow">What guides us</span>
+              <h2 id="mission-vision-heading">Our Mission <span className="accent-word">&amp; Vision</span></h2>
+            </div>
+
+            <div className="mission-vision-cards reveal-stagger">
+              <article className="mission-vision-card">
+                <h3>Mission</h3>
+                <p>
+                  We combine strategy, design, and technology to create clear,
+                  useful digital products that help businesses move forward.
+                </p>
+              </article>
+
+              <article className="mission-vision-card">
+                <h3>Vision</h3>
+                <p>
+                  To make technology feel simpler, smarter, and more human for
+                  every business we work with.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <CapabilityWave />
 
         {/* ===================== ORIGIN STORY ===================== */}
         <section className="section">
@@ -467,50 +485,51 @@ export default function AboutPage() {
                 <article className="milestone">
                   <div className="milestone-year">2021</div>
                   <div className="milestone-card">
-                    <h3>First steps</h3>
-                    <p>BerrySols begins with a simple belief: technology should make work clearer.</p>
-                     <p>Berry Solutions begins with a simple belief: technology should make work clearer.</p>
+                    <h3>The Spark</h3>
+                    <p>An idea to build technology with purpose.</p>
                   </div>
                 </article>
                 <article className="milestone">
                   <div className="milestone-year">2022</div>
                   <div className="milestone-card">
-                    <h3>Listen first</h3>
-                    <p>We learn how teams really work before we design what they need.</p>
+                    <h3>The Foundation</h3>
+                    <p>Turning that idea into something real.</p>
                   </div>
                 </article>
                 <article className="milestone">
                   <div className="milestone-year">2023</div>
                   <div className="milestone-card">
-                    <h3>Build better</h3>
-                    <p>Websites, platforms, and automation turn daily complexity into momentum.</p>
+                    <h3>The Lessons</h3>
+                    <p>Every project taught us how to build better.</p>
                   </div>
                 </article>
                 <article className="milestone">
                   <div className="milestone-year">2024</div>
                   <div className="milestone-card">
-                    <h3>Keep going</h3>
-                    <p>Our work expands across industries, from education and retail to real estate.</p>
+                    <h3>The Expansion</h3>
+                    <p>From individual solutions to bigger business challenges.</p>
                   </div>
                 </article>
                 <article className="milestone">
                   <div className="milestone-year">2025</div>
                   <div className="milestone-card">
-                    <h3>Connect the dots</h3>
-                    <p>We bring strategy, design, and intelligent systems together in one direction.</p>
+                    <h3>The Impact</h3>
+                    <p>Creating technology that moves businesses forward.</p>
                   </div>
                 </article>
                 <article className="milestone">
                   <div className="milestone-year">2026</div>
                   <div className="milestone-card">
-                    <h3>What comes next</h3>
-                    <p>We are still asking the same question: how can this work better?</p>
+                    <h3>The Next Chapter</h3>
+                    <p>Still questioning. Still building. Still moving forward.</p>
                   </div>
                 </article>
               </RoadReveal>
             </div>
           </div>
         </section>
+
+        <ImpactStats />
 
         {/* ===================== APPROACH ===================== */}
         <section className="section workflow-section">
@@ -526,7 +545,7 @@ export default function AboutPage() {
               </h2>
 
               <p>
-                At Berry Solutions, we believe successful projects start with clarity and end with measurable impact. With over 10 years of experience in IT services, our process ensures efficiency, transparency, and results that exceed expectations for businesses worldwide.
+                At Berry Solutions, we believe successful projects start with clarity and end with measurable impact. With 5+ years of experience in IT services, our process ensures efficiency, transparency, and results that exceed expectations for businesses worldwide.
               </p>
 
               <a href="/portfolio" className="workflow-cta">
@@ -681,41 +700,8 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="section find-us-section">
-          <div className="wrap">
-            <div className="find-us-card">
-              <div className="find-us-header">
-                HOW TO <span>FIND</span> US
-              </div>
-
-              <div className="map-surface">
-                <iframe
-                  title="Berry Solutions location map"
-                  width="600"
-                  height="450"
-                  style={{ border: 0 }}
-                  src="https://www.openstreetmap.org/export/embed.html?bbox=74.15%2C32.15%2C74.24%2C32.22&layer=mapnik&marker=32.1877%2C74.1945"
-                  loading="lazy"
-                  allowFullScreen
-                  referrerPolicy="strict-origin-when-cross-origin"
-                />
-              </div>
-              <div className="map-action-row">
-                <a
-                  className="map-action-link"
-                  href="https://www.google.com/maps/search/?api=1&query=Al+Falak+Apartments%2C+Gujranwala%2C+Pakistan"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Open in Google Maps
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* ===================== CONTACT ===================== */}
-        <ContactFlow />
+        <AboutContact />
 
       </main>
 

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import SimpleFooter from "@/components/Footer";
+import BlogEngagement from "@/components/BlogEngagement";
 import { blogPosts, getBlogPost } from "@/lib/blog";
 
 export function generateStaticParams() {
@@ -21,27 +22,46 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   return (
     <main className="min-h-screen bg-[#fffaf5] text-[#171410]">
       <Navbar />
-      <article className="px-6 pb-24 pt-36 lg:px-[12vw] lg:pt-48">
-        <Link href="/blog" className="text-xs font-semibold uppercase tracking-[0.2em] text-[#f45e2b] hover:text-[#ce4111]">Back to journal</Link>
-        <div className="mt-8 max-w-5xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#756f65]">{post.category} / {post.date}</p>
-          <h1 className="mt-5 text-5xl font-medium leading-[0.98] tracking-[-0.04em] text-[#ce4111] md:text-7xl">{post.title}</h1>
+      <article className="blog-article px-6 pb-24 pt-36 lg:px-[12vw] lg:pt-48">
+        <Link href="/blog" className="blog-back-link">Back to journal</Link>
+        <div className="blog-article-heading">
+          <p className="blog-article-meta">{post.category} / {post.date} / 0 Comments</p>
+          <h1>{post.title}</h1>
+          <p className="blog-author">By Ahsan Mehmood</p>
         </div>
-        <img src={post.image} alt="" className="mt-14 aspect-[1.8] w-full object-cover" />
-        <div className="mx-auto mt-12 max-w-2xl text-lg leading-8 text-[#4f4a43]">
-          <p className="text-2xl leading-9 text-[#171410]">{post.excerpt}</p>
-          <div className="mt-12 space-y-12">
-            {post.sections.map((section) => (
-              <section key={section.heading}>
-                <h2 className="text-3xl font-medium leading-tight tracking-[-0.025em] text-[#ce4111]">{section.heading}</h2>
-                <div className="mt-5 space-y-5">
-                  {section.paragraphs.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
-                  ))}
+        <img src={post.image} alt={post.title} className="blog-article-image" />
+        <div className="blog-article-layout">
+          <div className="blog-article-body">
+            <p className="blog-article-lede">{post.excerpt}</p>
+            {post.stats && <div className="blog-stat-grid" aria-label="Article statistics">{post.stats.map((stat) => <div className="blog-stat" key={stat.label}><strong>{stat.value}</strong><span>{stat.label}</span><small>{stat.detail}</small></div>)}</div>}
+            {post.graph && <div className="blog-graph" aria-label="Article graph"><div className="blog-graph-heading"><span>Signal at a glance</span><small>Relative index</small></div>{post.graph.map((item) => <div className="blog-graph-row" key={item.label}><span>{item.label}</span><div><i style={{ width: `${item.value}%` }} /></div><strong>{item.value}</strong></div>)}</div>}
+            <div className="blog-article-sections">
+              {post.sections.map((section) => (
+                <section key={section.heading}>
+                  <h2>{section.heading}</h2>
+                  {section.image && <img src={section.image} alt="" className="blog-inline-image" />}
+                  <div>{section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
+                </section>
+              ))}
+              {post.table && (
+                <div className="blog-table-wrap">
+                  <table>
+                    <thead><tr>{post.table.headers.map((header) => <th key={header}>{header}</th>)}</tr></thead>
+                    <tbody>{post.table.rows.map((row) => <tr key={row[0]}>{row.map((cell) => <td key={cell}>{cell}</td>)}</tr>)}</tbody>
+                  </table>
                 </div>
-              </section>
-            ))}
+              )}
+              {post.relatedImages && <div className="blog-related-images">{post.relatedImages.map((image) => <figure key={image.src}><img src={image.src} alt={image.alt} /><figcaption>{image.caption}</figcaption></figure>)}</div>}
+              {post.faqs && <section><h2>FAQs</h2><div className="blog-faqs">{post.faqs.map((faq) => <div key={faq.question}><h3>{faq.question}</h3><p>{faq.answer}</p></div>)}</div></section>}
+            </div>
           </div>
+          <aside className="blog-article-sidebar">
+            <BlogEngagement />
+            <p>About Author</p>
+            <h2>Ahsan Mehmood</h2>
+            <p>Welcome to Berry Solutions! I&apos;m Ahsan, the CEO and Founder. I&apos;m a passionate tech enthusiast and digital solutions architect with over 10 years of experience in the IT industry.</p>
+            <Link href="/blog">More stories</Link>
+          </aside>
         </div>
       </article>
       <SimpleFooter />

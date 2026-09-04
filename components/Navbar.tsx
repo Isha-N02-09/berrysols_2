@@ -13,7 +13,8 @@ export default function Navbar() {
   const pathname = usePathname();
   const homeHref = pathname === "/" ? "#top" : "/";
   const sectionHref = (section: string) => (pathname === "/" ? `#${section}` : `/#${section}`);
-  const portfolioHref = pathname === "/" ? "#portfolio" : "/portfolio";
+  const servicesHref = pathname === "/" ? "#portfolio" : "/services";
+  const portfolioHref = pathname === "/" ? "#services" : "/portfolio";
 
   const serviceDropdownItems: DropdownItem[] = services.map((service) => ({
     label: service.eyebrow,
@@ -29,7 +30,7 @@ export default function Navbar() {
     { label: "Home", href: homeHref },
     {
       label: "Services",
-      href: "/services",
+      href: servicesHref,
       children: serviceDropdownItems,
     },
     { label: "Portfolio", href: portfolioHref },

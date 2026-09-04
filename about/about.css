@@ -79,27 +79,6 @@ section{position:relative;}
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   overflow:hidden;text-align:center;
 }
-.hero-bubbles{position:absolute;inset:0;z-index:0;pointer-events:none;}
-.hero-bubble{
-  position:absolute;display:flex;align-items:center;justify-content:center;
-  width:clamp(52px,7vw,82px);height:clamp(52px,7vw,82px);
-  border:1px solid rgba(255,90,31,0.38);border-radius:50%;
-  background:rgba(255,90,31,0.08);color:var(--accent);
-  box-shadow:0 14px 34px rgba(255,90,31,0.1),inset 0 0 24px rgba(255,90,31,0.06);
-  animation:heroBubbleFloat 6s ease-in-out infinite;
-}
-.hero-bubble svg{width:35%;height:35%;stroke-width:1.7;}
-.hero-bubble:nth-child(1){top:20%;left:14%;animation-delay:-1.2s;}
-.hero-bubble:nth-child(2){top:29%;right:16%;animation-delay:-3.5s;}
-.hero-bubble:nth-child(3){bottom:22%;left:23%;animation-delay:-4.5s;}
-.hero-bubble:nth-child(4){bottom:18%;right:25%;animation-delay:-2.2s;}
-@keyframes heroBubbleFloat{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(0,-12px,0)}}
-@media(max-width:640px){
-  .hero-bubble:nth-child(1){left:8%;}
-  .hero-bubble:nth-child(2){right:8%;}
-  .hero-bubble:nth-child(3){left:12%;bottom:18%;}
-  .hero-bubble:nth-child(4){right:12%;bottom:15%;}
-}
 .who-eyebrow{position:relative;z-index:2;}
 .who-title{
   position:relative;z-index:2;
@@ -117,7 +96,7 @@ section{position:relative;}
 }
 .who-story p{
   font-family:var(--font-poppins),sans-serif;
-  font-size:clamp(1.05rem,2.2vw,1.4rem);
+  font-size:clamp(0.92rem,1.7vw,1.15rem);
   color:var(--text-muted);
   font-weight:500;
   line-height:1.5;
@@ -234,10 +213,10 @@ section{position:relative;}
 }
 .milestone-card{
   position:relative;min-height:132px;padding:24px 22px 22px 28px;
-  overflow:hidden;background:linear-gradient(135deg,rgba(248,249,249,.56),rgba(218,223,223,.2));
-  border:1px solid rgba(255,255,255,.86);border-radius:var(--radius);
-  backdrop-filter:blur(20px) saturate(145%);-webkit-backdrop-filter:blur(20px) saturate(145%);
-  box-shadow:0 16px 34px rgba(17,17,17,.1),inset 0 1px 0 rgba(255,255,255,.9),inset 0 -1px 0 rgba(125,135,130,.16);
+  overflow:hidden;background:rgba(255,255,255,.52);
+  border:1px solid rgba(255,255,255,.92);border-radius:16px;
+  backdrop-filter:blur(24px) saturate(135%);-webkit-backdrop-filter:blur(24px) saturate(135%);
+  box-shadow:0 18px 38px rgba(72,78,88,.13),inset 0 1px 0 rgba(255,255,255,.98),inset 0 -1px 0 rgba(180,188,198,.12);
   transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;
 }
 .milestone-card::before{
@@ -250,7 +229,7 @@ section{position:relative;}
 }
 .milestone-card:hover,.milestone-card:focus-within{
   transform:translateY(-7px);border-color:#fff;
-  box-shadow:0 22px 42px rgba(17,17,17,.16),inset 0 1px 0 #fff,inset 0 -1px 0 rgba(125,135,130,.2);
+  box-shadow:0 24px 46px rgba(72,78,88,.18),inset 0 1px 0 #fff,inset 0 -1px 0 rgba(180,188,198,.16);
 }
 .milestone-card:hover::before,.milestone-card:focus-within::before{height:72px;}
 .milestone-card h3{position:relative;z-index:1;font-family:var(--font-poppins),sans-serif;font-size:1.05rem;line-height:1.25;text-transform:none;margin:0 0 10px;letter-spacing:0;color:var(--text);}
@@ -264,6 +243,27 @@ section{position:relative;}
 }
 
 /* ===================== MISSION / VISION ===================== */
+.mission-vision-section{padding-top:96px;padding-bottom:96px;background:#fff;}
+.mission-vision-section .section-head{max-width:760px;margin:0 auto 42px;text-align:center;}
+.mission-vision-section .section-head h2{font-family:var(--font-poppins),sans-serif;font-size:clamp(2rem,4.5vw,3rem);font-weight:700;text-transform:none;letter-spacing:0;}
+.mission-vision-section .section-head h2 .accent-word{color:var(--accent);}
+.mission-vision-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;max-width:720px;margin:0 auto;}
+.mission-vision-card{
+  position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:0;aspect-ratio:1 / 1;width:100%;max-width:340px;margin:0 auto;padding:34px 28px;text-align:center;
+  border:1px solid rgba(17,17,17,.12);background:#fff;
+  box-shadow:0 14px 32px rgba(17,17,17,.07);
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+}
+.mission-vision-card::before{content:"\201C";position:absolute;left:18px;top:12px;color:#111;font-family:Georgia,serif;font-size:72px;font-weight:700;line-height:.7;}
+.mission-vision-card::after{content:"\201D";position:absolute;right:18px;bottom:4px;color:#111;font-family:Georgia,serif;font-size:72px;font-weight:700;line-height:.7;}
+.mission-vision-card:hover,.mission-vision-card:focus-within{transform:translateY(-6px);border-color:var(--accent);box-shadow:0 20px 38px rgba(17,17,17,.12);}
+.mission-vision-card h3{position:relative;z-index:1;margin:0 0 18px;color:var(--text);font-family:var(--font-poppins),sans-serif;font-size:clamp(2.1rem,3.4vw,3.5rem);font-weight:700;line-height:1;text-transform:uppercase;}
+.mission-vision-card p{position:relative;z-index:1;max-width:30ch;margin:0;color:var(--text);font-family:var(--font-poppins),sans-serif;font-size:.78rem;font-weight:600;line-height:1.55;text-transform:uppercase;}
+@media(max-width:640px){
+  .mission-vision-section{padding-top:68px;padding-bottom:68px;}
+  .mission-vision-cards{grid-template-columns:1fr;gap:18px;}
+  .mission-vision-card{aspect-ratio:1 / 1;max-width:340px;padding:24px 20px;}
+}
 .mv-block{margin-bottom:64px;}
 .mv-block:last-of-type{margin-bottom:0;}
 .mv-heading{
@@ -446,7 +446,7 @@ section{position:relative;}
 .team-note{max-width:56ch;margin:36px auto 0;color:var(--text-muted);font-size:0.98rem;text-align:center;}
 .find-us-section{padding-top:26px;padding-bottom:40px;background:#fff;}
 .find-us-card{
-  max-width:1120px;margin:0 auto;background:#f2f2f0;border:1px solid rgba(17,17,17,.12);border-radius:18px;padding:18px 18px 14px;box-shadow:0 8px 28px rgba(17,17,17,.04);
+  max-width:1120px;margin:0 auto;background:transparent;border:none;border-radius:0;padding:18px 0 14px;box-shadow:none;
 }
 .find-us-header{
   font-family:var(--font-poppins),sans-serif;font-size:clamp(2rem,5vw,4rem);font-weight:700;letter-spacing:-0.06em;line-height:1;color:#111;padding:8px 8px 16px;
@@ -455,7 +455,7 @@ section{position:relative;}
   font-family:var(--font-poppins),sans-serif;font-weight:700;letter-spacing:0;
 }
 .map-surface{
-  position:relative;height:290px;min-height:220px;border-radius:12px;overflow:hidden;background:#f9f9f7;border:1px solid rgba(17,17,17,.08);
+  position:relative;height:290px;min-height:220px;border-radius:0;overflow:hidden;background:#f9f9f7;border:none;
   opacity:1;transform:none;pointer-events:auto;
 }
 .map-surface iframe{
@@ -877,7 +877,7 @@ section{position:relative;}
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: -29px;
+  margin-left: -24px;
   justify-self: center;
 }
 
@@ -958,7 +958,7 @@ section{position:relative;}
   .workflow-copy h2 { max-width: 100%; }
   .workflow-item { grid-template-columns: 48px minmax(0, 1fr); gap: 14px; }
   .workflow-list::before { left: 21px; }
-  .workflow-icon { width: 34px; height: 34px; margin-left: -12px; background: transparent; }
+  .workflow-icon { width: 34px; height: 34px; margin-left: -9px; background: transparent; }
   .workflow-mark { font-size: 1.2rem; }
   .workflow-content h3 { font-size: 1.15rem; }
   .workflow-content p { font-size: 0.96rem; }

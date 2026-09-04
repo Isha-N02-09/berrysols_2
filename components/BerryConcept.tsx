@@ -42,7 +42,7 @@ export default function BerryConcept() {
     <section ref={sectionRef} className={`berry-concept ${isVisible ? "is-visible" : ""}`} aria-labelledby="berry-concept-title">
       <div className="berry-concept-inner">
         <div className="berry-concept-heading">
-          <p className="berry-concept-kicker">BERRY</p>
+          <p className="berry-concept-kicker">BERRY Solutions</p>
           <h2 id="berry-concept-title">Technology that connects the dots.</h2>
         </div>
 
@@ -64,7 +64,6 @@ export default function BerryConcept() {
 
           <div className="berry-center" aria-label="Berry. Technology that connects the dots.">
             <span>BERRY</span>
-            <small>Technology that connects the dots.</small>
           </div>
 
           {concepts.map((concept) => {
