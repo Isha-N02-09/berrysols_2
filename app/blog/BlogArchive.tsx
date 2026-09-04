@@ -8,7 +8,7 @@ type BlogArchiveProps = {
   posts: BlogPost[];
 };
 
-const categories = ["All", "Digital", "Growth", "Technology"] as const;
+const categories = ["All", "Digital", "News", "Standard", "Stories"] as const;
 type Category = (typeof categories)[number];
 
 export default function BlogArchive({ posts }: BlogArchiveProps) {

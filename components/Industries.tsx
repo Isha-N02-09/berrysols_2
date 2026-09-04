@@ -6,7 +6,9 @@ import {
   ShoppingBag,
   Smartphone,
   UtensilsCrossed,
+  ArrowUpRight,
 } from "lucide-react";
+import Link from "next/link";
 import styles from "./Industries.module.css";
 
 const industries = [
@@ -37,7 +39,8 @@ export default function Industries() {
         <div className={styles.copy}>
           <h2 id="industries-title" className={styles.title}>Industries we serve</h2>
           <p className={styles.description}>
-            We partner with global enterprises across industries to solve complex challenges through practical, scalable technology services aligned with their business goals, helping them adapt, grow, and lead in a fast-changing world.
+            Different industries. Different challenges. One intelligent approach. We build scalable digital solutions that adapt to your industry, streamline operations, and create measurable impact.
+
           </p>
           <div className={styles.industryDisplay}>
             <div className={styles.industryWindow} aria-label="Industries we serve">
@@ -60,7 +63,9 @@ export default function Industries() {
               </div>
             </div>
           </div>
-          <a href="#contact" className={styles.learnMore}>Learn more</a>
+          <Link href="#contact" className={styles.learnMore}>
+            Learn more <ArrowUpRight size={16} strokeWidth={2.25} aria-hidden="true" />
+          </Link>
         </div>
 
         <div className={styles.imageFrame}>

@@ -12,6 +12,9 @@ import ScrollReveal from "@/components/ScrollReveal";
 import Industries from "@/components/Industries";
 import Insights from "@/components/Insights";
 import AboutUs from "@/components/AboutUsSection";
+import ImpactStats from "@/components/ImpactStats";
+import CapabilityWave from "@/components/CapabilityWave";
+
 export default function Home() {
   return (
     <>
@@ -30,12 +33,14 @@ export default function Home() {
         <ScrollReveal className="scroll-reveal--strip">
           <ProjectStrip />
         </ScrollReveal>
+        <CapabilityWave />
         <ScrollReveal className="scroll-reveal--services">
           <Services />
         </ScrollReveal>
         <ScrollReveal className="scroll-reveal--concept">
           <BerryConcept />
         </ScrollReveal>
+        <CapabilityWave />
         <ScrollReveal className="scroll-reveal--insights">
           <Insights />
         </ScrollReveal>
@@ -43,6 +48,9 @@ export default function Home() {
           <Clients />
         </ScrollReveal>
         <AboutUs />
+        <ScrollReveal className="scroll-reveal--stats">
+          <ImpactStats />
+        </ScrollReveal>
         <ScrollReveal className="scroll-reveal--contact">
           <ContactFlow />
         </ScrollReveal>

@@ -88,20 +88,33 @@
   color: #282828;
 }
 
-.leftContent button {
-  border: none;
+.exploreLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.8rem 1.15rem;
+  border: 1px solid #171410;
+  border-radius: 999px;
+  color: #171410;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease,
+    transform 0.2s ease;
+}
 
-  padding: 9px 18px;
-
-  border-radius: 30px;
-
+.exploreLink:hover,
+.exploreLink:focus-visible {
   background: #f45e2b;
-  color: white;
+  border-color: #f45e2b;
+  color: #fff;
+  transform: translateY(-2px);
+}
 
-  font-size: 10px;
-  font-weight: 600;
-
-  cursor: pointer;
+.exploreLink:focus-visible,
+.cardLink:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
 }
 
 
@@ -336,4 +349,11 @@
   .insightCard {
     animation: none;
   }
+}
+
+.cardLink {
+  position: absolute;
+  inset: 0;
+  display: block;
+  color: inherit;
 }

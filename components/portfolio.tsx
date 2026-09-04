@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import {
+  ArrowUpRight,
   ArrowRight,
   BarChart3,
   ChevronLeft,
@@ -64,6 +65,9 @@ export default function ServicesShowcase() {
     <section id="portfolio" className={styles.root}>
       <div className={styles.header}>
         <h2>Our services</h2>
+        <Link href="/services" className={styles.viewAllServices}>
+          View all services <ArrowUpRight size={16} strokeWidth={2.25} aria-hidden="true" />
+        </Link>
       </div>
 
       <div className={styles.carousel}>

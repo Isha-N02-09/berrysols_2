@@ -385,8 +385,8 @@
 
 .rowTitle {
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(20px, 2.8vw, 32px);
+  font-weight: 800;
+  font-size: clamp(22px, 3.2vw, 36px);
   letter-spacing: -0.01em;
   color: #171410;
 }

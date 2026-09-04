@@ -1,101 +1,61 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import styles from "./ImpactStats.module.css";
 
-const impactStats = [
-  { value: 90, label: "Projects" },
-  { value: 65, label: "People" },
-  { value: 10, label: "Services" },
-  { value: 15, label: "Countries" },
+const stats = [
+  { target: 90, suffix: "+", label: "Projects" },
+  { target: 65, suffix: "", label: "People" },
+  { target: 10, suffix: "+", label: "Services" },
+  { target: 15, suffix: "", label: "Offices" },
 ];
 
-const locations = [
-  { name: "USA", left: "38%", top: "32%" },
-  { name: "Canada", left: "39%", top: "20%" },
-  { name: "Mexico", left: "40%", top: "44%" },
-  { name: "Brazil", left: "45%", top: "63%" },
-  { name: "Argentina", left: "43%", top: "76%" },
-  { name: "UK", left: "53%", top: "28%" },
-  { name: "Germany", left: "56%", top: "36%" },
-  { name: "France", left: "54%", top: "40%" },
-  { name: "Spain", left: "53%", top: "46%" },
-  { name: "Nigeria", left: "57%", top: "55%" },
-  { name: "South Africa", left: "57%", top: "74%" },
-  { name: "United Arab Emirates", left: "66%", top: "48%" },
-  { name: "India", left: "70%", top: "52%" },
-  { name: "Singapore", left: "74%", top: "65%" },
-];
-
-
-export default function ImpactStats() {
-  const statsRef = useRef<HTMLDivElement>(null);
-  const [count, setCount] = useState(0);
+function CountUpValue({ target, suffix }: { target: number; suffix: string }) {
+  const [value, setValue] = useState(0);
+  const valueRef = useRef<HTMLSpanElement>(null);
+  const hasStarted = useRef(false);
 
   useEffect(() => {
-    const stats = statsRef.current;
-    if (!stats) return;
+    const element = valueRef.current;
+    if (!element || hasStarted.current) return;
 
     const observer = new IntersectionObserver(([entry]) => {
-      if (!entry.isIntersecting) return;
+      if (!entry.isIntersecting || hasStarted.current) return;
+      hasStarted.current = true;
+      observer.disconnect();
 
-      const duration = 1500;
-      const startTime = performance.now();
-      const animate = (currentTime: number) => {
-        const progress = Math.min((currentTime - startTime) / duration, 1);
+      const startedAt = performance.now();
+      const duration = 1400;
+
+      const animate = (now: number) => {
+        const progress = Math.min((now - startedAt) / duration, 1);
         const easedProgress = 1 - Math.pow(1 - progress, 3);
-        setCount(Math.round(90 * easedProgress));
-
+        setValue(Math.round(target * easedProgress));
         if (progress < 1) requestAnimationFrame(animate);
       };
 
       requestAnimationFrame(animate);
-      observer.disconnect();
-    }, { threshold: 0.25 });
+    }, { threshold: 0.6 });
 
-    observer.observe(stats);
+    observer.observe(element);
     return () => observer.disconnect();
-  }, []);
+  }, [target]);
 
+  return <span ref={valueRef}>{value}{suffix}</span>;
+}
+
+export default function ImpactStats() {
   return (
-    <section className="impact-stats" aria-label="Our impact">
-      <div className="impact-stats-inner">
-        <h2 className="impact-stats-heading">Track Record</h2>
-        <div className="impact-main">
-          <div className="impact-map-column">
-            <div className="impact-map" aria-label="Global locations">
-              <div className="impact-map-content">
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg"
-                  alt=""
-                  className="impact-map-image"
-                />
-                {locations.map((location) => (
-                  <span
-                    className="impact-flag"
-                    key={location.name}
-                    style={{ left: location.left, top: location.top }}
-                    title={location.name}
-                    aria-hidden="true"
-                  >
-                    <span />
-                  </span>
-                ))}
-              </div>
-            </div>
+    <section className={styles.section} aria-label="Berry Solutions by the numbers">
+      <div className={styles.inner}>
+        {stats.map((stat) => (
+          <div className={styles.stat} key={stat.label}>
+            <p className={styles.value}>
+              <CountUpValue target={stat.target} suffix={stat.suffix} />
+            </p>
+            <p className={styles.label}>{stat.label}</p>
           </div>
-
-          <div className="impact-stat-grid" ref={statsRef}>
-            {impactStats.map((stat) => (
-              <div className="impact-stat" key={stat.label}>
-                <strong className="impact-number">
-                  {Math.round((count / 90) * stat.value)}
-                </strong>
-                <span>{stat.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
+        ))}
       </div>
     </section>
   );

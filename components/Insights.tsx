@@ -1,9 +1,26 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import { blogPosts } from "@/lib/blog";
 import styles from "./Insights.module.css";
 
-const insightColumns = [
+type Insight = {
+  category: string;
+  title: string;
+  image: string;
+  slug?: string;
+};
+
+const blogInsights: Insight[] = blogPosts.slice(0, 5).map((post) => ({
+  category: "Blog",
+  title: post.title,
+  image: post.image,
+  slug: post.slug,
+}));
+
+const insightColumns: Insight[][] = [
   [
     {
       category: "Case Study",
@@ -11,26 +28,22 @@ const insightColumns = [
       image: "/assets/inslights/1.jpg",
     },
     {
-      category: "Blogs",
-      title: "How Cloud Computing Can Transform Your Business",
+      ...blogInsights[0],
       image: "/assets/inslights/2.jpg",
     },
   ],
 
   [
     {
-      category: "Blogs",
-      title: "Custom Web Application: Everything You Need to Know",
+      ...blogInsights[1],
       image: "/assets/inslights/3.jpg",
     },
     {
-      category: "Blogs",
-      title: "Trends of Mobile Design: What's Next for Your Business?",
+      ...blogInsights[2],
       image: "/assets/inslights/4.jpg",
     },
     {
-      category: "Blogs",
-      title: "How Generative AI is Transforming Business Operations",
+      ...blogInsights[3],
       image: "/assets/inslights/5.jpg",
     },
   ],
@@ -42,8 +55,7 @@ const insightColumns = [
       image: "/assets/inslights/6.jpg",
     },
     {
-      category: "Case Study",
-      title: "Pakistan's Furniture Leader Shoots 55% Margin Growth",
+      ...blogInsights[4],
       image: "/assets/inslights/7.jpg",
     },
     {
@@ -71,7 +83,9 @@ export default function Insight() {
 
           <p>From Concept to Completion</p>
 
-          <button>Explore More</button>
+          <Link href="/blog" className={styles.exploreLink}>
+            Learn more <ArrowUpRight size={16} strokeWidth={2.25} aria-hidden="true" />
+          </Link>
         </div>
 
         <div className={styles.insightsArea}>
@@ -88,20 +102,25 @@ export default function Insight() {
                     className={styles.insightCard}
                     key={index}
                   >
-                    <Image
-                      src={insight.image}
-                      alt={insight.title}
-                      fill
-                      className={styles.image}
-                    />
-
-                    <div className={styles.overlay} />
-
-                    <div className={styles.cardContent}>
-                      <span>{insight.category}</span>
-
-                      <h3>{insight.title}</h3>
-                    </div>
+                    {insight.slug ? (
+                      <Link href={`/blog/${insight.slug}`} className={styles.cardLink}>
+                        <Image src={insight.image} alt={insight.title} fill className={styles.image} />
+                        <div className={styles.overlay} />
+                        <div className={styles.cardContent}>
+                          <span>{insight.category}</span>
+                          <h3>{insight.title}</h3>
+                        </div>
+                      </Link>
+                    ) : (
+                      <>
+                        <Image src={insight.image} alt={insight.title} fill className={styles.image} />
+                        <div className={styles.overlay} />
+                        <div className={styles.cardContent}>
+                          <span>{insight.category}</span>
+                          <h3>{insight.title}</h3>
+                        </div>
+                      </>
+                    )}
                   </article>
                 ))}
               </div>

@@ -63,23 +63,15 @@
 }
 
 .milestone::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #ffb020;
-  box-shadow: 0 0 0 4px rgba(255, 176, 32, 0.18);
-  transform: translateY(-50%);
+  content: none;
 }
 
 .milestone:nth-child(odd)::before {
-  left: -34px;
+  content: none;
 }
 
 .milestone:nth-child(even)::before {
-  right: -34px;
+  content: none;
 }
 
 .milestone-year {
@@ -88,7 +80,7 @@
   align-items: center;
   justify-content: center;
   min-width: 64px;
-  color: #111;
+  color: #f45e2b;
   font-weight: 800;
   font-size: 1.45rem;
   letter-spacing: 0.02em;

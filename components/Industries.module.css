@@ -113,8 +113,7 @@
 }
 
 .learnMore::after {
-  content: "->";
-  font-size: 14px;
+  content: none;
 }
 
 .learnMore:hover {
