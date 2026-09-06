@@ -52,6 +52,19 @@ export default function AboutUsSection() {
   const lockRef = useRef(false);
   const touchStartY = useRef<number | null>(null);
 
+  const isPinned = () => {
+    const section = sectionRef.current;
+    if (!section) return false;
+
+    const bounds = section.getBoundingClientRect();
+    return bounds.top <= 1 && bounds.bottom >= window.innerHeight - 1;
+  };
+
+  const select = (index: number) => {
+    activeRef.current = index;
+    setActive(index);
+  };
+
   const step = (dir: 1 | -1) => {
     if (lockRef.current) return false;
 
@@ -59,8 +72,7 @@ export default function AboutUsSection() {
     if (next < 0 || next > items.length - 1) return false;
 
     lockRef.current = true;
-    activeRef.current = next;
-    setActive(next);
+    select(next);
     setTimeout(() => {
       lockRef.current = false;
     }, 550);
@@ -75,6 +87,8 @@ export default function AboutUsSection() {
 
     const onWheel = (e: WheelEvent) => {
       if (Math.abs(e.deltaY) < 8) return;
+      if (!isPinned()) return;
+
       const direction = e.deltaY > 0 ? 1 : -1;
       const canStep = direction === 1
         ? activeRef.current < items.length - 1
@@ -91,7 +105,7 @@ export default function AboutUsSection() {
     const onTouchEnd = (e: TouchEvent) => {
       if (touchStartY.current === null) return;
       const delta = touchStartY.current - e.changedTouches[0].clientY;
-      if (Math.abs(delta) > 40) step(delta > 0 ? 1 : -1);
+      if (Math.abs(delta) > 40 && isPinned()) step(delta > 0 ? 1 : -1);
       touchStartY.current = null;
     };
 
@@ -142,7 +156,7 @@ export default function AboutUsSection() {
                 <button
                   type="button"
                   className={`${styles.dot} ${isActive ? styles.dotActive : ""}`}
-                  onClick={() => setActive(i)}
+                  onClick={() => select(i)}
                   aria-label={`Show ${item.title}`}
                   aria-current={isActive}
                 />
@@ -150,7 +164,7 @@ export default function AboutUsSection() {
                   <button
                     type="button"
                     className={styles.numberLabel}
-                    onClick={() => setActive(i)}
+                    onClick={() => select(i)}
                   >
                     {item.number}
                   </button>

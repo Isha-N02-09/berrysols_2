@@ -25,14 +25,11 @@ export default function SimpleFooter() {
 
         <div className="simple-footer-bottom">
           <nav aria-label="Footer navigation">
-            <Link href="/about">About</Link>
-            <Link href="/careers">Careers</Link>
             <Link href="/services">Services</Link>
-            <Link href="/#portfolio">Works</Link>
+            <Link href="/about">About</Link>
             <Link href="/#contact">Contact</Link>
           </nav>
-          <span>© 2026 Berrysols. All rights reserved.</span>
-            <span>© 2026 Berry Solutions. All rights reserved.</span>
+          <span>© 2026 Berry Solutions. All rights reserved.</span>
           <a href="#top" className="footer-back-top" aria-label="Back to top" title="Back to top">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M12 19V5M6.5 10.5 12 5l5.5 5.5" />

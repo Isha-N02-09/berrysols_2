@@ -23,8 +23,8 @@ export default function ServiceCapabilities({ service }: { service: Service }) {
   };
 
   return (
-    <section className={styles.section}>
-      <div className="wrap">
+    <section className={`${styles.section} ${styles.capabilitiesSection}`}>
+      <div className={styles.capContent}>
         <div className={styles.capHeader}>
           <div className={styles.sectionHead}>
             <span className="eyebrow">What We Do</span>
@@ -42,28 +42,26 @@ export default function ServiceCapabilities({ service }: { service: Service }) {
         </div>
 
         <div className={styles.capCarousel}>
-          <div className={styles.capViewport}>
-            <div ref={trackRef} className={styles.capTrack}>
-              {service.capabilities.map((cap, i) => (
-                <article key={cap.title} className={`${styles.capFolder} ${styles[`capFolderTone${i % 3}`]}`}>
-                  <div className={styles.capFolderTab} />
-                  <div className={styles.capFolderBody}>
-                    <div className={styles.capFolderTop}>
-                      <span className={styles.capFolderDot} />
-                    </div>
-                    <h3>{cap.title}</h3>
+          <div ref={trackRef} className={styles.capTrack}>
+            {service.capabilities.map((cap, i) => (
+              <article key={cap.title} className={`${styles.capFolder} ${styles[`capFolderTone${i % 3}`]}`}>
+                <div className={styles.capFolderTab} />
+                <div className={styles.capFolderBody}>
+                  <div className={styles.capFolderTop}>
+                    <span className={styles.capFolderDot} />
                   </div>
-                  <div className={styles.capMeta}>
-                    <div className={styles.capAvatarStack}>
-                      <span className={styles.capAvatar} />
-                      <span className={styles.capAvatar} />
-                      <span className={styles.capAvatar} />
-                    </div>
-                    <span className={styles.capCount}>{folderCounts[i % folderCounts.length]}</span>
+                  <h3>{cap.title}</h3>
+                </div>
+                <div className={styles.capMeta}>
+                  <div className={styles.capAvatarStack}>
+                    <span className={styles.capAvatar} />
+                    <span className={styles.capAvatar} />
+                    <span className={styles.capAvatar} />
                   </div>
-                </article>
-              ))}
-            </div>
+                  <span className={styles.capCount}>{folderCounts[i % folderCounts.length]}</span>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </div>

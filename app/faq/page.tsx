@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import SimpleFooter from "@/components/Footer";
+import BlogHero from "@/app/blog/BlogHero";
+import CategoryBar from "@/components/CategoryBar";
 
 const faqs = [
   {
@@ -95,42 +97,24 @@ export default function FAQPage() {
     <main className="faq-shell min-h-screen bg-white text-[#171410]">
       <Navbar />
 
-      <section className="faq-container faq-hero">
-        <div className="faq-masthead max-w-5xl">
-          <div className="faq-rule" />
-          <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.26em] text-[#111]">
-            Berry Solutions / FAQs
-          </p>
-          <h1 className="text-[4rem] font-black leading-[0.9] tracking-[-0.06em] text-black md:text-[7rem] lg:text-[9rem]">
-            FAQs
-          </h1>
-          <p className="faq-hero-description mt-7 max-w-2xl text-lg leading-8 text-[#111] md:text-xl">
-            Answers, insight, and practical guidance for building what comes next.
-          </p>
-        </div>
-      </section>
+      <BlogHero>
+        <header className="blog-sheet-header">
+          <div className="blog-rule" />
+          <div className="blog-masthead">
+            <p>Getting answers / FAQs</p>
+            <h1>FAQs</h1>
+            <p>Answers, insight, and practical guidance for building what comes next.</p>
+          </div>
+        </header>
+      </BlogHero>
 
-      <section className="faq-category-bar" aria-label="FAQ categories">
-        <span className="faq-category-label">Categories</span>
-        <div className="faq-categories">
-          {categories.map((category) => {
-            const count = category === "All" ? faqs.length : faqs.filter((item) => item.category === category).length;
-            const isActive = activeCategory === category;
-
-            return (
-              <button
-                key={category}
-                type="button"
-                className={isActive ? "is-active" : ""}
-                aria-pressed={isActive}
-                onClick={() => selectCategory(category)}
-              >
-                {category} <span>{String(count).padStart(2, "0")}</span>
-              </button>
-            );
-          })}
-        </div>
-      </section>
+      <CategoryBar
+        label="Categories"
+        categories={categories}
+        activeCategory={activeCategory}
+        onSelectCategory={selectCategory}
+        items={faqs}
+      />
 
       <section className="faq-container pb-16 lg:pb-24">
         <div className="max-w-5xl">

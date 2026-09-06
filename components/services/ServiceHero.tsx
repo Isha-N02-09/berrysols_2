@@ -18,8 +18,8 @@ export default function ServiceHero({ service }: { service: Service }) {
   const imageSrc = IMAGE_BY_SERVICE[service.slug] ?? "/assets/services/webdevbg.png";
 
   return (
-    <section className={`${styles.hero} ${styles.webDevHero}`}>
-      <div className={`wrap ${styles.heroGrid} ${styles.webDevGrid}`}>
+    <section className={`${styles.hero} ${styles.webDevHero} ${service.slug === "ai-automation" ? styles.aiAutomationHero : ""}`}>
+      <div className={`${styles.heroGrid} ${styles.webDevGrid}`}>
         <div className={`${styles.heroIntro} ${styles.webDevIntro}`}>
           <span className={styles.heroEyebrow}>{service.eyebrow}</span>
           <h1 className={styles.heroTitle}>{service.title}</h1>
@@ -27,7 +27,7 @@ export default function ServiceHero({ service }: { service: Service }) {
 
           <div className={styles.heroActions}>
             <Link href="/#contact" className="btn">
-              Let&rsquo;s talk →
+              Let&rsquo;s talk <span className={styles.talkIcon} aria-hidden="true">↗</span>
             </Link>
             <Link href="/services" className="btn ghost">
               All services

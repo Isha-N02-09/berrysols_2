@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import SimpleFooter from "@/components/Footer";
+import BlogHero from "@/app/blog/BlogHero";
 
 const values = [
   {
@@ -428,26 +429,16 @@ export default function CareersPage() {
 
       <Navbar />
 
-      <section data-reveal className="careers-hero px-[var(--gutter)]">
-        <div className="careers-masthead mx-auto max-w-[1200px]">
-          <div className="careers-rule" />
-          <p>Berry Solutions / Careers</p>
-          <h1>CAREERS</h1>
-
-          <div className="mt-8 flex flex-col items-start justify-between gap-7 md:flex-row md:items-end">
-            <p>
-              Build what ships, not what gathers dust. A small team with direct ownership, making production work for real clients.
-            </p>
-
-            <a
-              href="mailto:careers@berrysols.com?subject=Open%20role%20inquiry"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-[#171410] bg-transparent px-7 py-4 text-sm font-semibold uppercase tracking-[0.04em] text-[#171410] transition-colors transition-transform hover:-translate-y-0.5 hover:bg-[#171410] hover:text-white"
-            >
-              See open roles <ArrowRight size={16} aria-hidden="true" />
-            </a>
+      <BlogHero>
+        <header className="blog-sheet-header">
+          <div className="blog-rule" />
+          <div className="blog-masthead">
+            <p>Join the team / Careers</p>
+            <h1>CAREERS</h1>
+            <p>Build what ships, not what gathers dust. A small team with direct ownership, making production work for real clients.</p>
           </div>
-        </div>
-      </section>
+        </header>
+      </BlogHero>
 
       <div className="careers-marquee" aria-label="Hiring highlights">
         <div className="careers-marquee-track">

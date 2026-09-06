@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { services } from "@/data/services";
+import CategoryBar from "@/components/CategoryBar";
 import styles from "./overview.module.css";
 
 const serviceCategories = ["Digital", "Growth", "Technology"] as const;
@@ -14,32 +15,19 @@ export default function ServicesOverview() {
     ? services
     : services.filter((service) => service.category === activeCategory);
 
+  const selectCategory = (category: string) => {
+    setActiveCategory(category as ServiceCategory | "All");
+  };
+
   return (
     <>
-      <nav className={styles.categoryBar} aria-label="Service categories">
-        <span className={styles.categoryLabel}>Categories</span>
-        <div className={styles.categoryLinks}>
-          <button
-            type="button"
-            className={activeCategory === "All" ? styles.categoryLinkActive : styles.categoryLink}
-            aria-pressed={activeCategory === "All"}
-            onClick={() => setActiveCategory("All")}
-          >
-            All <span>{String(services.length).padStart(2, "0")}</span>
-          </button>
-          {serviceCategories.map((category) => (
-            <button
-              key={category}
-              type="button"
-              className={activeCategory === category ? styles.categoryLinkActive : styles.categoryLink}
-              aria-pressed={activeCategory === category}
-              onClick={() => setActiveCategory(category)}
-            >
-              {category} <span>{String(services.filter((service) => service.category === category).length).padStart(2, "0")}</span>
-            </button>
-          ))}
-        </div>
-      </nav>
+      <CategoryBar
+        label="Categories"
+        categories={["All", ...serviceCategories]}
+        activeCategory={activeCategory}
+        onSelectCategory={selectCategory}
+        items={services}
+      />
 
       <div className="wrap" id="all-services">
         {activeCategory !== "All" && <div className={styles.categoryHeading}>{activeCategory}</div>}
@@ -51,7 +39,7 @@ export default function ServicesOverview() {
                   <span className={styles.rowNum}>{String(index + 1).padStart(2, "0")}</span>
                   <span className={styles.rowTitle}>{service.eyebrow}</span>
                 </div>
-                <span className={styles.rowArrow}>→</span>
+                <span className={styles.rowArrow}>↗</span>
               </div>
             </Link>
           ))}
