@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 import { services } from "@/data/services";
 
 type DropdownItem = { label: string; href: string };
@@ -103,21 +104,21 @@ export default function MobileMenu({
           <a
             href={sectionHref("contact")}
             onClick={handleClose}
-            className="rounded-full bg-gradient-to-r from-orange-400 to-yellow-400 px-5 py-2.5 text-xs font-bold uppercase tracking-[0.15em] text-white"
+            className="rounded-full border border-[#f45e2b] px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.15em] text-[#ce4111] transition-colors hover:bg-[#f45e2b] hover:text-white"
           >
-            Get in touch
+            Get In Touch
           </a>
         </div>
 
         {/* nav links */}
-        <nav className="flex flex-col gap-6 px-6 pb-16 pt-6 md:px-10">
+        <nav className="flex flex-col gap-5 px-6 pb-16 pt-5 md:px-10">
           {links.map((link) => (
             <div key={link.label}>
               <div className="group flex items-center justify-between">
                 <a
                   href={link.label === "Home" ? homeHref : link.href}
                   onClick={handleClose}
-                  className="text-4xl font-extrabold uppercase leading-tight text-black transition-colors duration-200 group-hover:text-orange-500 sm:text-5xl"
+                    className="text-3xl font-extrabold uppercase leading-tight text-black transition-colors duration-200 group-hover:text-orange-500 sm:text-4xl"
                 >
                   {link.label}
                 </a>
@@ -127,11 +128,11 @@ export default function MobileMenu({
                     aria-label={`Expand ${link.label} submenu`}
                     aria-expanded={expanded === link.label}
                     onClick={() => setExpanded((current) => current === link.label ? null : link.label)}
-                    className={`p-2 text-2xl leading-none text-black/30 transition-transform duration-300 group-hover:text-orange-500 ${
+                    className={`p-2 text-black/40 transition-transform duration-300 group-hover:text-orange-500 ${
                       expanded === link.label ? "rotate-180" : ""
                     }`}
                   >
-                    ⌄
+                    <ChevronDown size={22} strokeWidth={2} aria-hidden="true" />
                   </button>
                 )}
               </div>

@@ -8,8 +8,6 @@ import SimpleFooter from "../components/Footer";
 import Navbar from "../components/Navbar";
 import CapabilityWave from "../components/CapabilityWave";
 import ImpactStats from "../components/ImpactStats";
-import AboutContact from "../components/AboutContact";
-import "../components/AboutContact.css";
 import RoadReveal from "./components/RoadReveal";
 
 const TEAM = [
@@ -699,9 +697,6 @@ export default function AboutPage() {
 
           </div>
         </section>
-
-        {/* ===================== CONTACT ===================== */}
-        <AboutContact />
 
       </main>
 

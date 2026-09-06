@@ -59,7 +59,7 @@ const features = [
 
 export default function Services() {
   const sectionRef = useRef<HTMLElement>(null);
-  const [carouselCenter, setCarouselCenter] = useState(0);
+  const [carouselCenter, setCarouselCenter] = useState(-4);
 
   useEffect(() => {
     const targetCenter = { current: 0 };
@@ -71,15 +71,17 @@ export default function Services() {
       if (!sectionRef.current) return;
       const rect = sectionRef.current.getBoundingClientRect();
       const scrollable = sectionRef.current.offsetHeight - window.innerHeight;
-      const progress = Math.max(0, Math.min(1, -rect.top / scrollable));
-      targetCenter.current = progress * features.length * 2;
+      const progress = scrollable > 0
+        ? Math.max(0, Math.min(1, -rect.top / scrollable))
+        : 0;
+      targetCenter.current = -4 + progress * (features.length + 7);
     };
 
     const animate = (now: number) => {
       if (lastTime === null) lastTime = now;
       const delta = now - lastTime;
       lastTime = now;
-      const smoothing = 1 - Math.exp(-delta / 160);
+      const smoothing = 1 - Math.exp(-delta / 100);
       currentCenter.current += (targetCenter.current - currentCenter.current) * smoothing;
       setCarouselCenter(currentCenter.current);
       animationFrame = window.requestAnimationFrame(animate);
@@ -108,9 +110,7 @@ export default function Services() {
         <div className={styles.featureTrack}>
           {features.map((feature, index) => {
             const Icon = feature.icon;
-            let offset = (index - carouselCenter) % features.length;
-            if (offset > features.length / 2) offset -= features.length;
-            if (offset < -features.length / 2) offset += features.length;
+            const offset = index - carouselCenter;
             const distance = Math.abs(offset);
             const angle = offset * 25;
             const angleRadians = angle * Math.PI / 180;

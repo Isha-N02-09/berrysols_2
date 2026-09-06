@@ -65,9 +65,6 @@ export default function ServicesShowcase() {
     <section id="portfolio" className={styles.root}>
       <div className={styles.header}>
         <h2>Our services</h2>
-        <Link href="/services" className={styles.viewAllServices}>
-          View all services <ArrowUpRight size={16} strokeWidth={2.25} aria-hidden="true" />
-        </Link>
       </div>
 
       <div className={styles.carousel}>
@@ -114,6 +111,10 @@ export default function ServicesShowcase() {
           <ChevronRight size={22} />
         </button>
       </div>
+
+      <Link href="/services" className={styles.viewAllServices}>
+        View all services <ArrowUpRight size={16} strokeWidth={2.25} aria-hidden="true" />
+      </Link>
     </section>
   );
 }
