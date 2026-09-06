@@ -117,7 +117,7 @@
 
 
 .item:hover {
-  transform: translateY(-4px);
+  text-decoration: underline;
 } 
 .item {
   text-decoration: none;

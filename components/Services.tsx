@@ -81,7 +81,7 @@ export default function Services() {
       if (lastTime === null) lastTime = now;
       const delta = now - lastTime;
       lastTime = now;
-      const smoothing = 1 - Math.exp(-delta / 100);
+      const smoothing = 1 - Math.exp(-delta / 150);
       currentCenter.current += (targetCenter.current - currentCenter.current) * smoothing;
       setCarouselCenter(currentCenter.current);
       animationFrame = window.requestAnimationFrame(animate);
