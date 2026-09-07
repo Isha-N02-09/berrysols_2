@@ -62,7 +62,7 @@ const baseProjects = [
     title: "Telehealth",
     category: "Healthcare",
     excerpt: "A responsive, SEO-ready healthcare website that improves patient access, trust, and digital engagement.",
-    image: "/assets/portfolio/telehealthdesk.png",
+    image: "/assets/portfolio/telehealth-cover.jpg",
   },
   {
     slug: "northline-logistics",
