@@ -33,7 +33,7 @@ const features = [
     visual: "/assets/vector1.png",
     detail: "Dental care · Case study",
     icon: Stethoscope,
-    href: "https://berrysols.com/portfolio/same-day-me/",
+    href: "/portfolio/same-day-me",
   },
   {
     title: "ibuild.co",
