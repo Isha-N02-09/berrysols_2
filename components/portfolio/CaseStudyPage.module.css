@@ -113,7 +113,7 @@
 .browserBar i { width:10px; height:10px; border-radius:50%; background:#b8c5c4; }
 .browserBar span { margin-left:10px; }
 .deviceScreen { overflow:hidden; background:#0b2226; }
-.deviceScreen img { display:block; width:100%; aspect-ratio:16 / 9; object-fit:cover; }
+.deviceScreen img { display:block; width:100%; height:auto; min-height:0; aspect-ratio:auto; object-fit:contain; object-position:top center; }
 .deviceFrame.mobile .browserBar { display:none; }
 .deviceFrame.mobile .deviceScreen { border-radius:24px; }
 .deviceFrame.mobile .deviceScreen img { display:block; width:100%; height:auto; min-height:0; aspect-ratio:auto; object-fit:contain; object-position:top center; }
