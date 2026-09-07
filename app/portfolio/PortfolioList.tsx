@@ -2,14 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-
-type PortfolioProject = {
-  title: string;
-  category: string;
-  excerpt: string;
-  image: string;
-  href: string;
-};
+import type { PortfolioProject } from "@/data/portfolio";
 
 type PortfolioListProps = {
   projects: PortfolioProject[];
@@ -52,7 +45,7 @@ export default function PortfolioList({ projects }: PortfolioListProps) {
             <h2>{featuredProject.title}</h2>
             <p className="blog-feature-excerpt">{featuredProject.excerpt}</p>
             <Link href={featuredProject.href} className="blog-feature-link">
-              View project
+              View case study
             </Link>
           </div>
         </div>
@@ -74,7 +67,7 @@ export default function PortfolioList({ projects }: PortfolioListProps) {
               </h2>
               <p>{project.excerpt}</p>
               <div className="blog-post-footer">
-                <span>Read story</span>
+                <Link href={project.href}>View case study</Link>
                 <span>{String((currentPage - 1) * projectsPerPage + index + 1).padStart(2, "0")}</span>
               </div>
             </div>

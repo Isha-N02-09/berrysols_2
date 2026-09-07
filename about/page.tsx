@@ -471,7 +471,7 @@ export default function AboutPage() {
               </span>
 
               <h2>
-                The story behind the studio
+                The story behind Berry Solutions
               </h2>
             </div>
 
