@@ -27,6 +27,17 @@ export default function MobileMenu({
   const servicesHref = pathname === "/" ? "#portfolio" : "/services";
   const portfolioHref = pathname === "/" ? "#services" : "/portfolio";
 
+  const isActiveLink = (href: string) => {
+    if (!href || href === "#top") return pathname === "/";
+    if (href.startsWith("/services")) return pathname === "/services" || pathname.startsWith("/services/");
+    if (href.startsWith("/portfolio")) return pathname === "/portfolio" || pathname.startsWith("/portfolio/");
+    if (href.startsWith("/blog")) return pathname === "/blog" || pathname.startsWith("/blog/");
+    if (href.startsWith("/about")) return pathname === "/about";
+    if (href.startsWith("/careers")) return pathname === "/careers";
+    if (href.startsWith("/#")) return pathname === "/";
+    return pathname === href;
+  };
+
   const serviceDropdownItems: DropdownItem[] = services.map((service) => ({
     label: service.eyebrow,
     href: `/services/${service.slug}`,
@@ -112,58 +123,70 @@ export default function MobileMenu({
 
         {/* nav links */}
         <nav className="flex flex-col gap-5 px-6 pb-16 pt-5 md:px-10">
-          {links.map((link) => (
-            <div key={link.label}>
-              <div className="group flex items-center justify-between">
-                <a
-                  href={link.label === "Home" ? homeHref : link.href}
-                  onClick={handleClose}
-                    className="text-3xl font-extrabold uppercase leading-tight text-black transition-colors duration-200 group-hover:text-orange-500 sm:text-4xl"
-                >
-                  {link.label}
-                </a>
-                {link.children && (
-                  <button
-                    type="button"
-                    aria-label={`Expand ${link.label} submenu`}
-                    aria-expanded={expanded === link.label}
-                    onClick={() => setExpanded((current) => current === link.label ? null : link.label)}
-                    className={`p-2 text-black/40 transition-transform duration-300 group-hover:text-orange-500 ${
-                      expanded === link.label ? "rotate-180" : ""
+          {links.map((link) => {
+            const href = link.label === "Home" ? homeHref : link.href;
+            const isActive = isActiveLink(href);
+
+            return (
+              <div key={link.label}>
+                <div className="group flex items-center justify-between">
+                  <a
+                    href={href}
+                    onClick={handleClose}
+                    aria-current={isActive ? "page" : undefined}
+                    className={`text-3xl font-extrabold uppercase leading-tight transition-colors duration-200 sm:text-4xl ${
+                      isActive ? "text-orange-500" : "text-black group-hover:text-orange-500"
                     }`}
                   >
-                    <ChevronDown size={22} strokeWidth={2} aria-hidden="true" />
-                  </button>
+                    {link.label}
+                  </a>
+                  {link.children && (
+                    <button
+                      type="button"
+                      aria-label={`Expand ${link.label} submenu`}
+                      aria-expanded={expanded === link.label}
+                      onClick={() => setExpanded((current) => current === link.label ? null : link.label)}
+                      className={`p-2 text-black/40 transition-transform duration-300 group-hover:text-orange-500 ${
+                        expanded === link.label ? "rotate-180" : ""
+                      }`}
+                    >
+                      <ChevronDown size={22} strokeWidth={2} aria-hidden="true" />
+                    </button>
+                  )}
+                </div>
+
+                {link.children && (
+                  <div
+                    className={`grid overflow-hidden transition-all duration-300 ${
+                      expanded === link.label ? "mt-4 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                    }`}
+                  >
+                    <ul className="flex flex-col gap-3 overflow-hidden pl-1">
+                      {link.children.map((child) => {
+                        const item = typeof child === "string" ? { label: child, href: link.href } : child;
+                        const itemIsActive = isActiveLink(item.href);
+
+                        return (
+                          <li key={item.href + item.label}>
+                            <a
+                              href={item.href}
+                              onClick={handleClose}
+                              aria-current={itemIsActive ? "page" : undefined}
+                              className={`text-base font-medium transition-colors ${
+                                itemIsActive ? "text-orange-500" : "text-black/60 hover:text-orange-500"
+                              }`}
+                            >
+                              {item.label}
+                            </a>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
                 )}
               </div>
-
-              {link.children && (
-                <div
-                  className={`grid overflow-hidden transition-all duration-300 ${
-                    expanded === link.label ? "mt-4 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                  }`}
-                >
-                  <ul className="flex flex-col gap-3 overflow-hidden pl-1">
-                    {link.children.map((child) => {
-                      const item = typeof child === "string" ? { label: child, href: link.href } : child;
-
-                      return (
-                        <li key={item.href + item.label}>
-                          <a
-                            href={item.href}
-                            onClick={handleClose}
-                            className="text-base font-medium text-black/60 transition-colors hover:text-orange-500"
-                          >
-                            {item.label}
-                          </a>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              )}
-            </div>
-          ))}
+            );
+          })}
         </nav>
       </div>
     </div>
