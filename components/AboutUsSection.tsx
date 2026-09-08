@@ -50,6 +50,7 @@ export default function AboutUsSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const stageRef = useRef<HTMLDivElement | null>(null);
   const lockRef = useRef(false);
+  const previousSectionScrolls = useRef(0);
   const touchStartY = useRef<number | null>(null);
 
   const isPinned = () => {
@@ -89,6 +90,16 @@ export default function AboutUsSection() {
     });
   };
 
+  const moveToPreviousSection = () => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    window.scrollTo({
+      top: Math.max(0, section.offsetTop - window.innerHeight),
+      behavior: "smooth",
+    });
+  };
+
   // Mouse wheel / trackpad scroll cycles through items instead of
   // scrolling the page, as long as the pointer is over this section.
   useEffect(() => {
@@ -105,10 +116,22 @@ export default function AboutUsSection() {
         : activeRef.current > 0;
 
       if (canStep) {
+        previousSectionScrolls.current = 0;
         e.preventDefault();
       } else if (direction === 1 && activeRef.current === items.length - 1) {
         e.preventDefault();
         moveToNextSection();
+        previousSectionScrolls.current = 0;
+      } else if (direction === -1 && activeRef.current === 0) {
+        e.preventDefault();
+        previousSectionScrolls.current += 1;
+
+        if (previousSectionScrolls.current >= 2) {
+          previousSectionScrolls.current = 0;
+          moveToPreviousSection();
+        }
+      } else {
+        previousSectionScrolls.current = 0;
       }
       step(direction);
     };
