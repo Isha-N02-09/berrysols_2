@@ -21,7 +21,7 @@ export default function MobileMenu({
   onClose: () => void;
 }) {
   const [expanded, setExpanded] = useState<string | null>(null);
-  const pathname = usePathname();
+  const pathname = usePathname() ?? "/";
   const homeHref = pathname === "/" ? "#top" : "/";
   const sectionHref = (section: string) => (pathname === "/" ? `#${section}` : `/#${section}`);
   const servicesHref = pathname === "/" ? "#portfolio" : "/services";

@@ -17,6 +17,9 @@
   --bulge: 200px;
   --pivot-left: calc(var(--bulge) - var(--radius));
 
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  box-sizing: border-box;
   background: var(--bg);
   color: var(--ink);
   font-family: "Poppins", "Helvetica Neue", Arial, sans-serif;
@@ -24,9 +27,8 @@
   grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
   align-items: start;
   gap: clamp(2rem, 7vw, 7rem);
-  max-width: 1320px;
   min-height: calc(100vh * 4.6);
-  margin: 0 auto;
+  margin-right: 0;
   padding: 0 clamp(1.25rem, 5vw, 3rem);
 }
 
@@ -103,7 +105,6 @@
 
 .stage {
   position: relative;
-  max-width: 1180px;
   width: 100%;
   margin: 0;
   height: 100vh;
@@ -223,8 +224,42 @@
   max-width: 26ch;
 }
 
+@media (min-width: 1201px) {
+  .section {
+    grid-template-columns: minmax(360px, 0.72fr) minmax(760px, 1.28fr);
+    gap: clamp(2rem, 4vw, 5rem);
+    padding-left: clamp(2rem, 5vw, 5rem);
+    padding-right: clamp(2rem, 5vw, 5rem);
+  }
+
+  .copy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 36rem;
+    padding-top: 0;
+    text-align: center;
+  }
+
+  .heading {
+    font-size: clamp(2.6rem, 4vw, 4.25rem);
+  }
+
+  .rule {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .stage {
+    overflow: visible;
+  }
+}
+
 @media (max-width: 640px) {
   .section {
+    width: 100%;
+    margin-left: 0;
     display: block;
     min-height: 100vh;
     --diameter: 520px;
