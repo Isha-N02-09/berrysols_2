@@ -115,6 +115,7 @@ export default function AboutUsSection() {
         previousSectionScrolls.current = 0;
         e.preventDefault();
       } else if (direction === 1 && activeRef.current === items.length - 1) {
+        if (window.matchMedia("(max-width: 640px)").matches) return;
         e.preventDefault();
         moveToNextSection();
         previousSectionScrolls.current = 0;

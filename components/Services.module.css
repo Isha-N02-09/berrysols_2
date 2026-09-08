@@ -242,7 +242,21 @@
 
 @media (max-width: 600px) {
   .stickyStage { padding: 38px 16px 48px; }
-  .portfolioTitle { top: 76px; font-size: 30px; }
+  .portfolioTitle {
+    top: 76px;
+    left: 50%;
+    font-size: 30px;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    text-align: center;
+  }
+  .portfolioCta {
+    top: auto;
+    right: auto;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
   .featureTrack { height: 420px; }
   .featureCard { width: 220px; height: 300px; padding: 24px 20px; border-radius: 14px; }
   .cardIcon { width: 68px; height: 68px; margin-bottom: 12px; }
