@@ -16,6 +16,17 @@ export default function Navbar() {
   const servicesHref = pathname === "/" ? "#portfolio" : "/services";
   const portfolioHref = pathname === "/" ? "#services" : "/portfolio";
 
+  const isActiveLink = (href: string) => {
+    if (!href || href === "#top") return pathname === "/";
+    if (href.startsWith("/services")) return pathname === "/services" || pathname.startsWith("/services/");
+    if (href.startsWith("/portfolio")) return pathname === "/portfolio" || pathname.startsWith("/portfolio/");
+    if (href.startsWith("/blog")) return pathname === "/blog" || pathname.startsWith("/blog/");
+    if (href.startsWith("/about")) return pathname === "/about";
+    if (href.startsWith("/careers")) return pathname === "/careers";
+    if (href.startsWith("/#")) return pathname === "/";
+    return pathname === href;
+  };
+
   const serviceDropdownItems: DropdownItem[] = services.map((service) => ({
     label: service.eyebrow,
     href: `/services/${service.slug}`,
@@ -83,37 +94,51 @@ export default function Navbar() {
             className="absolute left-[49%] hidden w-max -translate-x-1/2 items-center justify-center gap-7 lg:flex"
             aria-label="Main navigation"
           >
-            {desktopLinks.map((link) => (
-              <div key={link.label} className="group relative py-7">
-                <a
-                  href={link.label === "Home" ? homeHref : link.href}
-                  className="flex items-center gap-2 whitespace-nowrap text-[13px] font-medium text-[#111] transition-colors hover:text-[#f45e2b]"
-                >
-                  {link.label}
+            {desktopLinks.map((link) => {
+              const href = link.label === "Home" ? homeHref : link.href;
+              const isActive = isActiveLink(href);
+
+              return (
+                <div key={link.label} className="group relative py-7">
+                  <a
+                    href={href}
+                    aria-current={isActive ? "page" : undefined}
+                    className={`flex items-center gap-2 whitespace-nowrap text-[13px] font-medium transition-colors ${
+                      isActive ? "text-[#f45e2b]" : "text-[#111] hover:text-[#f45e2b]"
+                    }`}
+                  >
+                    {link.label}
+                    {link.children && (
+                      <ChevronDown size={15} strokeWidth={2} aria-hidden="true" />
+                    )}
+                  </a>
+
                   {link.children && (
-                    <ChevronDown size={15} strokeWidth={2} aria-hidden="true" />
+                    <div className="pointer-events-none absolute left-1/2 top-full z-10 w-64 -translate-x-1/2 translate-y-2 rounded-xl border border-black/10 bg-white p-2 opacity-0 shadow-xl transition-all duration-200 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
+                      {link.children.map((child) => {
+                        const item = typeof child === "string" ? { label: child, href: link.href } : child;
+                        const itemIsActive = isActiveLink(item.href);
+
+                        return (
+                          <a
+                            key={item.href + item.label}
+                            href={item.href}
+                            aria-current={itemIsActive ? "page" : undefined}
+                            className={`block rounded-lg px-3 py-2 text-[13px] transition-colors ${
+                              itemIsActive
+                                ? "bg-[#fff1eb] text-[#ce4111]"
+                                : "text-[#111] hover:bg-[#fff1eb] hover:text-[#ce4111]"
+                            }`}
+                          >
+                            {item.label}
+                          </a>
+                        );
+                      })}
+                    </div>
                   )}
-                </a>
-
-                {link.children && (
-                  <div className="pointer-events-none absolute left-1/2 top-full z-10 w-64 -translate-x-1/2 translate-y-2 rounded-xl border border-black/10 bg-white p-2 opacity-0 shadow-xl transition-all duration-200 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
-                    {link.children.map((child) => {
-                      const item = typeof child === "string" ? { label: child, href: link.href } : child;
-
-                      return (
-                        <a
-                          key={item.href + item.label}
-                          href={item.href}
-                          className="block rounded-lg px-3 py-2 text-[13px] text-[#111] transition-colors hover:bg-[#fff1eb] hover:text-[#ce4111]"
-                        >
-                          {item.label}
-                        </a>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
-            ))}
+                </div>
+              );
+            })}
           </nav>
 
           <div className="flex items-center gap-4">
