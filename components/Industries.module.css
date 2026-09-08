@@ -2,6 +2,9 @@
   --section-bg: var(--surface-white);
   --blend-from: var(--surface-white);
   --blend-to: var(--surface-strip);
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  box-sizing: border-box;
   overflow: hidden;
   padding: 72px max(5vw, 28px);
   background: linear-gradient(
@@ -20,7 +23,6 @@
   gap: clamp(40px, 6vw, 88px);
   align-items: center;
   width: 100%;
-  max-width: 1320px;
   margin: 0 auto;
 }
 

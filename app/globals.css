@@ -474,6 +474,9 @@ body {
   --blend-from: var(--surface-white);
   --blend-to: var(--surface-footer);
   position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  box-sizing: border-box;
   overflow: hidden;
   background: linear-gradient(
     180deg,
@@ -486,7 +489,7 @@ body {
   color: #171410;
   font-family: inherit;
 }
-.simple-footer-inner { position: relative; max-width: 1200px; margin: 0 auto; }
+.simple-footer-inner { position: relative; width: 100%; margin: 0 auto; }
 .simple-footer-watermark {
   position: absolute; top: -38px; left: 50%;
   color: rgba(244, 94, 43, .07); font-size: clamp(150px, 25vw, 300px);
@@ -624,7 +627,7 @@ body {
 .blog-masthead h1 { margin: 12px 0 7px; font-size: clamp(4.8rem, 15.5vw, 12.8rem); font-weight: 800; line-height: .78; letter-spacing: -.08em; text-align: center; }
 .blog-category-bar { display: flex; align-items: center; justify-content: space-between; gap: 24px; width: 100%; padding: 16px clamp(24px, 4vw, 54px); border-top: 1px solid #111; border-bottom: 1px solid #111; background: #fff; }
 .blog-category-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; }
-.blog-feature { position: relative; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr); align-items: center; width: min(900px, calc(100% - 96px)); margin: 46px auto 64px; animation: portfolio-rise 650ms ease both; }
+.blog-feature { position: relative; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr); align-items: center; width: calc(100% - clamp(48px, 10vw, 160px)); margin: 46px auto 64px; animation: portfolio-rise 650ms ease both; }
 .blog-feature-image-wrap { position: relative; z-index: 1; }
 .blog-feature-image { display: block; width: 100%; aspect-ratio: 1.08; object-fit: cover; }
 .blog-feature-badge { position: absolute; top: -18px; left: -18px; display: grid; place-content: center; width: 104px; height: 104px; border-radius: 50%; background: #111; color: #fff; font-size: 11px; font-weight: 700; line-height: 1.15; text-align: center; text-transform: uppercase; letter-spacing: .14em; }
@@ -1125,6 +1128,9 @@ body {
   --section-bg: var(--surface-white);
   --blend-from: var(--surface-white);
   --blend-to: var(--surface-warm);
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  box-sizing: border-box;
   background: linear-gradient(
     180deg,
     var(--blend-from) 0%,
@@ -1137,7 +1143,7 @@ body {
 }
 
 .berry-concept-inner {
-  max-width: 1240px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -1351,6 +1357,7 @@ body {
 
   .berry-concept {
     width: 100%;
+    margin-left: 0;
     overflow: hidden;
     padding: 50px 0 70px;
   }
@@ -1583,6 +1590,9 @@ body {
   --blend-from: var(--surface-white);
   --blend-to: var(--surface-footer);
   position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  box-sizing: border-box;
   overflow: hidden;
   padding: 90px max(5vw, 24px) 80px;
   background: linear-gradient(
@@ -1608,7 +1618,8 @@ body {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  max-width: 1180px;
+  width: 100%;
+  box-sizing: border-box;
   margin: 0 auto;
   padding: 84px 28px 170px;
 
@@ -1763,6 +1774,9 @@ body {
   --section-bg: var(--surface-white);
   --blend-from: var(--surface-warm);
   --blend-to: var(--surface-white);
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  box-sizing: border-box;
   overflow: hidden;
   background: linear-gradient(
     180deg,
@@ -1801,7 +1815,6 @@ body {
 .reviews-viewport {
   overflow: hidden;
   width: 100%;
-  max-width: 1320px;
   margin: 0 auto;
 }
 
@@ -1815,7 +1828,7 @@ body {
 }
 
 .review-card {
-  flex: 0 0 min(420px, 78vw);
+  flex: 0 0 clamp(360px, 27vw, 520px);
   min-height: 280px;
   padding: 28px 28px 0;
   display: flex;

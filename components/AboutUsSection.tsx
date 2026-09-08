@@ -48,7 +48,6 @@ export default function AboutUsSection() {
   const [active, setActive] = useState(0);
   const activeRef = useRef(0);
   const sectionRef = useRef<HTMLElement | null>(null);
-  const stageRef = useRef<HTMLDivElement | null>(null);
   const lockRef = useRef(false);
   const previousSectionScrolls = useRef(0);
   const touchStartY = useRef<number | null>(null);
@@ -100,12 +99,9 @@ export default function AboutUsSection() {
     });
   };
 
-  // Mouse wheel / trackpad scroll cycles through items instead of
-  // scrolling the page, as long as the pointer is over this section.
+  // Capture wheel input while this section is pinned so every part of the
+  // viewport follows the same numbered sequence.
   useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-
     const onWheel = (e: WheelEvent) => {
       if (Math.abs(e.deltaY) < 8) return;
       if (!isPinned()) return;
@@ -147,14 +143,14 @@ export default function AboutUsSection() {
       touchStartY.current = null;
     };
 
-    el.addEventListener("wheel", onWheel, { passive: false });
-    el.addEventListener("touchstart", onTouchStart, { passive: true });
-    el.addEventListener("touchend", onTouchEnd, { passive: true });
+    window.addEventListener("wheel", onWheel, { passive: false, capture: true });
+    window.addEventListener("touchstart", onTouchStart, { passive: true });
+    window.addEventListener("touchend", onTouchEnd, { passive: true });
 
     return () => {
-      el.removeEventListener("wheel", onWheel);
-      el.removeEventListener("touchstart", onTouchStart);
-      el.removeEventListener("touchend", onTouchEnd);
+      window.removeEventListener("wheel", onWheel, true);
+      window.removeEventListener("touchstart", onTouchStart);
+      window.removeEventListener("touchend", onTouchEnd);
     };
   }, []);
 
@@ -178,7 +174,7 @@ export default function AboutUsSection() {
         </Link>
       </div>
 
-      <div className={styles.stage} ref={stageRef}>
+      <div className={styles.stage}>
         <span className={styles.orbit} aria-hidden="true" />
 
         <div

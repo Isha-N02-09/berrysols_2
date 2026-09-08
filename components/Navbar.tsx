@@ -10,7 +10,7 @@ type DropdownItem = { label: string; href: string };
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const pathname = usePathname();
+  const pathname = usePathname() ?? "/";
   const homeHref = pathname === "/" ? "#top" : "/";
   const sectionHref = (section: string) => (pathname === "/" ? `#${section}` : `/#${section}`);
   const servicesHref = pathname === "/" ? "#portfolio" : "/services";
