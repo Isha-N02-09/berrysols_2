@@ -35,7 +35,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative h-screen min-h-[520px] w-full overflow-hidden bg-black max-[767px]:h-auto max-[767px]:overflow-visible">
+    <section className="hero relative h-screen min-h-[520px] w-full overflow-hidden bg-black max-[767px]:h-auto max-[767px]:overflow-visible">
       <video
         ref={videoRef}
         className="hero-video-flip absolute inset-0 h-full w-full object-cover"

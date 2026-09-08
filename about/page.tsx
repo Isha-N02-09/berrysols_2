@@ -559,7 +559,7 @@ export default function AboutPage() {
                   </div>
                   <div className="workflow-content">
                     <h3>
-                      <a href="https://berrysols.com/services/technology-services-introduction/">
+                      <a href="/services">
                         Introduction
                       </a>
                     </h3>
@@ -575,7 +575,7 @@ export default function AboutPage() {
                   </div>
                   <div className="workflow-content">
                     <h3>
-                      <a href="https://berrysols.com/services/it-strategy-consulting/">
+                      <a href="/services">
                         IT Strategy Consulting
                       </a>
                     </h3>
@@ -591,7 +591,7 @@ export default function AboutPage() {
                   </div>
                   <div className="workflow-content">
                     <h3>
-                      <a href="https://berrysols.com/services/meeting/">
+                      <a href="/services">
                         Meeting
                       </a>
                     </h3>
@@ -607,7 +607,7 @@ export default function AboutPage() {
                   </div>
                   <div className="workflow-content">
                     <h3>
-                      <a href="https://berrysols.com/services/business-goals-and-kpis/">
+                      <a href="/services">
                         Business Goals and KPIs
                       </a>
                     </h3>
@@ -623,7 +623,7 @@ export default function AboutPage() {
                   </div>
                   <div className="workflow-content">
                     <h3>
-                      <a href="https://berrysols.com/services/scope-of-work/">
+                      <a href="/services">
                         Scope of work
                       </a>
                     </h3>

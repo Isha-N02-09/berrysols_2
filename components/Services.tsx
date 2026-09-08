@@ -1,59 +1,49 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { HeartPulse, Network, Stethoscope, Timer, Truck } from "lucide-react";
+import { ArrowUpRight, HeartPulse, Network, Stethoscope, Timer, Truck } from "lucide-react";
 import styles from "./Services.module.css";
 
 const features = [
   {
     title: "Clock Log is a tracker application",
-    description:
-      "A focused tracker application designed to make everyday logging simple and clear.",
     eyebrow: "PROJECTS · PRODUCT DESIGN",
-    visual: "/assets/vector1.png",
+    visual: "/assets/portfolio/clocklog-cover.png",
     detail: "Tracker application · Case study",
     icon: Timer,
-    href: "https://berrysols.com/portfolio/clock-log-is-a-tracker-application/",
+    href: "/portfolio/clock-log-is-a-tracker-application",
   },
   {
     title: "ATF Movers",
-    description:
-      "A digital experience built to help a moving business present its services and reach customers.",
     eyebrow: "PROJECTS · DIGITAL EXPERIENCE",
-    visual: "/assets/vector2.png",
+    visual: "/assets/portfolio/atf-movers-site.png",
     detail: "Moving services · Case study",
     icon: Truck,
-    href: "https://berrysols.com/portfolio/atf-movers/",
+    href: "/portfolio/atf-movers",
   },
   {
     title: "Same Day Me",
-    description:
-      "A healthcare-focused digital solution for dental implants and specialized dentistry.",
     eyebrow: "PROJECTS · HEALTHCARE",
-    visual: "/assets/vector1.png",
+    visual: "/assets/portfolio/samedaydesk.png",
     detail: "Dental care · Case study",
     icon: Stethoscope,
     href: "/portfolio/same-day-me",
   },
   {
     title: "ibuild.co",
-    description:
-      "A polished creative network experience shaped around a clear, modern digital presence.",
     eyebrow: "PROJECTS · ENGINEERING",
-    visual: "/assets/vector2.png",
+    visual: "/assets/portfolio/ibuild-cover.jpg",
     detail: "Creative network · Case study",
     icon: Network,
-    href: "https://berrysols.com/portfolio/ibuild-co/",
+    href: "/portfolio/ibuild-co",
   },
   {
     title: "Telehealth",
-    description:
-      "A responsive, SEO-ready healthcare website that improves access, trust, and patient experience.",
     eyebrow: "PROJECTS · HEALTHCARE",
-    visual: "/assets/vector1.png",
+    visual: "/assets/portfolio/telehealth-cover.jpg",
     detail: "Healthcare platform · Case study",
     icon: HeartPulse,
-    href: "https://berrysols.com/portfolio/telehealth/",
+    href: "/portfolio/telehealth",
   },
 ];
 
@@ -107,6 +97,9 @@ export default function Services() {
           <span className={styles.portfolioTitleOur}>Our</span>{" "}
           <span className={styles.portfolioTitleWord}>Portfolio</span>
         </h2>
+        <a href="/portfolio" className={styles.portfolioCta}>
+          View Portfolio <ArrowUpRight size={16} strokeWidth={2.35} aria-hidden="true" />
+        </a>
         <div className={styles.featureTrack}>
           {features.map((feature, index) => {
             const Icon = feature.icon;
@@ -119,9 +112,13 @@ export default function Services() {
             const y = radius * (1 - Math.cos(angleRadians));
             const scale = Math.max(.62, 1 - distance * .09);
             const opacity = distance > 3.4 ? 0 : Math.max(0, 1 - Math.pow(distance / 3.4, 1.5));
+            const isExternalLink = /^https?:\/\//.test(feature.href);
             return (
               <a
                 key={feature.title}
+                href={feature.href}
+                target={isExternalLink ? "_blank" : undefined}
+                rel={isExternalLink ? "noreferrer" : undefined}
                 className={styles.featureCard}
                 style={{
                   "--x": `${x}px`,
@@ -138,7 +135,6 @@ export default function Services() {
                 <h3 className={styles.cardTitle}>{feature.title}</h3>
                 <span className={styles.cardDetails}>
                   <span className={styles.cardEyebrow}>{feature.eyebrow}</span>
-                  <p>{feature.description}</p>
                 </span>
                 <span className={styles.cardSpacer} />
                 <span className={styles.cardButton}>CASE STUDY</span>

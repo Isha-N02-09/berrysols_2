@@ -13,17 +13,38 @@ import {
   Monitor,
   Search,
 } from "lucide-react";
-import { CSSProperties, MouseEvent, useEffect, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
+import { services } from "@/data/services";
 import styles from "./Servicesshowcase.module.css";
 
-const SERVICES = [
-  { slug: "ai-automation", title: "AI Automation", description: "Automate repetitive work and turn intelligence into practical business outcomes.", tone: "orange", icon: "code", visual: "/assets/vector1.png" },
-  { slug: "web-development", title: "Web Development", description: "Build websites and web apps engineered around how your business actually operates.", tone: "coral", icon: "analytics", visual: "/assets/vector2.png" },
-  { slug: "desktop-app-development", title: "Desktop App Development", description: "Design reliable desktop experiences that fit seamlessly into your team’s workflow.", tone: "amber", icon: "cloud", visual: "/assets/vector1.png" },
-  { slug: "enterprise-resource-planning-erp", title: "Enterprise Resource Planning", description: "Connect operations, reporting, and workflows into a single system built for scale.", tone: "orangeLight", icon: "digital", visual: "/assets/vector2.png" },
-  { slug: "legacy-software", title: "Legacy Software", description: "Modernize aging systems without disrupting the business-critical work they support.", tone: "coral", icon: "marketing", visual: "/assets/vector1.png" },
-  { slug: "digital-marketing", title: "Digital Marketing", description: "Turn attention into growth with strategy, content, and performance campaigns that convert.", tone: "amber", icon: "seo", visual: "/assets/vector2.png" },
-];
+const CARD_STYLES = [
+  { tone: "orange", icon: "code" },
+  { tone: "coral", icon: "analytics" },
+  { tone: "amber", icon: "cloud" },
+  { tone: "orangeLight", icon: "digital" },
+  { tone: "coral", icon: "marketing" },
+  { tone: "amber", icon: "seo" },
+  { tone: "orange", icon: "analytics" },
+  { tone: "coral", icon: "code" },
+] as const;
+
+const CARD_DESCRIPTIONS: Record<string, string> = {
+  "ai-automation": "Streamline repetitive work with practical AI solutions.",
+  "web-development": "Fast, responsive websites built around your goals.",
+  "desktop-app-development": "Reliable desktop tools designed for everyday workflows.",
+  "enterprise-resource-planning-erp": "Connect operations, teams, and data in one clear system.",
+  "legacy-software": "Modernize essential systems without losing what works.",
+  "startup-support": "Build momentum with the right technology partner.",
+  "staff-augmentation": "Extend your team with skilled technical support.",
+  "digital-marketing": "Reach the right audience with measurable campaigns.",
+};
+
+const SERVICES = services.map((service, index) => ({
+  slug: service.slug,
+  title: service.eyebrow,
+  description: CARD_DESCRIPTIONS[service.slug] ?? service.description,
+  ...CARD_STYLES[index],
+}));
 
 export default function ServicesShowcase() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -38,20 +59,6 @@ export default function ServicesShowcase() {
     window.addEventListener("resize", updateVisibleCards);
     return () => window.removeEventListener("resize", updateVisibleCards);
   }, []);
-
-  const updateTilt = (event: MouseEvent<HTMLElement>) => {
-    const bounds = event.currentTarget.getBoundingClientRect();
-    const x = (event.clientX - bounds.left) / bounds.width - 0.5;
-    const y = (event.clientY - bounds.top) / bounds.height - 0.5;
-
-    event.currentTarget.style.setProperty("--tilt-x", `${y * -8}deg`);
-    event.currentTarget.style.setProperty("--tilt-y", `${x * 8}deg`);
-  };
-
-  const resetTilt = (event: MouseEvent<HTMLElement>) => {
-    event.currentTarget.style.setProperty("--tilt-x", "0deg");
-    event.currentTarget.style.setProperty("--tilt-y", "0deg");
-  };
 
   const changeService = (direction: number) => {
     const lastStart = SERVICES.length - visibleCards;
@@ -81,9 +88,6 @@ export default function ServicesShowcase() {
               <article
                 className={`${styles.card} ${styles[service.tone]} ${index === activeIndex ? styles.activeCard : ""}`}
                 key={service.title}
-                onMouseMove={updateTilt}
-                onMouseLeave={resetTilt}
-                style={{ "--tilt-x": "0deg", "--tilt-y": "0deg" } as CSSProperties}
               >
                 <div className={styles.cardCenterIcon} aria-hidden="true">
                   <ServiceIcon name={service.icon} />
@@ -96,12 +100,6 @@ export default function ServicesShowcase() {
                     Learn more <ArrowRight size={17} />
                   </Link>
                 </div>
-                <img
-                  src={service.visual}
-                  alt=""
-                  className={styles.cardVisual}
-                  aria-hidden="true"
-                />
               </article>
             ))}
           </div>
