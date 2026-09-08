@@ -283,6 +283,7 @@
   .stage {
     height: var(--diameter);
     margin-top: -3rem;
+    touch-action: pan-y;
   }
 
   .numberLabel {

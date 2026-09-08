@@ -60,6 +60,14 @@ export default function AboutUsSection() {
     return bounds.top <= 1 && bounds.bottom >= window.innerHeight - 1;
   };
 
+  const isVisibleOnMobile = () => {
+    const section = sectionRef.current;
+    if (!section) return false;
+
+    const bounds = section.getBoundingClientRect();
+    return bounds.top < window.innerHeight && bounds.bottom > 0;
+  };
+
   const select = (index: number) => {
     activeRef.current = index;
     setActive(index);
@@ -140,7 +148,9 @@ export default function AboutUsSection() {
     const onTouchEnd = (e: TouchEvent) => {
       if (touchStartY.current === null) return;
       const delta = touchStartY.current - e.changedTouches[0].clientY;
-      if (Math.abs(delta) > 40 && isPinned()) step(delta > 0 ? 1 : -1);
+      const isMobile = window.matchMedia("(max-width: 640px)").matches;
+      const canHandleTouch = isMobile ? isVisibleOnMobile() : isPinned();
+      if (Math.abs(delta) > 40 && canHandleTouch) step(delta > 0 ? 1 : -1);
       touchStartY.current = null;
     };
 
