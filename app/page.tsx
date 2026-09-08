@@ -34,9 +34,7 @@ export default function Home() {
           <ProjectStrip />
         </ScrollReveal>
         <CapabilityWave />
-        <ScrollReveal className="scroll-reveal--services">
-          <Services />
-        </ScrollReveal>
+        <Services />
         <ScrollReveal className="scroll-reveal--concept">
           <BerryConcept />
         </ScrollReveal>

@@ -79,6 +79,16 @@ export default function AboutUsSection() {
     return true;
   };
 
+  const moveToNextSection = () => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    window.scrollTo({
+      top: section.offsetTop + section.offsetHeight,
+      behavior: "smooth",
+    });
+  };
+
   // Mouse wheel / trackpad scroll cycles through items instead of
   // scrolling the page, as long as the pointer is over this section.
   useEffect(() => {
@@ -94,7 +104,12 @@ export default function AboutUsSection() {
         ? activeRef.current < items.length - 1
         : activeRef.current > 0;
 
-      if (canStep) e.preventDefault();
+      if (canStep) {
+        e.preventDefault();
+      } else if (direction === 1 && activeRef.current === items.length - 1) {
+        e.preventDefault();
+        moveToNextSection();
+      }
       step(direction);
     };
 

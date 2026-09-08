@@ -58,7 +58,7 @@ export const blogPosts: BlogPost[] = [
     faqs: [{ question: "What are the 4 types of SEO?", answer: "The four main types are On-Page SEO, Off-Page SEO, Technical SEO, and Local SEO." }, { question: "How do I set up SEO?", answer: "Research keywords related to your business, optimize website titles and content, improve speed and mobile responsiveness, submit your site to Google Search Console, build quality backlinks, and track results." }],
     stats: [{ value: "10", label: "Step framework", detail: "A repeatable path from research to improvement" }, { value: "4", label: "SEO types", detail: "On-page, off-page, technical, and local" }, { value: "3–6", label: "Months to momentum", detail: "Organic growth rewards consistency" }],
     graph: [{ label: "Foundation", value: 28 }, { label: "Content", value: 48 }, { label: "Trust", value: 70 }, { label: "Compounding", value: 94 }],
-    relatedImages: [{ src: "https://berrysols.com/wp-content/uploads/2025/09/seo-for-startups-3-840x420.jpg", alt: "SEO for startups growth guide", caption: "A focused SEO system turns visibility into qualified growth." }],
+    relatedImages: [{ src: "/assets/blog/seo-startups.jpg", alt: "SEO for startups growth guide", caption: "A focused SEO system turns visibility into qualified growth." }],
   },
   {
     slug: "cybersecurity-for-startups-in-2025",
@@ -82,7 +82,7 @@ export const blogPosts: BlogPost[] = [
     table: { headers: ["Measure", "Average Cost", "Main Benefit"], rows: [["MFA setup", "$500–$1,000", "Stops stolen password attacks"], ["Endpoint protection", "$20/device per month", "Blocks malware on laptops and phones"], ["Backup and recovery", "$1,500/year", "Protects against ransomware losses"], ["Cyber insurance", "$2,000–$5,000/year", "Covers legal and recovery costs"]] },
     stats: [{ value: "$5K", label: "Basic annual baseline", detail: "A starting point for essential protection" }, { value: "$50K", label: "Advanced annual range", detail: "AI tools and 24/7 monitoring can cost more" }, { value: "90%", label: "MFA impact", detail: "Stops many casual stolen-password attacks" }],
     graph: [{ label: "MFA", value: 18 }, { label: "Endpoint", value: 34 }, { label: "Backup", value: 58 }, { label: "Monitoring", value: 92 }],
-    relatedImages: [{ src: "https://berrysols.com/wp-content/uploads/2025/09/cybersecurity-for-startups-a-complete-guide-in-2025-1-840x420.jpg", alt: "Cybersecurity for startups", caption: "Layered protection helps growing teams stay resilient." }],
+    relatedImages: [{ src: "/assets/blog/cybersecurity-startups.jpg", alt: "Cybersecurity for startups", caption: "Layered protection helps growing teams stay resilient." }],
     faqs: [{ question: "Is cybersecurity easy for beginners?", answer: "Cybersecurity is not always easy at first, but beginners can learn step by step. Start with phishing prevention, safe browsing, and strong passwords." }, { question: "How much money do you need to start a cybersecurity company?", answer: "A small consulting cybersecurity startup may need $20,000–$50,000, while a product-based AI cybersecurity company could need $100,000–$500,000." }, { question: "How do I start a cybersecurity startup?", answer: "Begin with market research to find your niche, create a business plan, build a skilled team, and make sure you follow compliance and secure funding." }],
   },
   {

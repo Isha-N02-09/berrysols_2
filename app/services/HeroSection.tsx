@@ -2,7 +2,7 @@ import BlogHero from "@/app/blog/BlogHero";
 
 export default function HeroSection() {
   return (
-    <BlogHero>
+    <BlogHero className="services-page-hero">
       <header className="blog-sheet-header">
         <div className="blog-rule" />
         <div className="blog-masthead">

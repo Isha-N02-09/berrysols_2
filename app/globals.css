@@ -513,8 +513,10 @@ body {
 .simple-footer-bottom { position: relative; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 20px; padding-top: 24px; border-top: 1px solid rgba(0, 0, 0, .1); }
 .simple-footer-bottom nav { display: flex; gap: 20px; }
 .simple-footer-bottom nav a, .footer-back-top { color: #5f5a53; font-size: 12px; text-decoration: none; }
-.footer-back-top { position: absolute; top: -46px; left: 50%; display: grid; width: 38px; height: 38px; place-items: center; border: 1px solid rgba(0, 0, 0, .14); border-radius: 50%; background: #fff; transform: translateX(-50%); transition: color .2s ease, border-color .2s ease, transform .2s ease; }
-.footer-back-top:hover { color: #f45e2b; border-color: #f45e2b; transform: translate(-50%, -3px); }
+.footer-back-top { position: fixed !important; right: 24px !important; bottom: 70px !important; z-index: 999999 !important; display: grid; width: 38px; height: 38px; place-items: center; border: 1px solid rgba(0, 0, 0, .14); border-radius: 50%; background: rgba(255, 255, 255, 0.547); color: #5f5a53; transform: none; transition: color .2s ease, border-color .2s ease, transform .2s ease; }
+.footer-back-top { position: fixed !important; right: 24px !important; bottom: 60px !important; z-index: 999999 !important; display: grid; width: 38px; height: 38px; place-items: center; border: 1px solid rgba(0, 0, 0, .14); border-radius: 50%; background: rgba(255, 255, 255, 0.547); color: #5f5a53; opacity: 0; pointer-events: none; transform: none; transition: color .2s ease, border-color .2s ease, transform .2s ease, opacity .2s ease; }
+.footer-back-top.is-visible { opacity: 1; pointer-events: auto; }
+.footer-back-top:hover { color: #f45e2b; border-color: #f45e2b; transform: translateY(-3px); }
 .footer-back-top svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.8; }
 .simple-footer-bottom span { color: #8b857d; font-size: 12px; text-align: center; }
 
@@ -524,7 +526,7 @@ body {
   .simple-footer-socials a { min-width: 135px; }
   .simple-footer-bottom { grid-template-columns: 1fr; gap: 16px; text-align: center; }
   .simple-footer-bottom nav { justify-content: center; flex-wrap: wrap; }
-  .footer-back-top { justify-self: center; }
+  .footer-back-top { right: 20px !important; bottom: 56px !important; }
 }
 
 /* ====================== TRUST BAND ============================= */
@@ -748,6 +750,7 @@ body {
   .blog-sheet-posts { width: 100%; padding-left: 0; padding-right: 0; }
   .blog-masthead h1 { font-size: clamp(4.25rem, 22vw, 8rem); }
   .blog-masthead { padding-bottom: 28px; }
+  .services-page-hero .blog-masthead { padding-top: 100px; }
   .blog-feature { display: block; width: calc(100% - 28px); margin: 34px auto 56px; }
   .blog-feature-badge { top: -12px; left: -8px; width: 82px; height: 82px; font-size: 9px; }
   .blog-feature-card { margin: -28px 12px 0; padding: 30px 24px 34px; }

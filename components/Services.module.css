@@ -3,7 +3,7 @@
   --blend-from: var(--surface-strip);
   --blend-to: var(--surface-white);
   position: relative;
-  min-height: 700vh;
+  min-height: 350vh;
   overflow: clip;
   background: linear-gradient(
     180deg,
@@ -30,23 +30,44 @@
 .portfolioTitle {
   position: absolute;
   top: clamp(84px, 11vh, 120px);
-  left: 24px;
-  right: 24px;
+  left: clamp(24px, 5vw, 72px);
   z-index: 2;
   margin: 0;
   color: #171410;
   font-size: clamp(28px, 4vw, 48px);
   font-weight: 700;
   line-height: 1;
-  text-align: center;
+  text-align: left;
+  text-transform: uppercase;
 }
 
-.portfolioTitleOur { color: #f45e2b; }
+.portfolioTitleOur {
+  color: #171410;
+}
 
 .portfolioTitleWord {
-  font-family: "Brush Script MT", "Segoe Script", cursive;
-  font-style: italic;
-  font-weight: 600;
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.portfolioCta {
+  position: absolute;
+  top: clamp(86px, 11vh, 118px);
+  right: clamp(24px, 5vw, 72px);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border: 1px solid rgba(20, 20, 20, .18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .8);
+  color: #141414;
+  font-size: 12px;
+  font-weight: 700;
 }
 
 .featureTrack {
@@ -95,7 +116,7 @@
 
 .featureCard:hover,
 .featureCard:focus-visible {
-  box-shadow: 0 34px 64px -20px rgba(0, 0, 0, .34), 0 4px 12px rgba(0, 0, 0, .1);
+  box-shadow: 10px 10px 0 rgba(244, 94, 43, .35), 0 34px 64px -20px rgba(0, 0, 0, .34), 0 4px 12px rgba(0, 0, 0, .1);
 }
 
 .featureCard:hover::before,
