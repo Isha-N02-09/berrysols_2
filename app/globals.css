@@ -513,7 +513,7 @@ body {
 .simple-footer-bottom { position: relative; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 20px; padding-top: 24px; border-top: 1px solid rgba(0, 0, 0, .1); }
 .simple-footer-bottom nav { display: flex; gap: 20px; }
 .simple-footer-bottom nav a, .footer-back-top { color: #5f5a53; font-size: 12px; text-decoration: none; }
-.footer-back-top { position: fixed !important; right: 24px !important; bottom: 70px !important; z-index: 999999 !important; display: grid; width: 38px; height: 38px; place-items: center; border: 1px solid rgba(0, 0, 0, .14); border-radius: 50%; background: rgba(255, 255, 255, 0.547); color: #5f5a53; transform: none; transition: color .2s ease, border-color .2s ease, transform .2s ease; }
+.footer-back-top { position: fixed !important; right: 24px !important; bottom: 80px !important; z-index: 999999 !important; display: grid; width: 38px; height: 38px; place-items: center; border: 1px solid rgba(0, 0, 0, .14); border-radius: 50%; background: rgba(255, 255, 255, 0.547); color: #5f5a53; transform: none; transition: color .2s ease, border-color .2s ease, transform .2s ease; }
 .footer-back-top { position: fixed !important; right: 24px !important; bottom: 60px !important; z-index: 999999 !important; display: grid; width: 38px; height: 38px; place-items: center; border: 1px solid rgba(0, 0, 0, .14); border-radius: 50%; background: rgba(255, 255, 255, 0.547); color: #5f5a53; opacity: 0; pointer-events: none; transform: none; transition: color .2s ease, border-color .2s ease, transform .2s ease, opacity .2s ease; }
 .footer-back-top.is-visible { opacity: 1; pointer-events: auto; }
 .footer-back-top:hover { color: #f45e2b; border-color: #f45e2b; transform: translateY(-3px); }
