@@ -51,6 +51,17 @@ function CaseHero({ study }: { study: CaseStudyData }) {
 
           <p className="max-w-xl text-[1.05rem] leading-[1.8] text-[#4b4b4b] text-pretty">{study.lede}</p>
 
+          <div className="flex flex-wrap gap-3">
+            {study.liveSite && (
+              <a href={study.liveSite} target="_blank" rel="noreferrer" className="rounded-full bg-[#111111] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#f45e2b]">
+                Visit site <span aria-hidden="true">↗</span>
+              </a>
+            )}
+            <a href="/portfolio" className="rounded-full border border-[#111111] px-5 py-3 text-sm font-semibold text-[#111111] transition hover:bg-[#111111] hover:text-white">
+              Go back to work
+            </a>
+          </div>
+
         </div>
 
         <figure className="flex flex-col gap-3">
@@ -96,7 +107,7 @@ function BrowserFrame({ image }: { image: string }) {
         </div>
         <div className="flex flex-1 items-center gap-2 rounded-full bg-white/10 px-3 py-1 font-mono text-xs">
           <Search className="size-3" aria-hidden="true" />
-          <span className="mx-auto">samedayme.com</span>
+          <span className="mx-auto">{image.replace(/^\/assets\/portfolio\//, '').replace(/\.(png|jpg|jpeg|webp)$/i, '')}</span>
         </div>
       </div>
       <Image
@@ -307,11 +318,10 @@ function DesignProcessSection() {
 type Device = 'desktop' | 'mobile';
 type Mode = 'live' | 'screenshot';
 
-const liveUrl = '/portfolio/same-day-me/preview';
-
-function PreviewSection() {
+function PreviewSection({ study }: { study: CaseStudyData }) {
   const [device, setDevice] = useState<Device>('desktop');
   const [mode, setMode] = useState<Mode>('screenshot');
+  const liveUrl = study.liveSite ? `/portfolio/${study.slug}/preview` : undefined;
 
   const width = device === 'desktop' ? '1440px' : '390px';
 
@@ -360,7 +370,7 @@ function PreviewSection() {
                   mode === m.id ? 'bg-[#f45e2b] text-white' : 'hover:bg-[#f5f5f5]'
                 }`}
               >
-                {m.label}
+                {m.id === 'live' && !liveUrl ? 'Live unavailable' : m.label}
               </button>
             ))}
           </div>
@@ -379,13 +389,15 @@ function PreviewSection() {
                 <span className="size-2.5 rounded-full bg-[#e6e6e6]" />
                 <span className="size-2.5 rounded-full bg-[#e6e6e6]" />
               </div>
-              <span className="truncate text-xs text-[#6b6b6b]">www.samedayme.com</span>
+              <span className="truncate text-xs text-[#6b6b6b]">
+                {study.liveSite?.replace(/^https?:\/\//, '').replace(/\/$/, '') ?? 'local preview'}
+              </span>
             </div>
 
-            {mode === 'live' ? (
+            {mode === 'live' && liveUrl ? (
               <iframe
                 src={liveUrl}
-                title="Same Day Me live site"
+                title={`${study.title} live site`}
                 loading="lazy"
                 className={`block w-full bg-white ${
                   device === 'mobile' ? 'aspect-[390/780]' : 'aspect-[16/9]'
@@ -393,16 +405,16 @@ function PreviewSection() {
               />
             ) : device === 'desktop' ? (
               <Image
-                src="/assets/portfolio/samedaydesk.png"
-                alt="Same Day Me homepage on desktop"
+                src={study.previewImage ?? study.image}
+                alt={`${study.title} homepage on desktop`}
                 width={1926}
                 height={816}
                 className="block w-full object-cover"
               />
             ) : (
               <Image
-                src="/assets/portfolio/samedaymob.png"
-                alt="Same Day Me homepage on mobile"
+                src={study.mobileImage ?? study.previewImage ?? study.image}
+                alt={`${study.title} homepage on mobile`}
                 width={942}
                 height={1670}
                 className="block w-full object-cover"
@@ -415,18 +427,9 @@ function PreviewSection() {
   );
 }
 
-const branches = [
-  { title: 'About Us', children: ['Brånemark Centre', 'ZAGA Center', 'Autism Center'] },
-  { title: 'Implants', children: ['All-on-4 / 6 / X', 'Zygomatic', 'Single Tooth', 'Guarantee'] },
-  { title: 'Services', children: ['Orthodontics', 'Sedation', 'Pediatric', 'General'] },
-  { title: 'Doctors', children: ['13 profiles'] },
-  { title: 'Testimonials · Blog', children: ['Reviews', 'Articles'] },
-  { title: 'Contact Us', children: ['Financing', 'Book / WhatsApp'] },
-];
-
 const lineColor = 'bg-[#111111]/25';
 
-function Sitemap() {
+function Sitemap({ study }: { study: CaseStudyData }) {
   return (
     <section className="mx-auto max-w-7xl" id="sitemap">
       <div className="px-6 lg:px-10">
@@ -435,8 +438,7 @@ function Sitemap() {
           Information architecture
         </h3>
         <p className="mt-3 max-w-2xl leading-relaxed text-muted-foreground text-pretty">
-          Six top-level sections keep the treatment catalogue browsable instead of one long
-          dropdown.
+          A project-specific structure keeps the experience browsable and makes the next step clear.
         </p>
       </div>
 
@@ -452,7 +454,7 @@ function Sitemap() {
             aria-hidden="true"
             className={`absolute top-0 left-[8.333%] right-[8.333%] hidden h-px lg:block ${lineColor}`}
           />
-          {branches.map((branch) => (
+          {study.sitemap.map((branch) => (
             <li key={branch.title} className="flex flex-col items-center">
               <span aria-hidden="true" className={`hidden h-6 w-px lg:block ${lineColor}`} />
               <div className="rounded-md border border-[#111111] bg-white px-4 py-2 text-center text-xs font-semibold">
@@ -531,13 +533,13 @@ export default function CaseStudyPage({ study }: { study: CaseStudyData }) {
         <DesignProcessSection />
       </ScrollReveal>
       <ScrollReveal className="my-14 lg:my-24">
-        <Technology />
+        <Technology study={study} />
       </ScrollReveal>
       <ScrollReveal className="my-14 lg:my-24">
-        <PreviewSection />
+        <PreviewSection study={study} />
       </ScrollReveal>
       <ScrollReveal className="my-14 lg:my-24">
-        <Sitemap />
+        <Sitemap study={study} />
       </ScrollReveal>
       <SimpleFooter />
     </main>
