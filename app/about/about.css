@@ -45,13 +45,6 @@ section{position:relative;}
 .dot-field-fixed{position:fixed;inset:0;z-index:-1;pointer-events:none;}
 .dot-field-fixed svg{width:100%;height:100%;}
 
-/* ---------- scroll progress ---------- */
-#clarity-bar{
-  position:fixed;top:0;left:0;height:3px;width:0%;
-  background:linear-gradient(90deg,var(--accent),var(--accent-2));
-  z-index:999;transition:width .08s linear;
-}
-
 /* ---------- generic reveal ---------- */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
 .reveal.in{opacity:1;transform:none;}
@@ -200,12 +193,12 @@ section{position:relative;}
 .reveal-stagger.in .milestone:nth-of-type(6) .milestone-year,.reveal-stagger.in .milestone:nth-of-type(6) .milestone-card{transition-delay:.44s;}
 .milestone:nth-of-type(odd){grid-column:1;justify-self:start;}
 .milestone:nth-of-type(even){grid-column:2;justify-self:end;}
-.milestone:nth-of-type(1){grid-row:3;align-self:end;}
-.milestone:nth-of-type(2){grid-row:3;align-self:start;}
+.milestone:nth-of-type(1){grid-row:1;align-self:end;}
+.milestone:nth-of-type(2){grid-row:1;align-self:start;}
 .milestone:nth-of-type(3){grid-row:2;align-self:end;}
 .milestone:nth-of-type(4){grid-row:2;align-self:start;}
-.milestone:nth-of-type(5){grid-row:1;align-self:end;}
-.milestone:nth-of-type(6){grid-row:1;align-self:start;}
+.milestone:nth-of-type(5){grid-row:3;align-self:end;}
+.milestone:nth-of-type(6){grid-row:3;align-self:start;}
 .milestone-year{
   color:#111;font-family:'JetBrains Mono',monospace;font-size:1.45rem;
   font-weight:800;font-style:normal;letter-spacing:.08em;line-height:1;

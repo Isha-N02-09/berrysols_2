@@ -104,8 +104,8 @@ export default function RoadReveal({ children, className = "", contentClassName 
   }, []);
 
   const path = buildRoadPath(box.width, box.height);
-  const roadWidth = Math.max(28, box.width * 0.06);
-  const dashWidth = Math.max(2, roadWidth * 0.05);
+  const roadWidth = Math.max(14, box.width * 0.035);
+  const dashWidth = Math.max(1.5, roadWidth * 0.05);
 
   return (
     <div ref={containerRef} className={`roadReveal ${className}`}>

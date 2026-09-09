@@ -32,7 +32,9 @@ export default function MobileMenu({
     if (href.startsWith("/services")) return pathname === "/services" || pathname.startsWith("/services/");
     if (href.startsWith("/portfolio")) return pathname === "/portfolio" || pathname.startsWith("/portfolio/");
     if (href.startsWith("/blog")) return pathname === "/blog" || pathname.startsWith("/blog/");
-    if (href.startsWith("/about")) return pathname === "/about";
+    if (href.startsWith("/about")) {
+      return pathname === "/about" || pathname.startsWith("/blog") || pathname === "/faq";
+    }
     if (href.startsWith("/careers")) return pathname === "/careers";
     if (href.startsWith("/#")) return pathname === "/";
     return pathname === href;
@@ -164,7 +166,9 @@ export default function MobileMenu({
                     <ul className="flex flex-col gap-3 overflow-hidden pl-1">
                       {link.children.map((child) => {
                         const item = typeof child === "string" ? { label: child, href: link.href } : child;
-                        const itemIsActive = isActiveLink(item.href);
+                        const itemIsActive = item.href.startsWith("/services/")
+                          ? pathname === item.href
+                          : isActiveLink(item.href);
 
                         return (
                           <li key={item.href + item.label}>

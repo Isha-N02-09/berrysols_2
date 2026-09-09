@@ -21,7 +21,9 @@ export default function Navbar() {
     if (href.startsWith("/services")) return pathname === "/services" || pathname.startsWith("/services/");
     if (href.startsWith("/portfolio")) return pathname === "/portfolio" || pathname.startsWith("/portfolio/");
     if (href.startsWith("/blog")) return pathname === "/blog" || pathname.startsWith("/blog/");
-    if (href.startsWith("/about")) return pathname === "/about";
+    if (href.startsWith("/about")) {
+      return pathname === "/about" || pathname.startsWith("/blog") || pathname === "/faq";
+    }
     if (href.startsWith("/careers")) return pathname === "/careers";
     if (href.startsWith("/#")) return pathname === "/";
     return pathname === href;
@@ -117,7 +119,9 @@ export default function Navbar() {
                     <div className="pointer-events-none absolute left-1/2 top-full z-10 w-64 -translate-x-1/2 translate-y-2 rounded-xl border border-black/10 bg-white p-2 opacity-0 shadow-xl transition-all duration-200 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
                       {link.children.map((child) => {
                         const item = typeof child === "string" ? { label: child, href: link.href } : child;
-                        const itemIsActive = isActiveLink(item.href);
+                        const itemIsActive = item.href.startsWith("/services/")
+                          ? pathname === item.href
+                          : isActiveLink(item.href);
 
                         return (
                           <a

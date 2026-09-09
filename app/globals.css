@@ -54,6 +54,14 @@ body {
   scroll-behavior: smooth;
 }
 
+html {
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
 .wrap {
   max-width: var(--container);
   margin: 0 auto;
