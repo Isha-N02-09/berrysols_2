@@ -102,7 +102,13 @@ export default function Insight() {
                   >
                     {insight.slug ? (
                       <Link href={`/blog/${insight.slug}`} className={styles.cardLink}>
-                        <Image src={insight.image} alt={insight.title} fill className={styles.image} />
+                        <Image
+                          src={insight.image}
+                          alt={insight.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 40vw, 260px"
+                          className={styles.image}
+                        />
                         <div className={styles.overlay} />
                         <div className={styles.cardContent}>
                           <span>{insight.category}</span>
@@ -111,7 +117,13 @@ export default function Insight() {
                       </Link>
                     ) : (
                       <>
-                        <Image src={insight.image} alt={insight.title} fill className={styles.image} />
+                        <Image
+                          src={insight.image}
+                          alt={insight.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 40vw, 260px"
+                          className={styles.image}
+                        />
                         <div className={styles.overlay} />
                         <div className={styles.cardContent}>
                           <span>{insight.category}</span>
