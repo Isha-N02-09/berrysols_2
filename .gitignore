@@ -12,7 +12,6 @@ out/
 tsc_out.txt
 
 # local editor and OS files
-.vscode/*
-!.vscode/settings.json
+.vscode/
 .DS_Store
 Thumbs.db
