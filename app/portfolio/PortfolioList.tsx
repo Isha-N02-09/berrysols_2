@@ -12,9 +12,13 @@ const projectsPerPage = 9;
 
 export default function PortfolioList({ projects }: PortfolioListProps) {
   const [currentPage, setCurrentPage] = useState(1);
-  const featuredProject = projects[0];
-  const remainingProjects = useMemo(() => projects.slice(1), [projects]);
-  const totalPages = Math.max(1, Math.ceil(Math.max(remainingProjects.length, 0) / projectsPerPage));
+
+  const visibleProjects = useMemo(
+    () => projects.filter((project) => !project.image.includes("vector")),
+    [projects],
+  );
+
+  const totalPages = Math.max(1, Math.ceil(visibleProjects.length / projectsPerPage));
 
   useEffect(() => {
     if (currentPage > totalPages) {
@@ -22,9 +26,13 @@ export default function PortfolioList({ projects }: PortfolioListProps) {
     }
   }, [currentPage, totalPages]);
 
-  const paginatedProjects = useMemo(() => {
-    return remainingProjects.slice((currentPage - 1) * projectsPerPage, currentPage * projectsPerPage);
-  }, [currentPage, remainingProjects]);
+  const paginatedProjects = useMemo(
+    () => visibleProjects.slice((currentPage - 1) * projectsPerPage, currentPage * projectsPerPage),
+    [visibleProjects, currentPage],
+  );
+
+  const featuredProject = paginatedProjects[0];
+  const supportingProjects = paginatedProjects.slice(1);
 
   return (
     <section className="blog-sheet-posts" aria-label="Portfolio case studies">
@@ -33,7 +41,7 @@ export default function PortfolioList({ projects }: PortfolioListProps) {
         <span>Selected work</span>
       </div>
 
-      {currentPage === 1 && featuredProject && (
+      {featuredProject && (
         <div className="blog-feature" aria-label="Featured portfolio project">
           <div className="blog-feature-image-wrap">
             <img src={featuredProject.image} alt="" className="blog-feature-image" />
@@ -41,7 +49,7 @@ export default function PortfolioList({ projects }: PortfolioListProps) {
           </div>
 
           <div className="blog-feature-card">
-            <p className="blog-feature-kicker">Featured / {featuredProject.category}</p>
+            <p className="blog-feature-kicker">{featuredProject.category}</p>
             <h2>{featuredProject.title}</h2>
             <p className="blog-feature-excerpt">{featuredProject.excerpt}</p>
             <Link href={featuredProject.href} className="blog-feature-link">
@@ -52,11 +60,16 @@ export default function PortfolioList({ projects }: PortfolioListProps) {
       )}
 
       <div className="blog-post-grid">
-        {paginatedProjects.map((project, index) => (
-          <article key={project.title} className="blog-post-card group">
-            <Link href={project.href} className="blog-post-image-wrap">
+        {supportingProjects.map((project) => (
+          <article key={project.title} className="blog-post-card portfolio-cover-card group">
+            <div className="portfolio-cover-header">
+              <span className="portfolio-cover-label">{project.category}</span>
+            </div>
+
+            <Link href={project.href} className="portfolio-cover-visual">
               <img src={project.image} alt="" className="blog-post-image" />
             </Link>
+
             <div className="blog-post-copy">
               <div className="blog-post-meta">
                 <span>{project.category}</span>
@@ -65,39 +78,45 @@ export default function PortfolioList({ projects }: PortfolioListProps) {
               <h2>
                 <Link href={project.href}>{project.title}</Link>
               </h2>
+              <div className="portfolio-card-date">{project.date ?? "2025"}</div>
+
               <p>{project.excerpt}</p>
-              <div className="blog-post-footer">
-                <Link href={project.href}>View case study</Link>
-                <span>{String((currentPage - 1) * projectsPerPage + index + 1).padStart(2, "0")}</span>
+
+              <div className="portfolio-card-stack" aria-label="Main technologies used">
+                {(project.technologies ?? [project.category]).slice(0, 3).map((tech) => (
+                  <span key={`${project.title}-${tech}`}>{tech}</span>
+                ))}
               </div>
             </div>
           </article>
         ))}
       </div>
 
-      <div className="blog-pagination" aria-label="Portfolio pagination">
-        <button type="button" onClick={() => setCurrentPage((page) => Math.max(page - 1, 1))} disabled={currentPage === 1}>
-          Prev
-        </button>
+      {visibleProjects.length > 0 && (
+        <div className="blog-pagination" aria-label="Portfolio pagination">
+          <button type="button" disabled>
+            Prev
+          </button>
 
-        <div className="blog-pagination-pages">
-          {Array.from({ length: totalPages }, (_, index) => index + 1).map((page) => (
-            <button
-              key={page}
-              type="button"
-              className={currentPage === page ? "is-active" : ""}
-              aria-current={currentPage === page ? "page" : undefined}
-              onClick={() => setCurrentPage(page)}
-            >
-              {page}
-            </button>
-          ))}
+          <div className="blog-pagination-pages">
+            {Array.from({ length: totalPages }, (_, index) => index + 1).map((page) => (
+              <button
+                key={page}
+                type="button"
+                className={currentPage === page ? "is-active" : ""}
+                aria-current={currentPage === page ? "page" : undefined}
+                disabled
+              >
+                {page}
+              </button>
+            ))}
+          </div>
+
+          <button type="button" disabled>
+            Next
+          </button>
         </div>
-
-        <button type="button" onClick={() => setCurrentPage((page) => Math.min(page + 1, totalPages))} disabled={currentPage === totalPages}>
-          Next
-        </button>
-      </div>
+      )}
     </section>
   );
 }

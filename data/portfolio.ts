@@ -5,6 +5,10 @@ export type PortfolioProject = {
   excerpt: string;
   image: string;
   href: string;
+  industry?: string;
+  date?: string;
+  technologies?: string[];
+  clientName?: string;
 };
 
 export type CaseStudyData = PortfolioProject & {
@@ -157,9 +161,33 @@ const baseProjects = [
   },
 ] satisfies Omit<PortfolioProject, "href">[];
 
-export const portfolioProjects: PortfolioProject[] = baseProjects.map((project) => ({
+const technologyByCategory: Record<string, string[]> = {
+  "Product design": ["UX Strategy", "Product Design", "Design Systems"],
+  "Digital experience": ["Next.js", "UI Design", "Strategy"],
+  Healthcare: ["Healthcare UX", "Web Design", "Patient Journeys"],
+  Engineering: ["Brand Design", "Web Experience", "CMS"],
+  "Operations platform": ["UX", "Operations", "Web App"],
+  "Brand experience": ["Brand Design", "Campaigns", "Web Experience"],
+  "Fintech": ["UX", "Finance", "Product Design"],
+  "Creative network": ["Branding", "Portfolio", "Web Design"],
+  "E-commerce": ["Shopify", "UX", "Conversion Design"],
+  "B2B software": ["SaaS", "UX", "Landing Pages"],
+  "Home services": ["Local SEO", "UX", "Web Design"],
+  "Research platform": ["Product UX", "Research", "Web Experience"],
+  "Brand strategy": ["Branding", "Strategy", "Marketing Web"],
+  "Digital health": ["Healthcare", "UX", "Patient Flows"],
+  "Professional services": ["Branding", "Web Design", "Conversion"],
+};
+
+const currentYear = new Date().getFullYear();
+
+export const portfolioProjects: PortfolioProject[] = baseProjects.map((project, index) => ({
   ...project,
   href: `/portfolio/${project.slug}`,
+  clientName: project.title,
+  industry: project.category,
+  date: `${currentYear - (index % 3)}`,
+  technologies: technologyByCategory[project.category] ?? ["UX", "Strategy", "Web Design"],
 }));
 
 const sharedProblems = [
@@ -239,12 +267,12 @@ export const sameDayCaseStudy: CaseStudyData = {
     { value: "30+", label: "years of dental excellence" },
     { value: "35K+", label: "implant patients treated" },
     { value: "13", label: "specialist doctors profiled" },
-    { value: "1", label: "certified ZAGA Center in the UAE" },
+    { value: "1", label: "certified ZAGA center in the UAE" },
   ],
-  overviewTitle: "A specialist clinic with a lot to say",
+  overviewTitle: "A calmer, clearer path to treatment",
   overview: [
-    "SameDay Dental Clinic is a state-of-the-art implant clinic in Dubai, best known for completing full sets of implants and teeth in a single day. Alongside SameDay implants, the clinic runs a Brånemark Osseointegration Centre, a certified ZAGA Center for zygomatic implants, and IBCCES Certified Autism Center accreditation.",
-    "That breadth is the challenge: dozens of treatments, thirteen doctors, and a mostly anxious, first-time-visitor audience all need to be organized into a site that feels calm and credible rather than clinical and overwhelming.",
+    "SameDay Dental Clinic brings together a broad range of advanced dental care under one roof, from same-day implants to zygomatic procedures and smile rehabilitation. That level of expertise is a major strength, but for many patients it can also feel overwhelming when the decision is already stressful.",
+    "The website needed to feel reassuring and easy to navigate, not crowded or clinical. By organizing the offer around trust, clarity, and action, the clinic can present its specialism without making patients feel lost or pressured.",
   ],
   problems: [
     { title: "Trust has to be earned fast", text: "Implant surgery is a high-stakes decision. Visitors need credentials, certifications, and real outcomes early in the journey." },

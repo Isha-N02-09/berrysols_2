@@ -1,126 +1,544 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-import { ArrowUpRight, Check, Lightbulb, PenLine, Search, Target } from "lucide-react";
+import Image from "next/image";
+import {
+  Check,
+  ChevronLeft,
+  ChevronRight,
+  Lightbulb,
+  PenLine,
+  Pin,
+  Search,
+  Target,
+} from "lucide-react";
 import type { CaseStudyData } from "@/data/portfolio";
 import Navbar from "@/components/Navbar";
 import SimpleFooter from "@/components/Footer";
+import CapabilityWave from "@/components/CapabilityWave";
+import ScrollReveal from "@/components/ScrollReveal";
+import { Technology } from "@/casestudy/components/technology";
 import styles from "./CaseStudyPage.module.css";
 
-function SectionLabel({ children }: { children: string }) {
-  return <p className={styles.sectionLabel}>{children}</p>;
+function SectionLabel({ children, size = "md" }: { children: string; size?: "sm" | "md" | "lg" }) {
+  const sizeClass = size === "sm" ? "text-[11px]" : size === "lg" ? "text-[13px]" : "text-[12px]";
+  return (
+    <div className={`flex items-center gap-3 uppercase tracking-[0.22em] text-[#f45e2b] ${sizeClass} font-black`}>
+      <span className="h-px w-7 bg-[#f45e2b]" aria-hidden="true" />
+      <span>{children}</span>
+    </div>
+  );
 }
 
-const processIcons = [Search, Target, Lightbulb, PenLine, Check];
+const stats = [
+  { value: "30+", label: "years of dental excellence" },
+  { value: "35K+", label: "implant patients treated" },
+  { value: "13", label: "specialist doctors profiled" },
+  { value: "1", label: "certified ZAGA center in the UAE" },
+];
 
-export default function CaseStudyPage({ study }: { study: CaseStudyData }) {
-  const [previewMode, setPreviewMode] = useState<"desktop" | "mobile">("desktop");
-  const [previewSource, setPreviewSource] = useState<"shot" | "live">("shot");
-
+function CaseHero({ study }: { study: CaseStudyData }) {
   return (
-    <main className={styles.page}>
-      <Navbar />
-
-      <header className={styles.hero}><div className={styles.wrap}>
-        <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>{study.eyebrow}</p>
-          <h1>{study.title}</h1>
-          <p className={styles.lede}>{study.lede}</p>
-          <div className={styles.heroActions}>
-            {study.liveSite && <a className={styles.primaryButton} href={study.liveSite} target="_blank" rel="noreferrer">Visit the site ↗</a>}
-            <Link className={styles.secondaryButton} href="/portfolio">Back to work <ArrowUpRight size={16} strokeWidth={2.25} aria-hidden="true" /></Link>
+    <section className="mx-auto max-w-7xl px-6 pt-20 lg:px-10 lg:pt-28">
+      <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
+        <div className="flex flex-col gap-6 pt-4">
+          <div className="-ml-6 flex items-center gap-3 uppercase tracking-[0.2em] text-[#f45e2b] lg:-ml-10">
+            <span aria-hidden="true" className="h-px w-8 bg-[#f45e2b] lg:w-12" />
+            <p className="text-[11px] font-semibold md:text-[12px]">{study.eyebrow}</p>
           </div>
-        </div>
-        <div className={styles.heroVisual}><div className={styles.heroCard}>
-          <img src={study.image} alt="" /><div className={styles.caption}><span><i />Homepage - desktop</span><span>1920 x 1080</span></div>
-        </div>
-      </div></div></header>
 
-      <div className={styles.metaBar}>
-        <div><span>Client</span><strong>{study.client}</strong></div>
-        <div><span>Role</span><strong>{study.role}</strong></div>
-        <div><span>Category</span><strong>{study.category}</strong></div>
+          <h1 className="text-[clamp(2.5rem,5vw,4.2rem)] font-semibold leading-[0.94] tracking-[-0.06em] text-[#111111] text-balance">{study.title}</h1>
+
+          <p className="max-w-xl text-[1.05rem] leading-[1.8] text-[#4b4b4b] text-pretty">{study.lede}</p>
+
+        </div>
+
+        <figure className="flex flex-col gap-3">
+          <BrowserFrame image={study.image} />
+          <figcaption className="flex justify-between text-xs text-[#6b6b6b]">
+            <span>Homepage - desktop</span>
+            <span className="font-mono">1920 x 1080</span>
+          </figcaption>
+        </figure>
       </div>
 
-      <div className={styles.stats} aria-label="Project outcomes"><div className={styles.wrap}>
-        {study.stats.map((stat) => <div className={styles.stat} key={stat.label}><strong>{stat.value}</strong><span>{stat.label}</span></div>)}
-      </div></div>
+      <dl className="mt-16 grid gap-8 border-t border-[#e6e6e6] pt-10 md:grid-cols-3 md:gap-0 md:border-t-0 md:pt-0">
+        {[
+          { label: "Client", value: study.client },
+          { label: "Role", value: study.role },
+          { label: "Category", value: study.category },
+        ].map((item, i) => (
+          <div
+            key={item.label}
+            className={`flex flex-col items-center gap-2 text-center md:px-8 ${i > 0 ? "md:border-l md:border-[#e6e6e6]" : "md:pl-0"}`}
+          >
+            <dt className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#f45e2b]">{item.label}</dt>
+            <dd className="text-sm font-medium leading-[1.7] text-[#111111]">{item.value}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+  );
+}
 
-      <section className={styles.contentSection} id="overview">
+function BrowserFrame({ image }: { image: string }) {
+  return (
+    <div className="overflow-hidden rounded-lg shadow-[0_18px_50px_-20px_rgba(0,0,0,0.45)]">
+      <div className="flex items-center gap-4 bg-[#111111] px-4 py-2.5 text-white/70">
+        <div className="flex gap-1.5" aria-hidden="true">
+          <span className="size-2.5 rounded-full bg-[#ff5f57]" />
+          <span className="size-2.5 rounded-full bg-[#febc2e]" />
+          <span className="size-2.5 rounded-full bg-[#28c840]" />
+        </div>
+        <div className="flex gap-2" aria-hidden="true">
+          <ChevronLeft className="size-4" />
+          <ChevronRight className="size-4" />
+        </div>
+        <div className="flex flex-1 items-center gap-2 rounded-full bg-white/10 px-3 py-1 font-mono text-xs">
+          <Search className="size-3" aria-hidden="true" />
+          <span className="mx-auto">samedayme.com</span>
+        </div>
+      </div>
+      <Image
+        src={image}
+        alt="Same Day Dental Clinic homepage hero"
+        width={1926}
+        height={816}
+        priority
+        className="aspect-[1926/816] w-full object-cover"
+      />
+    </div>
+  );
+}
+
+function StatsRow({ study }: { study: CaseStudyData }) {
+  return (
+    <section aria-label="Clinic statistics" className="mx-auto max-w-7xl px-6 lg:px-10">
+      <ul className="grid grid-cols-2 lg:grid-cols-4">
+        {study.stats.map((stat, i) => (
+          <li
+            key={stat.label}
+            className={`relative flex h-32 items-center justify-center border-[#e6e6e6] ${i > 0 ? "lg:border-l" : ""} ${i % 2 === 1 ? "border-l lg:border-l" : ""} ${i >= 2 ? "border-t lg:border-t-0" : ""}`}
+          >
+            <span aria-hidden="true" className="select-none text-7xl font-extrabold tracking-tight text-transparent [-webkit-text-stroke:2px_#e6e6e6] md:text-8xl">
+              {stat.value}
+            </span>
+            <span className="absolute inset-0 flex items-center justify-center px-4 text-center text-[11px] font-semibold uppercase leading-snug tracking-[0.18em] text-[#f45e2b] text-balance">
+              <span className="sr-only">{stat.value} </span>
+              {stat.label}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+function OverviewSection({ study }: { study: CaseStudyData }) {
+  return (
+    <section className="mx-auto max-w-7xl lg:pl-0">
+      <div className="pl-0">
         <SectionLabel>01 / Overview</SectionLabel>
-        <div className={styles.overviewStack}>
-          <h2>{study.overviewTitle}</h2>
-          <div className={styles.overviewImage}><img src={study.overviewImage ?? study.image} alt={`${study.title} overview`} /></div>
-          <div className={styles.leadText}>{study.overview.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
+      </div>
+      <div className="mt-8 grid items-center gap-10 px-6 lg:grid-cols-[1fr_1.15fr] lg:gap-14 lg:px-10">
+        <div className="flex flex-col gap-6 text-base leading-relaxed text-pretty">
+          <h3 className="text-[clamp(1.6rem,2vw,2.2rem)] font-black leading-tight tracking-[-0.04em]">Same Day Me overview</h3>
+          {study.overview.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
         </div>
-      </section>
+        <Image
+          src={study.overviewImage ?? study.image}
+          alt={`${study.title} overview`}
+          width={1563}
+          height={1006}
+          className="w-full rounded-xl object-cover"
+        />
+      </div>
+    </section>
+  );
+}
 
-      <section className={`${styles.contentSection} ${styles.creamSection}`}>
-        <SectionLabel>02 / The challenge</SectionLabel>
-        <div className={styles.problemGrid}>
-          {study.problems.map((problem, index) => <article key={problem.title}><span>0{index + 1}</span><h3>{problem.title}</h3><p>{problem.text}</p></article>)}
-        </div>
-      </section>
+type Note = { number: string; title: string; text: string; left: number; top: number };
 
-      <section className={styles.contentSection} id="solutions">
-        <SectionLabel>03 / The solution</SectionLabel>
-        <div className={styles.solutionGrid}>
-          {study.solutions.map((solution, index) => <article key={solution.title}><span>0{index + 1}</span><h3>{solution.title}</h3><p>{solution.text}</p></article>)}
-        </div>
-      </section>
+function StickyNotes({ title, notes, connectors, boardHeight }: { title: string; notes: Note[]; connectors: string[]; boardHeight: number }) {
+  return (
+    <section className="mx-auto max-w-7xl">
+      <SectionLabel>{title}</SectionLabel>
 
-      <section className={`${styles.contentSection} ${styles.standout}`} id="standout">
+      <ol className="mt-8 flex flex-col gap-10 px-6 md:hidden">
+        {notes.map((note) => (
+          <li key={note.number} className="mx-auto w-full max-w-xs">
+            <NoteCard note={note} />
+          </li>
+        ))}
+      </ol>
+
+      <div className="relative mt-6 hidden w-full md:block" style={{ aspectRatio: `1200 / ${boardHeight}` }}>
+        <svg
+          aria-hidden="true"
+          viewBox={`0 0 1200 ${boardHeight}`}
+          preserveAspectRatio="none"
+          className="absolute inset-0 h-full w-full"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="4"
+          strokeDasharray="14 12"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          {connectors.map((d) => (
+            <path key={d} d={d} />
+          ))}
+        </svg>
+        <ol>
+          {notes.map((note) => (
+            <li key={note.number} className="absolute w-[26%]" style={{ left: `${note.left}%`, top: `${note.top}%` }}>
+              <NoteCard note={note} />
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
+
+function NoteCard({ note }: { note: Note }) {
+  return (
+    <article className="relative bg-white p-4 shadow-[0_18px_40px_-14px_rgba(0,0,0,0.35)]">
+      <Pin aria-hidden="true" className="absolute -top-3 -right-2 size-12 rotate-[30deg] text-[#6b6b6b]/70 drop-shadow" strokeWidth={1.25} />
+      <p className="text-2xl font-bold">{note.number}</p>
+      <div className="mt-3 flex flex-col gap-2 rounded-lg bg-[#fbe9e0] px-5 py-7 text-center">
+        <h3 className="text-base font-bold leading-snug text-balance">{note.title}</h3>
+        <p className="text-sm leading-relaxed text-pretty">{note.text}</p>
+      </div>
+    </article>
+  );
+}
+
+function StandoutFlowSection({ study }: { study: CaseStudyData }) {
+  return (
+    <section className="mx-auto max-w-7xl px-6 lg:px-10">
+      <div className="pt-2">
         <SectionLabel>04 / Why it stands out</SectionLabel>
-        <h2 className={styles.sectionTitle}>Beyond a visual refresh.</h2>
-        <div className={styles.standoutGrid}>
-          {study.standout.map((item, index) => <article key={item.title}><span>0{index + 1}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}
+      </div>
+
+      <div className="relative mt-8 pl-4 md:pl-4">
+        <ol className="space-y-7 pl-10 md:pl-12">
+          {study.standout.map((point, index) => (
+            <li key={point.title} className="relative">
+              <span className="absolute left-[-2.3rem] top-6 flex size-8 items-center justify-center rounded-full bg-[#f45e2b] text-[10px] font-black text-white md:left-[-2.8rem] md:top-5 md:size-9">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+
+              <div className="rounded-xl border border-[#f0f0f0] bg-[#fffaf8] p-5 shadow-[0_10px_28px_-18px_rgba(0,0,0,0.25)]">
+                <h3 className="text-[1.15rem] font-black leading-tight tracking-[-0.02em] text-[#111111]">{point.title}</h3>
+                <p className="mt-2 leading-relaxed text-[#4b4b4b] text-pretty">{point.text}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
+
+const designSteps = [
+  {
+    icon: Search,
+    title: "Discover",
+    items: ["Stakeholder interviews", "Patient journey review", "Competitor clinics audit"],
+  },
+  {
+    icon: Target,
+    title: "Define",
+    items: ["Patient personas", "Anxiety & trust mapping", "Information architecture"],
+  },
+  {
+    icon: Lightbulb,
+    title: "Ideate",
+    items: ["Navigation restructure", "Content grouping", "Booking flow sketches"],
+  },
+  {
+    icon: PenLine,
+    title: "Design",
+    items: ["Wireframes -> high fidelity", "Visual & component system", "Responsive prototype"],
+  },
+  {
+    icon: Check,
+    title: "Test",
+    items: ["Usability walkthroughs", "Mobile QA", "Iteration on feedback"],
+  },
+];
+
+function DesignProcessSection() {
+  return (
+    <section className="mx-auto max-w-7xl">
+      <SectionLabel size="sm">05 / Design process</SectionLabel>
+
+      <div className="relative mt-10 px-6 lg:px-10">
+        <ol className="relative z-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
+          {designSteps.map((step, index) => (
+            <li key={step.title} className="relative flex flex-col gap-4">
+              <span className="relative z-10 flex size-12 items-center justify-center rounded-full border border-primary/60 bg-white text-primary shadow-sm">
+                <step.icon className="size-5" strokeWidth={1.5} aria-hidden="true" />
+              </span>
+              {index < designSteps.length - 1 && (
+                <div
+                  aria-hidden="true"
+                  className="absolute left-0 top-6 hidden h-px border-t-2 border-dashed border-[#111111] lg:block"
+                  style={{ width: "calc(100% + 2.5rem)" }}
+                />
+              )}
+              <h3 className="font-serif text-lg font-semibold">{step.title}</h3>
+              <ul className="flex flex-col gap-1 text-xs leading-relaxed text-muted-foreground">
+                {step.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
+
+type Device = 'desktop' | 'mobile';
+type Mode = 'live' | 'screenshot';
+
+const liveUrl = '/portfolio/same-day-me/preview';
+
+function PreviewSection() {
+  const [device, setDevice] = useState<Device>('desktop');
+  const [mode, setMode] = useState<Mode>('screenshot');
+
+  const width = device === 'desktop' ? '1440px' : '390px';
+
+  return (
+    <section className="mx-auto max-w-7xl" id="preview">
+      <div className="px-6 lg:px-10">
+        <SectionLabel size="sm">07 / Preview</SectionLabel>
+        <h3 className="mt-5 text-3xl font-bold tracking-tight text-balance md:text-4xl lg:text-[2.6rem]">
+          Desktop &amp; mobile - live.
+        </h3>
+      </div>
+
+      <div className="mt-8 flex flex-col items-center gap-6 px-6 lg:px-10">
+        <div className="flex flex-wrap items-center justify-center gap-2 rounded-full border border-[#e6e6e6] bg-white p-1.5 shadow-sm">
+          <div role="tablist" aria-label="Preview device" className="flex gap-1">
+            {(['desktop', 'mobile'] as Device[]).map((d) => (
+              <button
+                key={d}
+                role="tab"
+                type="button"
+                aria-selected={device === d}
+                onClick={() => setDevice(d)}
+                className={`rounded-full px-5 py-2 text-sm font-semibold capitalize transition-colors ${
+                  device === d ? 'bg-[#111111] text-white' : 'hover:bg-[#f5f5f5]'
+                }`}
+              >
+                {d}
+              </button>
+            ))}
+          </div>
+          <span aria-hidden="true" className="h-5 w-px bg-[#e6e6e6]" />
+          <div role="tablist" aria-label="Preview mode" className="flex gap-1">
+            {(
+              [
+                { id: 'live', label: 'Try live' },
+                { id: 'screenshot', label: 'Screenshot' },
+              ] as { id: Mode; label: string }[]
+            ).map((m) => (
+              <button
+                key={m.id}
+                role="tab"
+                type="button"
+                aria-selected={mode === m.id}
+                onClick={() => setMode(m.id)}
+                className={`rounded-full px-5 py-2 text-sm font-semibold transition-colors ${
+                  mode === m.id ? 'bg-[#f45e2b] text-white' : 'hover:bg-[#f5f5f5]'
+                }`}
+              >
+                {m.label}
+              </button>
+            ))}
+          </div>
+          <span className="pr-3 pl-1 text-xs text-[#6b6b6b]">{width}</span>
         </div>
-      </section>
 
-      <section className={`${styles.contentSection} ${styles.processSection}`} id="process">
-        <SectionLabel>05 / Design process</SectionLabel>
-        <div className={styles.processGrid}>
-          {study.process.map((stage, index) => { const Icon = processIcons[index % processIcons.length]; return <article key={stage.title}><span><Icon size={22} strokeWidth={1.7} /></span><h3>{stage.title}</h3><ul>{stage.items.map((item) => <li key={item}>{item}</li>)}</ul></article>; })}
-        </div>
-      </section>
+        <div className="w-full rounded-2xl border border-[#e6e6e6] bg-white p-3 shadow-[0_24px_60px_-30px_rgba(0,0,0,0.35)] sm:p-6">
+          <div
+            className={`mx-auto overflow-hidden rounded-xl border border-[#e6e6e6] bg-white ${
+              device === 'mobile' ? 'w-full max-w-[390px]' : 'w-full'
+            }`}
+          >
+            <div className="flex items-center gap-3 border-b border-[#e6e6e6] bg-[#f5f5f5] px-4 py-2.5">
+              <div className="flex gap-1.5" aria-hidden="true">
+                <span className="size-2.5 rounded-full bg-[#e6e6e6]" />
+                <span className="size-2.5 rounded-full bg-[#e6e6e6]" />
+                <span className="size-2.5 rounded-full bg-[#e6e6e6]" />
+              </div>
+              <span className="truncate text-xs text-[#6b6b6b]">www.samedayme.com</span>
+            </div>
 
-      <section className={styles.contentSection} id="tech">
-        <SectionLabel>06 / Technology</SectionLabel>
-        <h2 className={styles.sectionTitle}>Tools used to design and build it.</h2>
-        {study.tech.map((group) => <div key={group.category} className={styles.techGroup}><p>{group.category}</p><div className={styles.techGrid}>{group.items.map((tool, index) => <div key={tool}><strong className={`${styles.techBadge} ${index === 3 || index === 4 ? styles.badgeGold : index === 0 ? styles.badgeDeep : index === 1 ? styles.badgeMid : styles.badgeBright}`}>{tool === "HTML5" ? "</>" : tool.slice(0, 2)}</strong><span>{tool}</span></div>)}</div></div>)}
-      </section>
-
-      <section className={`${styles.contentSection} ${styles.previewSection}`} id="preview">
-        <SectionLabel>07 / Preview</SectionLabel>
-        <h2 className={styles.sectionTitle}>Desktop &amp; mobile - live.</h2>
-        <div className={styles.simToolbar}>
-          <button className={previewMode === "desktop" ? styles.active : ""} onClick={() => setPreviewMode("desktop")}>Desktop</button>
-          <button className={previewMode === "mobile" ? styles.active : ""} onClick={() => setPreviewMode("mobile")}>Mobile</button>
-          {study.liveSite && <><i /><button className={previewSource === "live" ? styles.active : ""} onClick={() => setPreviewSource("live")}>Try live</button></>}
-          <button className={previewSource === "shot" ? styles.active : ""} onClick={() => setPreviewSource("shot")}>Screenshot</button>
-          <span>{previewMode === "desktop" ? "1440px" : "390px"}</span>
-        </div>
-        <div className={styles.simStage}><div className={`${styles.deviceFrame} ${previewMode === "mobile" ? styles.mobile : ""}`}><div className={styles.browserBar}><i /><i /><i /><span>{study.liveSite?.replace(/^https?:\/\//, "").replace(/\/$/, "") ?? "preview.local"}</span></div><div className={styles.deviceScreen}>{previewSource === "live" ? <iframe src={`/portfolio/${study.slug}/preview`} title={`Live preview of ${study.title}`} /> : <img src={previewMode === "mobile" && study.mobileImage ? study.mobileImage : study.previewImage ?? study.image} alt={`${study.title} preview`} />}</div></div></div>
-      </section>
-
-      <section className={`${styles.contentSection} ${styles.creamSection}`} id="sitemap">
-        <SectionLabel>08 / Sitemap</SectionLabel>
-        <h2 className={styles.sectionTitle}>Information architecture</h2>
-        <p className={styles.sitemapIntro}>Six top-level sections keep the treatment catalogue browsable instead of one long dropdown.</p>
-        <div className={styles.sitemapTree}>
-          <div className={styles.sitemapRoot}>Home</div>
-          <div className={styles.sitemapBranches}>
-            {study.sitemap.map((item) => <article key={item.title}><strong>{item.title}</strong><div>{item.children.map((child) => <span key={child}>{child}</span>)}</div></article>)}
+            {mode === 'live' ? (
+              <iframe
+                src={liveUrl}
+                title="Same Day Me live site"
+                loading="lazy"
+                className={`block w-full bg-white ${
+                  device === 'mobile' ? 'aspect-[390/780]' : 'aspect-[16/9]'
+                }`}
+              />
+            ) : device === 'desktop' ? (
+              <Image
+                src="/assets/portfolio/samedaydesk.png"
+                alt="Same Day Me homepage on desktop"
+                width={1926}
+                height={816}
+                className="block w-full object-cover"
+              />
+            ) : (
+              <Image
+                src="/assets/portfolio/samedaymob.png"
+                alt="Same Day Me homepage on mobile"
+                width={942}
+                height={1670}
+                className="block w-full object-cover"
+              />
+            )}
           </div>
         </div>
-      </section>
+      </div>
+    </section>
+  );
+}
 
-      <section className={styles.cta} id="contact">
-        <div><p className={styles.eyebrow}>Have a project in mind?</p><h2>Let&apos;s make something clear.</h2></div>
-        <div className={styles.ctaActions}>{study.liveSite && <a className={styles.primaryButton} href={study.liveSite} target="_blank" rel="noreferrer">Visit the site ↗</a>}<Link className={styles.contactButton} href="/#contact">Let&apos;s get in touch <ArrowUpRight size={16} strokeWidth={2.25} aria-hidden="true" /></Link><Link className={styles.secondaryButton} href="/portfolio">Back to work <ArrowUpRight size={16} strokeWidth={2.25} aria-hidden="true" /></Link></div>
-      </section>
+const branches = [
+  { title: 'About Us', children: ['Brånemark Centre', 'ZAGA Center', 'Autism Center'] },
+  { title: 'Implants', children: ['All-on-4 / 6 / X', 'Zygomatic', 'Single Tooth', 'Guarantee'] },
+  { title: 'Services', children: ['Orthodontics', 'Sedation', 'Pediatric', 'General'] },
+  { title: 'Doctors', children: ['13 profiles'] },
+  { title: 'Testimonials · Blog', children: ['Reviews', 'Articles'] },
+  { title: 'Contact Us', children: ['Financing', 'Book / WhatsApp'] },
+];
 
+const lineColor = 'bg-[#111111]/25';
+
+function Sitemap() {
+  return (
+    <section className="mx-auto max-w-7xl" id="sitemap">
+      <div className="px-6 lg:px-10">
+        <SectionLabel size="sm">08 / Sitemap</SectionLabel>
+        <h3 className="mt-5 text-3xl font-bold tracking-tight text-balance md:text-4xl lg:text-[2.6rem]">
+          Information architecture
+        </h3>
+        <p className="mt-3 max-w-2xl leading-relaxed text-muted-foreground text-pretty">
+          Six top-level sections keep the treatment catalogue browsable instead of one long
+          dropdown.
+        </p>
+      </div>
+
+      <div className="mt-10 flex flex-col items-center px-6 lg:px-10">
+        <div className="rounded-md bg-[#111111] px-6 py-2.5 text-sm font-semibold text-white">
+          Home
+        </div>
+        <span aria-hidden="true" className={`h-8 w-px ${lineColor}`} />
+
+        <ul className="relative grid w-full grid-cols-2 gap-x-3 gap-y-8 sm:grid-cols-3 lg:grid-cols-6 lg:gap-y-0">
+          {/* horizontal trunk connecting first and last branch centers on desktop */}
+          <span
+            aria-hidden="true"
+            className={`absolute top-0 left-[8.333%] right-[8.333%] hidden h-px lg:block ${lineColor}`}
+          />
+          {branches.map((branch) => (
+            <li key={branch.title} className="flex flex-col items-center">
+              <span aria-hidden="true" className={`hidden h-6 w-px lg:block ${lineColor}`} />
+              <div className="rounded-md border border-[#111111] bg-white px-4 py-2 text-center text-xs font-semibold">
+                {branch.title}
+              </div>
+              <ul className="flex flex-col items-center">
+                {branch.children.map((child) => (
+                  <li key={child} className="flex flex-col items-center">
+                    <span aria-hidden="true" className={`h-4 w-px ${lineColor}`} />
+                    <span className="rounded-md border border-[#e6e6e6] bg-white px-3 py-1.5 text-center text-[11px] leading-snug text-[#111111]">
+                      {child}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+export default function CaseStudyPage({ study }: { study: CaseStudyData }) {
+  const challengeNotes: Note[] = study.problems.map((problem, index) => ({
+    number: `0${index + 1}`,
+    title: problem.title,
+    text: problem.text,
+    left: [3, 36, 71][index] ?? 0,
+    top: [0, 32, 0][index] ?? 0,
+  }));
+
+  const solutionNotes: Note[] = study.solutions.map((solution, index) => ({
+    number: `0${index + 1}`,
+    title: solution.title,
+    text: solution.text,
+    left: [3, 36, 71, 3, 36, 71][index] ?? 0,
+    top: [0, 8, 12, 48, 52, 48][index] ?? 0,
+  }));
+
+  return (
+    <main className="overflow-x-hidden bg-white text-[#111111]">
+      <Navbar />
+
+      <ScrollReveal className="my-10 lg:my-16">
+        <CaseHero study={study} />
+      </ScrollReveal>
+
+      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+        <dl className="grid gap-8 border-t border-[#e6e6e6] pt-10 md:grid-cols-3 md:gap-0 md:border-t-0 md:pt-0" />
+      </div>
+
+      <ScrollReveal className="my-10 lg:my-16">
+        <StatsRow study={study} />
+      </ScrollReveal>
+
+      <ScrollReveal className="my-14 lg:my-24">
+        <OverviewSection study={study} />
+      </ScrollReveal>
+      <div className="my-8 lg:my-12">
+        <CapabilityWave />
+      </div>
+      <ScrollReveal className="my-14 lg:my-24">
+        <StickyNotes title="02 / The challenge" notes={challengeNotes} connectors={["M348 170 H 400 V 420 H 430", "M746 400 H 800 V 130 H 852", "M520 230 C 520 260, 520 265, 520 290"]} boardHeight={640} />
+      </ScrollReveal>
+      <ScrollReveal className="my-14 lg:my-24">
+        <StickyNotes title="03 / The solution" notes={solutionNotes} connectors={["M348 160 H 400 V 230 H 432", "M744 230 H 800 V 160 H 852", "M1008 290 V 330 H 190 V 440", "M348 540 H 400 V 590 H 432", "M744 590 H 800 V 540 H 852"]} boardHeight={760} />
+      </ScrollReveal>
+      <ScrollReveal className="my-14 lg:my-24">
+        <StandoutFlowSection study={study} />
+      </ScrollReveal>
+      <div className="my-8 lg:my-12">
+        <CapabilityWave />
+      </div>
+      <ScrollReveal className="my-14 lg:my-24">
+        <DesignProcessSection />
+      </ScrollReveal>
+      <ScrollReveal className="my-14 lg:my-24">
+        <Technology />
+      </ScrollReveal>
+      <ScrollReveal className="my-14 lg:my-24">
+        <PreviewSection />
+      </ScrollReveal>
+      <ScrollReveal className="my-14 lg:my-24">
+        <Sitemap />
+      </ScrollReveal>
       <SimpleFooter />
     </main>
   );
