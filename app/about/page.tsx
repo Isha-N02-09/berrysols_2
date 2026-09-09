@@ -44,7 +44,6 @@ const TEAM = [
 ];
 
 export default function AboutPage() {
-  const barRef = useRef<HTMLDivElement>(null);
   const whoHeroRef = useRef<HTMLElement>(null);
   const halfLeftRef = useRef<HTMLSpanElement>(null);
   const halfRightRef = useRef<HTMLSpanElement>(null);
@@ -55,25 +54,6 @@ export default function AboutPage() {
   const dotFieldSvgRef = useRef<SVGSVGElement>(null);
 
   const [activeTeam, setActiveTeam] = useState(2);
-
-  // scroll progress bar
-  useEffect(() => {
-    function updateBar() {
-      const h = document.documentElement;
-
-      if (barRef.current) {
-        const maxScroll = h.scrollHeight - h.clientHeight;
-
-        barRef.current.style.width =
-          (maxScroll > 0 ? (h.scrollTop / maxScroll) * 100 : 0) + "%";
-      }
-    }
-
-    document.addEventListener("scroll", updateBar, { passive: true });
-    updateBar();
-
-    return () => document.removeEventListener("scroll", updateBar);
-  }, []);
 
   // generic reveal-on-scroll
   useEffect(() => {
@@ -386,8 +366,6 @@ export default function AboutPage() {
 
       <main>
         <Navbar />
-
-        <div id="clarity-bar" ref={barRef} />
 
         <div className="bg-layer" />
 

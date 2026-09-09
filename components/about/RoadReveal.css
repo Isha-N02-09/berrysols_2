@@ -18,11 +18,11 @@
 }
 
 .roadReveal__base {
-  stroke: rgba(244, 94, 43, 0.18);
+  stroke: rgba(17, 17, 17, 0.18);
 }
 
 .roadReveal__dash {
-  stroke: #f45e2b;
+  stroke: #111111;
 }
 
 .roadReveal__content {
