@@ -284,14 +284,16 @@ const designSteps = [
 
 function DesignProcessSection() {
   return (
-    <section className="mx-auto max-w-7xl">
-      <SectionLabel size="sm">05 / Design process</SectionLabel>
+    <section className="mx-auto max-w-7xl max-md:text-center">
+      <div className="max-md:flex max-md:justify-center">
+        <SectionLabel size="sm">05 / Design process</SectionLabel>
+      </div>
 
       <div className="relative mt-10 px-6 lg:px-10">
-        <ol className="relative z-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
+        <ol className="relative z-10 grid justify-items-center gap-10 sm:grid-cols-2 lg:grid-cols-5">
           {designSteps.map((step, index) => (
-            <li key={step.title} className="relative flex flex-col gap-4">
-              <span className="relative z-10 flex size-12 items-center justify-center rounded-full border border-primary/60 bg-white text-primary shadow-sm">
+            <li key={step.title} className="relative flex w-full max-w-xs flex-col items-center gap-4 text-center lg:items-start lg:text-left">
+              <span className="relative z-10 flex size-12 items-center justify-center rounded-full border border-[#f45e2b]/60 bg-white text-[#f45e2b] shadow-sm">
                 <step.icon className="size-5" strokeWidth={1.5} aria-hidden="true" />
               </span>
               {index < designSteps.length - 1 && (
@@ -302,7 +304,7 @@ function DesignProcessSection() {
                 />
               )}
               <h3 className="font-serif text-lg font-semibold">{step.title}</h3>
-              <ul className="flex flex-col gap-1 text-xs leading-relaxed text-muted-foreground">
+              <ul className="flex flex-col items-center gap-1 text-xs leading-relaxed text-muted-foreground lg:items-start">
                 {step.items.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
