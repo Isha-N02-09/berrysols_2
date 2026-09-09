@@ -43,6 +43,7 @@ export default function Hero() {
         muted
         loop
         playsInline
+        poster="/assets/poster.jpg"
       >
         <source src="/assets/hero-bg.mp4" type="video/mp4" />
       </video>

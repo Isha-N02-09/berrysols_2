@@ -17,7 +17,7 @@ import Navbar from "@/components/Navbar";
 import SimpleFooter from "@/components/Footer";
 import CapabilityWave from "@/components/CapabilityWave";
 import ScrollReveal from "@/components/ScrollReveal";
-import { Technology } from "@/casestudy/components/technology";
+import { Technology } from "@/components/portfolio/technology";
 import styles from "./CaseStudyPage.module.css";
 
 function SectionLabel({ children, size = "md" }: { children: string; size?: "sm" | "md" | "lg" }) {

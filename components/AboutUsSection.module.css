@@ -235,11 +235,11 @@
   .copy {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     max-width: 36rem;
     padding-top: 0;
-    text-align: center;
+    text-align: left;
   }
 
   .heading {
@@ -247,8 +247,8 @@
   }
 
   .rule {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .stage {

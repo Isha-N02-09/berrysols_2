@@ -1,5 +1,3 @@
-"use client";
-
 const reviews = [
   {
     quote: "With successful integration of Berry Solutions with our core systems like inventory, reservation and ticketing, passengers get a completely rich experience.",
