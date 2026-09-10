@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, HeartPulse, Network, Stethoscope, Timer, Truck } from "lucide-react";
-import styles from "./Services.module.css";
+import styles from "@/styles/Services.module.css";
 
 const features = [
   {

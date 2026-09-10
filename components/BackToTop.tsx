@@ -6,7 +6,7 @@ export default function BackToTop() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const hero = document.querySelector(".hero");
+    const hero = document.querySelector<HTMLElement>("[data-back-to-top-hero]");
     if (!hero) {
       setIsVisible(true);
       return;

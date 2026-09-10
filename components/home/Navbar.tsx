@@ -11,10 +11,10 @@ type DropdownItem = { label: string; href: string };
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname() ?? "/";
-  const homeHref = pathname === "/" ? "#top" : "/";
+  const homeHref = "/";
   const sectionHref = (section: string) => (pathname === "/" ? `#${section}` : `/#${section}`);
-  const servicesHref = pathname === "/" ? "#portfolio" : "/services";
-  const portfolioHref = pathname === "/" ? "#services" : "/portfolio";
+  const servicesHref = "/services";
+  const portfolioHref = "/portfolio";
 
   const isActiveLink = (href: string) => {
     if (!href || href === "#top") return pathname === "/";

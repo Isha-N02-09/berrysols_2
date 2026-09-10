@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import styles from "./AboutUsSection.module.css";
+import styles from "@/styles/AboutUsSection.module.css";
 
 interface WhyUsItem {
   number: string;

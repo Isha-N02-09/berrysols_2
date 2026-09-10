@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { services } from "../data/services";
+import { services } from "../../data/services";
 
 const steps = 6;
 const projectTypes = [...services.map((service) => service.eyebrow), "Other"];

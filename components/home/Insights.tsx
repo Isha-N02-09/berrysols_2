@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { blogPosts } from "@/lib/blog";
-import styles from "./Insights.module.css";
+import styles from "@/styles/Insights.module.css";
 
 type Insight = {
   category: string;

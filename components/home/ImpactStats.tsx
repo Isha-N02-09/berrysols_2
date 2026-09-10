@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import styles from "./ImpactStats.module.css";
+import styles from "@/styles/ImpactStats.module.css";
 
 const stats = [
   { target: 90, suffix: "+", label: "Projects" },

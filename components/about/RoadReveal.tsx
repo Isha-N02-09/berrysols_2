@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import "./RoadReveal.css";
+import "@/styles/RoadReveal.css";
 
 type RoadRevealProps = {
   children: React.ReactNode;

@@ -9,7 +9,7 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import Link from "next/link";
-import styles from "./Industries.module.css";
+import styles from "@/styles/Industries.module.css";
 
 const industries = [
   { name: "Government Agencies", icon: Landmark },

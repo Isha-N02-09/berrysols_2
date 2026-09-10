@@ -1,4 +1,4 @@
-import styles from "./ServicePage.module.css";
+import styles from "@/styles/ServicePage.module.css";
 import type { Service } from "@/data/services";
 
 export default function ServiceBottlenecks({ service }: { service: Service }) {

@@ -8,9 +8,11 @@
 .inner {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  max-width: 1320px;
+  width: 100%;
+  max-width: var(--container);
   margin: 0 auto;
-  padding: 1.1rem clamp(1.25rem, 3vw, 3rem);
+  padding: 1.1rem var(--content-gutter);
+  box-sizing: border-box;
 }
 
 .stat {

@@ -22,10 +22,10 @@ export default function MobileMenu({
 }) {
   const [expanded, setExpanded] = useState<string | null>(null);
   const pathname = usePathname() ?? "/";
-  const homeHref = pathname === "/" ? "#top" : "/";
+  const homeHref = "/";
   const sectionHref = (section: string) => (pathname === "/" ? `#${section}` : `/#${section}`);
-  const servicesHref = pathname === "/" ? "#portfolio" : "/services";
-  const portfolioHref = pathname === "/" ? "#services" : "/portfolio";
+  const servicesHref = "/services";
+  const portfolioHref = "/portfolio";
 
   const isActiveLink = (href: string) => {
     if (!href || href === "#top") return pathname === "/";

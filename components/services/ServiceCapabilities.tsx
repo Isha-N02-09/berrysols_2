@@ -2,7 +2,7 @@
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useRef } from "react";
-import styles from "./ServicePage.module.css";
+import styles from "@/styles/ServicePage.module.css";
 import type { Service } from "@/data/services";
 
 const folderCounts = ["3 items", "17 items", "5 items", "8 items", "11 items"];

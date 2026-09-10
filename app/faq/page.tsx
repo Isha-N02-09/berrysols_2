@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import Navbar from "@/components/Navbar";
-import SimpleFooter from "@/components/Footer";
+import Navbar from "@/components/home/Navbar";
+import SimpleFooter from "@/components/home/Footer";
 import BlogHero from "@/app/blog/BlogHero";
 import CategoryBar from "@/components/CategoryBar";
 

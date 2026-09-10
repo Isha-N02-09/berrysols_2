@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./NodeFlow.module.css";
+import styles from "@/styles/NodeFlow.module.css";
 
 type NodeFlowProps = {
   steps: string[];

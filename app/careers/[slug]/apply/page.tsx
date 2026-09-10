@@ -24,7 +24,7 @@ export default function ApplyPage({ params }: ApplyPageProps) {
           <Link href="/careers" className="mb-8 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#ce4111] transition-colors hover:text-[#171410]">
             <ArrowLeft size={15} aria-hidden="true" /> Back to all jobs
           </Link>
-          <header className="border-b border-black/15 pb-8 text-center">
+          <header className="border-b border-black/15 pb-8 text-center" data-back-to-top-hero>
             <div className="mb-5 flex items-center justify-center gap-2">
               <img src="/assets/icon2.png" alt="Berry Solutions" className="h-12 w-11 object-contain" />
               <span className="text-base font-extrabold uppercase tracking-[0.08em]">Berry Solutions</span>

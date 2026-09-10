@@ -5,7 +5,7 @@ import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { services } from "@/data/services";
 import CategoryBar from "@/components/CategoryBar";
-import styles from "./overview.module.css";
+import styles from "@/styles/overview.module.css";
 
 const serviceCategories = ["Digital", "Growth", "Technology"] as const;
 type ServiceCategory = (typeof serviceCategories)[number];

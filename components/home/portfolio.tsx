@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { CSSProperties, useEffect, useState } from "react";
 import { services } from "@/data/services";
-import styles from "./Servicesshowcase.module.css";
+import styles from "@/styles/Servicesshowcase.module.css";
 
 const CARD_STYLES = [
   { tone: "orange", icon: "code" },

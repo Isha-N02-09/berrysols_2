@@ -29,7 +29,7 @@
   gap: clamp(2rem, 7vw, 7rem);
   min-height: calc(100vh * 4.6);
   margin-right: 0;
-  padding: 0 clamp(1.25rem, 5vw, 3rem);
+  padding-inline: max(var(--content-gutter), calc((100vw - var(--container)) / 2 + var(--content-gutter)));
 }
 
 .copy {

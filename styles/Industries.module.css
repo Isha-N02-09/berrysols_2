@@ -6,7 +6,7 @@
   margin-left: calc(50% - 50vw);
   box-sizing: border-box;
   overflow: hidden;
-  padding: 72px max(5vw, 28px);
+  padding: 72px 0;
   background: linear-gradient(
     180deg,
     var(--blend-from) 0%,
@@ -23,7 +23,10 @@
   gap: clamp(40px, 6vw, 88px);
   align-items: center;
   width: 100%;
+  max-width: var(--container);
   margin: 0 auto;
+  padding-inline: var(--content-gutter);
+  box-sizing: border-box;
 }
 
 .copy {
@@ -190,7 +193,7 @@
 }
 
 @media (max-width: 760px) {
-  .section { padding: 56px max(5vw, 20px); }
+  .section { padding: 56px 0; }
   .inner { grid-template-columns: 1fr; gap: 34px; }
   .copy { max-width: none; }
   .description { font-size: 14px; }

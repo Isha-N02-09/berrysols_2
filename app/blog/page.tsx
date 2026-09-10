@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
-import SimpleFooter from "@/components/Footer";
+import Navbar from "@/components/home/Navbar";
+import SimpleFooter from "@/components/home/Footer";
 import { blogPosts } from "@/lib/blog";
 import BlogArchive from "./BlogArchive";
 import BlogHero from "./BlogHero";

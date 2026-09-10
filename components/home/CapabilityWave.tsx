@@ -1,4 +1,4 @@
-import styles from "./CapabilityWave.module.css";
+import styles from "@/styles/CapabilityWave.module.css";
 
 const wavePaths = [
   "M0,120 C170,120 250,120 390,120 C540,120 590,92 720,96 S900,132 1030,150 S1250,154 1440,118",

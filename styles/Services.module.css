@@ -26,14 +26,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 72px 24px 56px;
+  padding: 72px var(--content-gutter) 56px;
   overflow: hidden;
 }
 
 .portfolioTitle {
   position: absolute;
   top: clamp(84px, 11vh, 120px);
-  left: clamp(24px, 5vw, 72px);
+  left: max(var(--content-gutter), calc((100vw - var(--container)) / 2 + var(--content-gutter)));
   z-index: 2;
   margin: 0;
   color: #171410;
@@ -58,7 +58,7 @@
 .portfolioCta {
   position: absolute;
   top: clamp(86px, 11vh, 118px);
-  right: clamp(24px, 5vw, 72px);
+  right: max(var(--content-gutter), calc((100vw - var(--container)) / 2 + var(--content-gutter)));
   z-index: 2;
   display: inline-flex;
   align-items: center;

@@ -1,19 +1,19 @@
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import SimpleFooter from "@/components/Footer";
-import TrustBrand from "@/components/TrustBrand";
-import ContactFlow from "@/components/ContactFlow";
-import Clients from "@/components/Clients";
-import Portfolio from "@/components/portfolio";
-import Services from "@/components/Services";
-import BerryConcept from "@/components/BerryConcept";
-import ProjectStrip from "@/components/ProjectStrip";
-import ScrollReveal from "@/components/ScrollReveal";
-import Industries from "@/components/Industries";
-import Insights from "@/components/Insights";
-import AboutUs from "@/components/AboutUsSection";
-import ImpactStats from "@/components/ImpactStats";
-import CapabilityWave from "@/components/CapabilityWave";
+import Navbar from "@/components/home/Navbar";
+import Hero from "@/components/home/Hero";
+import SimpleFooter from "@/components/home/Footer";
+import TrustBrand from "@/components/home/TrustBrand";
+import ContactFlow from "@/components/home/ContactFlow";
+import Clients from "@/components/home/Clients";
+import Portfolio from "@/components/home/portfolio";
+import Services from "@/components/home/Services";
+import BerryConcept from "@/components/home/BerryConcept";
+import ProjectStrip from "@/components/home/ProjectStrip";
+import ScrollReveal from "@/components/home/ScrollReveal";
+import Industries from "@/components/home/Industries";
+import Insights from "@/components/home/Insights";
+import AboutUs from "@/components/home/AboutUsSection";
+import ImpactStats from "@/components/home/ImpactStats";
+import CapabilityWave from "@/components/home/CapabilityWave";
 
 export default function Home() {
   return (

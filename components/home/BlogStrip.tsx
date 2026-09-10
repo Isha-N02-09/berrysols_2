@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styles from "./BlogStrip.module.css";
+import styles from "@/styles/BlogStrip.module.css";
 
 const blogs = [
   {

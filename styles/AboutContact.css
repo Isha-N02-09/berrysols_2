@@ -1,12 +1,15 @@
 .about-contact {
   background: #fff;
-  padding: 30px max(8vw, 32px) 44px;
+  padding: 30px 0 44px;
   color: #111;
 }
 
 .about-contact-shell {
-  max-width: 1120px;
+  width: 100%;
+  max-width: var(--container);
   margin: 0 auto;
+  padding-inline: var(--content-gutter);
+  box-sizing: border-box;
 }
 
 .about-contact-hero {

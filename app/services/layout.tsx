@@ -1,5 +1,5 @@
-import Navbar from "@/components/Navbar";
-import SimpleFooter from "@/components/Footer";
+import Navbar from "@/components/home/Navbar";
+import SimpleFooter from "@/components/home/Footer";
 
 export default function ServicesLayout({ children }: { children: React.ReactNode }) {
   return (

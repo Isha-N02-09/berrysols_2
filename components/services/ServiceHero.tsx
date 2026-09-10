@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import styles from "./ServicePage.module.css";
+import styles from "@/styles/ServicePage.module.css";
 import type { Service } from "@/data/services";
 
 const IMAGE_BY_SERVICE: Record<string, string> = {
@@ -18,7 +18,7 @@ export default function ServiceHero({ service }: { service: Service }) {
   const imageSrc = IMAGE_BY_SERVICE[service.slug] ?? "/assets/services/webdevbg.png";
 
   return (
-    <section className={`${styles.hero} ${styles.webDevHero} ${service.slug === "ai-automation" ? styles.aiAutomationHero : ""}`}>
+    <section className={`${styles.hero} ${styles.webDevHero} ${service.slug === "ai-automation" ? styles.aiAutomationHero : ""}`} data-back-to-top-hero>
       <div className={`${styles.heroGrid} ${styles.webDevGrid}`}>
         <div className={`${styles.heroIntro} ${styles.webDevIntro}`}>
           <span className={styles.heroEyebrow}>{service.eyebrow}</span>

@@ -5,15 +5,15 @@
 }
 
 .section.section {
-  padding-left: clamp(16px, 2vw, 28px);
-  padding-right: clamp(16px, 2vw, 28px);
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .section > :global(.wrap) {
   width: 100%;
-  max-width: none;
-  padding-left: 0;
-  padding-right: 0;
+  max-width: var(--container);
+  padding-inline: var(--content-gutter);
+  box-sizing: border-box;
 }
 
 .section + .section {

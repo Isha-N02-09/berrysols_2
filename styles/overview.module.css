@@ -17,9 +17,10 @@
   align-items: center;
   gap: clamp(32px, 7vw, 140px);
   width: 100%;
+  max-width: var(--container);
   min-height: calc(100svh - 74px);
   margin: 0 auto;
-  padding: clamp(48px, 9vh, 108px) clamp(28px, 7vw, 132px);
+  padding: clamp(48px, 9vh, 108px) var(--content-gutter);
   box-sizing: border-box;
 }
 

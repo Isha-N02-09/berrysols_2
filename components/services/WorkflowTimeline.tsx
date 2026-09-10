@@ -1,4 +1,4 @@
-import styles from "./ServicePage.module.css";
+import styles from "@/styles/ServicePage.module.css";
 
 interface WorkflowStep {
   label: string;

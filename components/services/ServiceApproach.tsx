@@ -1,4 +1,4 @@
-import styles from "./ServicePage.module.css";
+import styles from "@/styles/ServicePage.module.css";
 import type { Service } from "@/data/services";
 
 const approachCopy = [

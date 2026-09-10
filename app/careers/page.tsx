@@ -11,8 +11,8 @@ import {
   Settings,
   Sparkles,
 } from "lucide-react";
-import Navbar from "@/components/Navbar";
-import SimpleFooter from "@/components/Footer";
+import Navbar from "@/components/home/Navbar";
+import SimpleFooter from "@/components/home/Footer";
 import BlogHero from "@/app/blog/BlogHero";
 import { careerRoles } from "@/data/careers";
 
@@ -416,8 +416,8 @@ export default function CareersPage() {
         </div>
       </div>
 
-      <section data-reveal className="border-b border-black/10 bg-white px-[var(--gutter)] py-14 md:py-20">
-        <div className="mx-auto grid max-w-[1200px] gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+      <section data-reveal className="border-b border-black/10 bg-white py-14 md:py-20">
+        <div className="container mx-auto grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
           <div>
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#ce4111]">Benefits</p>
             <h2 className="max-w-sm text-4xl font-extrabold uppercase leading-[0.92] tracking-[-0.05em] md:text-6xl">Where great careers take shape.</h2>
@@ -443,8 +443,8 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <section data-reveal className="border-b border-black/10 px-[var(--gutter)] py-10 md:py-14">
-        <div className="mx-auto grid max-w-[1200px] gap-8 md:grid-cols-3">
+      <section data-reveal className="border-b border-black/10 py-10 md:py-14">
+        <div className="container mx-auto grid gap-8 md:grid-cols-3">
           <div>
             <div className="font-serif text-[2.25rem] font-semibold leading-none text-[#f45e2b] md:text-[3.5rem]">Live</div>
             <p className="mt-4 max-w-[20rem] text-sm leading-6 text-[#756f65]">Every project ships to a real client, not a demo.</p>
@@ -460,8 +460,8 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <section id="open-roles" data-reveal className="px-[var(--gutter)] py-20 md:py-32">
-        <div className="mx-auto max-w-[1200px]">
+      <section id="open-roles" data-reveal className="py-20 md:py-32">
+        <div className="container mx-auto">
           <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div>
               <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-[#ce4111]">Open positions</p>
@@ -491,8 +491,8 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <section data-reveal className="px-[var(--gutter)] py-20 md:py-32">
-        <div className="mx-auto max-w-[1200px]">
+      <section data-reveal className="py-20 md:py-32">
+        <div className="container mx-auto">
           <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div>
               <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-[#ce4111]">How hiring works</p>
@@ -517,8 +517,8 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <section data-reveal className="px-[var(--gutter)] pb-28 pt-10 md:pb-36">
-        <div className="mx-auto max-w-[1200px] rounded-[28px] border border-black/10 bg-white px-6 py-16 md:px-10 md:py-20">
+      <section data-reveal className="pb-28 pt-10 md:pb-36">
+        <div className="container mx-auto rounded-[28px] border border-black/10 bg-white px-6 py-16 md:px-10 md:py-20">
           <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
             <div>
               <div className="mb-5 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#ce4111]">

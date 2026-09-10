@@ -66,7 +66,7 @@ export default function BlogArchive({ posts }: BlogArchiveProps) {
       </nav>
 
       {currentPage === 1 && latestPost && (
-        <section className="blog-feature" aria-label="Latest blog post">
+        <section className="blog-feature blog-feature--recent" aria-label="Latest blog post">
           <div className="blog-feature-image-wrap">
             <img src={latestPost.image} alt="" className="blog-feature-image" />
             <span className="blog-feature-badge">Read<br />the<br />latest</span>

@@ -13,12 +13,12 @@ import {
   Target,
 } from "lucide-react";
 import type { CaseStudyData } from "@/data/portfolio";
-import Navbar from "@/components/Navbar";
-import SimpleFooter from "@/components/Footer";
-import CapabilityWave from "@/components/CapabilityWave";
-import ScrollReveal from "@/components/ScrollReveal";
+import Navbar from "@/components/home/Navbar";
+import SimpleFooter from "@/components/home/Footer";
+import CapabilityWave from "@/components/home/CapabilityWave";
+import ScrollReveal from "@/components/home/ScrollReveal";
 import { Technology } from "@/components/portfolio/technology";
-import styles from "./CaseStudyPage.module.css";
+import styles from "@/styles/CaseStudyPage.module.css";
 
 function SectionLabel({ children, size = "md" }: { children: string; size?: "sm" | "md" | "lg" }) {
   const sizeClass = size === "sm" ? "text-[11px]" : size === "lg" ? "text-[13px]" : "text-[12px]";
@@ -39,7 +39,7 @@ const stats = [
 
 function CaseHero({ study }: { study: CaseStudyData }) {
   return (
-    <section className="mx-auto max-w-7xl px-6 pt-20 lg:px-10 lg:pt-28">
+    <section className="mx-auto max-w-7xl px-6 pt-20 lg:px-10 lg:pt-28" data-back-to-top-hero>
       <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
         <div className="flex flex-col gap-6 pt-4">
           <div className="-ml-6 flex items-center gap-3 uppercase tracking-[0.2em] text-[#f45e2b] lg:-ml-10">

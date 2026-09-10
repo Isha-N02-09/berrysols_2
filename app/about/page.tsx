@@ -1,13 +1,13 @@
 "use client";
 
 
-import "./about.css";
+import "@/styles/about.css";
 import { useEffect, useRef, useState } from "react";
 import { BarChart3, Bot, MessageCircle, Zap } from "lucide-react";
-import SimpleFooter from "@/components/Footer";
-import Navbar from "@/components/Navbar";
-import CapabilityWave from "@/components/CapabilityWave";
-import ImpactStats from "@/components/ImpactStats";
+import SimpleFooter from "@/components/home/Footer";
+import Navbar from "@/components/home/Navbar";
+import CapabilityWave from "@/components/home/CapabilityWave";
+import ImpactStats from "@/components/home/ImpactStats";
 import RoadReveal from "@/components/about/RoadReveal";
 
 const TEAM = [
@@ -371,7 +371,7 @@ export default function AboutPage() {
 
 
         {/* ===================== WHO WE ARE ===================== */}
-        <section className="who-hero" ref={whoHeroRef}>
+        <section className="who-hero" ref={whoHeroRef} data-back-to-top-hero>
           <div className="who-sticky">
             <div
               className="eyebrow who-eyebrow"

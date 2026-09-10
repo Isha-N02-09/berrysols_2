@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import styles from "./overview.module.css";
+import styles from "@/styles/overview.module.css";
 import HeroSection from "./HeroSection";
 import ServicesOverview from "./ServicesOverview";
 
