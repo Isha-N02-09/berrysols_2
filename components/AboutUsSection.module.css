@@ -65,6 +65,8 @@
 
 .rule {
   display: block;
+  position: relative;
+  z-index: -100;
   width: 1.7rem;
   height: 2px;
   margin: 1.5rem 0 1.1rem;
@@ -116,13 +118,15 @@
 
 .orbit {
   position: absolute;
+  z-index: 0;
   top: 50%;
-  left: calc(var(--pivot-left) - var(--radius));
-  width: var(--diameter);
+  left: var(--pivot-left);
+  width: var(--radius);
   height: var(--diameter);
   transform: translateY(-50%);
-  border-radius: 50%;
   border: 1px solid var(--line);
+  border-left: 0;
+  border-radius: 0 100% 100% 0 / 50%;
 }
 
 .wheel {
