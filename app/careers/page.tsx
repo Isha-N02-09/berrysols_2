@@ -446,7 +446,6 @@ export default function CareersPage() {
             <span key={Math.random()} className="careers-marquee-item"><strong>Frontend Developer</strong><span>·</span></span>,
             <span key={Math.random()} className="careers-marquee-item"><strong>AI Engineer</strong><span>·</span></span>,
             <span key={Math.random()} className="careers-marquee-item"><strong>UI/UX Designer</strong><span>·</span></span>,
-            <span key={Math.random()} className="careers-marquee-item">Sialkot<span>·</span></span>,
           ])}
         </div>
       </div>
@@ -536,7 +535,6 @@ export default function CareersPage() {
               <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-[#ce4111]">How hiring works</p>
               <h2 className="max-w-3xl text-4xl font-extrabold uppercase leading-[0.92] tracking-[-0.05em] md:text-6xl">Five steps, two to three weeks.</h2>
             </div>
-            <p className="max-w-xs text-sm leading-6 text-[#756f65]">We will tell you where you stand at every stage, with no disappearing into a black hole.</p>
           </div>
 
           <div className="process-line">

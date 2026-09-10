@@ -448,7 +448,7 @@ export default function AboutPage() {
                 Where it started
               </span>
 
-              <h2>
+              <h2 className="origin-title">
                 The story behind Berry Solutions
               </h2>
             </div>

@@ -9,6 +9,7 @@ type Insight = {
   title: string;
   image: string;
   slug?: string;
+  href?: string;
 };
 
 const blogInsights: Insight[] = blogPosts.slice(0, 5).map((post) => ({
@@ -16,14 +17,17 @@ const blogInsights: Insight[] = blogPosts.slice(0, 5).map((post) => ({
   title: post.title,
   image: post.image,
   slug: post.slug,
+  href: `/blog/${post.slug}`,
 }));
 
 const insightColumns: Insight[][] = [
   [
     {
       category: "Case Study",
-      title: "US Fashion Resale Platform Scales to 100K+ Transactions",
+      title: "Relic Commerce",
       image: "/assets/inslights/1.jpg",
+      slug: "relic-commerce",
+      href: "/portfolio/relic-commerce",
     },
     {
       ...blogInsights[0],
@@ -49,8 +53,10 @@ const insightColumns: Insight[][] = [
   [
     {
       category: "Case Study",
-      title: "Hospital AI Platform Reconciles $300M+ in Automation",
+      title: "Telehealth",
       image: "/assets/inslights/6.jpg",
+      slug: "telehealth",
+      href: "/portfolio/telehealth",
     },
     {
       ...blogInsights[4],
@@ -58,8 +64,10 @@ const insightColumns: Insight[][] = [
     },
     {
       category: "Case Study",
-      title: "US Fintech's AI Financial Modeling Secures $2M+ Funding",
+      title: "Harbor Finance",
       image: "/assets/inslights/8.jpg",
+      slug: "harbor-finance",
+      href: "/portfolio/harbor-finance",
     },
   ],
 ];
@@ -100,8 +108,8 @@ export default function Insight() {
                     className={styles.insightCard}
                     key={index}
                   >
-                    {insight.slug ? (
-                      <Link href={`/blog/${insight.slug}`} className={styles.cardLink}>
+                    {insight.href ? (
+                      <Link href={insight.href} className={styles.cardLink}>
                         <Image
                           src={insight.image}
                           alt={insight.title}

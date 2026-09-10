@@ -29,11 +29,13 @@ export default function MobileMenu({
 
   const isActiveLink = (href: string) => {
     if (!href || href === "#top") return pathname === "/";
+    if (href === "#resources") return pathname.startsWith("/blog") || pathname === "/faq";
     if (href.startsWith("/services")) return pathname === "/services" || pathname.startsWith("/services/");
     if (href.startsWith("/portfolio")) return pathname === "/portfolio" || pathname.startsWith("/portfolio/");
     if (href.startsWith("/blog")) return pathname === "/blog" || pathname.startsWith("/blog/");
+    if (href.startsWith("/resources")) return pathname.startsWith("/blog") || pathname === "/faq";
     if (href.startsWith("/about")) {
-      return pathname === "/about" || pathname.startsWith("/blog") || pathname === "/faq";
+      return pathname === "/about";
     }
     if (href.startsWith("/careers")) return pathname === "/careers";
     if (href.startsWith("/#")) return pathname === "/";
@@ -59,25 +61,11 @@ export default function MobileMenu({
     },
     { label: "Portfolio", href: portfolioHref },
     {
-      label: "Industries",
-      href: sectionHref("industries"),
-      children: [
-        "Government Agencies",
-        "Vigilance & Recognition",
-        "Telehealth",
-        "Maritime & Logistics",
-        "Real Estate",
-        "Manufacturing",
-        "Travel & Tourism",
-        "FinTech",
-        "EdTech",
-      ],
-    },
-    {
-      label: "About Us",
-      href: "/about",
+      label: "Resources",
+      href: "#resources",
       children: insightDropdownItems,
     },
+    { label: "About Us", href: "/about" },
     { label: "Careers", href: "/careers" },
   ];
   const handleClose = () => {
@@ -128,20 +116,31 @@ export default function MobileMenu({
           {links.map((link) => {
             const href = link.label === "Home" ? homeHref : link.href;
             const isActive = isActiveLink(href);
+            const isResources = link.label === "Resources";
 
             return (
               <div key={link.label}>
                 <div className="group flex items-center justify-between">
-                  <a
-                    href={href}
-                    onClick={handleClose}
-                    aria-current={isActive ? "page" : undefined}
-                    className={`text-3xl font-extrabold uppercase leading-tight transition-colors duration-200 sm:text-4xl ${
-                      isActive ? "text-orange-500" : "text-black group-hover:text-orange-500"
-                    }`}
-                  >
-                    {link.label}
-                  </a>
+                  {isResources ? (
+                    <span
+                      className={`text-3xl font-extrabold uppercase leading-tight sm:text-4xl ${
+                        isActive ? "text-orange-500" : "text-black"
+                      }`}
+                    >
+                      {link.label}
+                    </span>
+                  ) : (
+                    <a
+                      href={href}
+                      onClick={handleClose}
+                      aria-current={isActive ? "page" : undefined}
+                      className={`text-3xl font-extrabold uppercase leading-tight transition-colors duration-200 sm:text-4xl ${
+                        isActive ? "text-orange-500" : "text-black group-hover:text-orange-500"
+                      }`}
+                    >
+                      {link.label}
+                    </a>
+                  )}
                   {link.children && (
                     <button
                       type="button"
