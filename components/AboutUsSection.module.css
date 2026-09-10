@@ -12,8 +12,8 @@
   --bg: #ffffff;
   --accent: var(--orange, #f45e2b);
 
-  --diameter: 760px;
-  --radius: 380px;
+  --diameter: 608px;
+  --radius: 304px;
   --bulge: 200px;
   --pivot-left: calc(var(--bulge) - var(--radius));
 
@@ -122,7 +122,7 @@
   top: 50%;
   left: var(--pivot-left);
   width: var(--radius);
-  height: calc(var(--diameter) * 0.8);
+  height: var(--diameter);
   transform: translateY(-50%);
   border: 1px solid var(--line);
   border-left: 0;
@@ -266,8 +266,8 @@
     margin-left: 0;
     display: block;
     min-height: 100vh;
-    --diameter: 520px;
-    --radius: 260px;
+    --diameter: 416px;
+    --radius: 208px;
     --bulge: 90px;
   }
 

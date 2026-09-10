@@ -148,6 +148,10 @@ export default function CareersPage() {
           text-transform: uppercase;
         }
 
+        .careers-breadcrumb {
+          margin-left: 24px !important;
+        }
+
         .careers-masthead h1 {
           margin: 6px 0 0;
           font-size: clamp(4.8rem, 15.5vw, 12.8rem);
@@ -395,7 +399,7 @@ export default function CareersPage() {
         <header className="blog-sheet-header">
           <div className="blog-rule" />
           <div className="blog-masthead">
-            <p>Join the team / Careers</p>
+            <p className="careers-breadcrumb">Join the team / Careers</p>
             <h1>CAREERS</h1>
             <p>Build what ships, not what gathers dust. A small team with direct ownership, making production work for real clients.</p>
           </div>
