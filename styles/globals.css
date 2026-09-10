@@ -1728,7 +1728,7 @@ html::-webkit-scrollbar {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  width: 100%;
+  width: calc(100% - var(--home-guide) - var(--home-guide));
   max-width: none;
   box-sizing: border-box;
   margin: 0;
