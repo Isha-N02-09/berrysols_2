@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { ArrowUpRight } from "lucide-react";
 import { services } from "@/data/services";
 import CategoryBar from "@/components/CategoryBar";
 import styles from "./overview.module.css";
@@ -39,7 +40,9 @@ export default function ServicesOverview() {
                   <span className={styles.rowNum}>{String(index + 1).padStart(2, "0")}</span>
                   <span className={styles.rowTitle}>{service.eyebrow}</span>
                 </div>
-                <span className={styles.rowArrow}>↗</span>
+                <span className={styles.rowArrow}>
+                  <ArrowUpRight size={18} aria-hidden="true" />
+                </span>
               </div>
             </Link>
           ))}

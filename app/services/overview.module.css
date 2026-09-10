@@ -576,15 +576,23 @@
 }
 
 .rowArrow {
-  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
   color: var(--ink);
   margin-right: 8px;
-  transition: transform 0.25s ease;
+  border: 1px solid rgba(23, 20, 16, 0.15);
+  border-radius: 999px;
+  transition: all 0.25s ease;
 }
 
 .row:hover .rowArrow {
-  transform: translateX(6px);
-  color: var(--orange);
+  transform: rotate(45deg);
+  border-color: var(--orange);
+  background: var(--orange);
+  color: white;
 }
 
 @media (max-width: 860px) {
