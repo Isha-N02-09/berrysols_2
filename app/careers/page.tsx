@@ -14,45 +14,7 @@ import {
 import Navbar from "@/components/Navbar";
 import SimpleFooter from "@/components/Footer";
 import BlogHero from "@/app/blog/BlogHero";
-
-const values = [
-  {
-    number: "01",
-    title: "Stay curious",
-    copy: "We ask better questions before we rush toward answers.",
-  },
-  {
-    number: "02",
-    title: "Make it useful",
-    copy: "Good work should create momentum for the people using it.",
-  },
-  {
-    number: "03",
-    title: "Own the outcome",
-    copy: "We bring care, clarity, and follow-through to every detail.",
-  },
-];
-
-const roles = [
-  {
-    title: "Frontend Developer",
-    dept: "Engineering",
-    location: "Sialkot / Remote",
-    type: "Full-time",
-  },
-  {
-    title: "AI Engineer",
-    dept: "Engineering",
-    location: "Sialkot / Remote",
-    type: "Full-time",
-  },
-  {
-    title: "UI/UX Designer",
-    dept: "Design",
-    location: "Sialkot / Remote",
-    type: "Part-time",
-  },
-];
+import { careerRoles } from "@/data/careers";
 
 const process = [
   {
@@ -450,31 +412,29 @@ export default function CareersPage() {
         </div>
       </div>
 
-      <section data-reveal className="border-b border-black/10 bg-white px-[var(--gutter)] py-12 md:py-16">
-        <div className="mx-auto grid max-w-[1200px] gap-8 lg:grid-cols-[0.8fr_1.7fr] lg:gap-16">
+      <section data-reveal className="border-b border-black/10 bg-white px-[var(--gutter)] py-14 md:py-20">
+        <div className="mx-auto grid max-w-[1200px] gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
           <div>
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#ce4111]">Why work here</p>
-            <h2 className="max-w-sm text-3xl font-extrabold uppercase leading-[0.95] tracking-[-0.04em] md:text-5xl">
-              No layers between you and the work.
-            </h2>
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#ce4111]">Benefits</p>
+            <h2 className="max-w-sm text-4xl font-extrabold uppercase leading-[0.92] tracking-[-0.05em] md:text-6xl">Where great careers take shape.</h2>
           </div>
 
           <div>
-            <p className="max-w-2xl border-l-2 border-[#f45e2b] pl-5 text-lg leading-7 text-[#5f5a53] md:text-xl md:leading-8">
-              You will ship to clients within your first weeks, not your first year. Decisions get made at your desk, not three meetings away.
-            </p>
-
-            <div className="mt-8 space-y-0 border-t border-black/15">
-              {values.map((value) => (
-                <article key={value.number} className="grid gap-4 border-b border-black/15 py-5 md:grid-cols-[68px_1fr] md:gap-6 md:py-6">
-                  <div className="font-serif text-4xl font-medium text-[#e9e0d2] md:text-5xl">{value.number}</div>
-                  <div>
-                    <h3 className="mb-2 text-xl font-bold tracking-[-0.04em]">{value.title}</h3>
-                    <p className="max-w-[42rem] text-sm leading-6 text-[#756f65]">{value.copy}</p>
-                  </div>
-                </article>
+            <h3 className="mb-6 border-b border-black/15 pb-4 text-2xl font-bold tracking-[-0.04em]">Growth &amp; Learning</h3>
+            <div className="grid border-t border-black/15 sm:grid-cols-2">
+              {[
+                "Certification reimbursement",
+                "Internal mobility program",
+                "Mentorship matching",
+                "Conference sponsorship",
+              ].map((benefit) => (
+                <div key={benefit} className="flex items-center gap-3 border-b border-black/15 py-5 text-base text-[#5f5a53] sm:pr-6">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#171410] text-sm text-white" aria-hidden="true">✓</span>
+                  {benefit}
+                </div>
               ))}
             </div>
+            <p className="mt-10 text-2xl font-bold uppercase leading-tight tracking-[-0.04em] text-[#171410] md:text-3xl">Your growth, our priority.</p>
           </div>
         </div>
       </section>
@@ -487,7 +447,7 @@ export default function CareersPage() {
           </div>
           <div>
             <div className="font-serif text-[2.25rem] font-semibold leading-none text-[#f45e2b] md:text-[3.5rem]">Sialkot</div>
-            <p className="mt-4 max-w-[20rem] text-sm leading-6 text-[#756f65]">Home base, open to remote across Pakistan.</p>
+            <p className="mt-4 max-w-[20rem] text-sm leading-6 text-[#756f65]">Our onsite home base for the whole team.</p>
           </div>
           <div>
             <div className="font-serif text-[2.25rem] font-semibold leading-none text-[#f45e2b] md:text-[3.5rem]">1:1</div>
@@ -503,14 +463,13 @@ export default function CareersPage() {
               <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-[#ce4111]">Open positions</p>
               <h2 className="max-w-3xl text-5xl font-extrabold uppercase leading-[0.92] tracking-[-0.05em] md:text-7xl">Find your role.</h2>
             </div>
-            <p className="max-w-xs text-sm leading-6 text-[#756f65]">Nothing fits right now? Send your CV anyway — we are always reading for the right person.</p>
           </div>
 
           <div className="rounded-[18px] border border-black/10 bg-white">
-            {roles.map((role) => (
+            {careerRoles.map((role) => (
               <a
                 key={role.title}
-                href={`mailto:careers@berrysols.com?subject=${encodeURIComponent(role.title)}`}
+                href={`/careers/${role.slug}`}
                 className="careers-role-row grid items-center gap-5 border-b border-black/10 px-5 py-6 md:grid-cols-[2.3fr_1fr_1fr_auto] md:px-8"
               >
                 <div>
