@@ -148,13 +148,13 @@ export default function Navbar() {
           <div className="flex items-center gap-4">
             <a
               href="/careers"
-              className="hidden rounded-full bg-[#f45e2b] px-5 py-3 text-[13px] font-medium text-white transition-colors hover:bg-[#ce4111] md:inline-flex"
+              className="btn hidden text-[13px] font-semibold md:inline-flex"
             >
               Explore Careers
             </a>
             <a
               href={sectionHref("contact")}
-              className="hidden rounded-full border border-[#f45e2b] px-5 py-[11px] text-[13px] font-medium text-[#ce4111] transition-colors hover:bg-[#f45e2b] hover:text-white md:inline-flex"
+              className="btn ghost hidden text-[13px] font-semibold md:inline-flex"
             >
               Get In Touch
             </a>

@@ -83,19 +83,29 @@
   align-items: center;
   justify-content: center;
   min-width: 220px;
-  min-height: 78px;
+  min-height: var(--control-height);
   box-sizing: border-box;
-  padding: 0 40px;
-  border-radius: 999px;
-  font-size: 18px;
+  padding: 0 var(--control-padding-inline);
+  border-radius: var(--control-radius);
+  font-size: 15px;
   font-weight: 600;
   text-decoration: none;
 }
 
 .primaryButton {
   gap: 10px;
-  background: #171513;
+  background: var(--primary-orange);
+  border: 1px solid var(--primary-orange);
   color: #ffffff;
+  transition: transform 220ms ease, background 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.primaryButton:hover,
+.primaryButton:focus-visible {
+  background: var(--primary-orange-dark);
+  border-color: var(--primary-orange-dark);
+  box-shadow: 0 10px 0 rgba(23, 20, 16, .12), 0 16px 28px rgba(244, 94, 43, .18);
+  transform: translateY(-2px);
 }
 
 .talkIcon {

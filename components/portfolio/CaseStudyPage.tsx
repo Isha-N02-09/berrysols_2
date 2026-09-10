@@ -39,10 +39,10 @@ const stats = [
 
 function CaseHero({ study }: { study: CaseStudyData }) {
   return (
-    <section className="mx-auto max-w-7xl px-6 pt-20 lg:px-10 lg:pt-28" data-back-to-top-hero>
+    <section className="wrap pt-20 lg:pt-28" data-back-to-top-hero>
       <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
         <div className="flex flex-col gap-6 pt-4">
-          <div className="-ml-6 flex items-center gap-3 uppercase tracking-[0.2em] text-[#f45e2b] lg:-ml-10">
+          <div className="flex items-center gap-3 uppercase tracking-[0.2em] text-[#f45e2b]">
             <span aria-hidden="true" className="h-px w-8 bg-[#f45e2b] lg:w-12" />
             <p className="text-[11px] font-semibold md:text-[12px]">{study.eyebrow}</p>
           </div>
@@ -147,11 +147,9 @@ function StatsRow({ study }: { study: CaseStudyData }) {
 
 function OverviewSection({ study }: { study: CaseStudyData }) {
   return (
-    <section className="mx-auto max-w-7xl lg:pl-0">
-      <div className="pl-0">
-        <SectionLabel>01 / Overview</SectionLabel>
-      </div>
-      <div className="mt-8 grid items-center gap-10 px-6 lg:grid-cols-[1fr_1.15fr] lg:gap-14 lg:px-10">
+    <section className="wrap">
+      <SectionLabel>01 / Overview</SectionLabel>
+      <div className="mt-8 grid items-center gap-10 lg:grid-cols-[1fr_1.15fr] lg:gap-14">
         <div className="flex flex-col gap-6 text-base leading-relaxed text-pretty">
           <h3 className="text-[clamp(1.6rem,2vw,2.2rem)] font-black leading-tight tracking-[-0.04em]">{study.overviewTitle}</h3>
           {study.overview.map((paragraph) => (
@@ -174,10 +172,10 @@ type Note = { number: string; title: string; text: string; left: number; top: nu
 
 function StickyNotes({ title, notes, connectors, boardHeight }: { title: string; notes: Note[]; connectors: string[]; boardHeight: number }) {
   return (
-    <section className="mx-auto max-w-7xl">
+    <section className="wrap">
       <SectionLabel>{title}</SectionLabel>
 
-      <ol className="mt-8 flex flex-col gap-10 px-6 md:hidden">
+      <ol className="mt-8 flex flex-col gap-10 md:hidden">
         {notes.map((note) => (
           <li key={note.number} className="mx-auto w-full max-w-xs">
             <NoteCard note={note} />
@@ -284,12 +282,12 @@ const designSteps = [
 
 function DesignProcessSection() {
   return (
-    <section className="mx-auto max-w-7xl max-md:text-center">
+    <section className="wrap max-md:text-center">
       <div className="max-md:flex max-md:justify-center">
         <SectionLabel size="sm">05 / Design process</SectionLabel>
       </div>
 
-      <div className="relative mt-10 px-6 lg:px-10">
+      <div className="relative mt-10">
         <ol className="relative z-10 grid justify-items-center gap-10 sm:grid-cols-2 lg:grid-cols-5">
           {designSteps.map((step, index) => (
             <li key={step.title} className="relative flex w-full max-w-xs flex-col items-center gap-4 text-center lg:items-start lg:text-left">
@@ -303,7 +301,7 @@ function DesignProcessSection() {
                   style={{ width: "calc(100% + 2.5rem)" }}
                 />
               )}
-              <h3 className="font-serif text-lg font-semibold">{step.title}</h3>
+              <h3 className="text-lg font-semibold">{step.title}</h3>
               <ul className="flex flex-col items-center gap-1 text-xs leading-relaxed text-muted-foreground lg:items-start">
                 {step.items.map((item) => (
                   <li key={item}>{item}</li>
@@ -501,7 +499,7 @@ export default function CaseStudyPage({ study }: { study: CaseStudyData }) {
     <main className="overflow-x-hidden bg-white text-[#111111]">
       <Navbar />
 
-      <ScrollReveal className="my-10 lg:my-16">
+      <ScrollReveal className="mb-10 lg:mb-16">
         <CaseHero study={study} />
       </ScrollReveal>
 

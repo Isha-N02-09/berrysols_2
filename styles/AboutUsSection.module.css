@@ -28,8 +28,7 @@
   align-items: start;
   gap: clamp(2rem, 7vw, 7rem);
   min-height: calc(100vh * 4.6);
-  margin-right: 0;
-  padding-inline: max(var(--content-gutter), calc((100vw - var(--container)) / 2 + var(--content-gutter)));
+  padding-inline: var(--home-guide);
 }
 
 .copy {
@@ -232,8 +231,8 @@
   .section {
     grid-template-columns: minmax(360px, 0.72fr) minmax(760px, 1.28fr);
     gap: clamp(2rem, 4vw, 5rem);
-    padding-left: clamp(2rem, 5vw, 5rem);
-    padding-right: clamp(2rem, 5vw, 5rem);
+    padding-left: var(--home-guide);
+    padding-right: var(--home-guide);
   }
 
   .copy {

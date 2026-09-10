@@ -66,13 +66,13 @@ export default function Hero() {
         <div className="hero-actions mt-7 flex gap-3 max-[767px]:flex-row">
           <a
             href="#portfolio"
-            className="rounded-full bg-[#f45e2b] px-5 py-3 text-center text-[10px] font-bold uppercase tracking-[0.14em] text-white transition-colors hover:bg-[#ce4111] sm:px-7 sm:text-sm"
+            className="btn text-center text-[10px] font-bold uppercase tracking-[0.14em] sm:text-sm"
           >
             Our Services
           </a>
           <a
             href="#contact"
-            className="hidden max-[767px]:inline-flex rounded-full border border-white/60 bg-white/10 px-5 py-3 text-center text-[10px] font-bold uppercase tracking-[0.14em] text-white backdrop-blur-sm sm:px-7 sm:text-sm"
+            className="btn ghost hidden max-[767px]:inline-flex border-white/60 bg-white/10 text-center text-[10px] font-bold uppercase tracking-[0.14em] text-white backdrop-blur-sm sm:text-sm"
           >
             Get in touch
           </a>

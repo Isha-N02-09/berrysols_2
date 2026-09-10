@@ -309,7 +309,7 @@ export default function CareersPage() {
         .process-step h3 {
           margin-bottom: 6px;
           font-size: 15px;
-          font-weight: 700;
+          font-weight: 600;
           text-transform: uppercase;
         }
 
@@ -420,11 +420,11 @@ export default function CareersPage() {
         <div className="container mx-auto grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
           <div>
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#ce4111]">Benefits</p>
-            <h2 className="max-w-sm text-4xl font-extrabold uppercase leading-[0.92] tracking-[-0.05em] md:text-6xl">Where great careers take shape.</h2>
+            <h2 className="max-w-sm text-3xl font-bold uppercase leading-[0.95] tracking-[-0.04em] md:text-5xl">Where great careers take shape.</h2>
           </div>
 
           <div>
-            <h3 className="mb-6 border-b border-black/15 pb-4 text-2xl font-bold tracking-[-0.04em]">Growth &amp; Learning</h3>
+            <h3 className="mb-6 border-b border-black/15 pb-4 text-xl font-semibold tracking-[-0.03em]">Growth &amp; Learning</h3>
             <div className="grid border-t border-black/15 sm:grid-cols-2">
               {[
                 "Certification reimbursement",
@@ -438,7 +438,7 @@ export default function CareersPage() {
                 </div>
               ))}
             </div>
-            <p className="mt-10 text-2xl font-bold uppercase leading-tight tracking-[-0.04em] text-[#171410] md:text-3xl">Your growth, our priority.</p>
+            <p className="mt-10 text-xl font-semibold uppercase leading-tight tracking-[-0.03em] text-[#171410] md:text-2xl">Your growth, our priority.</p>
           </div>
         </div>
       </section>
@@ -446,15 +446,15 @@ export default function CareersPage() {
       <section data-reveal className="border-b border-black/10 py-10 md:py-14">
         <div className="container mx-auto grid gap-8 md:grid-cols-3">
           <div>
-            <div className="font-serif text-[2.25rem] font-semibold leading-none text-[#f45e2b] md:text-[3.5rem]">Live</div>
+            <div className="font-serif text-[2rem] font-semibold leading-none text-[#f45e2b] md:text-[3rem]">Live</div>
             <p className="mt-4 max-w-[20rem] text-sm leading-6 text-[#756f65]">Every project ships to a real client, not a demo.</p>
           </div>
           <div>
-            <div className="font-serif text-[2.25rem] font-semibold leading-none text-[#f45e2b] md:text-[3.5rem]">Sialkot</div>
+            <div className="font-serif text-[2rem] font-semibold leading-none text-[#f45e2b] md:text-[3rem]">Sialkot</div>
             <p className="mt-4 max-w-[20rem] text-sm leading-6 text-[#756f65]">Our onsite home base for the whole team.</p>
           </div>
           <div>
-            <div className="font-serif text-[2.25rem] font-semibold leading-none text-[#f45e2b] md:text-[3.5rem]">1:1</div>
+            <div className="font-serif text-[2rem] font-semibold leading-none text-[#f45e2b] md:text-[3rem]">1:1</div>
             <p className="mt-4 max-w-[20rem] text-sm leading-6 text-[#756f65]">Direct mentorship, no layers of management.</p>
           </div>
         </div>
@@ -465,7 +465,7 @@ export default function CareersPage() {
           <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div>
               <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-[#ce4111]">Open positions</p>
-              <h2 className="max-w-3xl text-5xl font-extrabold uppercase leading-[0.92] tracking-[-0.05em] md:text-7xl">Find your role.</h2>
+              <h2 className="max-w-3xl text-4xl font-bold uppercase leading-[0.95] tracking-[-0.04em] md:text-6xl">Find your role.</h2>
             </div>
           </div>
 
@@ -477,7 +477,7 @@ export default function CareersPage() {
                 className="careers-role-row grid items-center gap-5 border-b border-black/10 px-5 py-6 md:grid-cols-[2.3fr_1fr_1fr_auto] md:px-8"
               >
                 <div>
-                  <div className="text-[1.7rem] font-bold tracking-[-0.04em] md:text-[2.1rem]">{role.title}</div>
+                  <div className="text-[1.5rem] font-semibold tracking-[-0.03em] md:text-[1.9rem]">{role.title}</div>
                   <div className="mt-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#756f65]">{role.dept}</div>
                 </div>
                 <div className="text-sm text-[#5f5a53]">{role.location}</div>
@@ -496,7 +496,7 @@ export default function CareersPage() {
           <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div>
               <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-[#ce4111]">How hiring works</p>
-              <h2 className="max-w-3xl text-4xl font-extrabold uppercase leading-[0.92] tracking-[-0.05em] md:text-6xl">Five steps, two to three weeks.</h2>
+              <h2 className="max-w-3xl text-3xl font-bold uppercase leading-[0.95] tracking-[-0.04em] md:text-5xl">Five steps, two to three weeks.</h2>
             </div>
           </div>
 
@@ -525,13 +525,13 @@ export default function CareersPage() {
                 <Sparkles size={16} aria-hidden="true" />
                 We are always open
               </div>
-              <h2 className="max-w-[20ch] text-4xl font-extrabold uppercase leading-[0.9] tracking-[-0.05em] md:text-6xl">
+              <h2 className="max-w-[20ch] text-3xl font-bold uppercase leading-[0.95] tracking-[-0.04em] md:text-5xl">
                 Don’t see your role? Introduce yourself anyway.
               </h2>
             </div>
 
             <div className="flex flex-col items-start gap-5">
-              <p className="max-w-[32rem] text-lg leading-8 text-[#5f5a53]">
+              <p className="max-w-[32rem] text-base leading-7 text-[#5f5a53]">
                 We are always interested in meeting people who build good software. Send your CV and tell us the kind of work you would love to do.
               </p>
               <a

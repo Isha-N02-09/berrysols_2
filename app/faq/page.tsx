@@ -117,7 +117,7 @@ export default function FAQPage() {
       />
 
       <section className="faq-container pb-16 lg:pb-24">
-        <div className="max-w-5xl">
+          <div className="w-full">
           {visibleFaqs.map((item, index) => {
             const isOpen = openIndex === index;
 
@@ -151,19 +151,19 @@ export default function FAQPage() {
                 Still need help? Send us a note!
               </h2>
               <p className="mt-4 text-base leading-7 text-white/85 md:text-lg">
-                For any other questions, please write us at
+                For any other questions, please contact us at
                 <span className="block mt-2">info@berrysols.com</span>
                 <span className="block mt-1">or call us on +92 339 456 789</span>
               </p>
-              <div className="mt-7 flex items-center gap-5 text-sm font-medium text-white/90">
-                <Link href="https://www.facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook" className="hover:text-white">
-                  f
+              <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-medium text-white/90">
+                <Link href="mailto:info@berrysols.com" className="transition-colors hover:text-white">
+                  Email
                 </Link>
-                <Link href="https://www.instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram" className="hover:text-white">
-                  ◎
-                </Link>
-                <Link href="https://www.linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="hover:text-white">
-                  in
+                <a href="tel:+92339456789" className="transition-colors hover:text-white">
+                  +92 339 456 789
+                </a>
+                <Link href="https://www.linkedin.com/company/berry-solutions" target="_blank" rel="noreferrer" className="transition-colors hover:text-white">
+                  LinkedIn
                 </Link>
               </div>
             </div>

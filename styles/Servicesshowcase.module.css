@@ -15,7 +15,7 @@
   );
   color: #171410;
   font-family: "Poppins", sans-serif;
-  padding: 48px max(5vw, 28px) 72px;
+  padding: 48px var(--home-guide) 72px;
 }
 
 .header {

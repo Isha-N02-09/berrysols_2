@@ -26,14 +26,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 72px var(--content-gutter) 56px;
+  padding: 72px var(--home-guide) 56px;
   overflow: hidden;
 }
 
 .portfolioTitle {
   position: absolute;
   top: clamp(84px, 11vh, 120px);
-  left: max(var(--content-gutter), calc((100vw - var(--container)) / 2 + var(--content-gutter)));
+  left: var(--home-guide);
   z-index: 2;
   margin: 0;
   color: #171410;
@@ -58,17 +58,9 @@
 .portfolioCta {
   position: absolute;
   top: clamp(86px, 11vh, 118px);
-  right: max(var(--content-gutter), calc((100vw - var(--container)) / 2 + var(--content-gutter)));
+  right: var(--home-guide);
   z-index: 2;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   gap: 8px;
-  padding: 12px 22px;
-  border: 1px solid rgba(20, 20, 20, .18);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, .8);
-  color: #141414;
   font-size: 12px;
   font-weight: 700;
 }
@@ -93,7 +85,6 @@
   border: 1px solid rgba(23, 20, 16, .45);
   border-radius: 14px;
   color: #141414;
-  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, .28), 0 2px 8px rgba(0, 0, 0, .06);
   opacity: var(--opacity);
   transform: translate(-50%, -50%) translate3d(var(--x), var(--y), 0) rotate(var(--angle)) scale(var(--scale));
   will-change: transform, opacity;
@@ -118,7 +109,6 @@
 
 .featureCard:hover,
 .featureCard:focus-visible {
-  box-shadow: 10px 10px 0 rgba(244, 94, 43, .35), 0 34px 64px -20px rgba(0, 0, 0, .34), 0 4px 12px rgba(0, 0, 0, .1);
 }
 
 .featureCard:hover::before,

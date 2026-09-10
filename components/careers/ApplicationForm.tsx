@@ -94,7 +94,7 @@ export default function ApplicationForm({ roleSlug, roleTitle }: ApplicationForm
       </div>
 
       <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <button type="submit" disabled={status === "sending"} className="inline-flex items-center gap-2 rounded-full bg-[#171410] px-7 py-4 text-sm font-semibold uppercase tracking-[0.04em] text-white transition-transform hover:-translate-y-0.5 hover:bg-[#ce4111] disabled:cursor-wait disabled:opacity-60">
+        <button type="submit" disabled={status === "sending"} className="btn text-sm font-semibold uppercase tracking-[0.04em] disabled:cursor-wait disabled:opacity-60">
           {status === "sending" ? "Sending..." : "Submit application"}
           {status !== "sending" && <ArrowUpRight size={16} aria-hidden="true" />}
         </button>

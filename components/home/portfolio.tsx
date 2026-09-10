@@ -96,7 +96,7 @@ export default function ServicesShowcase() {
                   <span className={styles.cardIndex}>{String(index + 1).padStart(2, "0")}</span>
                   <h3>{service.title}</h3>
                   <p>{service.description}</p>
-                  <Link href={`/services/${service.slug}`} className={styles.learnMore}>
+                  <Link href={`/services/${service.slug}`} className={`${styles.learnMore} btn ghost`}>
                     Learn more <ArrowRight size={17} />
                   </Link>
                 </div>
@@ -110,7 +110,7 @@ export default function ServicesShowcase() {
         </button>
       </div>
 
-      <Link href="/services" className={styles.viewAllServices}>
+      <Link href="/services" className={`${styles.viewAllServices} btn ghost`}>
         View all services <ArrowUpRight size={16} strokeWidth={2.25} aria-hidden="true" />
       </Link>
     </section>

@@ -63,7 +63,7 @@ export default function Industries() {
               </div>
             </div>
           </div>
-          <Link href="#contact" className={styles.learnMore}>
+          <Link href="#contact" className={`${styles.learnMore} btn ghost`}>
             Learn more <ArrowUpRight size={16} strokeWidth={2.25} aria-hidden="true" />
           </Link>
         </div>

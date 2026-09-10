@@ -140,27 +140,21 @@
 
 .webDevHero .heroActions :global(.btn) {
   min-width: 200px;
-  min-height: 54px;
-  padding: 0 30px;
-  border-color: #111111;
-  background: transparent;
-  color: #111111;
 }
 
 .webDevHero .heroActions :global(.btn.ghost) {
-  background: transparent;
   color: #111111;
 }
 
 .webDevHero .heroActions :global(.btn.ghost:hover) {
-  background: #111111;
+  background: var(--primary-orange);
+  border-color: var(--primary-orange);
   color: #fff;
 }
 
 .webDevHero .heroActions :global(.btn:not(.ghost)) {
-  background: #111111;
-  border-color: #111111;
-  color: #fff;
+  background: var(--primary-orange);
+  border-color: var(--primary-orange);
 }
 
 .talkIcon {

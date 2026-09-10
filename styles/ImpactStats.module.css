@@ -9,9 +9,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   width: 100%;
-  max-width: var(--container);
-  margin: 0 auto;
-  padding: 1.1rem var(--content-gutter);
+  padding: 1.1rem var(--home-guide);
   box-sizing: border-box;
 }
 

@@ -97,7 +97,7 @@ export default function Services() {
           <span className={styles.portfolioTitleOur}>Our</span>{" "}
           <span className={styles.portfolioTitleWord}>Portfolio</span>
         </h2>
-        <a href="/portfolio" className={styles.portfolioCta}>
+        <a href="/portfolio" className={`${styles.portfolioCta} btn ghost`}>
           View Portfolio <ArrowUpRight size={16} strokeWidth={2.35} aria-hidden="true" />
         </a>
         <div className={styles.featureTrack}>

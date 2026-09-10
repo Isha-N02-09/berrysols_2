@@ -8,9 +8,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        brandFrom: "#FF8A00",
-        brandTo: "#FFD400",
-        ink: "#0A0A0F",
+        primary: "var(--primary-orange)",
+        primaryDark: "var(--primary-orange-dark)",
+        ink: "var(--ink)",
+        muted: "var(--muted)",
+        line: "var(--line)",
+      },
+      fontFamily: {
+        sans: ["var(--font-poppins)", "sans-serif"],
+      },
+      borderRadius: {
+        control: "var(--control-radius)",
       },
       keyframes: {
         marquee: {
