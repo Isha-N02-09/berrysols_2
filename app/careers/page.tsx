@@ -469,7 +469,7 @@ export default function CareersPage() {
             {careerRoles.map((role) => (
               <a
                 key={role.title}
-                href={`/careers/${role.slug}`}
+                href={`/careers/${role.slug}/apply`}
                 className="careers-role-row grid items-center gap-5 border-b border-black/10 px-5 py-6 md:grid-cols-[2.3fr_1fr_1fr_auto] md:px-8"
               >
                 <div>

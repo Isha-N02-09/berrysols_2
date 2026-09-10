@@ -21,8 +21,8 @@ export default function ApplyPage({ params }: ApplyPageProps) {
     <main className="flex min-h-screen flex-col bg-white text-[#171410]">
       <div className="px-5 pb-8 pt-8 md:px-8 md:pt-12">
         <div className="mx-auto max-w-[760px]">
-          <Link href={`/careers/${role.slug}`} className="mb-8 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#ce4111] transition-colors hover:text-[#171410]">
-            <ArrowLeft size={15} aria-hidden="true" /> Back to job details
+          <Link href="/careers" className="mb-8 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#ce4111] transition-colors hover:text-[#171410]">
+            <ArrowLeft size={15} aria-hidden="true" /> Back to all jobs
           </Link>
           <header className="border-b border-black/15 pb-8 text-center">
             <div className="mb-5 flex items-center justify-center gap-2">

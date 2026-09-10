@@ -153,7 +153,7 @@ function OverviewSection({ study }: { study: CaseStudyData }) {
       </div>
       <div className="mt-8 grid items-center gap-10 px-6 lg:grid-cols-[1fr_1.15fr] lg:gap-14 lg:px-10">
         <div className="flex flex-col gap-6 text-base leading-relaxed text-pretty">
-          <h3 className="text-[clamp(1.6rem,2vw,2.2rem)] font-black leading-tight tracking-[-0.04em]">Same Day Me overview</h3>
+          <h3 className="text-[clamp(1.6rem,2vw,2.2rem)] font-black leading-tight tracking-[-0.04em]">{study.overviewTitle}</h3>
           {study.overview.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
