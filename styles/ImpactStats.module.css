@@ -58,6 +58,8 @@
 @media (max-width: 700px) {
   .inner {
     grid-template-columns: repeat(2, 1fr);
+    padding-left: 20px;
+    padding-right: 20px;
     padding-top: 1rem;
     padding-bottom: 1rem;
   }
@@ -78,10 +80,11 @@
 
 @media (max-width: 420px) {
   .value {
-    font-size: 5.5rem;
+    font-size: clamp(3.9rem, 18vw, 5rem);
   }
 
   .label {
-    font-size: 0.62rem;
+    width: calc(100% - 1rem);
+    font-size: 0.58rem;
   }
 }

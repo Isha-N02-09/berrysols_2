@@ -49,8 +49,9 @@ export default function RoadReveal({ children, className = "", contentClassName 
   const containerRef = useRef<HTMLDivElement>(null);
   const maskId = useId();
   const gradientId = useId();
+  const maskRectRef = useRef<SVGRectElement>(null);
+  const boxRef = useRef({ width: 0, height: 0 });
   const [box, setBox] = useState({ width: 0, height: 0 });
-  const [reveal, setReveal] = useState(0);
   const targetRevealRef = useRef(0);
   const displayRevealRef = useRef(0);
   const animationFrameRef = useRef(0);
@@ -64,7 +65,9 @@ export default function RoadReveal({ children, className = "", contentClassName 
     let scrollFrame = 0;
     const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     const resizeObserver = new ResizeObserver(([entry]) => {
-      setBox({ width: entry.contentRect.width, height: entry.contentRect.height });
+      const nextBox = { width: entry.contentRect.width, height: entry.contentRect.height };
+      boxRef.current = nextBox;
+      setBox(nextBox);
     });
     resizeObserver.observe(content);
 
@@ -84,7 +87,7 @@ export default function RoadReveal({ children, className = "", contentClassName 
       const target = motionQuery.matches ? 1 : targetRevealRef.current;
       const next = displayRevealRef.current + (target - displayRevealRef.current) * 0.12;
       displayRevealRef.current = Math.abs(target - next) < 0.001 ? target : next;
-      setReveal(displayRevealRef.current);
+      maskRectRef.current?.setAttribute("height", String(displayRevealRef.current * boxRef.current.height));
       animationFrameRef.current = requestAnimationFrame(tick);
     };
 
@@ -118,7 +121,7 @@ export default function RoadReveal({ children, className = "", contentClassName 
               <stop offset="100%" stopColor="white" stopOpacity="0" />
             </linearGradient>
             <mask id={maskId} maskUnits="userSpaceOnUse" x="0" y="0" width={box.width} height={box.height}>
-              <rect width={box.width} height={reveal * box.height} fill={`url(#${gradientId})`} />
+              <rect ref={maskRectRef} width={box.width} height="0" fill={`url(#${gradientId})`} />
             </mask>
           </defs>
           <g mask={`url(#${maskId})`}>

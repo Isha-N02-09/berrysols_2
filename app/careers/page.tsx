@@ -405,7 +405,7 @@ export default function CareersPage() {
 
       <Navbar />
 
-      <BlogHero>
+      <BlogHero className="careers-page-hero">
         <header className="blog-sheet-header">
           <div className="blog-rule" />
           <div className="blog-masthead">
