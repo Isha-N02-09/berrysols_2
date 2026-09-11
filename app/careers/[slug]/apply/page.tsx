@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import CareerApplyTabs from "@/components/careers/CareerApplyTabs";
 import { careerRoles, getCareerRole } from "@/data/careers";
+import type { Metadata } from "next";
 
 type ApplyPageProps = {
   params: { slug: string };
@@ -10,6 +11,16 @@ type ApplyPageProps = {
 
 export function generateStaticParams() {
   return careerRoles.map((role) => ({ slug: role.slug }));
+}
+
+export function generateMetadata({ params }: ApplyPageProps): Metadata {
+  const role = getCareerRole(params.slug);
+  return role ? {
+    title: `Apply: ${role.title}`,
+    description: role.summary,
+    alternates: { canonical: `/careers/${role.slug}/apply` },
+    robots: { index: false, follow: true },
+  } : {};
 }
 
 export default function ApplyPage({ params }: ApplyPageProps) {

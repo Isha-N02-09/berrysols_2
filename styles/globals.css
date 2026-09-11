@@ -1983,7 +1983,7 @@ html::-webkit-scrollbar {
   margin: 0 0 54px;
   padding-inline: 0;
   box-sizing: border-box;
-  text-align: left;
+  text-align: center;
 }
 
 .reviews-head h2 {

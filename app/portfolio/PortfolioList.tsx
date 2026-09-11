@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import type { PortfolioProject } from "@/data/portfolio";
 
@@ -44,7 +45,7 @@ export default function PortfolioList({ projects }: PortfolioListProps) {
       {featuredProject && (
         <div className="blog-feature" aria-label="Featured portfolio project">
           <div className="blog-feature-image-wrap">
-            <img src={featuredProject.image} alt="" className="blog-feature-image" />
+            <Image src={featuredProject.image} alt={`${featuredProject.title} case study`} width={1200} height={720} className="blog-feature-image" />
             <span className="blog-feature-badge">Case<br />study</span>
           </div>
 
@@ -67,7 +68,7 @@ export default function PortfolioList({ projects }: PortfolioListProps) {
             </div>
 
             <Link href={project.href} className="portfolio-cover-visual">
-              <img src={project.image} alt="" className="blog-post-image" />
+              <Image src={project.image} alt={`${project.title} case study`} width={720} height={480} className="blog-post-image" />
             </Link>
 
             <div className="blog-post-copy">

@@ -14,6 +14,21 @@ import Insights from "@/components/home/Insights";
 import AboutUs from "@/components/home/AboutUsSection";
 import ImpactStats from "@/components/home/ImpactStats";
 import CapabilityWave from "@/components/home/CapabilityWave";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Digital Products, AI & Technology Solutions",
+  description:
+    "Berry Solutions engineers digital experiences, intelligent systems, and automation that bring clarity to complex business problems.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "Digital Products, AI & Technology Solutions",
+    description:
+      "Berry Solutions engineers digital experiences, intelligent systems, and automation for growing businesses.",
+    url: "/",
+  },
+  twitter: { card: "summary_large_image" },
+};
 
 export default function Home() {
   return (

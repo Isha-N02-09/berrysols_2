@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function SimpleFooter() {
   return (
@@ -8,7 +9,7 @@ export default function SimpleFooter() {
 
         <div className="simple-footer-brand">
           <Link className="footer-logo" href="/" aria-label="Berry Solutions home">
-            <img src="/assets/icon2.png" alt="Berry" className="footer-logo-image" />
+            <Image src="/assets/icon2.png" alt="Berry Solutions logo" width={64} height={64} className="footer-logo-image" />
           </Link>
           <p>Technology that connects the dots.</p>
         </div>

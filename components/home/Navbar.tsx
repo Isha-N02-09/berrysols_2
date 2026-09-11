@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { useState } from "react";
 import { ChevronDown, Menu } from "lucide-react";
 import MobileMenu from "./MobileMenu";
@@ -61,7 +62,7 @@ export default function Navbar() {
     <>
       <header className="navbar-font fixed left-0 top-0 z-50 w-full border-b border-black/5 bg-white text-[13px] leading-[1.5]">
         <div className="flex h-[74px] w-full items-center justify-between px-[26px] lg:px-[48px]">
-          <a
+          <Link
             href="/"
             aria-label="Berry Solutions home"
             className="group flex h-11 items-center gap-3 overflow-visible"
@@ -78,7 +79,7 @@ export default function Navbar() {
               <br />
               Solutions
             </span>
-          </a>
+          </Link>
 
           <nav
             className="absolute left-[49%] hidden w-max -translate-x-1/2 items-center justify-center gap-7 lg:flex"
@@ -101,7 +102,7 @@ export default function Navbar() {
                       <ChevronDown size={15} strokeWidth={2} aria-hidden="true" />
                     </span>
                   ) : (
-                    <a
+                    <Link
                       href={href}
                       aria-current={isActive ? "page" : undefined}
                       className={`flex items-center gap-2 whitespace-nowrap text-[13px] font-medium transition-colors ${
@@ -112,7 +113,7 @@ export default function Navbar() {
                       {link.children && (
                         <ChevronDown size={15} strokeWidth={2} aria-hidden="true" />
                       )}
-                    </a>
+                    </Link>
                   )}
 
                   {link.children && (
@@ -124,7 +125,7 @@ export default function Navbar() {
                           : isActiveLink(item.href);
 
                         return (
-                          <a
+                          <Link
                             key={item.href + item.label}
                             href={item.href}
                             aria-current={itemIsActive ? "page" : undefined}
@@ -135,7 +136,7 @@ export default function Navbar() {
                             }`}
                           >
                             {item.label}
-                          </a>
+                          </Link>
                         );
                       })}
                     </div>
@@ -146,18 +147,18 @@ export default function Navbar() {
           </nav>
 
           <div className="flex items-center gap-4">
-            <a
+            <Link
               href="/careers"
               className="btn !hidden text-[13px] font-semibold lg:!inline-flex"
             >
               Explore Careers
-            </a>
-            <a
+            </Link>
+            <Link
               href={sectionHref("contact")}
               className="btn ghost !hidden text-[13px] font-semibold lg:!inline-flex"
             >
               Get In Touch
-            </a>
+            </Link>
             <button
               onClick={() => setOpen(true)}
               className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-black transition-colors hover:text-[#f45e2b] lg:hidden"

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { ArrowUpRight, HeartPulse, Network, Stethoscope, Timer, Truck } from "lucide-react";
 import styles from "@/styles/Services.module.css";
 
@@ -97,9 +98,9 @@ export default function Services() {
           <span className={styles.portfolioTitleOur}>Our</span>{" "}
           <span className={styles.portfolioTitleWord}>Portfolio</span>
         </h2>
-        <a href="/portfolio" className={`${styles.portfolioCta} btn ghost`}>
+        <Link href="/portfolio" className={`${styles.portfolioCta} btn ghost`}>
           View Portfolio <ArrowUpRight size={16} strokeWidth={2.35} aria-hidden="true" />
-        </a>
+        </Link>
         <div className={styles.featureTrack}>
           {features.map((feature, index) => {
             const Icon = feature.icon;

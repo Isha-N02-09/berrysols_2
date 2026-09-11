@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import type { BlogPost } from "@/lib/blog";
 
@@ -68,7 +69,7 @@ export default function BlogArchive({ posts }: BlogArchiveProps) {
       {currentPage === 1 && latestPost && (
         <section className="blog-feature blog-feature--recent" aria-label="Latest blog post">
           <div className="blog-feature-image-wrap">
-            <img src={latestPost.image} alt="" className="blog-feature-image" />
+            <Image src={latestPost.image} alt={latestPost.title} width={1200} height={720} className="blog-feature-image" />
             <span className="blog-feature-badge">Read<br />the<br />latest</span>
           </div>
           <div className="blog-feature-card">
@@ -89,7 +90,7 @@ export default function BlogArchive({ posts }: BlogArchiveProps) {
               {paginatedPosts.map((post, index) => (
                 <article key={post.slug} className="blog-post-card group">
                   <Link href={`/blog/${post.slug}`} className="blog-post-image-wrap">
-                    <img src={post.image} alt="" className="blog-post-image" />
+                    <Image src={post.image} alt={post.title} width={720} height={480} className="blog-post-image" />
                   </Link>
                   <div className="blog-post-copy">
                     <div className="blog-post-meta"><span>{post.date}</span><span>{post.category}</span></div>

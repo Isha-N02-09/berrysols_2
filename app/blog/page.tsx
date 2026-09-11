@@ -6,8 +6,14 @@ import BlogArchive from "./BlogArchive";
 import BlogHero from "./BlogHero";
 
 export const metadata: Metadata = {
-  title: "Blog | Berry Solutions",
+  title: "Blog",
   description: "Practical perspectives on digital products, growth, and technology from Berry Solutions.",
+  alternates: { canonical: "/blog" },
+  openGraph: {
+    title: "Berry Solutions Blog",
+    description: "Practical perspectives on digital products, growth, and technology from Berry Solutions.",
+    url: "/blog",
+  },
 };
 
 export default function BlogPage() {

@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/home/Navbar";
 import SimpleFooter from "@/components/home/Footer";
 import BlogEngagement from "@/components/BlogEngagement";
 import { blogPosts, getBlogPost } from "@/lib/blog";
+import { absoluteUrl } from "@/lib/seo";
 
 export function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
@@ -12,7 +14,21 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const post = getBlogPost(params.slug);
-  return { title: post ? `${post.title} | Berry Solutions` : "Blog | Berry Solutions", description: post?.excerpt };
+  return post ? {
+    title: post.title,
+    description: post.excerpt,
+    alternates: { canonical: `/blog/${post.slug}` },
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.excerpt,
+      url: absoluteUrl(`/blog/${post.slug}`),
+      images: [{ url: absoluteUrl(post.image), alt: post.title }],
+      publishedTime: post.date,
+      section: post.category,
+    },
+    twitter: { card: "summary_large_image" },
+  } : {};
 }
 
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
@@ -29,7 +45,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           <h1>{post.title}</h1>
           <p className="blog-author">By Ahsan Mehmood</p>
         </div>
-        <img src={post.image} alt={post.title} className="blog-article-image" />
+        <Image src={post.image} alt={post.title} width={1200} height={600} className="blog-article-image" priority />
         <div className="blog-article-layout">
           <div className="blog-article-body">
             <p className="blog-article-lede">{post.excerpt}</p>
@@ -39,7 +55,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               {post.sections.map((section) => (
                 <section key={section.heading}>
                   <h2>{section.heading}</h2>
-                  {section.image && <img src={section.image} alt="" className="blog-inline-image" />}
+                  {section.image && <Image src={section.image} alt={section.heading} width={980} height={430} className="blog-inline-image" />}
                   <div>{section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
                 </section>
               ))}

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import {
   Check,
   ChevronLeft,
@@ -57,9 +58,9 @@ function CaseHero({ study }: { study: CaseStudyData }) {
                 Visit site <span aria-hidden="true">↗</span>
               </a>
             )}
-            <a href="/portfolio" className="rounded-full border border-[#111111] px-5 py-3 text-sm font-semibold text-[#111111] transition hover:bg-[#111111] hover:text-white">
+            <Link href="/portfolio" className="rounded-full border border-[#111111] px-5 py-3 text-sm font-semibold text-[#111111] transition hover:bg-[#111111] hover:text-white">
               Go back to work
-            </a>
+            </Link>
           </div>
 
         </div>

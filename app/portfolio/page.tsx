@@ -6,8 +6,14 @@ import PortfolioList from "./PortfolioList";
 import { portfolioProjects } from "@/data/portfolio";
 
 export const metadata: Metadata = {
-  title: "Portfolio | Berry Solutions",
+  title: "Portfolio",
   description: "A selection of digital products, platforms, and experiences built by Berry Solutions.",
+  alternates: { canonical: "/portfolio" },
+  openGraph: {
+    title: "Berry Solutions Portfolio",
+    description: "Selected digital products, platforms, and experiences built by Berry Solutions.",
+    url: "/portfolio",
+  },
 };
 
 export default function PortfolioPage() {

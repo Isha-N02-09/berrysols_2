@@ -4,9 +4,16 @@ import HeroSection from "./HeroSection";
 import ServicesOverview from "./ServicesOverview";
 
 export const metadata: Metadata = {
-  title: "Services — Berry",
+  title: "Digital, AI & Technology Services",
   description:
-    "Web, mobile, AI, cloud, security and marketing — one team, one system, built around how your business works.",
+    "Explore Berry Solutions services for web development, AI automation, software, startup support, and digital marketing.",
+  alternates: { canonical: "/services" },
+  openGraph: {
+    title: "Digital, AI & Technology Services",
+    description:
+      "Web development, AI automation, software, startup support, and digital marketing from Berry Solutions.",
+    url: "/services",
+  },
 };
 
 export default function ServicesOverviewPage() {
