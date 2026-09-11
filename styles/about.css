@@ -950,8 +950,8 @@ section{position:relative;}
   .workflow-section { padding: 72px 0 88px; }
   .workflow-copy h2 { max-width: 100%; }
   .workflow-item { grid-template-columns: 48px minmax(0, 1fr); gap: 14px; }
-  .workflow-list::before { left: 21px; }
-  .workflow-icon { width: 34px; height: 34px; margin-left: -9px; background: transparent; }
+  .workflow-list::before { left: 34px; }
+  .workflow-icon { width: 34px; height: 34px; margin-left: 0; background: transparent; }
   .workflow-mark { font-size: 1.2rem; }
   .workflow-content h3 { font-size: 1.15rem; }
   .workflow-content p { font-size: 0.96rem; }

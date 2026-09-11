@@ -830,13 +830,22 @@ html::-webkit-scrollbar {
 }
 
 @media (max-width: 640px) {
+  .portfolio-page {
+    overflow-x: clip;
+  }
+
   .blog-hero {
     margin-top: 84px;
     width: 100%;
   }
 
   .blog-sheet-posts { width: 100%; padding-inline: var(--content-gutter); }
-  .blog-masthead h1 { font-size: clamp(4.25rem, 22vw, 8rem); }
+  .portfolio-page .blog-masthead p {
+    display: block;
+    line-height: 1.45;
+    text-align: center;
+  }
+  .portfolio-page .blog-masthead h1 { font-size: clamp(3.6rem, 18vw, 6.5rem); }
   .blog-masthead { padding-bottom: 28px; }
   .services-page-hero .blog-masthead { padding-top: 100px; }
   .blog-feature { display: block; width: 100%; margin: 34px auto 56px; }
@@ -852,6 +861,11 @@ html::-webkit-scrollbar {
   .blog-section-heading { align-items: flex-start; gap: 12px; flex-direction: column; }
   .blog-filters { justify-content: flex-start; }
   .blog-post-copy p { min-height: 0; }
+  .portfolio-page .blog-pagination button {
+    min-width: 68px;
+    padding-inline: 10px;
+    font-size: 10px;
+  }
   .blog-utility-links { gap: 9px; }
   .blog-article { padding-top: 125px; }
   .blog-article-heading { text-align: left; }

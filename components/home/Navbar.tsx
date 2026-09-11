@@ -148,13 +148,13 @@ export default function Navbar() {
           <div className="flex items-center gap-4">
             <a
               href="/careers"
-              className="btn hidden text-[13px] font-semibold md:inline-flex"
+              className="btn !hidden text-[13px] font-semibold lg:!inline-flex"
             >
               Explore Careers
             </a>
             <a
               href={sectionHref("contact")}
-              className="btn ghost hidden text-[13px] font-semibold md:inline-flex"
+              className="btn ghost !hidden text-[13px] font-semibold lg:!inline-flex"
             >
               Get In Touch
             </a>

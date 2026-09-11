@@ -264,7 +264,7 @@
     width: 100%;
     margin-left: 0;
     display: block;
-    min-height: 100vh;
+    min-height: calc(100vh * 4.6);
     --diameter: 416px;
     --radius: 208px;
     --bulge: 90px;
@@ -280,10 +280,41 @@
     max-width: 28rem;
     margin: 0 auto;
     padding-top: 1rem;
+    padding-bottom: 0.5rem;
     height: auto;
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    background: var(--bg);
+  }
+
+  .eyebrow {
+    margin-bottom: 0.75rem;
+    font-size: 0.62rem;
+  }
+
+  .heading {
+    font-size: clamp(2rem, 9vw, 2.8rem);
+  }
+
+  .rule {
+    margin: 0.9rem 0 0.75rem;
+  }
+
+  .description {
+    font-size: 0.82rem;
+    line-height: 1.5;
+  }
+
+  .knowMore {
+    margin-top: 1rem;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.72rem;
   }
 
   .stage {
+    position: sticky;
+    top: 12.5rem;
     height: var(--diameter);
     margin-top: -3rem;
     touch-action: pan-y;

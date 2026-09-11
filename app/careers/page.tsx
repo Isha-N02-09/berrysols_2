@@ -326,7 +326,8 @@ export default function CareersPage() {
           }
 
           .careers-role-arrow {
-            display: none;
+            display: flex;
+            justify-self: end;
           }
 
           .process-line {
@@ -345,6 +346,7 @@ export default function CareersPage() {
             display: flex;
             flex-direction: column;
             align-items: center;
+            padding-top: 4px;
           }
 
           .process-marker,
@@ -368,13 +370,21 @@ export default function CareersPage() {
             width: auto;
             margin-top: 14px;
             transform: none;
+            order: 3;
           }
 
           .process-number,
           .process-step:nth-child(even) .process-number {
-            top: 18px;
-            right: auto;
-            left: calc(50% + 38px);
+            position: static;
+            display: block;
+            order: 1;
+            transform: none;
+            margin: 0 0 8px;
+          }
+
+          .process-marker,
+          .process-step:nth-child(even) .process-marker {
+            order: 2;
           }
         }
 
