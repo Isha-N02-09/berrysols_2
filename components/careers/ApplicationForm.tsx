@@ -1,7 +1,7 @@
 "use client";
 
-import { FormEvent, useState } from "react";
-import { ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { FormEvent } from "react";
+import { ArrowUpRight } from "lucide-react";
 
 type ApplicationFormProps = {
   roleSlug: string;
@@ -9,37 +9,25 @@ type ApplicationFormProps = {
 };
 
 export default function ApplicationForm({ roleSlug, roleTitle }: ApplicationFormProps) {
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
-  const [message, setMessage] = useState("");
-
-  async function submitApplication(event: FormEvent<HTMLFormElement>) {
+  function submitApplication(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setStatus("sending");
-    setMessage("");
 
-    const form = event.currentTarget;
-    const formData = new FormData(form);
-    formData.set("roleSlug", roleSlug);
-    formData.set("roleTitle", roleTitle);
+    const formData = new FormData(event.currentTarget);
+    const cv = formData.get("cv");
+    const body = [
+      `Role: ${roleTitle}`,
+      `Role slug: ${roleSlug}`,
+      `Name: ${formData.get("name") || ""}`,
+      `Email: ${formData.get("email") || ""}`,
+      `Phone: ${formData.get("phone") || ""}`,
+      `City: ${formData.get("city") || ""}`,
+      `Education: ${formData.get("education") || "Not provided"}`,
+      `Experience: ${formData.get("experience") || "Not provided"}`,
+      `Cover note: ${formData.get("coverNote") || "Not provided"}`,
+      `CV: ${cv instanceof File && cv.name ? `${cv.name} (please attach it to this email)` : "Please attach your CV"}`,
+    ].join("\n");
 
-    try {
-      const response = await fetch("/api/careers/apply", {
-        method: "POST",
-        body: formData,
-      });
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result.error || "Your application could not be sent.");
-      }
-
-      form.reset();
-      setStatus("sent");
-      setMessage("Application sent. We will be in touch soon.");
-    } catch (error) {
-      setStatus("error");
-      setMessage(error instanceof Error ? error.message : "Your application could not be sent.");
-    }
+    window.location.href = `mailto:careers@berrysols.com?subject=${encodeURIComponent(`Job application: ${roleTitle}`)}&body=${encodeURIComponent(body)}`;
   }
 
   return (
@@ -94,15 +82,10 @@ export default function ApplicationForm({ roleSlug, roleTitle }: ApplicationForm
       </div>
 
       <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <button type="submit" disabled={status === "sending"} className="btn text-sm font-semibold uppercase tracking-[0.04em] disabled:cursor-wait disabled:opacity-60">
-          {status === "sending" ? "Sending..." : "Submit application"}
-          {status !== "sending" && <ArrowUpRight size={16} aria-hidden="true" />}
+        <button type="submit" className="btn text-sm font-semibold uppercase tracking-[0.04em]">
+          Submit application
+          <ArrowUpRight size={16} aria-hidden="true" />
         </button>
-        {status === "sent" ? (
-          <p className="flex items-center gap-2 text-sm text-[#28734a]"><CheckCircle2 size={17} aria-hidden="true" /> {message}</p>
-        ) : status === "error" ? (
-          <p className="max-w-sm text-sm text-[#b42318]">{message}</p>
-        ) : null}
       </div>
     </form>
   );

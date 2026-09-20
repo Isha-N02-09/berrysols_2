@@ -12,12 +12,6 @@ import RoadReveal from "@/components/about/RoadReveal";
 
 const TEAM = [
   {
-    name: "Isha",
-    role: "AI & Automation",
-    img: "/assets/team/isha.png",
-    initials: "IS",
-  },
-  {
     name: "Ahmed mehmood",
     role: "Chief Technology Officer",
     img: "/assets/team/ahmed.png",
@@ -53,7 +47,7 @@ export default function AboutPage() {
   const fillLineRef = useRef<HTMLDivElement>(null);
   const dotFieldSvgRef = useRef<SVGSVGElement>(null);
 
-  const [activeTeam, setActiveTeam] = useState(2);
+  const [activeTeam, setActiveTeam] = useState(1);
 
   // generic reveal-on-scroll
   useEffect(() => {
